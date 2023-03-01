@@ -1,48 +1,56 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Observing major flood events with GLOFAS &#8212; C3S Training</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,60 +58,395 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'cems-notebooks/glofas-bangladesh-floods';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="HIRS monthly Outgoing Longwave Radiation (OLR) from NOAA/NCEI" href="../ecv-notebooks/OutgoingLongwaveRadiation.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
+                        CDS tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
+                        Climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
+                        Heatwave Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
+                        Climate Projections (CMIP6)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cordex.html">
+                        Climate Projections (CORDEX)
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
+                        Seasonal Forecast Anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-verification.html">
+                        Seasonal Forecast Verification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ci-windchill.html">
+                        Windchill Index Calculation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ecv-notebooks/OutgoingLongwaveRadiation.html">
+                        Outgoing Longwave Radiation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Observing major flood events
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
+                        Python library (ibicus) and tutorials on bias correction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
+                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
       
       
-      <img src="../_static/C3S–POS–LINE.png" class="logo" alt="logo">
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
       
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
       
-      <h1 class="site-logo" id="site-title">C3S Training</h1>
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
+                        CDS tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
+                        Climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
+                        Heatwave Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
+                        Climate Projections (CMIP6)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cordex.html">
+                        Climate Projections (CORDEX)
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
+                        Seasonal Forecast Anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-verification.html">
+                        Seasonal Forecast Verification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ci-windchill.html">
+                        Windchill Index Calculation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ecv-notebooks/OutgoingLongwaveRadiation.html">
+                        Outgoing Longwave Radiation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Observing major flood events
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
+                        Python library (ibicus) and tutorials on bias correction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
+                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -112,523 +455,328 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Climate Data Store (CDS)
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../cds-tutorial.html">
-   CDS tutorial
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../cds-tutorial.html">CDS tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Reanalysis Tutorials
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reanalysis Tutorials</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../reanalysis-climatology.html">
-   Climatology
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../reanalysis-heatwave.html">
-   Heatwave Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Climate Projections
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../projections-cmip6.html">
-   Climate Projections (CMIP6)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../projections-cordex.html">
-   Climate Projections (CORDEX)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections-cordex.html">Climate Projections (CORDEX)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Seasonal Forecasts
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../sf-anomalies.html">
-   Seasonal Forecast Anomalies
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sf-verification.html">Seasonal Forecast Verification</a></li>
+
+
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Turorials on Climate Indices
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../ci-windchill.html">
-   Windchill Index Calculation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Turorials using Satellite Observations
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Satellite Observations</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../ecv-notebooks/OutgoingLongwaveRadiation.html">
-   Outgoing Longwave Radiation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../ecv-notebooks/OutgoingLongwaveRadiation.html">Outgoing Longwave Radiation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Turorials using Copernicus Emergency Management Service data
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Observing major flood events
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Observing major flood events</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Atmosphere Monitoring Tutorials
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-   Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
+</nav>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  </div>
+  
 
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
 
-          
+  
+  <div id="rtd-footer-container"></div>
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+      </div>
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/cems-notebooks/glofas-bangladesh-floods.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/cems-notebooks/glofas-bangladesh-floods.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on Binder"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_binder.svg">
   </span>
-<span class="headerbtn__text-container">Binder</span>
+<span class="btn__text-container">Binder</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
+  class="btn btn-sm"
   data-toggle="tooltip"
 data-placement="bottom"
 title="Fullscreen mode"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Source repository"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="headerbtn__text-container">repository</span>
+<span class="btn__text-container">repository</span>
 </a>
-
-      </li>
+</a>
       
-      <li>
-        <a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fcems-notebooks/glofas-bangladesh-floods.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fcems-notebooks/glofas-bangladesh-floods.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Open an issue"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-<span class="headerbtn__text-container">open issue</span>
+<span class="btn__text-container">open issue</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/cems-notebooks/glofas-bangladesh-floods.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/cems-notebooks/glofas-bangladesh-floods.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Download source file"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</a>
       
       <li>
-        
 <button onclick="printPdf(this)"
-  class="headerbtn"
+  class="btn btn-sm dropdown-item"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
     </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about">
-   About
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-your-environment">
-   Setup your environment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-cds-api">
-     Install CDS API
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#search-and-download-the-data">
-   Search and download the data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#enter-your-cds-api-key">
-     Enter your CDS API key
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-the-river-discharge-data-we-want">
-     Find the river discharge data we want
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#download-data">
-       Download data
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-and-view-the-data">
-   Explore and view the data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#getting-an-overview-of-the-study-area">
-     Getting an overview of the study area
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accessing-the-upstream-area-data">
-     Accessing the upstream area data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reduce-the-upstream-area-to-the-domain-of-the-data">
-     Reduce the upstream area to the domain of the data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mask-the-river-discharge-data">
-     Mask the river discharge data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years">
-   Compare the June 2022 river discharge to the previous 10 years
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period">
-   Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.
-  </a>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Observing major flood events with GLOFAS</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about">
-   About
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup-your-environment">
-   Setup your environment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-cds-api">
-     Install CDS API
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#search-and-download-the-data">
-   Search and download the data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#enter-your-cds-api-key">
-     Enter your CDS API key
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-the-river-discharge-data-we-want">
-     Find the river discharge data we want
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#download-data">
-       Download data
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-and-view-the-data">
-   Explore and view the data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#getting-an-overview-of-the-study-area">
-     Getting an overview of the study area
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accessing-the-upstream-area-data">
-     Accessing the upstream area data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reduce-the-upstream-area-to-the-domain-of-the-data">
-     Reduce the upstream area to the domain of the data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mask-the-river-discharge-data">
-     Mask the river discharge data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years">
-   Compare the June 2022 river discharge to the previous 10 years
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period">
-   Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
             </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Observing major flood events with GLOFAS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about">
+   About
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-your-environment">
+   Setup your environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-cds-api">
+     Install CDS API
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-libraries">
+     Import libraries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search-and-download-the-data">
+   Search and download the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enter-your-cds-api-key">
+     Enter your CDS API key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-the-river-discharge-data-we-want">
+     Find the river discharge data we want
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#download-data">
+       Download data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-and-view-the-data">
+   Explore and view the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-an-overview-of-the-study-area">
+     Getting an overview of the study area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-the-upstream-area-data">
+     Accessing the upstream area data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reduce-the-upstream-area-to-the-domain-of-the-data">
+     Reduce the upstream area to the domain of the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mask-the-river-discharge-data">
+     Mask the river discharge data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years">
+   Compare the June 2022 river discharge to the previous 10 years
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period">
+   Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
   <p><img alt="logo" src="../_images/cems_header.png" /></p>
 <br><section class="tex2jax_ignore mathjax_ignore" id="observing-major-flood-events-with-glofas">
-<h1>Observing major flood events with GLOFAS<a class="headerlink" href="#observing-major-flood-events-with-glofas" title="Permalink to this headline">#</a></h1>
+<h1>Observing major flood events with GLOFAS<a class="headerlink" href="#observing-major-flood-events-with-glofas" title="Permalink to this heading">#</a></h1>
 <section id="about">
-<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">#</a></h2>
+<h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
 <p>This tutorial will demonstrate how to investigate a specific flood event using data from the GLObal Flood
 Awareness Service (GLOFAS). For this example we look at the major flood event in Bangladesh in June 2022
 and assess the excess river discharge in comparison to the long-term (10-year) discharge statistics.</p>
 <p>The GLOFAS data is produced operationally by ECMWF for the Copernicus Emergency Management Service (CEMS).</p>
 <p>The tutorial is structured as follows:</p>
-<ol class="simple">
+<ol class="arabic simple" start="0">
 <li><p>(Install and import the required python packages)</p></li>
 <li><p>Download the data of interest from the C3S Climate Data Store (CDS);</p></li>
 <li><p>Explore the data with xarray, apply mask using the auxilary data, and produce demonstrative map plots;</p></li>
@@ -657,10 +805,10 @@ td, th {
   </tr>
 </table></section>
 <section id="setup-your-environment">
-<h2>Setup your environment<a class="headerlink" href="#setup-your-environment" title="Permalink to this headline">#</a></h2>
+<h2>Setup your environment<a class="headerlink" href="#setup-your-environment" title="Permalink to this heading">#</a></h2>
 <p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.</p>
 <section id="install-cds-api">
-<h3>Install CDS API<a class="headerlink" href="#install-cds-api" title="Permalink to this headline">#</a></h3>
+<h3>Install CDS API<a class="headerlink" href="#install-cds-api" title="Permalink to this heading">#</a></h3>
 <p>To install the CDS API, run the following command. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -677,7 +825,7 @@ td, th {
 </div>
 </section>
 <section id="import-libraries">
-<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h3>
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
 <p>We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular Xarray. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -705,9 +853,9 @@ td, th {
 </section>
 </section>
 <section id="search-and-download-the-data">
-<h2>Search and download the data<a class="headerlink" href="#search-and-download-the-data" title="Permalink to this headline">#</a></h2>
+<h2>Search and download the data<a class="headerlink" href="#search-and-download-the-data" title="Permalink to this heading">#</a></h2>
 <section id="enter-your-cds-api-key">
-<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this headline">#</a></h3>
+<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
 <p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <p>If you have set up your cdsapi key using a ~/.cdsapirc the following is not required and cdsapi_kwargs can be left as an empty dictionary.</p>
 <div class="cell docutils container">
@@ -733,9 +881,9 @@ td, th {
 </div>
 </section>
 <section id="find-the-river-discharge-data-we-want">
-<h3>Find the river discharge data we want<a class="headerlink" href="#find-the-river-discharge-data-we-want" title="Permalink to this headline">#</a></h3>
+<h3>Find the river discharge data we want<a class="headerlink" href="#find-the-river-discharge-data-we-want" title="Permalink to this heading">#</a></h3>
 <p>The historical GLOFAS data can be found in
-<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/cems-glofas-historical">CDS catalogue entry</a>.</p>
+<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/cems-glofas-historical">CDS catalogue entry</a>.</p>
 <p>We are going to look at the Bangladesh flood in June 2022. For our analysis we are going to compare June 2022
 against all the June data from the 10-year reference period: 2012 to 2021. This period has been chosen for
 demonstrative purposes, a thorough analysis would choose a much longer reference period.</p>
@@ -753,7 +901,7 @@ demonstrative purposes, a thorough analysis would choose a much longer reference
 </ul>
 <p>At the end of the download form, select <strong>“Show API request”</strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cells below).</p>
 <section id="download-data">
-<h4>Download data<a class="headerlink" href="#download-data" title="Permalink to this headline">#</a></h4>
+<h4>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h4>
 <p>… having copied the API request into the cell below, running this will retrieve and download the data you requested into your local directory. However, before you run the cell below, the <strong>terms and conditions</strong> of this particular dataset need to have been accepted in the CDS. The option to view and accept these conditions is given at the end of the download form, just above the <strong>“Show API request”</strong> option.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,7 +932,7 @@ demonstrative purposes, a thorough analysis would choose a much longer reference
 </section>
 </section>
 <section id="explore-and-view-the-data">
-<h2>Explore and view the data<a class="headerlink" href="#explore-and-view-the-data" title="Permalink to this headline">#</a></h2>
+<h2>Explore and view the data<a class="headerlink" href="#explore-and-view-the-data" title="Permalink to this heading">#</a></h2>
 <p>We open the data with xarray which can handle both grib and netcdf formats. The xarray dataset objects allows
 exploration of the data contents including attributes, metadata and coordinates.</p>
 <div class="cell docutils container">
@@ -1207,7 +1355,7 @@ Attributes:
              dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=202))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f951290b-0eba-437c-986d-72b46d1b745a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f951290b-0eba-437c-986d-72b46d1b745a' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>GRIB_edition :</span></dt><dd>2</dd><dt><span>GRIB_centre :</span></dt><dd>ecmf</dd><dt><span>GRIB_centreDescription :</span></dt><dd>European Centre for Medium-Range Weather Forecasts</dd><dt><span>GRIB_subCentre :</span></dt><dd>0</dd><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>institution :</span></dt><dd>European Centre for Medium-Range Weather Forecasts</dd><dt><span>history :</span></dt><dd>2023-02-08T11:58 GRIB to CDM+CF via cfgrib-0.9.10.3/ecCodes-2.27.0 with {&quot;source&quot;: &quot;data_dir/download.grib&quot;, &quot;filter_by_keys&quot;: {}, &quot;encode_cf&quot;: [&quot;parameter&quot;, &quot;time&quot;, &quot;geography&quot;, &quot;vertical&quot;]}</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="getting-an-overview-of-the-study-area">
-<h3>Getting an overview of the study area<a class="headerlink" href="#getting-an-overview-of-the-study-area" title="Permalink to this headline">#</a></h3>
+<h3>Getting an overview of the study area<a class="headerlink" href="#getting-an-overview-of-the-study-area" title="Permalink to this heading">#</a></h3>
 <p>Now we will produce a simple map of the data. First we will define a function for producing a map plot that
 we will use several times in this note book:</p>
 <div class="cell docutils container">
@@ -1269,12 +1417,12 @@ such as the mean as we do here:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/glofas-bangladesh-floods_21_0.png" src="../_images/glofas-bangladesh-floods_21_0.png" />
+<img alt="../_images/3d4f8c02ec5d07af9645bc941363e6617cc3cc8a0315b9c19942e7194f94b652.png" src="../_images/3d4f8c02ec5d07af9645bc941363e6617cc3cc8a0315b9c19942e7194f94b652.png" />
 </div>
 </div>
 </section>
 <section id="accessing-the-upstream-area-data">
-<h3>Accessing the upstream area data<a class="headerlink" href="#accessing-the-upstream-area-data" title="Permalink to this headline">#</a></h3>
+<h3>Accessing the upstream area data<a class="headerlink" href="#accessing-the-upstream-area-data" title="Permalink to this heading">#</a></h3>
 <p>We know that the river discharge is only valid in the rivers, therefore it is possible to mask the data with
 knowledge of the the river locations. We do this by using the upstream area data which is provided as an
 auxilary data product for GloFAS. The upstream area denotes the total upstream area for each river pixel,
@@ -1713,7 +1861,7 @@ Fri Dec 10 11:49:37 2021: GDAL CreateCopy( tmp_upArea.nc, ... )</dd><dt><span>CD
 </div>
 </section>
 <section id="reduce-the-upstream-area-to-the-domain-of-the-data">
-<h3>Reduce the upstream area to the domain of the data<a class="headerlink" href="#reduce-the-upstream-area-to-the-domain-of-the-data" title="Permalink to this headline">#</a></h3>
+<h3>Reduce the upstream area to the domain of the data<a class="headerlink" href="#reduce-the-upstream-area-to-the-domain-of-the-data" title="Permalink to this heading">#</a></h3>
 <p>The upstream area data covers the entire globe, we must therefore reduce it to the domain of our area of
 interest, Bangladesh. To avoid hard-coding and to ensure that the sub-area selected matches exactly
 we extract the domain limits from the river discarge data.</p>
@@ -2194,7 +2342,7 @@ Attributes:
 </div>
 </section>
 <section id="mask-the-river-discharge-data">
-<h3>Mask the river discharge data<a class="headerlink" href="#mask-the-river-discharge-data" title="Permalink to this headline">#</a></h3>
+<h3>Mask the river discharge data<a class="headerlink" href="#mask-the-river-discharge-data" title="Permalink to this heading">#</a></h3>
 <p>We now mask the data to where the upstream area is &gt;= 250km2, and plot it to see how it looks</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2208,13 +2356,13 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/glofas-bangladesh-floods_27_0.png" src="../_images/glofas-bangladesh-floods_27_0.png" />
+<img alt="../_images/ee7d9592b4052371265dcf434cff3c13821cd17ea2e0b0f2ce2b2b4be7718abd.png" src="../_images/ee7d9592b4052371265dcf434cff3c13821cd17ea2e0b0f2ce2b2b4be7718abd.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="compare-the-june-2022-river-discharge-to-the-previous-10-years">
-<h2>Compare the June 2022 river discharge to the previous 10 years<a class="headerlink" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years" title="Permalink to this headline">#</a></h2>
+<h2>Compare the June 2022 river discharge to the previous 10 years<a class="headerlink" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years" title="Permalink to this heading">#</a></h2>
 <p>We want to see how the June 2022 floods compare to the historical period accross the entire domain.
 We chose a histroical period of 10 years for demonstrative purposes, a thorough analysis would
 use a longer reference period.</p>
@@ -2313,14 +2461,14 @@ for each day in June.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Daily river discharge ($m^{3}s^{-1}$)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/glofas-bangladesh-floods_31_1.png" src="../_images/glofas-bangladesh-floods_31_1.png" />
+<img alt="../_images/8bd9382a437aae76cbeb28b524ee33d44a89cbef5ee0bb30374eb7e803c23e95.png" src="../_images/8bd9382a437aae76cbeb28b524ee33d44a89cbef5ee0bb30374eb7e803c23e95.png" />
 </div>
 </div>
 <p>From this plot, we see that around the 13th of June the 2022 floods began to exceed the 10-year historical maximum, and this continued until the 22nd.</p>
 <p>However, this plot doesn’t give us an idea of how the severity of the flooding varied spatially, so let’s have a look at that.</p>
 </section>
 <section id="map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period">
-<h2>Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.<a class="headerlink" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period" title="Permalink to this headline">#</a></h2>
+<h2>Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.<a class="headerlink" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period" title="Permalink to this heading">#</a></h2>
 <p>We can also look at the spatial distribution of this data and xarray provides some useful tools for indexing
 calcualating various statisitics. Below we calculate the 10th and 90th percentiles accross the domain
 then compute where the river discharge exceeded the 90th percentile. This is a boolean data array where
@@ -2366,7 +2514,7 @@ investigate at your leisure.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/glofas-bangladesh-floods_36_0.png" src="../_images/glofas-bangladesh-floods_36_0.png" />
+<img alt="../_images/aa53f37c38e861f253837422dbc1d73e865c5f29ea72002d15cd315e6534a667.png" src="../_images/aa53f37c38e861f253837422dbc1d73e865c5f29ea72002d15cd315e6534a667.png" />
 </div>
 </div>
 <p>We can see that some areas to the northeast of Dhaka experienced discharge exceeding the 90th percentile for over 20 days in June.</p>
@@ -2393,43 +2541,176 @@ investigate at your leisure.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../ecv-notebooks/OutgoingLongwaveRadiation.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">HIRS monthly Outgoing Longwave Radiation (OLR) from NOAA/NCEI</p>
-        </div>
-    </a>
+  <a class='left-prev' id="prev-link" href="../ecv-notebooks/OutgoingLongwaveRadiation.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">HIRS monthly Outgoing Longwave Radiation (OLR) from NOAA/NCEI</p>
+      </div>
+  </a>
 </div>
             </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-    By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about">
+   About
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-your-environment">
+   Setup your environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-cds-api">
+     Install CDS API
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-libraries">
+     Import libraries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search-and-download-the-data">
+   Search and download the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#enter-your-cds-api-key">
+     Enter your CDS API key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#find-the-river-discharge-data-we-want">
+     Find the river discharge data we want
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#download-data">
+       Download data
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-and-view-the-data">
+   Explore and view the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#getting-an-overview-of-the-study-area">
+     Getting an overview of the study area
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accessing-the-upstream-area-data">
+     Accessing the upstream area data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reduce-the-upstream-area-to-the-domain-of-the-data">
+     Reduce the upstream area to the domain of the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mask-the-river-discharge-data">
+     Mask the river discharge data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years">
+   Compare the June 2022 river discharge to the previous 10 years
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period">
+   Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.
+  </a>
+ </li>
+</ul>
+
+</nav>
 </div>
 
-
-      </div>
-    </div>
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>
