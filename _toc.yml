@@ -23,6 +23,7 @@ parts:
  - caption: Tutorials on Seasonal Forecasts
    chapters:
    - file: sf-anomalies
+   - file: sf-verification
  - caption: Tutorials on Climate Indices
    chapters:
    - file: ci-windchill
@@ -43,5 +44,4 @@ parts:
    chapters:
    - url: https://ecmwf-projects.github.io/copernicus-training-cams/
      title: Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-
 
