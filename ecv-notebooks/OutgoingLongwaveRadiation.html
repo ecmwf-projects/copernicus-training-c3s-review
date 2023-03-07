@@ -681,16 +681,12 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-intro-a-1-introduction">
-   <a id="intro">
-   </a>
+  <a class="reference internal nav-link" href="#introduction">
    1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-preparation-a-2-prerequisites-and-data-preparations">
-   <a id="preparation">
-   </a>
+  <a class="reference internal nav-link" href="#prerequisites-and-data-preparations">
    2. Prerequisites and data preparations
   </a>
   <ul class="nav section-nav flex-column">
@@ -705,9 +701,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-cdsapi-a-2-3-download-data-using-cds-api">
-     <a id="cdsapi">
-     </a>
+    <a class="reference internal nav-link" href="#download-data-using-cds-api">
      2.3 Download data using CDS API
     </a>
     <ul class="nav section-nav flex-column">
@@ -731,16 +725,12 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-usecases-a-3-use-cases">
-   <a id="usecases">
-   </a>
-   3. Use Cases
+  <a class="reference internal nav-link" href="#a-3-use-cases">
   </a>
+  3. Use Cases
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-     <a id="global-climatology">
-     </a>
+    <a class="reference internal nav-link" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
      Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)
     </a>
     <ul class="nav section-nav flex-column">
@@ -762,11 +752,9 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr">
-     <a id="timeseries-global">
-     </a>
-     Use case 2: Global time series of the OLR
+    <a class="reference internal nav-link" href="#a-use-case-2-global-time-series-of-the-olr">
     </a>
+    Use case 2: Global time series of the OLR
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">
@@ -781,11 +769,9 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic">
-     <a id="timeseries-arctic">
-     </a>
-     Use case 3: OLR evolution in the Arctic
+    <a class="reference internal nav-link" href="#a-use-case-3-olr-evolution-in-the-arctic">
     </a>
+    Use case 3: OLR evolution in the Arctic
    </li>
   </ul>
  </li>
@@ -835,9 +821,10 @@ Two figures below are results of Use Case 1 and 2, and the result of a successfu
 </li>
 <li><p><span class="xref myst">References</span></p></li>
 </ul>
-<br></section>
-<section id="a-id-intro-a-1-introduction">
-<h2><a id='intro'></a> 1. Introduction<a class="headerlink" href="#a-id-intro-a-1-introduction" title="Permalink to this heading">#</a></h2>
+<p><a id='intro'></a></p>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <br>
 <div style="text-align: justify"> The Top-of-atmosphere (TOA) Outgoing Longwave Radiation (OLR) is one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECV), and it is a key component of the Earth’s Radiation Budget (ERB). OLR combines the thermal radiation from the atmosphere and the thermal radiation from the Earth’s surface that leaves the atmosphere through the “window” regions of the electromagnetic spectrum. OLR is the reason why the Earth is not heating up indefinitely by the Sun. OLR has a latitudinal dependence, but it is not uniform mostly because of the difference in the cloud cover. The biggest volcanic eruptions emit small particles in the stratosphere, where they stay for decades and can reduce the global OLR for years. During the last decades, the average temperatures in the Arctic region have risen significantly. The Arctic region is mostly cloudless, so the longwave emission from the Earth contributes to the TOA OLR. </div>
 <br>
@@ -851,9 +838,10 @@ Two figures below are results of Use Case 1 and 2, and the result of a successfu
 <ul class="simple">
 <li><p><a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-earth-radiation-budget/C3S_D312b_Lot1.4.2.5_201902_Tutorial_ECVEarthRadiationBudget_v1.4.mp4">Tutorial video on the Earth Radiation Budget Essential Climate Variable</a></p></li>
 </ul>
-<br></section>
-<section id="a-id-preparation-a-2-prerequisites-and-data-preparations">
-<h2><a id='preparation'></a> 2. Prerequisites and data preparations<a class="headerlink" href="#a-id-preparation-a-2-prerequisites-and-data-preparations" title="Permalink to this heading">#</a></h2>
+<p><a id='preparation'></a></p>
+</section>
+<section id="prerequisites-and-data-preparations">
+<h2>2. Prerequisites and data preparations<a class="headerlink" href="#prerequisites-and-data-preparations" title="Permalink to this heading">#</a></h2>
 <p>This chapter provides information on how to: run the notebook, lists necessary python libraries, and guides you through the process of data on data preparation: how to search and download the data via CDS API, and get it ready to be used.</p>
 <br>
 <section id="how-to-access-the-notebook">
@@ -886,9 +874,7 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 <h3>2.2 Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="c1"># CDS API library</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API library</span>
 <span class="kn">import</span> <span class="nn">cdsapi</span>
 
 <span class="c1"># Libraries for working with multidimensional arrays</span>
@@ -899,15 +885,10 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 <span class="c1"># Library to work with zip-archives, OS-functions and pattern expansion</span>
 <span class="kn">import</span> <span class="nn">zipfile</span>
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="c1"># Libraries for plotting and visualising data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-
-<span class="c1"># Libraries for plot style parameters</span>
-<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
 
 <span class="c1"># Disable warnings for data download via API</span>
 <span class="kn">import</span> <span class="nn">urllib3</span>
@@ -916,33 +897,10 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 </div>
 </div>
 </div>
-<p>Next, we want to define some global parameters to be used in plotting.<br></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">script</span> false --no-raise-error
-# The following style parameters will be used for all plots in this use case.
-rcParams[&#39;figure.figsize&#39;] = [16, 16]
-rcParams[&#39;figure.dpi&#39;] = 350
-rcParams[&#39;font.family&#39;] = &#39;serif&#39;
-rcParams[&#39;font.serif&#39;] = mpl.rcParamsDefault[&#39;font.serif&#39;]
-rcParams[&#39;mathtext.default&#39;] = &#39;regular&#39;
-rcParams[&#39;mathtext.rm&#39;] = &#39;serif:light&#39;
-rcParams[&#39;mathtext.it&#39;] = &#39;serif:italic&#39;
-rcParams[&#39;mathtext.bf&#39;] = &#39;serif:bold&#39;
-plt.rc(&#39;font&#39;, size=17)          # controls default text sizes
-plt.rc(&#39;axes&#39;, titlesize=17)     # fontsize of the axes title
-plt.rc(&#39;axes&#39;, labelsize=17)     # fontsize of the x and y labels
-plt.rc(&#39;xtick&#39;, labelsize=15)    # fontsize of the tick labels
-plt.rc(&#39;ytick&#39;, labelsize=15)    # fontsize of the tick labels
-plt.rc(&#39;legend&#39;, fontsize=15)    # legend fontsize
-plt.rc(&#39;figure&#39;, titlesize=18)   # fontsize of the figure title
-</pre></div>
-</div>
-</div>
-</div>
+<p><a id='cdsapi'></a></p>
 </section>
-<section id="a-id-cdsapi-a-2-3-download-data-using-cds-api">
-<h3><a id='cdsapi'></a> 2.3 Download data using CDS API<a class="headerlink" href="#a-id-cdsapi-a-2-3-download-data-using-cds-api" title="Permalink to this heading">#</a></h3>
+<section id="download-data-using-cds-api">
+<h3>2.3 Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Permalink to this heading">#</a></h3>
 <p>This subsection describes the process of data search in the CDS catalogue, and data preparation for use in the use cases.</p>
 <section id="set-up-cds-api-credentials">
 <h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h4>
@@ -957,10 +915,14 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </div>
 </div>
 </div>
-<p>Next, we specify a data directory in which we will download our data and all output files that we will generate:</p>
+<p>Next, we specify a directory where we will download our data and some filenames which we will use in several of the subsequent cells:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
+<span class="c1"># Filename for the zip file downloaded from the CDS</span>
+<span class="n">download_zip_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="s1">&#39;olr-monthly_v02r07.zip&#39;</span><span class="p">)</span>
+<span class="c1"># Filename for the netCDF file which contain the merged contents of the monthly files.</span>
+<span class="n">merged_netcdf_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="s1">&#39;olr-monthly_v02r07_197901_202207.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -986,7 +948,6 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
-
 <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
     <span class="p">{</span>
@@ -996,19 +957,20 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
         <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
         <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
     <span class="p">},</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">olr-monthly_v02r07.zip&#39;</span><span class="p">)</span>
+    <span class="n">download_zip_file</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-02-17 11:37:19,633 INFO Welcome to the CDS
-2023-02-17 11:37:19,634 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
-2023-02-17 11:37:19,829 INFO Request is completed
-2023-02-17 11:37:19,830 INFO Downloading https://download-0000-clone.copernicus-climate.eu/cache-compute-0000/cache/data8/dataset-satellite-earth-radiation-budget-37cf3021-4103-4629-a604-97157e22ead5.zip to ./olr-monthly_v02r07.zip (17.7M)
-2023-02-17 11:37:21,269 INFO Download rate 12.3M/s                                                                                     
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-07 13:57:27,763 INFO Welcome to the CDS
+2023-03-07 13:57:27,764 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
+2023-03-07 13:57:27,874 INFO Request is completed
+2023-03-07 13:57:27,875 INFO Downloading https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip to ../data_dir/olr-monthly_v02r07.zip (17.7M)
+2023-03-07 13:57:29,233 INFO Download rate 13M/s    
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=18523432,content_type=application/zip,location=https://download-0000-clone.copernicus-climate.eu/cache-compute-0000/cache/data8/dataset-satellite-earth-radiation-budget-37cf3021-4103-4629-a604-97157e22ead5.zip)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=18523432,content_type=application/zip,location=https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip)
 </pre></div>
 </div>
 </div>
@@ -1021,32 +983,35 @@ For the purposes of this tutorial, we will unzip the archive and merge all files
 After that, we delete all individual files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;unzip the data. The dataset is split in monthly files.</span>
-<span class="sd">Full HIRS dataset consists of more than 500 files.&#39;&#39;&#39;</span>
-<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">olr-monthly_v02r07.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
-    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unzip the data. The dataset is split in monthly files.</span>
+<span class="c1"># Full HIRS dataset consists of more than 500 files.</span>
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">download_zip_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+    <span class="n">filelist</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">zip_ref</span><span class="o">.</span><span class="n">namelist</span><span class="p">()]</span>
+    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">)</span>
+<span class="c1"># Ensure the filelist is in the correct order:</span>
+<span class="n">filelist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filelist</span><span class="p">)</span>
 
 <span class="c1"># Merge all unpacked files into one.</span>
-<span class="n">file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">data_312b_Lot1_hirs-olr_tcdr_v2.7_olr_????_??.nc&#39;</span>
-<span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-    <span class="n">file</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">olr-monthly_v02r07_197901_202207.nc&#39;</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">filelist</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">)</span>
 
-<span class="sd">&#39;&#39;&#39;Recursively delete unpacked data, using library glob,</span>
-<span class="sd">that enables Unix style pathname pattern expansion&#39;&#39;&#39;</span>
-<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+<span class="c1"># Recursively delete unpacked data, using library glob,</span>
+<span class="c1"># that enables Unix style pathname pattern expansion</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">:</span>
     <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<a id='usecases'>
 </section>
 </section>
 </section>
-<section id="a-id-usecases-a-3-use-cases">
-<h2><a id='usecases'></a> 3. Use Cases<a class="headerlink" href="#a-id-usecases-a-3-use-cases" title="Permalink to this heading">#</a></h2>
-<section id="a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-<h3><a id='global-climatology'></a> Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)<a class="headerlink" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr" title="Permalink to this heading">#</a></h3>
+<section id="a-3-use-cases">
+<h2></a> 3. Use Cases<a class="headerlink" href="#a-3-use-cases" title="Permalink to this heading">#</a></h2>
+<p><a id='global-climatology'></a></p>
+<section id="use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
+<h3>Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)<a class="headerlink" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr" title="Permalink to this heading">#</a></h3>
 <p>Firstly, we should get an overview of the parameter by plotting the time-averaged global distribution.
 The data are stored in NetCDF format, and we will use Xarray library to work with the data.
 We will then use Matplotlib and Catropy to visualise the data.</p>
@@ -1057,10 +1022,8 @@ Next, we want to select the specific time range for the plotting from January 19
 We use the method <code class="docutils literal notranslate"><span class="pre">mean</span></code> to applying mean along the time dimension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">olr-monthly_v02r07_197901_202207.nc&#39;</span>
-
-<span class="c1"># Read data and calculate the global mean.</span>
-<span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read data and calculate the global mean.</span>
+<span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">xdf</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1979-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-01-01&#39;</span><span class="p">))</span>
 
 <span class="c1"># calculate the mean along the time dimension</span>
@@ -1100,7 +1063,10 @@ We use the method <code class="docutils literal notranslate"><span class="pre">m
 <span class="p">)</span>
 
 <span class="c1"># Modify figure style; add lat/lon grid and labels</span>
+<span class="c1"># NOTE: If you are experiencing issues with producing this plot please comment out the following line</span>
+<span class="c1"># and try again.</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
 <span class="n">gl</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># hide top and right labels</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">False</span>
@@ -1127,7 +1093,11 @@ We use the method <code class="docutils literal notranslate"><span class="pre">m
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/030da46ab39b66c35d38fad8f808591bf6090009727e0d64d32ff8a54e674789.png" src="../_images/030da46ab39b66c35d38fad8f808591bf6090009727e0d64d32ff8a54e674789.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l2/529q7bzs665bnrn7_wjx1nsr0000gn/T/ipykernel_87016/955912512.py:9: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+  cmap=plt.cm.get_cmap(&#39;YlOrRd&#39;),
+</pre></div>
+</div>
+<img alt="../_images/07dd63dff81f264ea6c75687c3f3ac379544d12b3770c3c9e6369c35df25e002.png" src="../_images/07dd63dff81f264ea6c75687c3f3ac379544d12b3770c3c9e6369c35df25e002.png" />
 </div>
 </div>
 <p><strong>The Figure 1</strong> shows the time-averaged Outgoing Longwave Radiation over the period January 1979 -
@@ -1135,18 +1105,17 @@ December 2018. The maximum values of the OLR are found in the tropics and it dec
 poles. The relative minimum near the equator, in yellow colour, corresponds to the ITCZ and the
 convection areas, where persistent and relatively high cloud cover reduces the LW radiation at the
 TOA. Antarctica is cooler than the corresponding northern latitudes (<span class="xref myst">Harrison et al.</span>).</p>
-<br></section>
+<a id='timeseries-global'>
 </section>
-<section id="a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr">
-<h3><a id='timeseries-global'></a> Use case 2: Global time series of the OLR<a class="headerlink" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="a-use-case-2-global-time-series-of-the-olr">
+<h3></a> Use case 2: Global time series of the OLR<a class="headerlink" href="#a-use-case-2-global-time-series-of-the-olr" title="Permalink to this heading">#</a></h3>
 <p>After looking at the time-averaged global distribution, in the next step, we further investigate the dataset. The OLR dataset is more than 40 years long, and another useful way of visualizing is the time series. We will calculate the global time series, plot it, and discuss the most important features.</p>
 <p>We start by opening the combined data with Xarray <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> function
 and subselect a time range from January 1979 to December 2018.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">olr-monthly_v02r07_197901_202207.nc&#39;</span>
-
-<span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">xdf</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1979-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-01-01&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1203,7 +1172,7 @@ We also want to add custom xticks. Our x-axis is the time, and one of the ways t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4b6cdc6eaf783c20a6b146542495f9b2ade7a0dcc628c6b22e5d6f70c0505547.png" src="../_images/4b6cdc6eaf783c20a6b146542495f9b2ade7a0dcc628c6b22e5d6f70c0505547.png" />
+<img alt="../_images/a722aa3c69d58e5057da101d175ce021c5a7d281f551fb023d3387cb7e8b2bc8.png" src="../_images/a722aa3c69d58e5057da101d175ce021c5a7d281f551fb023d3387cb7e8b2bc8.png" />
 </div>
 </div>
 <p><strong>The Figure 2</strong>, shows the evolution of the global mean of the OLR using a 12-month rolling mean. This long
@@ -1212,17 +1181,17 @@ in response to volcanic eruptions, for instance, El Chichon in 1982 and Pinatubo
 atmospheric thermal effects of these two eruptions persist for about two years after the eruption.
 The figure also shows some inter-annual variations that are suggested to be related to “El Niño” or
 “La Niña” Southern Oscillation.</p>
-<br></section>
+<a id='timeseries-arctic'>
 </section>
-<section id="a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic">
-<h3><a id='timeseries-arctic'></a> Use case 3: OLR evolution in the Arctic<a class="headerlink" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="a-use-case-3-olr-evolution-in-the-arctic">
+<h3></a> Use case 3: OLR evolution in the Arctic<a class="headerlink" href="#a-use-case-3-olr-evolution-in-the-arctic" title="Permalink to this heading">#</a></h3>
 <p>In the final use case, we will calculate, plot and discuss the OLR time series in the Arctic region. We can re-use code from the previous use case, but we need to add one additional step: select the Arctic region from the original global dataset. <br></p>
 <p>We start by reading the dataset with xarray <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> method. We have used <code class="docutils literal notranslate"><span class="pre">sel</span></code> method before to select the data based on time coordinate. This time, we will select the latitude coordinate label.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the dataset</span>
-<span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">olr-monthly_v02r07_197901_202207.nc&#39;</span>
-<span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Select time and latitude range</span>
 <span class="n">xdf</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1979-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-01-01&#39;</span><span class="p">))</span>
@@ -1266,7 +1235,7 @@ The figure also shows some inter-annual variations that are suggested to be rela
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dfcca534283dbfa164ea609c7b9d0f5567e5b986c37c232ea15ee8cbf71e0262.png" src="../_images/dfcca534283dbfa164ea609c7b9d0f5567e5b986c37c232ea15ee8cbf71e0262.png" />
+<img alt="../_images/c3a5517cf9f5299785e0428cad82c877c45402590b59a36c17f452777b3e46a6.png" src="../_images/c3a5517cf9f5299785e0428cad82c877c45402590b59a36c17f452777b3e46a6.png" />
 </div>
 </div>
 <p><strong>The Figure 3</strong>, shows the evolution of the OLR in the Arctic region [70°N-90°N] for the period 1979-2019
@@ -1274,7 +1243,7 @@ also using a yearly rolling mean. From the image, we can infer an increase in th
 region with time. This increase is strongly marked as from 1998 and in line with the increase of
 temperature in the Arctic (<span class="xref myst">Hansen et al, 2010</span>), while the relative stability of the first part of the time
 series is more difficult to interpret due to the major volcanic eruptions in this period.</p>
-<br></section>
+</section>
 </section>
 <section id="get-more-information-about-earth-radiation-budget">
 <h2>Get more information about Earth Radiation Budget:<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
@@ -1355,16 +1324,12 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-intro-a-1-introduction">
-   <a id="intro">
-   </a>
+  <a class="reference internal nav-link" href="#introduction">
    1. Introduction
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-preparation-a-2-prerequisites-and-data-preparations">
-   <a id="preparation">
-   </a>
+  <a class="reference internal nav-link" href="#prerequisites-and-data-preparations">
    2. Prerequisites and data preparations
   </a>
   <ul class="nav section-nav flex-column">
@@ -1379,9 +1344,7 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-cdsapi-a-2-3-download-data-using-cds-api">
-     <a id="cdsapi">
-     </a>
+    <a class="reference internal nav-link" href="#download-data-using-cds-api">
      2.3 Download data using CDS API
     </a>
     <ul class="nav section-nav flex-column">
@@ -1405,16 +1368,12 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-usecases-a-3-use-cases">
-   <a id="usecases">
-   </a>
-   3. Use Cases
+  <a class="reference internal nav-link" href="#a-3-use-cases">
   </a>
+  3. Use Cases
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-     <a id="global-climatology">
-     </a>
+    <a class="reference internal nav-link" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
      Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)
     </a>
     <ul class="nav section-nav flex-column">
@@ -1436,11 +1395,9 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr">
-     <a id="timeseries-global">
-     </a>
-     Use case 2: Global time series of the OLR
+    <a class="reference internal nav-link" href="#a-use-case-2-global-time-series-of-the-olr">
     </a>
+    Use case 2: Global time series of the OLR
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">
@@ -1455,11 +1412,9 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic">
-     <a id="timeseries-arctic">
-     </a>
-     Use case 3: OLR evolution in the Arctic
+    <a class="reference internal nav-link" href="#a-use-case-3-olr-evolution-in-the-arctic">
     </a>
+    Use case 3: OLR evolution in the Arctic
    </li>
   </ul>
  </li>
