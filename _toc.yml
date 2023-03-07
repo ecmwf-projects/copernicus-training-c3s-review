@@ -30,7 +30,7 @@ parts:
      title: Windchill Index Calculation
  - caption: Turorials using Satellite Observations
    chapters:
-   - file: ecv-notebooks/OutgoingLongwaveRadiation
+   - file: ecv-notebooks/erb-outgoing-longwave-radiation
      title: Outgoing Longwave Radiation
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
