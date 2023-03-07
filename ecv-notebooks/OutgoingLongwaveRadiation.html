@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>HIRS monthly Outgoing Longwave Radiation (OLR) from NOAA/NCEI &#8212; C3S Training</title>
+    <title>Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data &#8212; C3S Training</title>
   
   
   
@@ -665,7 +665,7 @@ title="Print to PDF"
             
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>HIRS monthly Outgoing Longwave Radiation (OLR) from NOAA/NCEI</h1>
+    <h1>Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -679,101 +679,115 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#table-of-contents">
    Table of Contents
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-intro-a-1-introduction">
+   <a id="intro">
+   </a>
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-preparation-a-2-prerequisites-and-data-preparations">
+   <a id="preparation">
+   </a>
+   2. Prerequisites and data preparations
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-access-the-notebook">
-     How to access the notebook
+     2.1 How to access the notebook
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-intro-a-introduction">
-   <a id="intro">
-   </a>
-   Introduction
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
+     2.2 Import libraries
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-cdsapi-a-2-3-download-data-using-cds-api">
+     <a id="cdsapi">
+     </a>
+     2.3 Download data using CDS API
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
+       Set up CDS API credentials
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#search-for-data">
+       Search for data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unpack-and-merge-data">
+       Unpack and merge data
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-cdsapi-a-download-data-using-cds-api">
-   <a id="cdsapi">
+  <a class="reference internal nav-link" href="#a-id-usecases-a-3-use-cases">
+   <a id="usecases">
    </a>
-   Download data using CDS API
+   3. Use Cases
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
-     Set up CDS API credentials
+    <a class="reference internal nav-link" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
+     <a id="global-climatology">
+     </a>
+     Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#load-dataset-subselect-and-calculate-temporal-mean">
+       Load dataset, subselect and calculate temporal mean
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid">
+       Calculate temporal mean and convert longitude to [-180, 180] grid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-data">
+       Plot data
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#search-for-data">
-     Search for data
+    <a class="reference internal nav-link" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr">
+     <a id="timeseries-global">
+     </a>
+     Use case 2: Global time series of the OLR
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">
+       Apply weights and calculate the rolling mean
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Plot data
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unpack-and-merge-data">
-     Unpack and merge data
+    <a class="reference internal nav-link" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic">
+     <a id="timeseries-arctic">
+     </a>
+     Use case 3: OLR evolution in the Arctic
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-   <a id="global-climatology">
-   </a>
-   Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-dataset-subselect-and-calculate-temporal-mean">
-     Load dataset, subselect and calculate temporal mean
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid">
-     Calculate temporal mean and convert longitude to [-180, 180] grid
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-data">
-     Plot data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr">
-   <a id="timeseries-global">
-   </a>
-   Use case 2: Global time series of the OLR
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">
-     Apply weights and calculate the rolling mean
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Plot data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic">
-   <a id="timeseries-arctic">
-   </a>
-   Use case 3: OLR evolution in the Arctic
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
@@ -797,26 +811,53 @@ title="Print to PDF"
             <article class="bd-article" role="main">
               
   <p><a id='page-top'></a> <img src='../img/LogoLine_horizon_C3S.png' alt='Logo EU Copernicus ECMWF' align='right' width='100%'></img></p>
-<br><section class="tex2jax_ignore mathjax_ignore" id="hirs-monthly-outgoing-longwave-radiation-olr-from-noaa-ncei">
-<h1>HIRS monthly Outgoing Longwave Radiation (OLR) from NOAA/NCEI<a class="headerlink" href="#hirs-monthly-outgoing-longwave-radiation-olr-from-noaa-ncei" title="Permalink to this heading">#</a></h1>
-<p>This notebook provides a practical introduction to the
-<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">C3S Earth’s radiation budget from 1979 to present derived from satellite observations</a>
-dataset.
-We give a short introduction to the ECV Earth Radiation Budget, Outgoing Longwave Radiation (OLR), and three use cases of the dataset: plot the global mean and calculate global and the Arctic weighted mean timeseries between 1979 and 2019.</p>
+<br><section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-distribution-and-timeseries-of-outgoing-longwave-radiation-olr-using-noaa-ncei-hirs-data">
+<h1>Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data<a class="headerlink" href="#calculation-of-global-distribution-and-timeseries-of-outgoing-longwave-radiation-olr-using-noaa-ncei-hirs-data" title="Permalink to this heading">#</a></h1>
+<p>This notebook-tutorial provides a practical introduction to the HIRS dataset available on
+<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">C3S Earth’s radiation budget from 1979 to present derived from satellite observations</a>.<br />
+<br>
+We give a short introduction to the ECV Earth Radiation Budget, Outgoing Longwave Radiation (OLR) and provide three use cases of the dataset: plot the time-averaged global distribution of OLR (Use Case 1), calculate global timeseries of OLR (Use Case 2) and plot the Arctic weighted mean timeseries between 1979 and 2019 (Use Case 3).
+We provide step-by-step instructions on data preparation. Use cases come with extensive documentation and each line of code is explained.<br />
+Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
+<p><img alt="" src="../_images/hirs_olr_banner.png" /></p>
 <p>The notebook has three main sections with the following outline:</p>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><span class="xref myst">Introduction</span></p></li>
-<li><p><span class="xref myst">Download Data Using CDS API</span></p></li>
+<li><p><span class="xref myst">1. Introduction</span></p></li>
+<li><p><span class="xref myst">2. Prerequisites and data preparations</span></p></li>
+<li><p><span class="xref myst">3. Use cases</span></p>
+<ul>
 <li><p><span class="xref myst">Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)</span></p></li>
 <li><p><span class="xref myst">Use case 2: Global time series of the OLR</span></p></li>
 <li><p><span class="xref myst">Use case 3: OLR evolution in the Arctic</span></p></li>
+</ul>
+</li>
 <li><p><span class="xref myst">References</span></p></li>
 </ul>
-<p><img alt="" src="../_images/hirs_olr_banner.png" /></p>
-<br><section id="how-to-access-the-notebook">
-<h3>How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Permalink to this heading">#</a></h3>
+<br></section>
+<section id="a-id-intro-a-1-introduction">
+<h2><a id='intro'></a> 1. Introduction<a class="headerlink" href="#a-id-intro-a-1-introduction" title="Permalink to this heading">#</a></h2>
+<br>
+<div style="text-align: justify"> The Top-of-atmosphere (TOA) Outgoing Longwave Radiation (OLR) is one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECV), and it is a key component of the Earth’s Radiation Budget (ERB). OLR combines the thermal radiation from the atmosphere and the thermal radiation from the Earth’s surface that leaves the atmosphere through the “window” regions of the electromagnetic spectrum. OLR is the reason why the Earth is not heating up indefinitely by the Sun. OLR has a latitudinal dependence, but it is not uniform mostly because of the difference in the cloud cover. The biggest volcanic eruptions emit small particles in the stratosphere, where they stay for decades and can reduce the global OLR for years. During the last decades, the average temperatures in the Arctic region have risen significantly. The Arctic region is mostly cloudless, so the longwave emission from the Earth contributes to the TOA OLR. </div>
+<br>
+<div style="text-align: justify"> In the Copernicus Climate Data Store (CDS), a dataset of OLR has been brokered from the High Resolution Infrared Radiation Sounder (HIRS) Outgoing Longwave Radiation (OLR) Climate Data Record (CDR) version v02r07. The Copernicus Climate Change Service (C3S) CDS provides both data produced specifically for C3S and so-called brokered products. The later are existing products produced under an independent programme or project which are made available through the CDS. This widely used CDR has been produced by the NOAA/NCEI from the HIRS instruments on board the US NOAA and European MetOp satellites. It provides monthly means of the Thermal (Longwave) Radiation Fluxes at the Top of the Atmosphere (TOA) from January 1979 to present, with global coverage and at a 2.5° x 2.5° spatial resolution. </div>  
+<br>
+<p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
+</ul>
+<p>The tutorial video describes the “Earth Radiation Budget” Essential Climate Variable and the methods and satellite instruments used to produce the data provided in the CDS catalogue entry:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-earth-radiation-budget/C3S_D312b_Lot1.4.2.5_201902_Tutorial_ECVEarthRadiationBudget_v1.4.mp4">Tutorial video on the Earth Radiation Budget Essential Climate Variable</a></p></li>
+</ul>
+<br></section>
+<section id="a-id-preparation-a-2-prerequisites-and-data-preparations">
+<h2><a id='preparation'></a> 2. Prerequisites and data preparations<a class="headerlink" href="#a-id-preparation-a-2-prerequisites-and-data-preparations" title="Permalink to this heading">#</a></h2>
+<p>This chapter provides information on how to: run the notebook, lists necessary python libraries, and guides you through the process of data on data preparation: how to search and download the data via CDS API, and get it ready to be used.</p>
+<br>
+<section id="how-to-access-the-notebook">
+<h3>2.1 How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Permalink to this heading">#</a></h3>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <style>
 td, th {
@@ -834,23 +875,15 @@ td, th {
     <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s-review/blob/main/ecv-notebooks/OutgoingLongwaveRadiation.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
-</table><p>If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries you will need. You will also need to install <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> for working with multidimensional data in NetCDF files, and the CDS API (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code>) for downloading data programatically from the CDS.</p>
-<br></section>
-</section>
-<section id="a-id-intro-a-introduction">
-<h2><a id='intro'></a> Introduction<a class="headerlink" href="#a-id-intro-a-introduction" title="Permalink to this heading">#</a></h2>
+</table><p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it: <br>
+<code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code><br />
 <br>
-<div style="text-align: justify"> The Top-of-atmosphere (TOA) Outgoing Longwave Radiation (OLR) is one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECV), and it is a key component of the Earth’s Radiation Budget (ERB). OLR combines the thermal radiation from the atmosphere and the thermal radiation from the Earth’s surface that leaves the atmosphere through the “window” regions of the electromagnetic spectrum. OLR is the reason why the Earth is not heating up indefinitely by the Sun. OLR has a latitudinal dependence, but it is not uniform mostly because of the difference in the cloud cover. The biggest volcanic eruptions emit small particles in the stratosphere, where they stay for decades and can reduce the global OLR for years. During the last decades, the average temperatures in the Arctic region have risen significantly. The Arctic region is mostly cloudless, so the longwave emission from the Earth contributes to the TOA OLR. </div>
-<div style="text-align: justify"> In the Copernicus Climate Data Store (CDS), a dataset of OLR has been brokered from the High Resolution Infrared Radiation Sounder (HIRS) Outgoing Longwave Radiation (OLR) Climate Data Record (CDR) version v02r07. This widely used CDR has been produced by the NOAA/NCEI from the HIRS instruments on board the US NOAA and European MetOp satellites. It provides monthly means of the Thermal (Longwave) Radiation Fluxes at the Top of the Atmosphere (TOA) from January 1979 to present, with global coverage and at a 2.5° x 2.5° spatial resolution. </div>
-<p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
-</ul>
-<br><section id="import-libraries">
-<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
-<p>We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular Xarray. We will also need libraries for plotting and viewing data, in this case, we will use Matplotlib and Cartopy.</p>
-<p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it: <br>
-<code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code></p>
+<strong>Run the tutorial in local environment</strong><br />
+If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which is the easiest way to get all libraries installed.<br />
+We will be working with data in NetCDF format. To best handle NetCDF data we will use libraries for working with multidimensional arrays, in particular <a class="reference external" href="https://numpy.org/doc/stable/">Numpy</a>, <a class="reference external" href="https://pandas.pydata.org/docs/">Pandas</a> and <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a>. We will also need libraries for plotting and viewing data, in this case, we will use <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a>. Pylab and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> change the plot style, and urllib for disabling warnings for data download via CDS API.</p>
+</section>
+<section id="import-libraries">
+<h3>2.2 Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -873,7 +906,7 @@ td, th {
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
 
-<span class="c1"># Libraries for style parameters</span>
+<span class="c1"># Libraries for plot style parameters</span>
 <span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
 
 <span class="c1"># Disable warnings for data download via API</span>
@@ -886,41 +919,40 @@ td, th {
 <p>Next, we want to define some global parameters to be used in plotting.<br></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following style parameters will be used for all plots in this use case.</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">]</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">350</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.family&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif&#39;</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.serif&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">rcParamsDefault</span><span class="p">[</span><span class="s1">&#39;font.serif&#39;</span><span class="p">]</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.default&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;regular&#39;</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.rm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif:light&#39;</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.it&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif:italic&#39;</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;mathtext.bf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;serif:bold&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>          <span class="c1"># controls default text sizes</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">titlesize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>     <span class="c1"># fontsize of the axes title</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>     <span class="c1"># fontsize of the x and y labels</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;xtick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>    <span class="c1"># fontsize of the tick labels</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;ytick&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>    <span class="c1"># fontsize of the tick labels</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;legend&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>    <span class="c1"># legend fontsize</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">titlesize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1"># fontsize of the figure title</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">script</span> false --no-raise-error
+# The following style parameters will be used for all plots in this use case.
+rcParams[&#39;figure.figsize&#39;] = [16, 16]
+rcParams[&#39;figure.dpi&#39;] = 350
+rcParams[&#39;font.family&#39;] = &#39;serif&#39;
+rcParams[&#39;font.serif&#39;] = mpl.rcParamsDefault[&#39;font.serif&#39;]
+rcParams[&#39;mathtext.default&#39;] = &#39;regular&#39;
+rcParams[&#39;mathtext.rm&#39;] = &#39;serif:light&#39;
+rcParams[&#39;mathtext.it&#39;] = &#39;serif:italic&#39;
+rcParams[&#39;mathtext.bf&#39;] = &#39;serif:bold&#39;
+plt.rc(&#39;font&#39;, size=17)          # controls default text sizes
+plt.rc(&#39;axes&#39;, titlesize=17)     # fontsize of the axes title
+plt.rc(&#39;axes&#39;, labelsize=17)     # fontsize of the x and y labels
+plt.rc(&#39;xtick&#39;, labelsize=15)    # fontsize of the tick labels
+plt.rc(&#39;ytick&#39;, labelsize=15)    # fontsize of the tick labels
+plt.rc(&#39;legend&#39;, fontsize=15)    # legend fontsize
+plt.rc(&#39;figure&#39;, titlesize=18)   # fontsize of the figure title
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="a-id-cdsapi-a-download-data-using-cds-api">
-<h2><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#a-id-cdsapi-a-download-data-using-cds-api" title="Permalink to this heading">#</a></h2>
+<section id="a-id-cdsapi-a-2-3-download-data-using-cds-api">
+<h3><a id='cdsapi'></a> 2.3 Download data using CDS API<a class="headerlink" href="#a-id-cdsapi-a-2-3-download-data-using-cds-api" title="Permalink to this heading">#</a></h3>
+<p>This subsection describes the process of data search in the CDS catalogue, and data preparation for use in the use cases.</p>
 <section id="set-up-cds-api-credentials">
-<h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h3>
-<div style="text-align: justify"> We will request data from the Climate Data Store (CDS): https://cds.climate.copernicus.eu/cdsapp#!/home. In case you don't have an account yet, please click on "Login/register" at the right top and select "Create new account". With the process finished you are able to login to the CDS and can search for your preferred data.</div>
-<p>We will request data from the CDS programmatically with the help of the CDS API.
-First, we need to manually set the CDS API credentials.
-To do so, we need to define two variables: URL and KEY.
-To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy) the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h4>
+<p>We will request data from the CDS programmatically with the help of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a>.<br />
+First, we need to manually set the CDS API credentials. To do so, we need to define two variables: URL and KEY.
+To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;#########&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -935,7 +967,7 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </div>
 </section>
 <section id="search-for-data">
-<h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h3>
+<h4>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h4>
 <p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
 Here you can search for HIRS OLR data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a>.
 The Earth Radiation Budget (ERB) comprises the quantification of the incoming radiation from the Sun and the outgoing reflected shortwave and emitted longwave radiation. This catalogue entry comprises data from a number of sources.</p>
@@ -969,23 +1001,23 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-11-09 13:22:38,888 INFO Welcome to the CDS
-2022-11-09 13:22:38,889 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
-2022-11-09 13:22:39,025 INFO Request is completed
-2022-11-09 13:22:39,026 INFO Downloading https://download-0006-clone.copernicus-climate.eu/cache-compute-0006/cache/data2/dataset-satellite-earth-radiation-budget-f5433880-e700-429a-b4fe-f75b9f29d01c.zip to ./olr-monthly_v02r07.zip (17.7M)
-2022-11-09 13:22:39,868 INFO Download rate 21M/s                                                                                       
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-02-17 11:37:19,633 INFO Welcome to the CDS
+2023-02-17 11:37:19,634 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
+2023-02-17 11:37:19,829 INFO Request is completed
+2023-02-17 11:37:19,830 INFO Downloading https://download-0000-clone.copernicus-climate.eu/cache-compute-0000/cache/data8/dataset-satellite-earth-radiation-budget-37cf3021-4103-4629-a604-97157e22ead5.zip to ./olr-monthly_v02r07.zip (17.7M)
+2023-02-17 11:37:21,269 INFO Download rate 12.3M/s                                                                                     
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=18523432,content_type=application/zip,location=https://download-0006-clone.copernicus-climate.eu/cache-compute-0006/cache/data2/dataset-satellite-earth-radiation-budget-f5433880-e700-429a-b4fe-f75b9f29d01c.zip)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=18523432,content_type=application/zip,location=https://download-0000-clone.copernicus-climate.eu/cache-compute-0000/cache/data8/dataset-satellite-earth-radiation-budget-37cf3021-4103-4629-a604-97157e22ead5.zip)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="unpack-and-merge-data">
-<h3>Unpack and merge data<a class="headerlink" href="#unpack-and-merge-data" title="Permalink to this heading">#</a></h3>
+<h4>Unpack and merge data<a class="headerlink" href="#unpack-and-merge-data" title="Permalink to this heading">#</a></h4>
 <p>The zip files are now requested and downloaded to the data directory that we specified earlier.
-For the purposes of this use case, we will unzip the archive and merge all files into one NetCDF file.
+For the purposes of this tutorial, we will unzip the archive and merge all files into one NetCDF file.
 After that, we delete all individual files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1010,13 +1042,16 @@ After that, we delete all individual files.</p>
 </div>
 </section>
 </section>
+</section>
+<section id="a-id-usecases-a-3-use-cases">
+<h2><a id='usecases'></a> 3. Use Cases<a class="headerlink" href="#a-id-usecases-a-3-use-cases" title="Permalink to this heading">#</a></h2>
 <section id="a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-<h2><a id='global-climatology'></a> Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)<a class="headerlink" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr" title="Permalink to this heading">#</a></h2>
+<h3><a id='global-climatology'></a> Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)<a class="headerlink" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr" title="Permalink to this heading">#</a></h3>
 <p>Firstly, we should get an overview of the parameter by plotting the time-averaged global distribution.
 The data are stored in NetCDF format, and we will use Xarray library to work with the data.
 We will then use Matplotlib and Catropy to visualise the data.</p>
 <section id="load-dataset-subselect-and-calculate-temporal-mean">
-<h3>Load dataset, subselect and calculate temporal mean<a class="headerlink" href="#load-dataset-subselect-and-calculate-temporal-mean" title="Permalink to this heading">#</a></h3>
+<h4>Load dataset, subselect and calculate temporal mean<a class="headerlink" href="#load-dataset-subselect-and-calculate-temporal-mean" title="Permalink to this heading">#</a></h4>
 <p>We load the NetCDF file with the library <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html">xarray</a> and the function <code class="docutils literal notranslate"><span class="pre">open_dataset()</span></code>. We receive the <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> that has one data variable (OLR) and three dimensions: time: 480 steps, latitude: 72, and longitude: 144. This data type has also a number of attributes with auxiliary information about the data. <br>
 Next, we want to select the specific time range for the plotting from January 1979 to December 2018. Xarray has a method <code class="docutils literal notranslate"><span class="pre">sel</span></code> that indexes the data and dimensions by the appropriate indexers.
 We use the method <code class="docutils literal notranslate"><span class="pre">mean</span></code> to applying mean along the time dimension.</p>
@@ -1036,7 +1071,7 @@ We use the method <code class="docutils literal notranslate"><span class="pre">m
 </div>
 </section>
 <section id="calculate-temporal-mean-and-convert-longitude-to-180-180-grid">
-<h3>Calculate temporal mean and convert longitude to [-180, 180] grid<a class="headerlink" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid" title="Permalink to this heading">#</a></h3>
+<h4>Calculate temporal mean and convert longitude to [-180, 180] grid<a class="headerlink" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid" title="Permalink to this heading">#</a></h4>
 <p>The code below shifts the longitude dimension from [1.25 to 358.75] to [-178.75, 178.75]. We also sort the longitude values in ascending order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1048,7 +1083,7 @@ We use the method <code class="docutils literal notranslate"><span class="pre">m
 </div>
 </section>
 <section id="plot-data">
-<h3>Plot data<a class="headerlink" href="#plot-data" title="Permalink to this heading">#</a></h3>
+<h4>Plot data<a class="headerlink" href="#plot-data" title="Permalink to this heading">#</a></h4>
 <p>First, we want to save objects <code class="docutils literal notranslate"><span class="pre">figure</span></code> and <code class="docutils literal notranslate"><span class="pre">axes</span></code> to use later. <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a> can transform data arrays on different geographic projections. We use Cartopy in combination with <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> to create a high-quality plot. <code class="docutils literal notranslate"><span class="pre">Pcolormesh</span></code> doesn’t work with data arrays with NaNs. Before plotting we convert DataArray to the numpy MaskedArray.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1092,7 +1127,7 @@ We use the method <code class="docutils literal notranslate"><span class="pre">m
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/732347392627e1055a1f0484bcd8374a5156cf22a34ba9083c6c2b269d8ab2a6.png" src="../_images/732347392627e1055a1f0484bcd8374a5156cf22a34ba9083c6c2b269d8ab2a6.png" />
+<img alt="../_images/030da46ab39b66c35d38fad8f808591bf6090009727e0d64d32ff8a54e674789.png" src="../_images/030da46ab39b66c35d38fad8f808591bf6090009727e0d64d32ff8a54e674789.png" />
 </div>
 </div>
 <p><strong>The Figure 1</strong> shows the time-averaged Outgoing Longwave Radiation over the period January 1979 -
@@ -1103,7 +1138,7 @@ TOA. Antarctica is cooler than the corresponding northern latitudes (<span class
 <br></section>
 </section>
 <section id="a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr">
-<h2><a id='timeseries-global'></a> Use case 2: Global time series of the OLR<a class="headerlink" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr" title="Permalink to this heading">#</a></h2>
+<h3><a id='timeseries-global'></a> Use case 2: Global time series of the OLR<a class="headerlink" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr" title="Permalink to this heading">#</a></h3>
 <p>After looking at the time-averaged global distribution, in the next step, we further investigate the dataset. The OLR dataset is more than 40 years long, and another useful way of visualizing is the time series. We will calculate the global time series, plot it, and discuss the most important features.</p>
 <p>We start by opening the combined data with Xarray <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> function
 and subselect a time range from January 1979 to December 2018.</p>
@@ -1118,8 +1153,8 @@ and subselect a time range from January 1979 to December 2018.</p>
 </div>
 </div>
 <section id="apply-weights-and-calculate-the-rolling-mean">
-<h3>Apply weights and calculate the rolling mean<a class="headerlink" href="#apply-weights-and-calculate-the-rolling-mean" title="Permalink to this heading">#</a></h3>
-<p>Next, we want to give different weights for polar and equatorial regions, and the way to do this is to use the cosine of the latitude. We then calculate the global values by using <code class="docutils literal notranslate"><span class="pre">sum</span></code> method. And we calculate the 12-month rolling mean by using the <code class="docutils literal notranslate"><span class="pre">rolling</span></code> method.</p>
+<h4>Apply weights and calculate the rolling mean<a class="headerlink" href="#apply-weights-and-calculate-the-rolling-mean" title="Permalink to this heading">#</a></h4>
+<p>Next, we need to to account for differences in area of grid cells for polar and equatorial regions. We give different weights for polar and equatorial regions, and the way to do this is to use the cosine of the latitude. We then calculate the global values by using <code class="docutils literal notranslate"><span class="pre">sum</span></code> method. And we calculate the 12-month rolling mean by using the <code class="docutils literal notranslate"><span class="pre">rolling</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate normalized weights</span>
@@ -1144,7 +1179,7 @@ and subselect a time range from January 1979 to December 2018.</p>
 </div>
 </section>
 <section id="id1">
-<h3>Plot data<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h4>Plot data<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>Now, let’s visualize the time series. Xarray offers built-in matplotlib methods to plot Data Arrays. We use the method <code class="docutils literal notranslate"><span class="pre">plot</span></code> to get the plot.<br>
 We also want to add custom xticks. Our x-axis is the time, and one of the ways to work with the time variable is to use library Pandas. This library can work with both date and time. We use method <code class="docutils literal notranslate"><span class="pre">date_range</span></code> to generate the ticks with frequency of two years.</p>
 <div class="cell docutils container">
@@ -1168,7 +1203,7 @@ We also want to add custom xticks. Our x-axis is the time, and one of the ways t
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d4a58b81610afcdf66f5a266775dba244aa385b8aa482e71f25d582d1fa24b7a.png" src="../_images/d4a58b81610afcdf66f5a266775dba244aa385b8aa482e71f25d582d1fa24b7a.png" />
+<img alt="../_images/4b6cdc6eaf783c20a6b146542495f9b2ade7a0dcc628c6b22e5d6f70c0505547.png" src="../_images/4b6cdc6eaf783c20a6b146542495f9b2ade7a0dcc628c6b22e5d6f70c0505547.png" />
 </div>
 </div>
 <p><strong>The Figure 2</strong>, shows the evolution of the global mean of the OLR using a 12-month rolling mean. This long
@@ -1180,8 +1215,8 @@ The figure also shows some inter-annual variations that are suggested to be rela
 <br></section>
 </section>
 <section id="a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic">
-<h2><a id='timeseries-arctic'></a> Use case 3: OLR evolution in the Arctic<a class="headerlink" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic" title="Permalink to this heading">#</a></h2>
-<p>In the final use case, we will calculate, plot and discuss the OLR time series in the Arctic region. We can re-use code from the previous use case, but we need to add another subselection of the original dataset. <br></p>
+<h3><a id='timeseries-arctic'></a> Use case 3: OLR evolution in the Arctic<a class="headerlink" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic" title="Permalink to this heading">#</a></h3>
+<p>In the final use case, we will calculate, plot and discuss the OLR time series in the Arctic region. We can re-use code from the previous use case, but we need to add one additional step: select the Arctic region from the original global dataset. <br></p>
 <p>We start by reading the dataset with xarray <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> method. We have used <code class="docutils literal notranslate"><span class="pre">sel</span></code> method before to select the data based on time coordinate. This time, we will select the latitude coordinate label.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1231,7 +1266,7 @@ The figure also shows some inter-annual variations that are suggested to be rela
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ff45027abad7b47e566fe592a9dac8b0e0e4bb2cf984c3b3244d19878f08583d.png" src="../_images/ff45027abad7b47e566fe592a9dac8b0e0e4bb2cf984c3b3244d19878f08583d.png" />
+<img alt="../_images/dfcca534283dbfa164ea609c7b9d0f5567e5b986c37c232ea15ee8cbf71e0262.png" src="../_images/dfcca534283dbfa164ea609c7b9d0f5567e5b986c37c232ea15ee8cbf71e0262.png" />
 </div>
 </div>
 <p><strong>The Figure 3</strong>, shows the evolution of the OLR in the Arctic region [70°N-90°N] for the period 1979-2019
@@ -1240,12 +1275,12 @@ region with time. This increase is strongly marked as from 1998 and in line with
 temperature in the Arctic (<span class="xref myst">Hansen et al, 2010</span>), while the relative stability of the first part of the time
 series is more difficult to interpret due to the major volcanic eruptions in this period.</p>
 <br></section>
+</section>
 <section id="get-more-information-about-earth-radiation-budget">
 <h2>Get more information about Earth Radiation Budget:<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">About Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">About the Climate Data Store</a></p></li>
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/toolbox/doc/index.html">About the Toolbox documentation</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store</a></p></li>
 </ul>
 </section>
 <section id="a-id-references-a-references">
@@ -1318,101 +1353,115 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
   <a class="reference internal nav-link" href="#table-of-contents">
    Table of Contents
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-intro-a-1-introduction">
+   <a id="intro">
+   </a>
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-preparation-a-2-prerequisites-and-data-preparations">
+   <a id="preparation">
+   </a>
+   2. Prerequisites and data preparations
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-access-the-notebook">
-     How to access the notebook
+     2.1 How to access the notebook
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-intro-a-introduction">
-   <a id="intro">
-   </a>
-   Introduction
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
+     2.2 Import libraries
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-cdsapi-a-2-3-download-data-using-cds-api">
+     <a id="cdsapi">
+     </a>
+     2.3 Download data using CDS API
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
+       Set up CDS API credentials
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#search-for-data">
+       Search for data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#unpack-and-merge-data">
+       Unpack and merge data
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-cdsapi-a-download-data-using-cds-api">
-   <a id="cdsapi">
+  <a class="reference internal nav-link" href="#a-id-usecases-a-3-use-cases">
+   <a id="usecases">
    </a>
-   Download data using CDS API
+   3. Use Cases
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
-     Set up CDS API credentials
+    <a class="reference internal nav-link" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
+     <a id="global-climatology">
+     </a>
+     Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#load-dataset-subselect-and-calculate-temporal-mean">
+       Load dataset, subselect and calculate temporal mean
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid">
+       Calculate temporal mean and convert longitude to [-180, 180] grid
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-data">
+       Plot data
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#search-for-data">
-     Search for data
+    <a class="reference internal nav-link" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr">
+     <a id="timeseries-global">
+     </a>
+     Use case 2: Global time series of the OLR
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">
+       Apply weights and calculate the rolling mean
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Plot data
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#unpack-and-merge-data">
-     Unpack and merge data
+    <a class="reference internal nav-link" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic">
+     <a id="timeseries-arctic">
+     </a>
+     Use case 3: OLR evolution in the Arctic
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-global-climatology-a-use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-   <a id="global-climatology">
-   </a>
-   Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-dataset-subselect-and-calculate-temporal-mean">
-     Load dataset, subselect and calculate temporal mean
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid">
-     Calculate temporal mean and convert longitude to [-180, 180] grid
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-data">
-     Plot data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-timeseries-global-a-use-case-2-global-time-series-of-the-olr">
-   <a id="timeseries-global">
-   </a>
-   Use case 2: Global time series of the OLR
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">
-     Apply weights and calculate the rolling mean
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Plot data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-timeseries-arctic-a-use-case-3-olr-evolution-in-the-arctic">
-   <a id="timeseries-arctic">
-   </a>
-   Use case 3: OLR evolution in the Arctic
-  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
