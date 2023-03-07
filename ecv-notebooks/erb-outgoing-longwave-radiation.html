@@ -58,7 +58,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/OutgoingLongwaveRadiation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/erb-outgoing-longwave-radiation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Observing major flood events with GLOFAS" href="../cems-notebooks/glofas-bangladesh-floods.html" />
@@ -542,7 +542,7 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-rocket"></i>
   </button>
   <ul class="dropdown-menu">
-      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/OutgoingLongwaveRadiation.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/erb-outgoing-longwave-radiation.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -597,7 +597,7 @@ title="Source repository"
 </a>
 </a>
       
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/OutgoingLongwaveRadiation.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/erb-outgoing-longwave-radiation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -622,7 +622,7 @@ title="Open an issue"
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-      <li><a href="../_sources/ecv-notebooks/OutgoingLongwaveRadiation.ipynb" target="_blank"
+      <li><a href="../_sources/ecv-notebooks/erb-outgoing-longwave-radiation.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -725,13 +725,16 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-3-use-cases">
+  <a class="reference internal nav-link" href="#use-cases">
+   3. Use Cases
   </a>
-  3. Use Cases
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-     Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)
+     <strong>
+      Use case 1
+     </strong>
+     : Climatology of the Outgoing Longwave Radiation (OLR)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -752,9 +755,12 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-use-case-2-global-time-series-of-the-olr">
+    <a class="reference internal nav-link" href="#use-case-2-global-time-series-of-the-olr">
+     <strong>
+      Use case 2
+     </strong>
+     : Global time series of the OLR
     </a>
-    Use case 2: Global time series of the OLR
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">
@@ -769,9 +775,12 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-use-case-3-olr-evolution-in-the-arctic">
+    <a class="reference internal nav-link" href="#use-case-3-olr-evolution-in-the-arctic">
+     <strong>
+      Use case 3
+     </strong>
+     : OLR evolution in the Arctic
     </a>
-    Use case 3: OLR evolution in the Arctic
    </li>
   </ul>
  </li>
@@ -781,9 +790,7 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-references-a-references">
-   <a id="references">
-   </a>
+  <a class="reference internal nav-link" href="#references">
    References
   </a>
  </li>
@@ -863,10 +870,10 @@ td, th {
     <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s-review/blob/main/ecv-notebooks/OutgoingLongwaveRadiation.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
-</table><p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it: <br>
-<code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code><br />
-<br>
-<strong>Run the tutorial in local environment</strong><br />
+</table>
+<br><p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:</p>
+<p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code></p>
+<p><strong>Run the tutorial in local environment</strong><br />
 If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which is the easiest way to get all libraries installed.<br />
 We will be working with data in NetCDF format. To best handle NetCDF data we will use libraries for working with multidimensional arrays, in particular <a class="reference external" href="https://numpy.org/doc/stable/">Numpy</a>, <a class="reference external" href="https://pandas.pydata.org/docs/">Pandas</a> and <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a>. We will also need libraries for plotting and viewing data, in this case, we will use <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a>. Pylab and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> change the plot style, and urllib for disabling warnings for data download via CDS API.</p>
 </section>
@@ -963,11 +970,11 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-07 13:57:27,763 INFO Welcome to the CDS
-2023-03-07 13:57:27,764 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
-2023-03-07 13:57:27,874 INFO Request is completed
-2023-03-07 13:57:27,875 INFO Downloading https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip to ../data_dir/olr-monthly_v02r07.zip (17.7M)
-2023-03-07 13:57:29,233 INFO Download rate 13M/s    
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-07 14:26:20,416 INFO Welcome to the CDS
+2023-03-07 14:26:20,417 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
+2023-03-07 14:26:20,544 INFO Request is completed
+2023-03-07 14:26:20,545 INFO Downloading https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip to ./olr-monthly_v02r07.zip (17.7M)
+2023-03-07 14:26:21,468 INFO Download rate 19.1M/s  
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=18523432,content_type=application/zip,location=https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip)
@@ -1003,15 +1010,15 @@ After that, we delete all individual files.</p>
 </div>
 </div>
 </div>
-<a id='usecases'>
+<p><a id='usecases'></a></p>
 </section>
 </section>
 </section>
-<section id="a-3-use-cases">
-<h2></a> 3. Use Cases<a class="headerlink" href="#a-3-use-cases" title="Permalink to this heading">#</a></h2>
+<section id="use-cases">
+<h2>3. Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this heading">#</a></h2>
 <p><a id='global-climatology'></a></p>
 <section id="use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-<h3>Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)<a class="headerlink" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr" title="Permalink to this heading">#</a></h3>
+<h3><strong>Use case 1</strong>: Climatology of the Outgoing Longwave Radiation (OLR)<a class="headerlink" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr" title="Permalink to this heading">#</a></h3>
 <p>Firstly, we should get an overview of the parameter by plotting the time-averaged global distribution.
 The data are stored in NetCDF format, and we will use Xarray library to work with the data.
 We will then use Matplotlib and Catropy to visualise the data.</p>
@@ -1093,7 +1100,7 @@ We use the method <code class="docutils literal notranslate"><span class="pre">m
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l2/529q7bzs665bnrn7_wjx1nsr0000gn/T/ipykernel_87016/955912512.py:9: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l2/529q7bzs665bnrn7_wjx1nsr0000gn/T/ipykernel_91833/955912512.py:9: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
   cmap=plt.cm.get_cmap(&#39;YlOrRd&#39;),
 </pre></div>
 </div>
@@ -1105,11 +1112,11 @@ December 2018. The maximum values of the OLR are found in the tropics and it dec
 poles. The relative minimum near the equator, in yellow colour, corresponds to the ITCZ and the
 convection areas, where persistent and relatively high cloud cover reduces the LW radiation at the
 TOA. Antarctica is cooler than the corresponding northern latitudes (<span class="xref myst">Harrison et al.</span>).</p>
-<a id='timeseries-global'>
+<p><a id='timeseries-global'></a></p>
 </section>
 </section>
-<section id="a-use-case-2-global-time-series-of-the-olr">
-<h3></a> Use case 2: Global time series of the OLR<a class="headerlink" href="#a-use-case-2-global-time-series-of-the-olr" title="Permalink to this heading">#</a></h3>
+<section id="use-case-2-global-time-series-of-the-olr">
+<h3><strong>Use case 2</strong>: Global time series of the OLR<a class="headerlink" href="#use-case-2-global-time-series-of-the-olr" title="Permalink to this heading">#</a></h3>
 <p>After looking at the time-averaged global distribution, in the next step, we further investigate the dataset. The OLR dataset is more than 40 years long, and another useful way of visualizing is the time series. We will calculate the global time series, plot it, and discuss the most important features.</p>
 <p>We start by opening the combined data with Xarray <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> function
 and subselect a time range from January 1979 to December 2018.</p>
@@ -1181,11 +1188,11 @@ in response to volcanic eruptions, for instance, El Chichon in 1982 and Pinatubo
 atmospheric thermal effects of these two eruptions persist for about two years after the eruption.
 The figure also shows some inter-annual variations that are suggested to be related to “El Niño” or
 “La Niña” Southern Oscillation.</p>
-<a id='timeseries-arctic'>
+<p><a id='timeseries-arctic'></a></p>
 </section>
 </section>
-<section id="a-use-case-3-olr-evolution-in-the-arctic">
-<h3></a> Use case 3: OLR evolution in the Arctic<a class="headerlink" href="#a-use-case-3-olr-evolution-in-the-arctic" title="Permalink to this heading">#</a></h3>
+<section id="use-case-3-olr-evolution-in-the-arctic">
+<h3><strong>Use case 3</strong>: OLR evolution in the Arctic<a class="headerlink" href="#use-case-3-olr-evolution-in-the-arctic" title="Permalink to this heading">#</a></h3>
 <p>In the final use case, we will calculate, plot and discuss the OLR time series in the Arctic region. We can re-use code from the previous use case, but we need to add one additional step: select the Arctic region from the original global dataset. <br></p>
 <p>We start by reading the dataset with xarray <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> method. We have used <code class="docutils literal notranslate"><span class="pre">sel</span></code> method before to select the data based on time coordinate. This time, we will select the latitude coordinate label.</p>
 <div class="cell docutils container">
@@ -1229,7 +1236,7 @@ The figure also shows some inter-annual variations that are suggested to be rela
 <span class="n">dates_rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">dateStart</span><span class="p">,</span> <span class="n">date_End</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;2YS&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">dates_rng</span><span class="p">,</span> <span class="p">[</span><span class="n">dtz</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">dtz</span> <span class="ow">in</span> <span class="n">dates_rng</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 
-<span class="c1"># Save figure to the disk</span>
+<span class="c1"># Save figure to the disk </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./Example_3_olr_timeserie_Arctic.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1251,9 +1258,10 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store</a></p></li>
 </ul>
+<p><a id='references'></a></p>
 </section>
-<section id="a-id-references-a-references">
-<h2><a id='references'></a> References<a class="headerlink" href="#a-id-references-a-references" title="Permalink to this heading">#</a></h2>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p><a id='hansen'></a>Hansen, J., Ruedy, R., Sato, M., &amp; Lo, K., (2010). <em>Global surface temperature change</em>. Reviews of Geophysics, 48(4).</p>
 <p><a id='harrison'></a>Harrison, E.F., Gurney, R. J., Foster, J. L., Gurney, R. J., &amp; Parkinson, C. L. (1993). <em>Atlas of satellite observations related to global change</em>. Chapter: Radiation Budget at the top of the atmosphere. Cambridge University Press.</p>
 <p><span class="xref myst">Back to top the Page</span></p>
@@ -1368,13 +1376,16 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-3-use-cases">
+  <a class="reference internal nav-link" href="#use-cases">
+   3. Use Cases
   </a>
-  3. Use Cases
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
-     Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)
+     <strong>
+      Use case 1
+     </strong>
+     : Climatology of the Outgoing Longwave Radiation (OLR)
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -1395,9 +1406,12 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-use-case-2-global-time-series-of-the-olr">
+    <a class="reference internal nav-link" href="#use-case-2-global-time-series-of-the-olr">
+     <strong>
+      Use case 2
+     </strong>
+     : Global time series of the OLR
     </a>
-    Use case 2: Global time series of the OLR
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">
@@ -1412,9 +1426,12 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-use-case-3-olr-evolution-in-the-arctic">
+    <a class="reference internal nav-link" href="#use-case-3-olr-evolution-in-the-arctic">
+     <strong>
+      Use case 3
+     </strong>
+     : OLR evolution in the Arctic
     </a>
-    Use case 3: OLR evolution in the Arctic
    </li>
   </ul>
  </li>
@@ -1424,9 +1441,7 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-references-a-references">
-   <a id="references">
-   </a>
+  <a class="reference internal nav-link" href="#references">
    References
   </a>
  </li>
