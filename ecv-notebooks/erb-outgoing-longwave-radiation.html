@@ -896,6 +896,7 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 <span class="c1"># Libraries for plotting and visualising data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
 
 <span class="c1"># Disable warnings for data download via API</span>
 <span class="kn">import</span> <span class="nn">urllib3</span>
@@ -1070,9 +1071,10 @@ We use the method <code class="docutils literal notranslate"><span class="pre">m
 <span class="p">)</span>
 
 <span class="c1"># Modify figure style; add lat/lon grid and labels</span>
-<span class="c1"># NOTE: If you are experiencing issues with producing this plot please comment out the following line</span>
-<span class="c1"># and try again.</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="c1"># NOTE: There is a known issue with the coastlines for the pip installation of cartopy,</span>
+<span class="c1">#   The following is a work-around, and not required if using cartopy</span>
+<span class="c1"># ax1.coastlines(color=&#39;black&#39;)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">gl</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># hide top and right labels</span>
