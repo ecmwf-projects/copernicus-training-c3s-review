@@ -61,7 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'cems-notebooks/visualising-fwi-for-esotc';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Observing major flood events with GLOFAS" href="glofas-bangladesh-floods.html" />
+    <link rel="next" title="Observing major flood events with GLOFAS" href="glofas-bangladesh-floods.html" />
+    <link rel="prev" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="../ecv-notebooks/erb-outgoing-longwave-radiation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -203,16 +204,16 @@ const thebe_selector_output = ".output, .cell_output"
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="glofas-bangladesh-floods.html">
-                        Observing major flood events
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Visualising fire weather index (FWI)
                       </a>
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Visualising fire weather index (FWI)
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="glofas-bangladesh-floods.html">
+                        Observing major flood events
                       </a>
                     </li>
                 
@@ -371,16 +372,16 @@ const thebe_selector_output = ".output, .cell_output"
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="glofas-bangladesh-floods.html">
-                        Observing major flood events
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Visualising fire weather index (FWI)
                       </a>
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Visualising fire weather index (FWI)
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="glofas-bangladesh-floods.html">
+                        Observing major flood events
                       </a>
                     </li>
                 
@@ -500,9 +501,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualising fire weather index (FWI)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glofas-bangladesh-floods.html">Observing major flood events</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
 <ul class="nav bd-sidenav">
@@ -690,68 +690,61 @@ title="Print to PDF"
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-all-the-necessary-python-libraries">
+   Importing all the necessary python libraries:
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-all-the-necessary-python-libraries">
-     Importing all the necessary python libraries:
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#search-and-download-the-data">
    Search and download the data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#enter-your-cds-api-key">
      Enter your CDS API key
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-the-fire-danger-indices-historical-data">
-     Find the fire danger indices historical data
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-the-fire-danger-indices-historical-data">
+   Find the fire danger indices historical data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extracting-the-zip-file">
+     Extracting the zip file:
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#extracting-the-zip-file">
-       Extracting the zip file:
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-loading-global-data-with-xarray">
-     Section 1: Loading global data with Xarray
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-loading-global-data-with-xarray">
+   Section 1: Loading global data with Xarray
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculations">
+     Calculations
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculations">
-       Calculations
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting">
-     Plotting
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting">
+   Plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#second-part-esotc-regions">
+   Second part: ESOTC Regions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#esotc-regions">
+     ESOTC Regions
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#second-part-esotc-regions">
-       Second part: ESOTC Regions
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#esotc-regions">
-       ESOTC Regions
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -764,7 +757,8 @@ title="Print to PDF"
 
             <article class="bd-article" role="main">
               
-  <section class="tex2jax_ignore mathjax_ignore" id="visualising-the-fire-weather-index-fwi-for-the-european-state-of-the-climate-esotc-assesment">
+  <p><img alt="logo" src="../_images/cems_header.png" /></p>
+<br><section class="tex2jax_ignore mathjax_ignore" id="visualising-the-fire-weather-index-fwi-for-the-european-state-of-the-climate-esotc-assesment">
 <h1>Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment<a class="headerlink" href="#visualising-the-fire-weather-index-fwi-for-the-european-state-of-the-climate-esotc-assesment" title="Permalink to this heading">#</a></h1>
 <div class="alert alert-block alert-info">
 <b>Note:</b> If you're running this notebook on ATOS using ecinteractive, make sure that you started it with at least 16 GB ram memory, otherwise it will crash at some point. You can set the memory by running "ecinteractive -j -m 16".
@@ -802,11 +796,10 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="search-and-download-the-data">
-<h1>Search and download the data<a class="headerlink" href="#search-and-download-the-data" title="Permalink to this heading">#</a></h1>
+<section id="search-and-download-the-data">
+<h2>Search and download the data<a class="headerlink" href="#search-and-download-the-data" title="Permalink to this heading">#</a></h2>
 <section id="enter-your-cds-api-key">
-<h2>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h2>
+<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
 <p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: URL and KEY, which build together your CDS API key. The string of characters that make up your KEY includes your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the ######### below with this string.</p>
 <p>If you have set up your cdsapi key using a ~/.cdsapirc the following is not required and cdsapi_kwargs can be left as an empty dictionary.</p>
 <div class="cell docutils container">
@@ -831,6 +824,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="find-the-fire-danger-indices-historical-data">
 <h2>Find the fire danger indices historical data<a class="headerlink" href="#find-the-fire-danger-indices-historical-data" title="Permalink to this heading">#</a></h2>
@@ -3386,9 +3380,9 @@ Coordinates:
 <img alt="../_images/010ea24cfbfe8d016fc834dec1cc05c296a0fbbbfe02bd2d88bbed1ba461cf4d.png" src="../_images/010ea24cfbfe8d016fc834dec1cc05c296a0fbbbfe02bd2d88bbed1ba461cf4d.png" />
 </div>
 </div>
-<section id="second-part-esotc-regions">
-<h3>Second part: ESOTC Regions<a class="headerlink" href="#second-part-esotc-regions" title="Permalink to this heading">#</a></h3>
 </section>
+<section id="second-part-esotc-regions">
+<h2>Second part: ESOTC Regions<a class="headerlink" href="#second-part-esotc-regions" title="Permalink to this heading">#</a></h2>
 <section id="esotc-regions">
 <h3>ESOTC Regions<a class="headerlink" href="#esotc-regions" title="Permalink to this heading">#</a></h3>
 <p>Europe: 25°W–40°E, 34°–72°N <br>
@@ -3507,12 +3501,19 @@ Central Europe: 2°–24°E, 45°–55°N</p>
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="glofas-bangladesh-floods.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="../ecv-notebooks/erb-outgoing-longwave-radiation.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Observing major flood events with GLOFAS</p>
+          <p class="prev-next-title">Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</p>
       </div>
+  </a>
+  <a class='right-next' id="next-link" href="glofas-bangladesh-floods.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Observing major flood events with GLOFAS</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
   </a>
 </div>
             </footer>
@@ -3530,68 +3531,61 @@ Central Europe: 2°–24°E, 45°–55°N</p>
 </div>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-all-the-necessary-python-libraries">
+   Importing all the necessary python libraries:
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-all-the-necessary-python-libraries">
-     Importing all the necessary python libraries:
-    </a>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#search-and-download-the-data">
    Search and download the data
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#enter-your-cds-api-key">
      Enter your CDS API key
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#find-the-fire-danger-indices-historical-data">
-     Find the fire danger indices historical data
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-the-fire-danger-indices-historical-data">
+   Find the fire danger indices historical data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extracting-the-zip-file">
+     Extracting the zip file:
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#extracting-the-zip-file">
-       Extracting the zip file:
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#section-1-loading-global-data-with-xarray">
-     Section 1: Loading global data with Xarray
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#section-1-loading-global-data-with-xarray">
+   Section 1: Loading global data with Xarray
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculations">
+     Calculations
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#calculations">
-       Calculations
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plotting">
-     Plotting
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting">
+   Plotting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#second-part-esotc-regions">
+   Second part: ESOTC Regions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#esotc-regions">
+     ESOTC Regions
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#second-part-esotc-regions">
-       Second part: ESOTC Regions
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#esotc-regions">
-       ESOTC Regions
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
