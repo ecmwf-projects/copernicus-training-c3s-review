@@ -37,7 +37,7 @@ parts:
    - file: cems-notebooks/glofas-bangladesh-floods
      title: Observing major flood events
    - file: cems-notebooks/visualising-fwi-for-esotc
-     title: Visualising the Fire Weather Index
+     title: Visualising fire weather index (FWI)
  - caption: Tutorials on Bias Correction
    chapters:
    - url: https://ibicus.readthedocs.io/en/latest/getting_started/overview.html
