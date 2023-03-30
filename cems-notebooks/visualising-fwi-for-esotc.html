@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Plotting FWI for 2020 for ESOTC &#8212; C3S Training</title>
+    <title>Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment &#8212; C3S Training</title>
   
   
   
@@ -212,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="#">
-                        Visualising the Fire Weather Index (FWI)
+                        Visualising the Fire Weather Index
                       </a>
                     </li>
                 
@@ -380,7 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="#">
-                        Visualising the Fire Weather Index (FWI)
+                        Visualising the Fire Weather Index
                       </a>
                     </li>
                 
@@ -494,14 +494,14 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Satellite Observations</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using Satellite Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="glofas-bangladesh-floods.html">Observing major flood events</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plotting FWI for 2020 for ESOTC</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
@@ -680,7 +680,7 @@ title="Print to PDF"
             
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Plotting FWI for 2020 for ESOTC</h1>
+    <h1>Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -692,7 +692,7 @@ title="Print to PDF"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Plotting FWI for 2020 for ESOTC
+   Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -764,8 +764,8 @@ title="Print to PDF"
 
             <article class="bd-article" role="main">
               
-  <section class="tex2jax_ignore mathjax_ignore" id="plotting-fwi-for-2020-for-esotc">
-<h1>Plotting FWI for 2020 for ESOTC<a class="headerlink" href="#plotting-fwi-for-2020-for-esotc" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="visualising-the-fire-weather-index-fwi-for-the-european-state-of-the-climate-esotc-assesment">
+<h1>Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment<a class="headerlink" href="#visualising-the-fire-weather-index-fwi-for-the-european-state-of-the-climate-esotc-assesment" title="Permalink to this heading">#</a></h1>
 <div class="alert alert-block alert-info">
 <b>Note:</b> If you're running this notebook on ATOS using ecinteractive, make sure that you started it with at least 16 GB ram memory, otherwise it will crash at some point. You can set the memory by running "ecinteractive -j -m 16".
 </div><p>Before we begin, we must prepare our enviroment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries we will need. To install the CDS API, run the following command:</p>
@@ -3338,7 +3338,7 @@ Coordinates:
 <span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Anomaly in the number of days when FWI&gt;50&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#742425&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="c1">#plt.savefig(&#39;/home/nen/scripts/ESOTC/2022/fwi_anom_europe_v_nowhite.tiff&#39;, format=&#39;tiff&#39;,facecolor=&#39;white&#39;)</span>
+<span class="c1">#plt.savefig(&#39;./fwi_anom_europe_v_nowhite.tiff&#39;, format=&#39;tiff&#39;,facecolor=&#39;white&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -3378,7 +3378,7 @@ Coordinates:
 <span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Anomaly in the number of days when FWI&gt;50&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#742425&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="c1">#plt.savefig(&#39;/home/nen/scripts/ESOTC/2022/fwi_anom_europe_with_white.png&#39;,facecolor=&#39;white&#39;)</span>
+<span class="c1">#plt.savefig(&#39;./fwi_anom_europe_with_white.png&#39;,facecolor=&#39;white&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -3463,7 +3463,7 @@ Central Europe: 2°–24°E, 45°–55°N</p>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Anomaly in the number of days when FWI&gt;50 for &quot;</span> <span class="o">+</span> <span class="n">key</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.05</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#742425&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-    <span class="c1">#plt.savefig(&#39;/home/nen/scripts/ESOTC/2022/fwi_anom_europe_v_nowhite.tiff&#39;, format=&#39;tiff&#39;,facecolor=&#39;white&#39;)</span>
+    <span class="c1">#plt.savefig(&#39;./fwi_anom_europe_v_nowhite.tiff&#39;, format=&#39;tiff&#39;,facecolor=&#39;white&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -3532,7 +3532,7 @@ Central Europe: 2°–24°E, 45°–55°N</p>
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Plotting FWI for 2020 for ESOTC
+   Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
