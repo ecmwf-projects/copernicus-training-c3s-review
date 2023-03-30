@@ -34,10 +34,10 @@ parts:
      title: Outgoing Longwave Radiation
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
+   - file: cems-notebooks/visualising-fwi-for-esotc
+     title: Visualising fire weather index (FWI)
    - file: cems-notebooks/glofas-bangladesh-floods
      title: Observing major flood events
-   - file: cems-notebooks/visualising-fwi-for-esotc
-     title: Visualising fire weather index
  - caption: Tutorials on Bias Correction
    chapters:
    - url: https://ibicus.readthedocs.io/en/latest/getting_started/overview.html
