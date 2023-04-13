@@ -32,6 +32,8 @@ parts:
    chapters:
    - file: ecv-notebooks/erb-outgoing-longwave-radiation
      title: Outgoing Longwave Radiation
+   - file: ecv-notebooks/soil-moisture-anomalies
+     title: Soil Moisture Anomaly Analysis
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
    - file: cems-notebooks/visualising-fwi-for-esotc
