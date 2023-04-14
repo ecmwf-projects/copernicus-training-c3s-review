@@ -34,6 +34,8 @@ parts:
      title: Outgoing Longwave Radiation
    - file: ecv-notebooks/soil-moisture-anomalies
      title: Soil Moisture Anomaly Analysis
+   - file: ecv-notebooks/lake-water-level
+     title: Lake Water Level Timeseries
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
    - file: cems-notebooks/visualising-fwi-for-esotc
