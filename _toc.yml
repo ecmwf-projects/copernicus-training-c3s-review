@@ -36,6 +36,8 @@ parts:
      title: Soil Moisture Anomaly Analysis
    - file: ecv-notebooks/lake-water-level
      title: Lake Water Level Timeseries
+   - file: ecv-notebooks/lake-surface-water-temperature
+     title: Lake Surface Water Temperature Analysis
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
    - file: cems-notebooks/visualising-fwi-for-esotc
