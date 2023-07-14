@@ -746,8 +746,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-packages">
-     Install packages
+    <a class="reference internal nav-link" href="#how-to-run-this-tutorial">
+     How to run this tutorial
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -854,7 +854,8 @@ title="Print to PDF"
 
             <article class="bd-article" role="main">
               
-  <section class="tex2jax_ignore mathjax_ignore" id="seasonal-forecast-verification">
+  <p><img alt="logo" src="_images/LogoLine_horizon_C3S.png" /></p>
+<br><section class="tex2jax_ignore mathjax_ignore" id="seasonal-forecast-verification">
 <h1>Seasonal Forecast Verification<a class="headerlink" href="#seasonal-forecast-verification" title="Permalink to this heading">#</a></h1>
 <section id="about">
 <h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
@@ -884,26 +885,27 @@ title="Print to PDF"
 <li><p>4 - Visualize verification plots</p></li>
 </ul>
 <p>Please see here the full documentation of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/C3S+Seasonal+Forecasts%3A+datasets+documentation">C3S Seasonal Forecast Datasets</a>. This notebook will use data from the CDS dataset <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/seasonal-monthly-single-levels?tab=overview">seasonal forecast monthly statistics on single levels</a> (as opposed to multiple levels in the atmosphere).</p>
-<div class="alert alert-block alert-danger">
-<p>{FILL HERE THE RIGHT LINKS/LOGOS} <strong>Run the tutorial via free cloud platforms (fill in)</strong></p>
-</div><div class="alert alert-block alert-success">
+<div class="alert alert-block alert-success">
 <b>NOTE</b>: <br>
     An example on the use of the code of this notebook to create verification plots for the operational seasonal forecast systems available in the CDS can be found in a <a href="https://confluence.ecmwf.int/display/CKB/C3S+seasonal+forecasts+verification+plots">dedicated page</a> of the documentation hosted in the Copernicus Knowledge Base.    
 </div></section>
-<section id="install-packages">
-<h2>Install packages<a class="headerlink" href="#install-packages" title="Permalink to this heading">#</a></h2>
+<section id="how-to-run-this-tutorial">
+<h2>How to run this tutorial<a class="headerlink" href="#how-to-run-this-tutorial" title="Permalink to this heading">#</a></h2>
+<p>To run this Jupyter notebook tutorial, you will need to install a number of Python packages. A good way to start is by installing <a class="reference external" href="https://www.anaconda.com/">Anaconda</a>, which is a popular Python distribution for scientific programming. The cell below can be run to install the various packages needed to run this tutorial, assuming you have already installed Python and Jupyter (which come with Anaconda).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install CDS API for downloading data from the CDS</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>xarray<span class="w"> </span>xskillscore
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
-
-<span class="c1"># Install xskillscore package to compute verification metrics with xarray</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>xskillscore
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>cartopy
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cfgrib
 </pre></div>
 </div>
 </div>
 </div>
-</section>
+<div class="alert alert-block alert-danger">
+<b>WARNING</b>: <br>
+    Please take into account that to run this tutorial, around 8GB of RAM and around 5GB of disk space are needed.
+</div></section>
 <section id="load-packages">
 <h2>Load packages<a class="headerlink" href="#load-packages" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
@@ -949,6 +951,24 @@ title="Print to PDF"
     <span class="n">hcendy</span> <span class="o">=</span> <span class="mi">2016</span><span class="p">,</span>
     <span class="n">start_month</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After setting up this initial configuration variables, the existence of all the data folders will be checked and directories will be created if needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">SCOREDIR</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/scores&#39;</span>
+<span class="n">PLOTSDIR</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;/plots/stmonth</span><span class="si">{</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;start_month&quot;</span><span class="p">]</span><span class="si">:</span><span class="s1">02d</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="k">for</span> <span class="n">directory</span> <span class="ow">in</span> <span class="p">[</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">SCOREDIR</span><span class="p">,</span> <span class="n">PLOTSDIR</span><span class="p">]:</span>
+    <span class="c1"># Check if the directory exists</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+        <span class="c1"># If it doesn&#39;t exist, create it</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Creating folder </span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1013,7 +1033,19 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-20 12:46:15,181 INFO Welcome to the CDS
+2023-06-20 12:46:15,182 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/seasonal-monthly-single-levels
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./data/cmcc_s35_stmonth03_hindcast1993-2016_monthly.grib
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-20 12:46:15,480 INFO Request is completed
+2023-06-20 12:46:15,481 INFO Downloading https://download-0020.copernicus-climate.eu/cache-compute-0020/cache/data9/adaptor.mars.external-1687253290.9581027-12857-1-4e533e38-d059-46e1-8aa5-24f73f442735.grib to ./data/cmcc_s35_stmonth03_hindcast1993-2016_monthly.grib (1G)
+2023-06-20 12:46:29,104 INFO Download rate 78.5M/s  
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=1121126400,content_type=application/x-grib,location=https://download-0020.copernicus-climate.eu/cache-compute-0020/cache/data9/adaptor.mars.external-1687253290.9581027-12857-1-4e533e38-d059-46e1-8aa5-24f73f442735.grib)
 </pre></div>
 </div>
 </div>
@@ -1059,7 +1091,18 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-20 12:46:29,118 INFO Welcome to the CDS
+2023-06-20 12:46:29,119 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/reanalysis-era5-single-levels-monthly-means
+2023-06-20 12:46:29,304 INFO Downloading https://download-0014-clone.copernicus-climate.eu/cache-compute-0014/cache/data8/adaptor.mars.internal-1687253766.3684943-30437-13-1b2115b8-6924-405f-9e1b-bc29b861d96d.grib to ./data/era5_monthly_stmonth03_1993-2016.grib (18.6M)
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>./data/era5_monthly_stmonth03_1993-2016.grib
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-20 12:46:29,652 INFO Download rate 53.4M/s 
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=19458000,content_type=application/x-grib,location=https://download-0014-clone.copernicus-climate.eu/cache-compute-0014/cache/data8/adaptor.mars.internal-1687253766.3684943-30437-13-1b2115b8-6924-405f-9e1b-bc29b861d96d.grib)
 </pre></div>
 </div>
 </div>
@@ -1102,7 +1145,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Reading HCST data from file&#39;</span><span class="p">)</span>
 <span class="n">hcst</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">hcst_fname</span><span class="p">,</span><span class="n">engine</span><span class="o">=</span><span class="s1">&#39;cfgrib&#39;</span><span class="p">,</span> <span class="n">backend_kwargs</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">time_dims</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;forecastMonth&#39;</span><span class="p">,</span> <span class="n">st_dim_name</span><span class="p">)))</span>
-<span class="n">hcst</span> <span class="o">=</span> <span class="n">hcst</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s1">&#39;forecastMonth&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">})</span>  <span class="c1">#force dask.array using chunks on leadtime coordinate</span>
+<span class="n">hcst</span> <span class="o">=</span> <span class="n">hcst</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s1">&#39;forecastMonth&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span><span class="s1">&#39;auto&#39;</span><span class="p">})</span>  <span class="c1">#force dask.array using chunks on leadtime, latitude and longitude coordinate</span>
 <span class="n">hcst</span> <span class="o">=</span> <span class="n">hcst</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;latitude&#39;</span><span class="p">:</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">:</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">st_dim_name</span><span class="p">:</span><span class="s1">&#39;start_date&#39;</span><span class="p">})</span>
 
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Re-arranging time metadata in xr.Dataset object&#39;</span><span class="p">)</span>
@@ -1129,7 +1172,7 @@ title="Print to PDF"
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Computing anomalies 3m&#39;</span><span class="p">)</span>
 <span class="n">hcmean_3m</span> <span class="o">=</span> <span class="n">hcst_3m</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s1">&#39;number&#39;</span><span class="p">,</span><span class="s1">&#39;start_date&#39;</span><span class="p">])</span>
-<span class="n">anom_3m</span> <span class="o">=</span> <span class="n">hcst</span> <span class="o">-</span> <span class="n">hcmean</span>
+<span class="n">anom_3m</span> <span class="o">=</span> <span class="n">hcst_3m</span> <span class="o">-</span> <span class="n">hcmean_3m</span>
 <span class="n">anom_3m</span> <span class="o">=</span> <span class="n">anom_3m</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">reference_period</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{hcstarty}</span><span class="s1">-</span><span class="si">{hcendy}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving anomalies 1m/3m to netCDF files&#39;</span><span class="p">)</span>
@@ -1139,6 +1182,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-20 12:47:05,189 WARNING Ignoring index file &#39;./data/cmcc_s35_stmonth03_hindcast1993-2016_monthly.grib.9bff7.idx&#39; older than GRIB file
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reading HCST data from file
 Re-arranging time metadata in xr.Dataset object
 Computing 3-month aggregation
@@ -1284,6 +1330,9 @@ Saving 3m tercile probs netCDF files
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-20 12:52:46,007 WARNING Ignoring index file &#39;./data/era5_monthly_stmonth03_1993-2016.grib.923a8.idx&#39; older than GRIB file
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Calculate observation 3-monthly aggregations
 </pre></div>
 </div>
@@ -1348,8 +1397,6 @@ forecastMonth=6
 Concatenating (by fcmonth) correlation for 1m-aggregation
 Saving to netCDF file correlation for 1m-aggregation
 Computing deterministic scores for 3m-aggregation
-forecastMonth=1
-forecastMonth=2
 forecastMonth=3
 forecastMonth=4
 forecastMonth=5
@@ -1511,7 +1558,10 @@ writing to netcdf rocss
 <section class="tex2jax_ignore mathjax_ignore" id="visualize-verification-plots">
 <h1>4. Visualize verification plots<a class="headerlink" href="#visualize-verification-plots" title="Permalink to this heading">#</a></h1>
 <p>After we have computed some metrics and scores for our seasonal forecast data, in this section some examples of visualization will be introduced.</p>
-<section id="common-variables">
+<div class="alert alert-block alert-success">
+<b>NOTE</b>: <br>
+    In the "Introduction" section of the <a href="https://confluence.ecmwf.int/display/CKB/C3S+seasonal+forecasts+verification+plots">C3S seasonal forecasts verification plots</a> page on the Copernicus Knowledge Base you can find some information on how these metrics and scores, consistent with the <a href="https://library.wmo.int/doc_num.php?explnum_id=4886">guidance on forecast verification</a> provided by WMO, describe statistics of forecast performance over a past period, as an indication of expectation of 'confidence' in the real-time outputs. 
+</div><section id="common-variables">
 <h2>Common variables<a class="headerlink" href="#common-variables" title="Permalink to this heading">#</a></h2>
 <p>We start by setting up some variables (<code class="docutils literal notranslate"><span class="pre">aggr</span></code> and <code class="docutils literal notranslate"><span class="pre">fcmonth</span></code>) to subset the plots we will be producing in this notebook.</p>
 <p>Additionally variables used for labelling the plots are also defined here. It has been also included a change in the default values of the font size of the titles to improve the visual aspect of the plots.</p>
@@ -1623,7 +1673,7 @@ writing to netcdf rocss
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2b72b8634608bd181409b8c31eb2ad38a946bd3cd2e50ff8ae3f41fee881379e.png" src="_images/2b72b8634608bd181409b8c31eb2ad38a946bd3cd2e50ff8ae3f41fee881379e.png" />
+<img alt="_images/1df6794ccb0b3e71c585c139820f515fe60465e2d2e75a909f932bef7b03c867.png" src="_images/1df6794ccb0b3e71c585c139820f515fe60465e2d2e75a909f932bef7b03c867.png" />
 </div>
 </div>
 </section>
@@ -1656,7 +1706,7 @@ writing to netcdf rocss
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5b47dedfe189d06e9b47e014d507e181a676ec53543cb94f5983ad1f72f0c513.png" src="_images/5b47dedfe189d06e9b47e014d507e181a676ec53543cb94f5983ad1f72f0c513.png" />
+<img alt="_images/194de7c0453b405d47015b599afdfc0e1c8f35d40757116abe87c4c7dce88592.png" src="_images/194de7c0453b405d47015b599afdfc0e1c8f35d40757116abe87c4c7dce88592.png" />
 </div>
 </div>
 </section>
@@ -1690,9 +1740,9 @@ writing to netcdf rocss
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/89eb6d480bc1860f3adb22f6e52e1b62353465851fa4ead8f1ee6bd4e1236200.png" src="_images/89eb6d480bc1860f3adb22f6e52e1b62353465851fa4ead8f1ee6bd4e1236200.png" />
-<img alt="_images/a96c460866a0106ef5d657d9867bb08570bafccd4b48efbac2f109b5796be32f.png" src="_images/a96c460866a0106ef5d657d9867bb08570bafccd4b48efbac2f109b5796be32f.png" />
-<img alt="_images/e6e317bfd6758c9586964f25752f9fe9a32a6697abcb1d4d6c324d0c891874ea.png" src="_images/e6e317bfd6758c9586964f25752f9fe9a32a6697abcb1d4d6c324d0c891874ea.png" />
+<img alt="_images/8f6c7f74c60d3ae72f214ad440f642565daa01b0f8f34306c2cc7cc044c45706.png" src="_images/8f6c7f74c60d3ae72f214ad440f642565daa01b0f8f34306c2cc7cc044c45706.png" />
+<img alt="_images/e78c69e229c4715dabe0de5c34c070f5bcc96b50de843ac185016eb812b488a1.png" src="_images/e78c69e229c4715dabe0de5c34c070f5bcc96b50de843ac185016eb812b488a1.png" />
+<img alt="_images/b39fde7cf3b58319ec678368c49aa49db7e90a26c788f59be1f3bedad1f708ee.png" src="_images/b39fde7cf3b58319ec678368c49aa49db7e90a26c788f59be1f3bedad1f708ee.png" />
 </div>
 </div>
 </section>
@@ -1767,8 +1817,8 @@ writing to netcdf rocss
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-packages">
-     Install packages
+    <a class="reference internal nav-link" href="#how-to-run-this-tutorial">
+     How to run this tutorial
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
