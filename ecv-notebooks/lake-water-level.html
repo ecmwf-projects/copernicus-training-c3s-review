@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Visualising Lake Water Level timeseries &#8212; C3S Training</title>
+    <title>Tutorial: Visualising Lake Water Level (LWL) timeseries &#8212; C3S Training</title>
   
   
   
@@ -539,7 +539,11 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html">Soil Moisture Anomaly Analysis</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lake Water Level Timeseries</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
@@ -723,7 +727,7 @@ title="Print to PDF"
             
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Visualising Lake Water Level timeseries</h1>
+    <h1>Tutorial: Visualising Lake Water Level (LWL) timeseries</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -733,24 +737,43 @@ title="Print to PDF"
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-librairies">
-   Import librairies
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Visualising Lake Water Level (LWL) timeseries
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-librairies">
+     Import librairies
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lake-selection">
+   Lake selection
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dowload-and-decompress-data">
+     1. Dowload and decompress data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualise-lake-location">
+   2. Visualise lake location
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-for-data">
-   Download for data
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualise-lake-water-level-time-series">
+   3. Visualise lake water level time series
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualise-the-lake-water-level-timeseries">
-   Visualise the Lake Water Level timeseries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indicate-the-position-of-the-lake-on-a-map">
-   Indicate the position of the lake on a map
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualise-lake-water-level-yearly-anomalies">
+   3. Visualise lake water level yearly anomalies
   </a>
  </li>
 </ul>
@@ -762,16 +785,17 @@ title="Print to PDF"
 
             <article class="bd-article" role="main">
               
-  <section class="tex2jax_ignore mathjax_ignore" id="visualising-lake-water-level-timeseries">
-<h1>Visualising Lake Water Level timeseries<a class="headerlink" href="#visualising-lake-water-level-timeseries" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-visualising-lake-water-level-lwl-timeseries">
+<h1>Tutorial: Visualising Lake Water Level (LWL) timeseries<a class="headerlink" href="#tutorial-visualising-lake-water-level-lwl-timeseries" title="Permalink to this heading">#</a></h1>
 <p><font color='red'>Before continuing with this tutorial, please verify that the C3S API is installed. All the information about this api is available at: </font></p>
 <p><a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to#install-the-cds-api-key">https://cds.climate.copernicus.eu/api-how-to#install-the-cds-api-key</a></p>
 <hr class="docutils" />
-<p>In this tutorial we will access lake water level data from the Climate Data Store (CDS) and plot the timeseries. The tutorial comprises two main steps:</p>
+<p>In this tutorial we will access lake products from the Climate Data Store (CDS) and analyse the timeseries of the lake water level on a selected lake. The tutorial comprises two main steps:</p>
 <ol class="arabic simple">
 <li><p>Dowload and decompress data</p></li>
-<li><p>Visualise and save water level timeseries</p></li>
 <li><p>Visualise the location of the lake in a map</p></li>
+<li><p>Visualise and save water level timeseries</p></li>
+<li><p>Visualise and save the yearly water level anomalies</p></li>
 </ol>
 <section id="import-librairies">
 <h2>Import librairies<a class="headerlink" href="#import-librairies" title="Permalink to this heading">#</a></h2>
@@ -784,8 +808,11 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">import</span> <span class="nn">zipfile</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">cartopy</span> <span class="kn">import</span> <span class="n">crs</span><span class="p">,</span> <span class="n">feature</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> widget
 </pre></div>
 </div>
 </div>
@@ -793,25 +820,27 @@ title="Print to PDF"
 <p>Current version of the Lake Water Level dataset in CDS (v2.1) contains timeseries from 94 lakes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">available_lakes</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;amadjuak&#39;</span><span class="p">,</span> <span class="s1">&#39;argentino&#39;</span><span class="p">,</span> <span class="s1">&#39;athabasca&#39;</span><span class="p">,</span> <span class="s1">&#39;ayakkum&#39;</span><span class="p">,</span> <span class="s1">&#39;aylmer&#39;</span><span class="p">,</span> <span class="s1">&#39;baikal&#39;</span><span class="p">,</span><span class="s1">&#39;baker&#39;</span><span class="p">,</span> <span class="s1">&#39;balbina&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;balkhash&#39;</span><span class="p">,</span> <span class="s1">&#39;beysehir&#39;</span><span class="p">,</span> <span class="s1">&#39;bosten&#39;</span><span class="p">,</span> <span class="s1">&#39;bratskoye&#39;</span><span class="p">,</span><span class="s1">&#39;cahora_bassa&#39;</span><span class="p">,</span> <span class="s1">&#39;caribou&#39;</span><span class="p">,</span> <span class="s1">&#39;caspian&#39;</span><span class="p">,</span> <span class="s1">&#39;cedar&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;chardarya&#39;</span><span class="p">,</span> <span class="s1">&#39;dagze_co&#39;</span><span class="p">,</span><span class="s1">&#39;des_bois&#39;</span><span class="p">,</span> <span class="s1">&#39;dogaicoring_q&#39;</span><span class="p">,</span> <span class="s1">&#39;dubawnt&#39;</span><span class="p">,</span><span class="s1">&#39;erie&#39;</span><span class="p">,</span> <span class="s1">&#39;fort_peck&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;grande_trois&#39;</span><span class="p">,</span><span class="s1">&#39;greatslave&#39;</span><span class="p">,</span> <span class="s1">&#39;guri&#39;</span><span class="p">,</span> <span class="s1">&#39;har&#39;</span><span class="p">,</span><span class="s1">&#39;hongze&#39;</span><span class="p">,</span> <span class="s1">&#39;hovsgol&#39;</span><span class="p">,</span> <span class="s1">&#39;hulun&#39;</span><span class="p">,</span><span class="s1">&#39;huron&#39;</span><span class="p">,</span> <span class="s1">&#39;issykkul&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;kainji&#39;</span><span class="p">,</span><span class="s1">&#39;kapchagayskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;kara_bogaz_gol&#39;</span><span class="p">,</span> <span class="s1">&#39;kariba&#39;</span><span class="p">,</span><span class="s1">&#39;kasba&#39;</span><span class="p">,</span> <span class="s1">&#39;khanka&#39;</span><span class="p">,</span> <span class="s1">&#39;kokonor&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;krasnoyarskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;kremenchutska&#39;</span><span class="p">,</span> <span class="s1">&#39;kuybyshevskoye&#39;</span><span class="p">,</span><span class="s1">&#39;kyoga&#39;</span><span class="p">,</span> <span class="s1">&#39;ladoga&#39;</span><span class="p">,</span> <span class="s1">&#39;lagoa_dos_patos&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;langa_co&#39;</span><span class="p">,</span> <span class="s1">&#39;lixiodain_co&#39;</span><span class="p">,</span> <span class="s1">&#39;malawi&#39;</span><span class="p">,</span><span class="s1">&#39;manitoba&#39;</span><span class="p">,</span> <span class="s1">&#39;michigan&#39;</span><span class="p">,</span> <span class="s1">&#39;migriggyangzham&#39;</span><span class="p">,</span> <span class="s1">&#39;mossoul&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;mweru&#39;</span><span class="p">,</span> <span class="s1">&#39;namco&#39;</span><span class="p">,</span> <span class="s1">&#39;nasser&#39;</span><span class="p">,</span> <span class="s1">&#39;ngangze&#39;</span><span class="p">,</span> <span class="s1">&#39;ngoring_co&#39;</span><span class="p">,</span> <span class="s1">&#39;nicaragua&#39;</span><span class="p">,</span> <span class="s1">&#39;novosibirskoye&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;nueltin&#39;</span><span class="p">,</span><span class="s1">&#39;onega&#39;</span><span class="p">,</span> <span class="s1">&#39;ontario&#39;</span><span class="p">,</span> <span class="s1">&#39;opinac&#39;</span><span class="p">,</span><span class="s1">&#39;peipus&#39;</span><span class="p">,</span> <span class="s1">&#39;rukwa&#39;</span><span class="p">,</span> <span class="s1">&#39;rybinskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;saint_jean&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;sakakawea&#39;</span><span class="p">,</span> <span class="s1">&#39;saksak&#39;</span><span class="p">,</span><span class="s1">&#39;saratovskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;sarykamish&#39;</span><span class="p">,</span> <span class="s1">&#39;sasykkol&#39;</span><span class="p">,</span><span class="s1">&#39;soungari&#39;</span><span class="p">,</span> <span class="s1">&#39;superior&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;tana&#39;</span><span class="p">,</span><span class="s1">&#39;tanganika&#39;</span><span class="p">,</span> <span class="s1">&#39;tangra_yumco&#39;</span><span class="p">,</span> <span class="s1">&#39;tchad&#39;</span><span class="p">,</span><span class="s1">&#39;tchany&#39;</span><span class="p">,</span> <span class="s1">&#39;tharthar&#39;</span><span class="p">,</span> <span class="s1">&#39;todos_los_santos&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;tsimlyanskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;turkana&#39;</span><span class="p">,</span> <span class="s1">&#39;ulungur&#39;</span><span class="p">,</span><span class="s1">&#39;vanerm&#39;</span><span class="p">,</span> <span class="s1">&#39;victoria&#39;</span><span class="p">,</span> <span class="s1">&#39;volta&#39;</span><span class="p">,</span><span class="s1">&#39;williston&#39;</span><span class="p">,</span> 
-    <span class="s1">&#39;winnipeg&#39;</span><span class="p">,</span> <span class="s1">&#39;winnipegosis&#39;</span><span class="p">,</span><span class="s1">&#39;yellowstone&#39;</span><span class="p">,</span> <span class="s1">&#39;zeyskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;zhari_namco&#39;</span><span class="p">,</span><span class="s1">&#39;ziling&#39;</span>
-<span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">available_lakes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;amadjuak&#39;</span><span class="p">,</span> <span class="s1">&#39;argentino&#39;</span><span class="p">,</span> <span class="s1">&#39;athabasca&#39;</span><span class="p">,</span> <span class="s1">&#39;ayakkum&#39;</span><span class="p">,</span> <span class="s1">&#39;aylmer&#39;</span><span class="p">,</span> <span class="s1">&#39;baikal&#39;</span><span class="p">,</span><span class="s1">&#39;baker&#39;</span><span class="p">,</span> <span class="s1">&#39;balbina&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;balkhash&#39;</span><span class="p">,</span> <span class="s1">&#39;beysehir&#39;</span><span class="p">,</span> <span class="s1">&#39;bosten&#39;</span><span class="p">,</span> <span class="s1">&#39;bratskoye&#39;</span><span class="p">,</span><span class="s1">&#39;cahora_bassa&#39;</span><span class="p">,</span> <span class="s1">&#39;caribou&#39;</span><span class="p">,</span> <span class="s1">&#39;caspian&#39;</span><span class="p">,</span> <span class="s1">&#39;cedar&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;chardarya&#39;</span><span class="p">,</span> <span class="s1">&#39;dagze_co&#39;</span><span class="p">,</span><span class="s1">&#39;des_bois&#39;</span><span class="p">,</span> <span class="s1">&#39;dogaicoring_q&#39;</span><span class="p">,</span> <span class="s1">&#39;dubawnt&#39;</span><span class="p">,</span><span class="s1">&#39;erie&#39;</span><span class="p">,</span> <span class="s1">&#39;fort_peck&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;grande_trois&#39;</span><span class="p">,</span><span class="s1">&#39;greatslave&#39;</span><span class="p">,</span> <span class="s1">&#39;guri&#39;</span><span class="p">,</span> <span class="s1">&#39;har&#39;</span><span class="p">,</span><span class="s1">&#39;hongze&#39;</span><span class="p">,</span> <span class="s1">&#39;hovsgol&#39;</span><span class="p">,</span> <span class="s1">&#39;hulun&#39;</span><span class="p">,</span><span class="s1">&#39;huron&#39;</span><span class="p">,</span> <span class="s1">&#39;issykkul&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;kainji&#39;</span><span class="p">,</span><span class="s1">&#39;kapchagayskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;kara_bogaz_gol&#39;</span><span class="p">,</span> <span class="s1">&#39;kariba&#39;</span><span class="p">,</span><span class="s1">&#39;kasba&#39;</span><span class="p">,</span> <span class="s1">&#39;khanka&#39;</span><span class="p">,</span> <span class="s1">&#39;kokonor&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;krasnoyarskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;kremenchutska&#39;</span><span class="p">,</span> <span class="s1">&#39;kuybyshevskoye&#39;</span><span class="p">,</span><span class="s1">&#39;kyoga&#39;</span><span class="p">,</span> <span class="s1">&#39;ladoga&#39;</span><span class="p">,</span> <span class="s1">&#39;lagoa_dos_patos&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;langa_co&#39;</span><span class="p">,</span> <span class="s1">&#39;lixiodain_co&#39;</span><span class="p">,</span> <span class="s1">&#39;malawi&#39;</span><span class="p">,</span><span class="s1">&#39;manitoba&#39;</span><span class="p">,</span> <span class="s1">&#39;michigan&#39;</span><span class="p">,</span> <span class="s1">&#39;migriggyangzham&#39;</span><span class="p">,</span> <span class="s1">&#39;mossoul&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;mweru&#39;</span><span class="p">,</span> <span class="s1">&#39;namco&#39;</span><span class="p">,</span> <span class="s1">&#39;nasser&#39;</span><span class="p">,</span> <span class="s1">&#39;ngangze&#39;</span><span class="p">,</span> <span class="s1">&#39;ngoring_co&#39;</span><span class="p">,</span> <span class="s1">&#39;nicaragua&#39;</span><span class="p">,</span> <span class="s1">&#39;novosibirskoye&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;nueltin&#39;</span><span class="p">,</span><span class="s1">&#39;onega&#39;</span><span class="p">,</span> <span class="s1">&#39;ontario&#39;</span><span class="p">,</span> <span class="s1">&#39;opinac&#39;</span><span class="p">,</span><span class="s1">&#39;peipus&#39;</span><span class="p">,</span> <span class="s1">&#39;rukwa&#39;</span><span class="p">,</span> <span class="s1">&#39;rybinskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;saint_jean&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;sakakawea&#39;</span><span class="p">,</span> <span class="s1">&#39;saksak&#39;</span><span class="p">,</span><span class="s1">&#39;saratovskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;sarykamish&#39;</span><span class="p">,</span> <span class="s1">&#39;sasykkol&#39;</span><span class="p">,</span><span class="s1">&#39;soungari&#39;</span><span class="p">,</span> <span class="s1">&#39;superior&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;tana&#39;</span><span class="p">,</span><span class="s1">&#39;tanganika&#39;</span><span class="p">,</span> <span class="s1">&#39;tangra_yumco&#39;</span><span class="p">,</span> <span class="s1">&#39;tchad&#39;</span><span class="p">,</span><span class="s1">&#39;tchany&#39;</span><span class="p">,</span> <span class="s1">&#39;tharthar&#39;</span><span class="p">,</span> <span class="s1">&#39;todos_los_santos&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;tsimlyanskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;turkana&#39;</span><span class="p">,</span> <span class="s1">&#39;ulungur&#39;</span><span class="p">,</span><span class="s1">&#39;vanerm&#39;</span><span class="p">,</span> <span class="s1">&#39;victoria&#39;</span><span class="p">,</span> <span class="s1">&#39;volta&#39;</span><span class="p">,</span><span class="s1">&#39;williston&#39;</span><span class="p">,</span> 
+                   <span class="s1">&#39;winnipeg&#39;</span><span class="p">,</span> <span class="s1">&#39;winnipegosis&#39;</span><span class="p">,</span><span class="s1">&#39;yellowstone&#39;</span><span class="p">,</span> <span class="s1">&#39;zeyskoye&#39;</span><span class="p">,</span> <span class="s1">&#39;zhari_namco&#39;</span><span class="p">,</span><span class="s1">&#39;ziling&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lake-selection">
+<h1>Lake selection<a class="headerlink" href="#lake-selection" title="Permalink to this heading">#</a></h1>
 <p>For downloading and generating the timeserie, two inputs are required:</p>
 <ul class="simple">
 <li><p>The name of the lake (lake_name). The name of the lake must exists in the list of available lakes</p></li>
@@ -820,12 +849,10 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the name of the lake</span>
-<span class="n">lake_name</span> <span class="o">=</span> <span class="s2">&quot;Argentino&quot;</span>
+<span class="n">lake_name</span> <span class="o">=</span> <span class="s2">&quot;Baikal&quot;</span>
 
 <span class="c1"># the output directory name </span>
-<span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./data_dir&#39;</span>
-<span class="c1"># Create the output directory if required</span>
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;output&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -839,69 +866,64 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="download-for-data">
-<h2>Download for data<a class="headerlink" href="#download-for-data" title="Permalink to this heading">#</a></h2>
+<p>The output directory must exitst. If it is not the case, it must be created.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The output dir &quot;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">&quot; does not exist. You need to create before continue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="dowload-and-decompress-data">
+<h2>1. Dowload and decompress data<a class="headerlink" href="#dowload-and-decompress-data" title="Permalink to this heading">#</a></h2>
 <p>Having the CDS api, this function will retrive the  data for the selected lake into the defined output directory. The downloaded file is compressed (zip format) containing the data file in NetCDF format. For reading the lake water level data, the file will be extracted in the output directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lake_name</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">lake_name</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
-<span class="n">download_zip_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">lake_name</span><span class="si">}</span><span class="s1">.zip&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">download_zip_file</span><span class="p">):</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span> 
-        <span class="s1">&#39;satellite-lake-water-level&#39;</span><span class="p">,</span>
-        <span class="p">{</span>
-            <span class="s1">&#39;lake&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">lake_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()],</span>
-            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;water_surface_height&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span> <span class="c1"># valid formats: zip, tar and tgz</span>
-        <span class="p">},</span>
-        <span class="n">download_zip_file</span>
-    <span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span> <span class="s1">&#39;satellite-lake-water-level&#39;</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;lake&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">lake_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()],</span>
+                <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;water_surface_height&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span> <span class="c1"># valid formats: zip, tar and tgz</span>
+            <span class="p">},</span>
+           <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">lake_name</span><span class="si">}</span><span class="s1">.zip&#39;</span>
+           <span class="p">)</span>
 
-<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">download_zip_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
-    <span class="n">filelist</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">zip_ref</span><span class="o">.</span><span class="n">namelist</span><span class="p">()]</span>
-    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">lake_name</span><span class="si">}</span><span class="s1">.zip&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
+    <span class="n">z</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+<span class="c1"># recover the lake filename in netcdf format</span>
+<span class="n">nc_file</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">/*</span><span class="si">{</span><span class="n">lake_name</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s1">*.nc&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># open the file with Xarray</span>
+<span class="n">xr_lake</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">nc_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;built-in method lower of str object at 0x13e5cb070&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;built-in method lower of str object at 0x7fc1c0f8bcf0&gt;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-07-13 11:10:08,598 INFO Welcome to the CDS
+2023-07-13 11:10:08,598 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-lake-water-level
+2023-07-13 11:10:08,671 INFO Request is completed
+2023-07-13 11:10:08,672 INFO Downloading https://download-0013-clone.copernicus-climate.eu/cache-compute-0013/cache/data2/dataset-satellite-lake-water-level-2266e468-00ea-4829-82d3-37cd29e7a436.zip to output/Baikal.zip (17.2K)
+2023-07-13 11:10:08,912 INFO Download rate 72K/s
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="visualise-the-lake-water-level-timeseries">
-<h2>Visualise the Lake Water Level timeseries<a class="headerlink" href="#visualise-the-lake-water-level-timeseries" title="Permalink to this heading">#</a></h2>
-<p>Now that the data has been extracted, we can read and plot it. To read the data in NetCDF format we use the Xarray library and for the visualisation of the time series we use Matplotlib</p>
-<p>The figure with the timeseries will be saved in the output directory in png format in the [lake_name].png file</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># open the file with Xarray</span>
-<span class="n">xr_lake</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">filelist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="c1"># plot and visualise the timeseries</span>
-<span class="n">xr_lake</span><span class="o">.</span><span class="n">water_surface_height_above_reference_datum</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lake: </span><span class="si">{</span><span class="n">lake_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-
-<span class="c1"># save the figure</span>
-<span class="n">png_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">lake_name</span><span class="si">}</span><span class="s1">_timeseries.png&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">png_file</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/9a96eadd47142401717acf476294e8440a3695ec955d674a23d8a7db74a1c536.png" src="../_images/9a96eadd47142401717acf476294e8440a3695ec955d674a23d8a7db74a1c536.png" />
-</div>
-</div>
 </section>
-<section id="indicate-the-position-of-the-lake-on-a-map">
-<h2>Indicate the position of the lake on a map<a class="headerlink" href="#indicate-the-position-of-the-lake-on-a-map" title="Permalink to this heading">#</a></h2>
-<p>For generating this figure we use the cartopy library</p>
+<section class="tex2jax_ignore mathjax_ignore" id="visualise-lake-location">
+<h1>2. Visualise lake location<a class="headerlink" href="#visualise-lake-location" title="Permalink to this heading">#</a></h1>
+<p>It is always a useful idea to check the lake’s location on a map. Many of the world’s lakes have the same name but may be located in different countries, as in the case of Lake Victoria: the best known is in Uganda, but there is also a Lake Victoria in Canada (48.35N, 57.11W) and another in Australia (34.04S, 141.28E). Or the name of the lake is different, depending on the language: Caribou Lake or Rendeer lake refer to the same lake (Canada). In some cases, even with the same language, lake name can differ between countries: Lake Buenos Aires in Argentina and Lake General Carrera in Chili.</p>
+<p>A world map, with the location of the lake is displayed. For generating this figure we use the cartopy library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mf">8.5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span> <span class="o">=</span> <span class="n">crs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
@@ -916,22 +938,102 @@ title="Print to PDF"
 <span class="k">if</span> <span class="s1">&#39;W&#39;</span> <span class="ow">in</span> <span class="n">xr_lake</span><span class="o">.</span><span class="n">lake_barycentre_longitude</span><span class="p">:</span>
     <span class="n">lon</span> <span class="o">=</span> <span class="o">-</span><span class="n">lon</span>
     
-<span class="nb">print</span> <span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lake location (lat, lon): </span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">°, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">lon</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">lat</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">transform</span> <span class="o">=</span> <span class="n">crs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-50.33 -72.75
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "29a2a68832ad434097221ecbabab6deb", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lake location (lat, lon): 53.58°, 108.17°
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x14a3ef0a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc1a0f3d1f0&gt;
 </pre></div>
 </div>
-<img alt="../_images/3413c6f07accb15c9b49052ec24717abb13d49aee5b63ce0e21876c8c68cd919.png" src="../_images/3413c6f07accb15c9b49052ec24717abb13d49aee5b63ce0e21876c8c68cd919.png" />
 </div>
 </div>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="visualise-lake-water-level-time-series">
+<h1>3. Visualise lake water level time series<a class="headerlink" href="#visualise-lake-water-level-time-series" title="Permalink to this heading">#</a></h1>
+<p>Now that the data has been extracted, we can read it and plot it. To read the data in NetCDF format we use the Xarray library and for the visualisation of the time series we use Matplotlib</p>
+<p>The figure with the timeseries will be saved in the output directory in png format:
+[lake_name]_timeseries.png file</p>
+<p>The change in time step due to coverage by multiple missions can be seen in the figure: in recent years, Lake Baikal has been monitored by multiple missions and trajectories. As a result, the temporal resolution increases (the time between observations is reduced) and the time series is noisier due to the effect of the inter-mission and inter-tracks bias.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot and visualise the timeseries</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">xr_lake</span><span class="o">.</span><span class="n">water_surface_height_above_reference_datum</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lake: </span><span class="si">{</span><span class="n">lake_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># save the figure</span>
+<span class="n">png_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">lake_name</span><span class="si">}</span><span class="s1">_timeseries.png&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">png_file</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8906559cf98f4ec4bffe639e8a810de9", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="visualise-lake-water-level-yearly-anomalies">
+<h1>3. Visualise lake water level yearly anomalies<a class="headerlink" href="#visualise-lake-water-level-yearly-anomalies" title="Permalink to this heading">#</a></h1>
+<p>Another way of analysing variations in water levels is to visualise anomalies in relation to average values over a reference period in the form of a bar chart, using red and blue colours to easily identify the year when levels are higher or lower than the climatic normal.</p>
+<p>The same code can be used for the visualiation of yearly anomalies compared to a particular year.</p>
+<p>The reference period can be adapted to each lake. Indeed, the temporal coverage is not the same for all the lakes in the CDS, with the first available date ranging from 1992, as is the case for Lake Baikal, to 2019 for lakes monitored exclusively by the Sentinel-3B mission. In this example for Lake Baikal, we have chosen a reference period consisting of the first 10 years of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_reference_year</span> <span class="o">=</span> <span class="mi">1992</span>
+<span class="n">last_reference_year</span>  <span class="o">=</span> <span class="mi">2002</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The yearly anomaly is calculated by first applying xarray’s groupby() function to group the data by year and then calculating the mean value for each annual group. The average value of the water in the reference lake is estimated as the average water level over the reference period.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yearly_mean</span> <span class="o">=</span> <span class="n">xr_lake</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">keep_attrs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ref</span> <span class="o">=</span> <span class="n">yearly_mean</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">yearly_mean</span><span class="o">.</span><span class="n">year</span> <span class="o">&gt;=</span> <span class="n">first_reference_year</span> <span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">yearly_mean</span><span class="o">.</span><span class="n">year</span> <span class="o">&lt;=</span> <span class="n">last_reference_year</span> <span class="p">))</span>
+<span class="n">ref_lwl_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">ref</span><span class="o">.</span><span class="n">water_surface_height_above_reference_datum</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Mean LWL value during the reference period: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ref_lwl_mean</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s1"> (m)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean LWL value during the reference period: 455.386 (m)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The yearly anomaly is shown in red for values above the average water level during the reference period and in blue for values below.</p>
+<p>The figure with the anomalies is saved in the output directory in png format :
+[lake_name]_yearly-anomalies.png file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year_mean</span> <span class="o">=</span> <span class="n">yearly_mean</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="n">year_mean</span><span class="p">[</span><span class="s1">&#39;lwl_yearly_anomaly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year_mean</span><span class="p">[</span><span class="s1">&#39;water_surface_height_above_reference_datum&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ref_lwl_mean</span>
+<span class="n">year_mean</span><span class="p">[</span><span class="s1">&#39;positive_anomaly&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">year_mean</span><span class="p">[</span><span class="s1">&#39;lwl_yearly_anomaly&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">year_mean</span><span class="p">[</span><span class="s1">&#39;lwl_yearly_anomaly&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> 
+                                     <span class="n">color</span> <span class="o">=</span> <span class="n">year_mean</span><span class="o">.</span><span class="n">positive_anomaly</span><span class="o">.</span><span class="n">map</span> <span class="p">({</span><span class="kc">True</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">:</span> <span class="s1">&#39;blue&#39;</span><span class="p">}),</span>
+                                     <span class="n">xlabel</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Year&#39;</span><span class="p">,</span>
+                                     <span class="n">ylabel</span> <span class="o">=</span> <span class="s1">&#39;Lake Water Level Anomaly (m)&#39;</span><span class="p">,</span>
+                                     <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Yearly water level anomalies on Lake </span><span class="si">{</span><span class="n">lake_name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s1"> reference period:  </span><span class="si">{</span><span class="n">first_reference_year</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="n">last_reference_year</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1"># save the figure</span>
+<span class="n">png_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">output_dir</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">lake_name</span><span class="si">}</span><span class="s1">_yearly-anomalies.png&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">png_file</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "056ce74bcaff4306886cd61bf487167e", "version_major": 2, "version_minor": 0}</script></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -992,24 +1094,43 @@ title="Print to PDF"
 </div>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-librairies">
-   Import librairies
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Tutorial: Visualising Lake Water Level (LWL) timeseries
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#import-librairies">
+     Import librairies
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lake-selection">
+   Lake selection
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dowload-and-decompress-data">
+     1. Dowload and decompress data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualise-lake-location">
+   2. Visualise lake location
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-for-data">
-   Download for data
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualise-lake-water-level-time-series">
+   3. Visualise lake water level time series
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualise-the-lake-water-level-timeseries">
-   Visualise the Lake Water Level timeseries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indicate-the-position-of-the-lake-on-a-map">
-   Indicate the position of the lake on a map
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualise-lake-water-level-yearly-anomalies">
+   3. Visualise lake water level yearly anomalies
   </a>
  </li>
 </ul>
