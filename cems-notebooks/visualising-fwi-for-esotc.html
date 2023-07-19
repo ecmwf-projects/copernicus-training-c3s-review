@@ -757,11 +757,6 @@ title="Print to PDF"
      Find the fire danger indices historical data
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extracting-the-zip-file">
-     Extracting the zip file:
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -899,7 +894,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if you&#39;re not changing the request, only need to be run once</span>
 <span class="c1"># Choose the name and location of the donwload file</span>
-<span class="n">download_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s2">/download.zip&quot;</span>
+<span class="n">download_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s2">/download.nc&quot;</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">download_file</span><span class="p">):</span>
     <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span>
         <span class="o">**</span><span class="n">cdsapi_kwargs</span>
@@ -907,12 +902,11 @@ title="Print to PDF"
 
     <span class="c1"># The CDS request based on your selections for this example:</span>
     <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s1">&#39;cems-fire-historical&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;cems-fire-historical-v1&#39;</span><span class="p">,</span>
         <span class="p">{</span>
-            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
             <span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="s1">&#39;reanalysis&#39;</span><span class="p">,</span>
             <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;fire_weather_index&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;4.0&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;4.1&#39;</span><span class="p">,</span>
             <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;Consolidated dataset&#39;</span><span class="p">,</span>
             <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s1">&#39;2015&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span>
@@ -937,23 +931,10 @@ title="Print to PDF"
                 <span class="s1">&#39;28&#39;</span><span class="p">,</span> <span class="s1">&#39;29&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;31&#39;</span><span class="p">,</span>
             <span class="p">],</span>
+            <span class="s1">&#39;grid&#39;</span><span class="p">:</span> <span class="s1">&#39;0.25/0.25&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;netcdf&#39;</span><span class="p">,</span>
         <span class="p">},</span>
         <span class="n">download_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="extracting-the-zip-file">
-<h3>Extracting the zip file:<a class="headerlink" href="#extracting-the-zip-file" title="Permalink to this heading">#</a></h3>
-<p>The netCDF files downloaded from the CDS are in a single zip file, so we then extract them into folder using the zipfile library. There is a file for each day, so this will create over 2000 files in the subdirectory <code class="docutils literal notranslate"><span class="pre">2015_2020/</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you already extracted the data, only need to be run once</span>
-<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
-    <span class="n">filelist</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="s2">&quot;2015_2020&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">zip_ref</span><span class="o">.</span><span class="n">namelist</span><span class="p">()]</span>
-    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/2015_2020&#39;</span><span class="p">)</span>
-<span class="n">filelist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filelist</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -969,8 +950,8 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For a global grid:</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-    <span class="n">filelist</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+    <span class="n">download_file</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
 <span class="p">)</span>
 
 <span class="c1"># make sure the fields has the right longitude record from -180 to 180</span>
@@ -978,7 +959,20 @@ title="Print to PDF"
 <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sortby</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">longitude</span><span class="p">)</span>
 
 <span class="c1"># We only have one variable (FWI), so we convert to a dataarray for easier computation:</span>
-<span class="n">da</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">fwi</span>
+<span class="n">da</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">fwinx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/anaconda3/lib/python3.9/site-packages/xarray/core/indexing.py:1227: PerformanceWarning: Slicing is producing a large chunk. To accept the large
+chunk and silence this warning, set the option
+    &gt;&gt;&gt; with dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: False}):
+    ...     array[indexer]
+
+To avoid creating the large chunks, set the option
+    &gt;&gt;&gt; with dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: True}):
+    ...     array[indexer]
+  return self.array[key]
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1026,6 @@ title="Print to PDF"
 }
 
 html[theme=dark],
-body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -1045,7 +1038,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block !important;
+  display: block;
   min-width: 300px;
   max-width: 700px;
 }
@@ -1262,11 +1255,6 @@ body.vscode-dark {
   grid-column: 4;
 }
 
-.xr-index-preview {
-  grid-column: 2 / 5;
-  color: var(--xr-font-color2);
-}
-
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -1288,16 +1276,14 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data,
-.xr-index-data {
+.xr-var-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data,
-.xr-index-data-in:checked ~ .xr-index-data {
+.xr-var-data-in:checked ~ .xr-var-data {
   display: block;
 }
 
@@ -1307,16 +1293,13 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
-.xr-index-name div,
-.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data,
-.xr-index-data {
+.xr-var-data {
   grid-column: 1 / -1;
 }
 
@@ -1354,8 +1337,7 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2,
-.xr-no-icon {
+.xr-icon-file-text2 {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1364,21 +1346,16 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;fwi&#x27; (year: 6, latitude: 721, longitude: 1440)&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;fwinx&#x27; (year: 6, latitude: 721, longitude: 1440)&gt;
 dask.array&lt;stack, shape=(6, 721, 1440), dtype=int64, chunksize=(1, 721, 1440), chunktype=numpy.ndarray&gt;
 Coordinates:
-  * longitude  (longitude) float32 -180.0 -179.8 -179.5 ... 179.2 179.5 179.8
-  * latitude   (latitude) float32 90.0 89.75 89.5 89.25 ... -89.5 -89.75 -90.0
-  * year       (year) int64 2015 2016 2017 2018 2019 2020
-Attributes:
-    standard_name:  forest_fire_weather_index
-    long_name:      Forest fire weather index
-    units:          Numeric
-    param:          5.4.2
-    institution:    ECMWF</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'fwi'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>year</span>: 6</li><li><span class='xr-has-index'>latitude</span>: 721</li><li><span class='xr-has-index'>longitude</span>: 1440</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-23874829-98a0-40b3-82f8-238c1a904307' class='xr-array-in' type='checkbox' checked><label for='section-23874829-98a0-40b3-82f8-238c1a904307' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 721, 1440), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    surface    float64 0.0
+  * latitude   (latitude) float64 90.0 89.75 89.5 89.25 ... -89.5 -89.75 -90.0
+  * longitude  (longitude) float64 -180.0 -179.8 -179.5 ... 179.2 179.5 179.8
+  * year       (year) int64 2015 2016 2017 2018 2019 2020</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'fwinx'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>year</span>: 6</li><li><span class='xr-has-index'>latitude</span>: 721</li><li><span class='xr-has-index'>longitude</span>: 1440</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-c09776e2-d838-47ae-8a89-f5468825d326' class='xr-array-in' type='checkbox' checked><label for='section-c09776e2-d838-47ae-8a89-f5468825d326' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 721, 1440), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
     <tr>
         <td>
-            <table style="border-collapse: collapse;">
+            <table>
                 <thead>
                     <tr>
                         <td> </td>
@@ -1400,12 +1377,14 @@ Attributes:
                         <td> (1, 721, 1440) </td>
                     </tr>
                     <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 6 chunks in 4438 graph layers </td>
+                        <th> Count </th>
+                        <td> 69 Tasks </td>
+                        <td> 6 Chunks </td>
                     </tr>
                     <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> int64 numpy.ndarray </td>
+                    <th> Type </th>
+                    <td> int64 </td>
+                    <td> numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -1463,18 +1442,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></div></li><li class='xr-section-item'><input id='section-76caf945-0f65-405f-9124-130de40a56fd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-76caf945-0f65-405f-9124-130de40a56fd' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-180.0 -179.8 ... 179.5 179.8</div><input id='attrs-039d4cb0-7601-4dc4-9301-56d1aabd28d4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-039d4cb0-7601-4dc4-9301-56d1aabd28d4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8ddd181d-9801-426a-9062-0058551b4770' class='xr-var-data-in' type='checkbox'><label for='data-8ddd181d-9801-426a-9062-0058551b4770' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-180.  , -179.75, -179.5 , ...,  179.25,  179.5 ,  179.75],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>90.0 89.75 89.5 ... -89.75 -90.0</div><input id='attrs-2363299e-8411-4223-a00e-111bc7ae83f3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2363299e-8411-4223-a00e-111bc7ae83f3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ee953c16-7767-4b92-b4b8-c5f62dd2fc22' class='xr-var-data-in' type='checkbox'><label for='data-ee953c16-7767-4b92-b4b8-c5f62dd2fc22' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>axis :</span></dt><dd>Y</dd></dl></div><div class='xr-var-data'><pre>array([ 90.  ,  89.75,  89.5 , ..., -89.5 , -89.75, -90.  ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>year</span></div><div class='xr-var-dims'>(year)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2015 2016 2017 2018 2019 2020</div><input id='attrs-e3d04e98-e59a-453a-ac49-3acaea890ef0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e3d04e98-e59a-453a-ac49-3acaea890ef0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-31c503f4-eb2c-416f-ba05-cf1c5ce62133' class='xr-var-data-in' type='checkbox'><label for='data-31c503f4-eb2c-416f-ba05-cf1c5ce62133' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([2015, 2016, 2017, 2018, 2019, 2020])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6107aea3-396c-407e-bd98-f23980c15a9a' class='xr-section-summary-in' type='checkbox'  ><label for='section-6107aea3-396c-407e-bd98-f23980c15a9a' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-bea68357-f88c-493b-a61f-b06ac4ceb2e3' class='xr-index-data-in' type='checkbox'/><label for='index-bea68357-f88c-493b-a61f-b06ac4ceb2e3' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([ -180.0, -179.75,  -179.5, -179.25,  -179.0, -178.75,  -178.5,
-              -178.25,  -178.0, -177.75,
-              ...
-                177.5,  177.75,   178.0,  178.25,   178.5,  178.75,   179.0,
-               179.25,   179.5,  179.75],
-             dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=1440))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-6f54e68d-cd04-468f-9dc1-64e6e92fbb03' class='xr-index-data-in' type='checkbox'/><label for='index-6f54e68d-cd04-468f-9dc1-64e6e92fbb03' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([  90.0,  89.75,   89.5,  89.25,   89.0,  88.75,   88.5,  88.25,
-                88.0,  87.75,
-              ...
-              -87.75,  -88.0, -88.25,  -88.5, -88.75,  -89.0, -89.25,  -89.5,
-              -89.75,  -90.0],
-             dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=721))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>year</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-758f57f7-b549-4ced-bdbc-a918416a8170' class='xr-index-data-in' type='checkbox'/><label for='index-758f57f7-b549-4ced-bdbc-a918416a8170' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Int64Index([2015, 2016, 2017, 2018, 2019, 2020], dtype=&#x27;int64&#x27;, name=&#x27;year&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9690435b-85f6-4d49-a662-9b5537c46e74' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9690435b-85f6-4d49-a662-9b5537c46e74' class='xr-section-summary' >Attributes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>forest_fire_weather_index</dd><dt><span>long_name :</span></dt><dd>Forest fire weather index</dd><dt><span>units :</span></dt><dd>Numeric</dd><dt><span>param :</span></dt><dd>5.4.2</dd><dt><span>institution :</span></dt><dd>ECMWF</dd></dl></div></li></ul></div></div></div></div>
+</table></div></div></li><li class='xr-section-item'><input id='section-d8b756a8-b3a8-4e9a-a17c-250e89eb1a51' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d8b756a8-b3a8-4e9a-a17c-250e89eb1a51' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>surface</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-b1091ad3-e2aa-4064-91f1-c6363d26ca02' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b1091ad3-e2aa-4064-91f1-c6363d26ca02' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bcc73a3a-197d-408d-8901-524face937f7' class='xr-var-data-in' type='checkbox'><label for='data-bcc73a3a-197d-408d-8901-524face937f7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>original GRIB coordinate for key: level(surface)</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array(0.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.75 89.5 ... -89.75 -90.0</div><input id='attrs-26942e3a-e6f0-4ad5-ac76-7fae53dae78a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-26942e3a-e6f0-4ad5-ac76-7fae53dae78a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7e148efe-2424-450e-a01f-df880e4e6fbc' class='xr-var-data-in' type='checkbox'><label for='data-7e148efe-2424-450e-a01f-df880e4e6fbc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90.  ,  89.75,  89.5 , ..., -89.5 , -89.75, -90.  ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-180.0 -179.8 ... 179.5 179.8</div><input id='attrs-1cda4f4e-1ac4-477d-bf16-591b48bae578' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1cda4f4e-1ac4-477d-bf16-591b48bae578' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d44da788-3049-4bce-ae05-b89b620fb42d' class='xr-var-data-in' type='checkbox'><label for='data-d44da788-3049-4bce-ae05-b89b620fb42d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-180.  , -179.75, -179.5 , ...,  179.25,  179.5 ,  179.75])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>year</span></div><div class='xr-var-dims'>(year)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2015 2016 2017 2018 2019 2020</div><input id='attrs-a5d3c87b-7746-4a20-8d6e-65de07795cc8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a5d3c87b-7746-4a20-8d6e-65de07795cc8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c6c7b3ff-2ae7-439c-b27e-4fb391259aee' class='xr-var-data-in' type='checkbox'><label for='data-c6c7b3ff-2ae7-439c-b27e-4fb391259aee' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([2015, 2016, 2017, 2018, 2019, 2020])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-aea52269-44d8-46e0-b635-bd4c2ba677a3' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-aea52269-44d8-46e0-b635-bd4c2ba677a3' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Then we calculate a climatology for the period 2015 to 2019 and use that to calculate the anomaly for 2020</p>
 <div class="cell docutils container">
@@ -1520,7 +1488,6 @@ Attributes:
 }
 
 html[theme=dark],
-body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -1533,7 +1500,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block !important;
+  display: block;
   min-width: 300px;
   max-width: 700px;
 }
@@ -1750,11 +1717,6 @@ body.vscode-dark {
   grid-column: 4;
 }
 
-.xr-index-preview {
-  grid-column: 2 / 5;
-  color: var(--xr-font-color2);
-}
-
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -1776,16 +1738,14 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data,
-.xr-index-data {
+.xr-var-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data,
-.xr-index-data-in:checked ~ .xr-index-data {
+.xr-var-data-in:checked ~ .xr-var-data {
   display: block;
 }
 
@@ -1795,16 +1755,13 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
-.xr-index-name div,
-.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data,
-.xr-index-data {
+.xr-var-data {
   grid-column: 1 / -1;
 }
 
@@ -1842,8 +1799,7 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2,
-.xr-no-icon {
+.xr-icon-file-text2 {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1852,15 +1808,16 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;fwi&#x27; (latitude: 721, longitude: 1440)&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;fwinx&#x27; (latitude: 721, longitude: 1440)&gt;
 dask.array&lt;sub, shape=(721, 1440), dtype=float64, chunksize=(721, 1440), chunktype=numpy.ndarray&gt;
 Coordinates:
-  * longitude  (longitude) float32 -180.0 -179.8 -179.5 ... 179.2 179.5 179.8
-  * latitude   (latitude) float32 90.0 89.75 89.5 89.25 ... -89.5 -89.75 -90.0
-    year       int64 2020</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'fwi'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 721</li><li><span class='xr-has-index'>longitude</span>: 1440</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-2463ef2e-2fe3-4417-bdf1-317fb1e7af5c' class='xr-array-in' type='checkbox' checked><label for='section-2463ef2e-2fe3-4417-bdf1-317fb1e7af5c' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(721, 1440), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    surface    float64 0.0
+  * latitude   (latitude) float64 90.0 89.75 89.5 89.25 ... -89.5 -89.75 -90.0
+  * longitude  (longitude) float64 -180.0 -179.8 -179.5 ... 179.2 179.5 179.8
+    year       int64 2020</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'fwinx'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 721</li><li><span class='xr-has-index'>longitude</span>: 1440</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-d6f6a55f-5b2d-48f8-aefd-ef2e83baa5b8' class='xr-array-in' type='checkbox' checked><label for='section-d6f6a55f-5b2d-48f8-aefd-ef2e83baa5b8' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(721, 1440), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
     <tr>
         <td>
-            <table style="border-collapse: collapse;">
+            <table>
                 <thead>
                     <tr>
                         <td> </td>
@@ -1882,12 +1839,14 @@ Coordinates:
                         <td> (721, 1440) </td>
                     </tr>
                     <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 1 chunks in 4444 graph layers </td>
+                        <th> Count </th>
+                        <td> 84 Tasks </td>
+                        <td> 1 Chunks </td>
                     </tr>
                     <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> float64 numpy.ndarray </td>
+                    <th> Type </th>
+                    <td> float64 </td>
+                    <td> numpy.ndarray </td>
                     </tr>
                 </tbody>
             </table>
@@ -1912,18 +1871,7 @@ Coordinates:
 </svg>
         </td>
     </tr>
-</table></div></div></li><li class='xr-section-item'><input id='section-f6733ced-e376-48f3-b035-e47b9ca93880' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f6733ced-e376-48f3-b035-e47b9ca93880' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-180.0 -179.8 ... 179.5 179.8</div><input id='attrs-d0d9326d-2d6a-4189-8cd6-3577ebef4d11' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-d0d9326d-2d6a-4189-8cd6-3577ebef4d11' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e1c12c51-4551-489c-8e77-76661e3d44a7' class='xr-var-data-in' type='checkbox'><label for='data-e1c12c51-4551-489c-8e77-76661e3d44a7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-180.  , -179.75, -179.5 , ...,  179.25,  179.5 ,  179.75],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>90.0 89.75 89.5 ... -89.75 -90.0</div><input id='attrs-e0249076-c734-46a6-99b8-bcd4fbcca898' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e0249076-c734-46a6-99b8-bcd4fbcca898' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ba541808-b1fa-4453-9492-0bd157b6c826' class='xr-var-data-in' type='checkbox'><label for='data-ba541808-b1fa-4453-9492-0bd157b6c826' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>axis :</span></dt><dd>Y</dd></dl></div><div class='xr-var-data'><pre>array([ 90.  ,  89.75,  89.5 , ..., -89.5 , -89.75, -90.  ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>year</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2020</div><input id='attrs-2b8346ae-e4cc-412b-8cf2-56b915102fa1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2b8346ae-e4cc-412b-8cf2-56b915102fa1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-640a8578-a076-4a35-abb9-eb568b47fb89' class='xr-var-data-in' type='checkbox'><label for='data-640a8578-a076-4a35-abb9-eb568b47fb89' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(2020)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b62f3850-87fc-40e3-a5b2-5e03bd7f5459' class='xr-section-summary-in' type='checkbox'  ><label for='section-b62f3850-87fc-40e3-a5b2-5e03bd7f5459' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b96dce50-513d-4562-a519-588e4dcf92d9' class='xr-index-data-in' type='checkbox'/><label for='index-b96dce50-513d-4562-a519-588e4dcf92d9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([ -180.0, -179.75,  -179.5, -179.25,  -179.0, -178.75,  -178.5,
-              -178.25,  -178.0, -177.75,
-              ...
-                177.5,  177.75,   178.0,  178.25,   178.5,  178.75,   179.0,
-               179.25,   179.5,  179.75],
-             dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=1440))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-fa1b7eca-7537-4531-956c-616d30bdd6a3' class='xr-index-data-in' type='checkbox'/><label for='index-fa1b7eca-7537-4531-956c-616d30bdd6a3' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([  90.0,  89.75,   89.5,  89.25,   89.0,  88.75,   88.5,  88.25,
-                88.0,  87.75,
-              ...
-              -87.75,  -88.0, -88.25,  -88.5, -88.75,  -89.0, -89.25,  -89.5,
-              -89.75,  -90.0],
-             dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=721))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ce57f7e6-c754-41de-97fe-863061675de0' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-ce57f7e6-c754-41de-97fe-863061675de0' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</table></div></div></li><li class='xr-section-item'><input id='section-a4e5375c-175b-4762-94c0-a3b76c7876df' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a4e5375c-175b-4762-94c0-a3b76c7876df' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>surface</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-fc5b0f1b-b4c4-4af8-8341-54c2aae7f651' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fc5b0f1b-b4c4-4af8-8341-54c2aae7f651' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-07062bf7-8539-4b94-9c4e-1d79e2ad06da' class='xr-var-data-in' type='checkbox'><label for='data-07062bf7-8539-4b94-9c4e-1d79e2ad06da' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>original GRIB coordinate for key: level(surface)</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array(0.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.75 89.5 ... -89.75 -90.0</div><input id='attrs-0c74a540-ec70-412c-97d5-2601be873ece' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0c74a540-ec70-412c-97d5-2601be873ece' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8aca8d02-5767-4ee6-a867-dd63b750fb1e' class='xr-var-data-in' type='checkbox'><label for='data-8aca8d02-5767-4ee6-a867-dd63b750fb1e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90.  ,  89.75,  89.5 , ..., -89.5 , -89.75, -90.  ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-180.0 -179.8 ... 179.5 179.8</div><input id='attrs-b66139bb-8ecd-4853-b82d-ab6c8910df8f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b66139bb-8ecd-4853-b82d-ab6c8910df8f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9fc35aea-33b5-4ae3-8253-20ecec5799c6' class='xr-var-data-in' type='checkbox'><label for='data-9fc35aea-33b5-4ae3-8253-20ecec5799c6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-180.  , -179.75, -179.5 , ...,  179.25,  179.5 ,  179.75])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>year</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2020</div><input id='attrs-ef7e051e-aa52-4019-82b1-724bcbe5c039' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ef7e051e-aa52-4019-82b1-724bcbe5c039' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c0fefdbf-ef02-4fa9-a630-2aa8892c6dbd' class='xr-var-data-in' type='checkbox'><label for='data-c0fefdbf-ef02-4fa9-a630-2aa8892c6dbd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(2020)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-00a2a2c5-59f8-48bd-8e1d-971fd8f658e8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-00a2a2c5-59f8-48bd-8e1d-971fd8f658e8' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 </section>
 </section>
@@ -2008,7 +1956,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6c3e1be0ceeb807dde4609f6f4e148a04fdffbbf6f46e76a4edb450c77baea0c.png" src="../_images/6c3e1be0ceeb807dde4609f6f4e148a04fdffbbf6f46e76a4edb450c77baea0c.png" />
+<img alt="../_images/2e4192829b4c10ac8aa7f9616e3c8a6334aa9e7c935680fd328efeb3e4130f47.png" src="../_images/2e4192829b4c10ac8aa7f9616e3c8a6334aa9e7c935680fd328efeb3e4130f47.png" />
 </div>
 </div>
 <section id="produce-maps-for-each-of-the-esotc-regions">
@@ -2052,11 +2000,11 @@ Central Europe: 2°–24°E, 45°–55°N</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/acf8454aee0f31528193ce8ee6f3802d075571791a71c3d5d73be14accd1e67d.png" src="../_images/acf8454aee0f31528193ce8ee6f3802d075571791a71c3d5d73be14accd1e67d.png" />
-<img alt="../_images/6e26dfbda0c268aa133c079a844a8581d11b20286480a08d3ac184d6d525f71f.png" src="../_images/6e26dfbda0c268aa133c079a844a8581d11b20286480a08d3ac184d6d525f71f.png" />
-<img alt="../_images/de3ef0c3ba5df5eb016172a1f123236745fbfc711e42931834f8460b8eb0745d.png" src="../_images/de3ef0c3ba5df5eb016172a1f123236745fbfc711e42931834f8460b8eb0745d.png" />
-<img alt="../_images/71573a03c1ac0c78684947ee7fcd3168227109c663da1959425421a95ba774f3.png" src="../_images/71573a03c1ac0c78684947ee7fcd3168227109c663da1959425421a95ba774f3.png" />
-<img alt="../_images/f7582692f61a2fbd27fcb7c532d0d80599fc8dcc00c566aa67377d33f6491e36.png" src="../_images/f7582692f61a2fbd27fcb7c532d0d80599fc8dcc00c566aa67377d33f6491e36.png" />
+<img alt="../_images/73e3193500cf956f37f9af23b488ff685090906dd281126417ea086b238d452e.png" src="../_images/73e3193500cf956f37f9af23b488ff685090906dd281126417ea086b238d452e.png" />
+<img alt="../_images/b07eb8d652087543d5ecc103786a1aefda3df87742983d894f2f22358d49e4d3.png" src="../_images/b07eb8d652087543d5ecc103786a1aefda3df87742983d894f2f22358d49e4d3.png" />
+<img alt="../_images/8349c9ef00eff6caa9ccc147478aaf4ded8e0d30d21c35887533fdfdcb934f92.png" src="../_images/8349c9ef00eff6caa9ccc147478aaf4ded8e0d30d21c35887533fdfdcb934f92.png" />
+<img alt="../_images/7f94678880395ca39740b59b585629cc09e48cb63ffd9a3ff067ae0c10edbe6d.png" src="../_images/7f94678880395ca39740b59b585629cc09e48cb63ffd9a3ff067ae0c10edbe6d.png" />
+<img alt="../_images/7e76609dc9a75234bc4dac06e37c0c82428a35996680c8ef6c4957563d644ed4.png" src="../_images/7e76609dc9a75234bc4dac06e37c0c82428a35996680c8ef6c4957563d644ed4.png" />
 </div>
 </div>
 </section>
@@ -2139,11 +2087,6 @@ Central Europe: 2°–24°E, 45°–55°N</p>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#find-the-fire-danger-indices-historical-data">
      Find the fire danger indices historical data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extracting-the-zip-file">
-     Extracting the zip file:
     </a>
    </li>
   </ul>
