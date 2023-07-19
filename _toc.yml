@@ -38,6 +38,10 @@ parts:
      title: Lake Water Level Timeseries
    - file: ecv-notebooks/lake-surface-water-temperature
      title: Lake Surface Water Temperature Analysis
+   - file: ecv-notebook/greenhouse-gases-level2-products
+     title: Greenhouse Gas Level 2 Products
+   - file: ecv-notebook/greenhouse-gases-level3-products
+     title: Greenhouse Gas Level 3 Products
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
    - file: cems-notebooks/visualising-fwi-for-esotc
