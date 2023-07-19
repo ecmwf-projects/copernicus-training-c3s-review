@@ -1,0 +1,1516 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>How to access, read and process satellite XCO2 and XCH4 Level 3 data products &#8212; C3S Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/greenhouse-gases-level3-products';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
+                        CDS tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
+                        Climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
+                        Heatwave Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
+                        Climate Projections (CMIP6)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cordex.html">
+                        Climate Projections (CORDEX)
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
+                        Seasonal Forecast Anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-verification.html">
+                        Seasonal Forecast Verification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ci-windchill.html">
+                        Windchill Index Calculation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
+                        Outgoing Longwave Radiation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
+                        Soil Moisture Anomaly Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-water-level.html">
+                        Lake Water Level Timeseries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
+                        Lake Surface Water Temperature Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
+                        Visualising fire weather index (FWI)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
+                        Observing major flood events
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
+                        Python library (ibicus) and tutorials on bias correction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
+                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
+                        CDS tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
+                        Climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
+                        Heatwave Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
+                        Climate Projections (CMIP6)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cordex.html">
+                        Climate Projections (CORDEX)
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
+                        Seasonal Forecast Anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-verification.html">
+                        Seasonal Forecast Verification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ci-windchill.html">
+                        Windchill Index Calculation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
+                        Outgoing Longwave Radiation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
+                        Soil Moisture Anomaly Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-water-level.html">
+                        Lake Water Level Timeseries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
+                        Lake Surface Water Temperature Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
+                        Visualising fire weather index (FWI)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
+                        Observing major flood events
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
+                        Python library (ibicus) and tutorials on bias correction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
+                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cds-tutorial.html">CDS tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reanalysis Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections-cordex.html">Climate Projections (CORDEX)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sf-verification.html">Seasonal Forecast Verification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using Satellite Observations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html">Soil Moisture Anomaly Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">Visualising fire weather index (FWI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cems-notebooks/glofas-bangladesh-floods.html">Observing major flood events</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/greenhouse-gases-level3-products.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">repository</span>
+</a>
+</a>
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/greenhouse-gases-level3-products.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">open issue</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/ecv-notebooks/greenhouse-gases-level3-products.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How to access, read and process satellite XCO2 and XCH4 Level 3 data products</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-get-the-satellite-data-products">
+   How to get the satellite data products:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-download-via-the-cds-website">
+     Data download via the CDS website:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-read-and-process-the-satellite-data-with-python">
+   How to read and process the satellite data with Python:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-user-input">
+   Initial user input:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-settings">
+   Initial settings:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-obs4mips-file">
+   Read OBS4MIPS file:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compute-and-plot-time-series">
+   Compute and plot time series:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#monthly-data-on-world-map">
+   Monthly data on world map
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <p><a id='page-top'></a> <img src='../img/LogoLine_horizon_C3S.png' alt='Logo EU Copernicus ECMWF' align='right' width='100%'></img></p>
+<section class="tex2jax_ignore mathjax_ignore" id="how-to-access-read-and-process-satellite-xco2-and-xch4-level-3-data-products">
+<h1>How to access, read and process satellite XCO2 and XCH4 Level 3 data products<a class="headerlink" href="#how-to-access-read-and-process-satellite-xco2-and-xch4-level-3-data-products" title="Permalink to this heading">#</a></h1>
+<p>This is a Jupyter Notebook illustrating how to access, read and process Greenhouse Gas (GHG) carbon dioxide (CO2) and methane (CH4) data products as generated in the framework of the Copernicus Climate Change Service (C3S) project C3S2_312a_Lot2.</p>
+<p>The data products are retrieved from satellite radiance measurements using appropriate retrieval algorithms. Most of these algorithms have been developed in the past within the Climate Change Initiative (CCI) of the European Space Agency (ESA). These algorithms are now used to operationally generate the corresponding data products within the European Union (EU) C3S project. The data products are freely available for all interested users from the Copernicus Climate Data Store (CDS,
+<a class="reference external" href="https://cds.climate.copernicus.eu/">https://cds.climate.copernicus.eu/</a>).</p>
+<p>In project C3S2_312a_Lot2 several satellite-derived Essential Climate Variable (ECV) atmospheric data products are generated for GHGs (CO2 and CH4), aerosols and ozone. This Jupyter Notebook (JN) focusses on GHG Level 3 (L3) products. The other products are covered by separate JNs. The L3 products are available at a spatial resolution of 5 deg latitude times 5 deg longitude and monthly time resolution. In contrast, Level 2 (L2) products contain retrieved parameters for individual satellite ground pixels (footprints).</p>
+<p>Here it will be shown how the L3 data products can be obtained from the CDS and how they can be processed to extract important information and how to visualize this information in the form of time series and spatial maps.</p>
+<p>The L3 products are column-averaged dry-air mole fractions of CO2 and CH4, denoted XCO2 (in ppm) and XCH4 (in ppb). They are derived from SCIAMACHY/ENVISAT, GOSAT, GOSAT-2 and OCO-2.</p>
+<p>The relevant peer-reviewed publication describing the algorithm and an earlier version of the data products is Reuter et al., 2020 (<a class="reference external" href="https://amt.copernicus.org/articles/13/789/2020/">https://amt.copernicus.org/articles/13/789/2020/</a>). The relevant technical documentation and further information is available on the CDS website (<a class="reference external" href="https://cds.climate.copernicus.eu/">https://cds.climate.copernicus.eu/</a>).</p>
+<p>The L3 XCO2 data product has the product identifier (ID) XCO2_OBS4MIPS and the L3 XCH4 product ID is XCH4_OBS4MIPS. Each product consists of a single NetCDF file in Obs4MIPs format (<a class="reference external" href="https://esgf-node.llnl.gov/projects/obs4mips/">https://esgf-node.llnl.gov/projects/obs4mips/</a>).</p>
+<p>The code has been tested using the latest versions of the satellite data products, which at the time of writing is version 4.4, and covers the period from beginning of 2003 to end of 2021.</p>
+<p>This document is provided “as is” and no guarantee of warranty is given that the content is fit for any particular purpose. The users thereof usethis document at their sole risk and liability.</p>
+<section id="how-to-get-the-satellite-data-products">
+<h2>How to get the satellite data products:<a class="headerlink" href="#how-to-get-the-satellite-data-products" title="Permalink to this heading">#</a></h2>
+<p>Each satellite-derived CO2 or CH4 data product as generated in C3S project C3S2_312a_Lot2 has a unique product identifier (ID). The product IDs of the products used here are: XCO2_OBS4MIPS and XCH4_OBS4MIPS.</p>
+<p>On the CDS website these products can be selected using “MERGED and OBS4MIPS” as explained below.</p>
+<p>Note that all other satellite-derived CO2 and CH4 products are Level 2 (L2) products. L2 products are not gridded (in contrast to the OBS4MIPS L3 products) but contain information for each single satellite footprint (ground pixel) which implies a different data format. How to read and use the L2 products is illustrated in a separate Jupyter Notebook (JN).</p>
+<p>The XCO2_OBS4MIPS data product is a single file in NetCDF format. Also the XCH4_OBS4MIPS product is a single file and has essentially the same format as the XCO2_OBS4MIPS file (except that some variable names start with xch4 instead of xco2).</p>
+<p>Arguably the easiest way to get the data is to download them from the CDS website by clicking on the relevant entries
+as provided via the CDS user interface. How to do this is explained in the following section.</p>
+<section id="data-download-via-the-cds-website">
+<h3>Data download via the CDS website:<a class="headerlink" href="#data-download-via-the-cds-website" title="Permalink to this heading">#</a></h3>
+<p>Goto:
+<a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">https://cds.climate.copernicus.eu/#!/home</a></p>
+<p>In the following we explain how to obtain the XCO2_OBS4MIPS v4.4 product. Essentially the same method can be used to get the corresponding methane XCH4_OBS4MIPS v4.4 product.</p>
+<p>Search for: CO2.</p>
+<p>Then click on:</p>
+<ul class="simple">
+<li><p>Carbon dioxide data from 2002 to present derived from satellite observations</p></li>
+<li><p>Download data</p></li>
+</ul>
+<p>Then select:</p>
+<ul class="simple">
+<li><p>Level 3</p></li>
+<li><p>Column-average dry-air mole fraction of atmospheric Carbon Dioxide (XCO2) and related variables</p></li>
+<li><p>MERGED and OBS4MIPS</p></li>
+<li><p>4.4</p></li>
+<li><p>Zip file (.zip)</p></li>
+</ul>
+<p>Then:</p>
+<ul class="simple">
+<li><p>Login/register to submit request (use “Create new account”, if needed)</p></li>
+<li><p>Click on: Download</p></li>
+<li><p>Unzip the file and move it to the current directory.</p></li>
+<li><p>Add “XCO2_” at the beginning of the XCO2 filename and “XCH4_” at the beginning of the XCH4 filename.</p></li>
+</ul>
+<p>Finally, the following two files should be located in the current directory:</p>
+<p>XCO2_200301_202112-C3S-L3_GHG-GHG_PRODUCTS-MERGED-MERGED-OBS4MIPS-MERGED-v4.4.nc</p>
+<p>XCH4_200301_202112-C3S-L3_GHG-GHG_PRODUCTS-MERGED-MERGED-OBS4MIPS-MERGED-v4.4.nc</p>
+</section>
+</section>
+<section id="how-to-read-and-process-the-satellite-data-with-python">
+<h2>How to read and process the satellite data with Python:<a class="headerlink" href="#how-to-read-and-process-the-satellite-data-with-python" title="Permalink to this heading">#</a></h2>
+<p>In the following, Phython 3 code is provided to read and process the satellite data.</p>
+<p>It is assumed that Python and Jupyter Notebook (JN) is installed on your computer, e.g., using the Anaconda distribution (<a class="reference external" href="https://www.anaconda.com/products/distribution">https://www.anaconda.com/products/distribution</a>).</p>
+<p>The code starts with importing several modules as needed to run this JN. See section “Imports”.</p>
+</section>
+<section id="imports">
+<h2>Imports:<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">netCDF4</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+<span class="kn">import</span> <span class="nn">juliandate</span> <span class="k">as</span> <span class="nn">jd</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="initial-user-input">
+<h2>Initial user input:<a class="headerlink" href="#initial-user-input" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select one main_product:</span>
+<span class="c1">#main_product = &#39;XCO2&#39;</span>
+<span class="n">main_product</span> <span class="o">=</span> <span class="s1">&#39;XCH4&#39;</span>
+
+<span class="c1"># Set input file names, product ID and version number:</span>
+<span class="k">if</span> <span class="n">main_product</span> <span class="o">==</span> <span class="s1">&#39;XCO2&#39;</span><span class="p">:</span>
+   <span class="n">in_file</span>     <span class="o">=</span> <span class="s1">&#39;XCO2_200301_202112-C3S-L3_GHG-GHG_PRODUCTS-MERGED-MERGED-OBS4MIPS-MERGED-v4.4.nc&#39;</span>
+   <span class="n">product_ver</span> <span class="o">=</span> <span class="s1">&#39;XCO2_OBS4MIPS v4.4&#39;</span> 
+<span class="k">if</span> <span class="n">main_product</span> <span class="o">==</span> <span class="s1">&#39;XCH4&#39;</span><span class="p">:</span>
+   <span class="n">in_file</span>     <span class="o">=</span> <span class="s1">&#39;XCH4_200301_202112-C3S-L3_GHG-GHG_PRODUCTS-MERGED-MERGED-OBS4MIPS-MERGED-v4.4.nc&#39;</span>
+   <span class="n">product_ver</span> <span class="o">=</span> <span class="s1">&#39;XCH4_OBS4MIPS v4.4&#39;</span> 
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* main_product: &#39;</span><span class="p">,</span> <span class="n">main_product</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* main_product:  XCH4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="initial-settings">
+<h2>Initial settings:<a class="headerlink" href="#initial-settings" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set units etc.:</span>
+<span class="k">if</span> <span class="n">main_product</span> <span class="o">==</span> <span class="s1">&#39;XCO2&#39;</span><span class="p">:</span>
+   <span class="n">xghg_unit</span>  <span class="o">=</span> <span class="s1">&#39;ppm&#39;</span>
+   <span class="n">xghg_str</span>   <span class="o">=</span> <span class="s1">&#39;Carbon dioxide&#39;</span>
+   <span class="n">xghg_str1</span>  <span class="o">=</span> <span class="s1">&#39;XCO$_2$&#39;</span>
+   <span class="n">xghg_str2</span>  <span class="o">=</span> <span class="s1">&#39;Column-averaged CO$_2$, XCO$_2$ [ppm]&#39;</span>
+<span class="k">if</span> <span class="n">main_product</span> <span class="o">==</span> <span class="s1">&#39;XCH4&#39;</span><span class="p">:</span>
+   <span class="n">xghg_unit</span>  <span class="o">=</span> <span class="s1">&#39;ppb&#39;</span>
+   <span class="n">xghg_str</span>   <span class="o">=</span> <span class="s1">&#39;Methane&#39;</span>
+   <span class="n">xghg_str1</span>  <span class="o">=</span> <span class="s1">&#39;XCH$_4$&#39;</span>
+   <span class="n">xghg_str2</span>  <span class="o">=</span> <span class="s1">&#39;Column-averaged CH$_4$, XCH$_4$ [ppb]&#39;</span>
+    
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span> <span class="c1"># seaborn style for plots</span>
+
+<span class="c1"># Select:</span>
+<span class="n">plot_type</span> <span class="o">=</span> <span class="s1">&#39;png&#39;</span>
+<span class="c1">#plot_type = &#39;screen&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="functions">
+<h2>Functions:<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert OBS4MIPS start time (first dim of time_bnds) into year and month</span>
+<span class="c1"># Input:  o4m_start_time: month start time in days since 01-01-1990</span>
+<span class="c1"># Output: year and month for each time index (two 1D arrays with same length as o4m_start_time)</span>
+<span class="k">def</span> <span class="nf">get_year_month_from_o4m_time</span><span class="p">(</span><span class="n">o4m_start_time</span><span class="p">):</span>
+   <span class="c1">#import datetime</span>
+   <span class="c1">#import math</span>
+   <span class="c1">#import numpy as np</span>
+   <span class="n">o4m_year</span>  <span class="o">=</span> <span class="kc">None</span>
+   <span class="n">o4m_month</span> <span class="o">=</span> <span class="kc">None</span>
+   <span class="n">o4m_start_time_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">o4m_start_time</span><span class="p">)</span>
+   <span class="n">n_times</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">o4m_start_time_np</span><span class="p">)</span>
+   <span class="c1">#print(&#39;* n_times: &#39;, n_times)</span>
+   <span class="n">jd2_ref</span> <span class="o">=</span> <span class="n">jd</span><span class="o">.</span><span class="n">from_gregorian</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+   <span class="n">data_ok</span> <span class="o">=</span> <span class="mi">1</span>     <span class="c1"># Assume all is OK</span>
+   <span class="n">n_ok</span>    <span class="o">=</span> <span class="mi">0</span>
+   <span class="k">if</span> <span class="n">n_times</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">pass</span>
+      <span class="n">year</span>  <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">month</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1"># ----------------------------------</span>
+      <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_times</span><span class="p">):</span>
+         <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">act_time</span>   <span class="o">=</span> <span class="n">o4m_start_time_np</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+            <span class="n">time_grego</span> <span class="o">=</span> <span class="n">jd2_ref</span> <span class="o">+</span> <span class="n">act_time</span> <span class="o">+</span> <span class="mi">15</span>
+            <span class="n">act_date</span>   <span class="o">=</span> <span class="n">jd</span><span class="o">.</span><span class="n">to_gregorian</span><span class="p">(</span><span class="n">time_grego</span><span class="p">)</span>
+            <span class="n">act_year</span>   <span class="o">=</span> <span class="n">act_date</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">act_month</span>  <span class="o">=</span> <span class="n">act_date</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="c1">#gre_cmp = jd.from_gregorian(act_year, act_month, 1)</span>
+            <span class="c1">#print(&#39;* ii act_time yy mm: &#39;, ii, act_time, act_year, act_month)</span>
+            <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+               <span class="n">n_ok</span>    <span class="o">=</span> <span class="n">n_ok</span> <span class="o">+</span> <span class="mi">1</span>
+               <span class="n">year</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">act_year</span><span class="p">)</span>
+               <span class="n">month</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">act_month</span><span class="p">)</span>
+      <span class="c1"># ----------------------------------</span>
+      <span class="k">if</span> <span class="n">n_ok</span> <span class="o">!=</span> <span class="n">n_times</span><span class="p">:</span>
+         <span class="n">data_ok</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="c1"># generate output arrays if all OK:</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">data_ok</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">year</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+            <span class="n">month</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">month</span><span class="p">)</span>
+            <span class="n">o4m_year</span>  <span class="o">=</span> <span class="n">year</span>
+            <span class="n">o4m_month</span> <span class="o">=</span> <span class="n">month</span>
+         <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* ERROR in get_year_month_from_o4m_time: unexpected issue: cannot generate year and month arrays&#39;</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">o4m_year</span><span class="p">,</span> <span class="n">o4m_month</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read input data:</span>
+<span class="c1"># Input: (main_product = &#39;XCO2&#39; or &#39;XCH4&#39;) and OBS4MIPS file name</span>
+<span class="c1"># Output: see below</span>
+<span class="c1"># Note: Listed numerical values for illustration only </span>
+<span class="k">def</span> <span class="nf">read_o4m_file</span><span class="p">(</span><span class="n">main_product</span><span class="p">,</span> <span class="n">in_file</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* read_o4m_file: Trying to read: &#39;</span><span class="p">,</span> <span class="n">in_file</span><span class="p">)</span>
+   <span class="c1"># Init output:</span>
+   <span class="n">xghg</span>          <span class="o">=</span> <span class="kc">None</span> <span class="c1"># XCO2 (in ppm) or XCH4 (in ppb) in cell</span>
+   <span class="n">xghg_unc</span>      <span class="o">=</span> <span class="kc">None</span> <span class="c1"># 1-sigma uncertainty (in ppm or ppb)</span>
+   <span class="n">lat</span>           <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Cell center latitude</span>
+   <span class="n">lon</span>           <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Cell center longitude</span>
+   <span class="n">year</span>          <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Year</span>
+   <span class="n">month</span>         <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Month</span>
+   <span class="n">nobs</span>          <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Number of underlying single observations (can be 0!)</span>
+   <span class="n">land_fraction</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Fraction of cell covered by land</span>
+   <span class="n">c_fac</span> <span class="o">=</span> <span class="mf">0.0</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* ... reading ...&#39;</span><span class="p">)</span>
+      <span class="n">in_file_OK</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">in_file</span><span class="p">)</span>
+      <span class="n">ds</span><span class="o">.</span><span class="n">set_auto_mask</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># then missing values = &#39;--&#39; are 0 (nobs !)</span>
+      <span class="n">all_lat</span>  <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:]</span>  <span class="c1"># 1D: -87.5 -82.5 ...</span>
+      <span class="n">all_lon</span>  <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>  <span class="c1"># 1D -177.5 -172.5 ...</span>
+      <span class="c1">#all_time = ds.variables[&#39;time&#39;][:] # 1D: days since 01-01-1990: 4763.5 4793.0 ...</span>
+      <span class="n">all_time_bnds</span>  <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;time_bnds&#39;</span><span class="p">][:]</span> <span class="c1"># 2D: time boundaries</span>
+      <span class="n">all_time_start</span> <span class="o">=</span> <span class="n">all_time_bnds</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># day number of first day of each month</span>
+      <span class="c1">#all_time_end   = all_time_bnds[:,1] # day number of last day of each month</span>
+      <span class="c1">#nal_lat  = len(all_lat);   print(&#39;* nal_lat: &#39;, nal_lat)   # 36</span>
+      <span class="c1">#nal_lon  = len(all_lon);   print(&#39;* nal_lon: &#39;, nal_lon)   # 72</span>
+      <span class="c1">#nal_time = len(all_time);  print(&#39;* nal_time: &#39;, nal_time) # 228</span>
+      <span class="c1">#del_lat = 180.0 / nal_lat; print(&#39;* del_lat: &#39;, del_lat)   # 5 deg</span>
+      <span class="c1">#del_lon = 360.0 / nal_lon; print(&#39;* del_lon: &#39;, del_lon)   # 5 deg</span>
+      <span class="c1">#n_years = nal_time / 12.0; print(&#39;* n_years: &#39;, n_years)   # 19</span>
+      <span class="n">all_year</span><span class="p">,</span> <span class="n">all_month</span> <span class="o">=</span> <span class="n">get_year_month_from_o4m_time</span><span class="p">(</span><span class="n">all_time_start</span><span class="p">)</span>
+      <span class="n">all_land_fraction</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;land_fraction&#39;</span><span class="p">]</span>
+      <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="c1"># ------------------------------</span>
+         <span class="k">if</span> <span class="n">main_product</span> <span class="o">==</span> <span class="s1">&#39;XCO2&#39;</span><span class="p">:</span>
+            <span class="n">all_xghg</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xco2&#39;</span><span class="p">]</span>                 <span class="c1"># xco2(time,lat,lon)</span>
+            <span class="c1">#print(&#39;* all_xghg.shape: &#39;, all_xghg.shape)    # (228, 36, 72)</span>
+            <span class="n">all_nobs</span>          <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xco2_nobs&#39;</span><span class="p">]</span>   <span class="c1"># Number of used observations in cell</span>
+            <span class="n">all_xghg_unc</span>      <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xco2_stderr&#39;</span><span class="p">]</span> <span class="c1"># 1-sigma uncertainty</span>
+            <span class="n">all_xghg_std</span>      <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xco2_stddev&#39;</span><span class="p">]</span> <span class="c1"># StdDev of used observations in cell</span>
+            <span class="n">c_fac</span> <span class="o">=</span> <span class="mf">1e6</span>                                     <span class="c1"># To convert mixing ratio to ppm</span>
+         <span class="c1"># ------------------------------</span>
+         <span class="k">if</span> <span class="n">main_product</span> <span class="o">==</span> <span class="s1">&#39;XCH4&#39;</span><span class="p">:</span>
+            <span class="n">all_xghg</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xch4&#39;</span><span class="p">]</span>                 <span class="c1"># xch4(time,lat,lon)</span>
+            <span class="c1">#print(&#39;* all_xghg.shape: &#39;, all_xghg.shape)    # (228, 36, 72)</span>
+            <span class="n">all_nobs</span>          <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xch4_nobs&#39;</span><span class="p">]</span>   <span class="c1"># Number of used observations in cell</span>
+            <span class="n">all_xghg_unc</span>      <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xch4_stderr&#39;</span><span class="p">]</span> <span class="c1"># 1-sigma uncertainty</span>
+            <span class="n">all_xghg_std</span>      <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;xch4_stddev&#39;</span><span class="p">]</span> <span class="c1"># StdDev of used observations in cell</span>
+            <span class="n">c_fac</span> <span class="o">=</span> <span class="mf">1e9</span>                                     <span class="c1"># To convert mixing ratio to ppb</span>
+         <span class="c1"># ------------------------------</span>
+   <span class="k">else</span><span class="p">:</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* read_o4m_file: ERROR: input file does not exist !&#39;</span><span class="p">)</span>
+       <span class="n">in_file_OK</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">in_file_OK</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="n">xghg</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_xghg</span><span class="p">)</span>
+         <span class="n">xghg_unc</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_xghg_unc</span><span class="p">)</span>
+         <span class="n">xghg</span>          <span class="o">=</span> <span class="n">xghg</span> <span class="o">*</span> <span class="n">c_fac</span> <span class="c1"># convert to ppm or ppb</span>
+         <span class="n">xghg_unc</span>      <span class="o">=</span> <span class="n">xghg_unc</span> <span class="o">*</span> <span class="n">c_fac</span>
+         <span class="n">lat</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_lat</span><span class="p">)</span>
+         <span class="n">lon</span>           <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_lon</span><span class="p">)</span>
+         <span class="n">year</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_year</span><span class="p">)</span>
+         <span class="n">month</span>         <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_month</span><span class="p">)</span>
+         <span class="n">nobs</span>          <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_nobs</span><span class="p">)</span>
+         <span class="n">land_fraction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_land_fraction</span><span class="p">)</span>
+         <span class="n">ds</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+   <span class="k">return</span> <span class="n">xghg</span><span class="p">,</span> <span class="n">xghg_unc</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">nobs</span><span class="p">,</span> <span class="n">land_fraction</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-obs4mips-file">
+<h2>Read OBS4MIPS file:<a class="headerlink" href="#read-obs4mips-file" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read OBS4MIPS file:</span>
+<span class="n">read_o4m_file_OK</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">missing_val</span> <span class="o">=</span> <span class="mf">1e10</span> <span class="c1"># keep</span>
+<span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+   <span class="n">xghg</span><span class="p">,</span> <span class="n">xghg_unc</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">nobs</span><span class="p">,</span> <span class="n">land_fraction</span> <span class="o">=</span> <span class="n">read_o4m_file</span><span class="p">(</span><span class="n">main_product</span><span class="p">,</span> <span class="n">in_file</span><span class="p">)</span>
+   <span class="k">if</span> <span class="n">xghg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* ERROR: Issues reading satellite input data !&#39;</span><span class="p">)</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">read_o4m_file_OK</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">if</span> <span class="p">((</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">read_o4m_file_OK</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* Array dimensions:&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* xghg.shape: &#39;</span><span class="p">,</span> <span class="n">xghg</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* nobs.shape: &#39;</span><span class="p">,</span> <span class="n">nobs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* year.shape: &#39;</span><span class="p">,</span> <span class="n">year</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* lat.shape: &#39;</span><span class="p">,</span>  <span class="n">lat</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* lon.shape: &#39;</span><span class="p">,</span>  <span class="n">lon</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* land_fraction.shape: &#39;</span><span class="p">,</span> <span class="n">land_fraction</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* read_o4m_file: Trying to read:  XCH4_200301_202112-C3S-L3_GHG-GHG_PRODUCTS-MERGED-MERGED-OBS4MIPS-MERGED-v4.4.nc
+* ... reading ...
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-and-plot-time-series">
+<h2>Compute and plot time series:<a class="headerlink" href="#compute-and-plot-time-series" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute time series:</span>
+<span class="c1">#</span>
+<span class="c1"># Select latitude band etc.:</span>
+<span class="c1">#lat_min = -90.0; lat_max = 90.0; min_land_fraction = 0.95; lat_str = &#39;Global (90S - 90N, land)&#39;</span>
+<span class="n">lat_min</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">;</span> <span class="n">lat_max</span> <span class="o">=</span> <span class="mf">60.0</span><span class="p">;</span> <span class="n">min_land_fraction</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">;</span> <span class="n">ts_str</span> <span class="o">=</span> <span class="s1">&#39;Northern Midlatitudes (30N - 60N, land)&#39;</span>
+<span class="c1">#</span>
+<span class="k">if</span> <span class="p">((</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">read_o4m_file_OK</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)):</span>
+   <span class="n">n_times</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+   <span class="n">ts_year</span>  <span class="o">=</span> <span class="p">[]</span>
+   <span class="n">ts_month</span> <span class="o">=</span> <span class="p">[]</span>
+   <span class="n">ts_xghg</span>  <span class="o">=</span> <span class="p">[]</span>
+   <span class="c1">#n_times = 145 # test</span>
+   <span class="c1">#n_times = 2   # test</span>
+   <span class="n">n_cnt</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="n">ts_ok</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Assume time series OK</span>
+   <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_times</span><span class="p">):</span>
+      <span class="n">idx_time</span>  <span class="o">=</span> <span class="n">ii</span>
+      <span class="n">act_year</span>  <span class="o">=</span> <span class="n">year</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+      <span class="n">act_month</span> <span class="o">=</span> <span class="n">month</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+      <span class="c1">#print(&#39;* ii act_year act_month: &#39;, ii, act_year, act_month)</span>
+      <span class="n">xghg_act</span>  <span class="o">=</span> <span class="n">xghg</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="c1"># (36, 72); xghg.shape = (228, 36, 72)</span>
+      <span class="n">idx_lat</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">lat</span> <span class="o">&gt;=</span> <span class="n">lat_min</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lat</span> <span class="o">&lt;=</span> <span class="n">lat_max</span><span class="p">))</span>
+      <span class="n">xghg_tmp1</span> <span class="o">=</span> <span class="n">xghg_act</span><span class="p">[</span><span class="n">idx_lat</span><span class="p">,</span> <span class="p">:]</span>
+      <span class="n">lf_tmp1</span>   <span class="o">=</span> <span class="n">land_fraction</span><span class="p">[</span><span class="n">idx_lat</span><span class="p">,</span> <span class="p">:]</span>
+      <span class="n">idx_good</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">xghg_tmp1</span> <span class="o">&lt;</span> <span class="n">missing_val</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lf_tmp1</span> <span class="o">&gt;=</span> <span class="n">min_land_fraction</span><span class="p">))</span>
+      <span class="c1">#idx_good  = np.where((xghg_tmp1 &lt; missing_val))</span>
+      <span class="c1">#len_idx_good = len(idx_good)</span>
+      <span class="c1">#print(&#39;* len_idx_good: &#39;, len_idx_good)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">idx_good</span><span class="p">)):</span>
+         <span class="n">xghg_tmp2</span> <span class="o">=</span> <span class="n">xghg_tmp1</span><span class="p">[</span><span class="n">idx_good</span><span class="p">]</span>
+         <span class="n">xghg_median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">xghg_tmp2</span><span class="p">)</span>
+         <span class="n">ts_year</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">act_year</span><span class="p">)</span>
+         <span class="n">ts_month</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">act_month</span><span class="p">)</span>
+         <span class="n">ts_xghg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xghg_median</span><span class="p">)</span>
+         <span class="n">n_cnt</span> <span class="o">=</span> <span class="n">n_cnt</span> <span class="o">+</span> <span class="mi">1</span>
+   <span class="k">if</span> <span class="n">n_cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="n">ts_year</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ts_year</span><span class="p">)</span>
+         <span class="n">ts_month</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ts_month</span><span class="p">)</span>
+         <span class="n">ts_xghg</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ts_xghg</span><span class="p">)</span>
+         <span class="n">ts_fyear</span> <span class="o">=</span> <span class="n">ts_year</span> <span class="o">+</span> <span class="p">(</span><span class="n">ts_month</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span><span class="o">/</span><span class="mf">12.0</span> <span class="c1"># time in fractional years (approx.)</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* ERROR computing time series: No data found !&#39;</span><span class="p">)</span>
+      <span class="n">ts_ok</span> <span class="o">=</span> <span class="mi">0</span>
+
+   <span class="c1"># Plot time series</span>
+   <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">ts_ok</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="n">xxx</span> <span class="o">=</span> <span class="n">ts_fyear</span>
+         <span class="n">yyy</span> <span class="o">=</span> <span class="n">ts_xghg</span>
+         <span class="n">x_min</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">ts_year</span><span class="p">)</span>
+         <span class="n">x_max</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">ts_year</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+         <span class="n">x_ticks</span> <span class="o">=</span> <span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span>
+         <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1">#figsize = (8,5)</span>
+            <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.10</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.88</span><span class="p">,</span><span class="mf">0.83</span><span class="p">]</span>     <span class="c1"># pos (l,b,w,h) in page coord</span>
+            <span class="n">ax</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+         <span class="k">else</span><span class="p">:</span>
+            <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xxx</span><span class="p">,</span> <span class="n">yyy</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+         <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">),</span> <span class="n">xticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+         <span class="n">title</span> <span class="o">=</span> <span class="n">xghg_str</span><span class="o">+</span><span class="s1">&#39;: &#39;</span><span class="o">+</span><span class="n">ts_str</span><span class="o">+</span><span class="s1">&#39; - &#39;</span><span class="o">+</span><span class="n">product_ver</span>
+         <span class="n">x_label</span> <span class="o">=</span> <span class="s1">&#39;Time [years]&#39;</span>
+         <span class="n">y_label</span> <span class="o">=</span> <span class="n">xghg_str1</span><span class="o">+</span><span class="s1">&#39; [&#39;</span><span class="o">+</span><span class="n">xghg_unit</span><span class="o">+</span><span class="s1">&#39;]&#39;</span>
+         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+         <span class="k">if</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s1">&#39;png&#39;</span><span class="p">:</span>
+            <span class="n">o_file_plot</span> <span class="o">=</span> <span class="n">main_product</span><span class="o">+</span><span class="s1">&#39;_OBS4MIPS_timeseries.png&#39;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* generating: &#39;</span><span class="p">,</span> <span class="n">o_file_plot</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">o_file_plot</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+         <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* generating:  XCH4_OBS4MIPS_timeseries.png
+</pre></div>
+</div>
+<img alt="../_images/c9e2df95589300169a52b578fec6d6ecc4d72e37bc5d540578f07f5ff701293a.png" src="../_images/c9e2df95589300169a52b578fec6d6ecc4d72e37bc5d540578f07f5ff701293a.png" />
+</div>
+</div>
+<p>What does this time series tells us?: Copernicus issued a press release in January 2023 where these XCO2 and XCH4 data sets have been used: “Copernicus: 2022 was a year of climate extremes, with record high temperatures and rising concentrations of greenhouse gases”, see <a class="reference external" href="https://climate.copernicus.eu/copernicus-2022-was-year-climate-extremes-record-high-temperatures-and-rising-concentrations">https://climate.copernicus.eu/copernicus-2022-was-year-climate-extremes-record-high-temperatures-and-rising-concentrations</a>. Please have to look at that website to get information about the evolution of atmospheric CO2 and XCH using these satellite observations including links to relevant scientific publications.</p>
+</section>
+<section id="monthly-data-on-world-map">
+<h2>Monthly data on world map<a class="headerlink" href="#monthly-data-on-world-map" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate map and plot it using imshow</span>
+<span class="k">if</span> <span class="p">((</span><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">read_o4m_file_OK</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)):</span>
+   <span class="c1"># Select year and month:</span>
+   <span class="c1">#wanted_year  = 2004</span>
+   <span class="n">wanted_year</span>  <span class="o">=</span> <span class="mi">2021</span>
+   <span class="c1">#wanted_month = 1;    wanted_month_str = &#39;Jan&#39;</span>
+   <span class="n">wanted_month</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>    <span class="n">wanted_month_str</span> <span class="o">=</span> <span class="s1">&#39;Sep&#39;</span>
+   <span class="c1">#</span>
+   <span class="n">wanted_year_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">wanted_year</span><span class="p">)</span>
+   <span class="n">title</span> <span class="o">=</span> <span class="n">xghg_str</span><span class="o">+</span><span class="s1">&#39; - &#39;</span><span class="o">+</span><span class="n">product_ver</span><span class="o">+</span><span class="s1">&#39; - &#39;</span><span class="o">+</span><span class="n">wanted_month_str</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">wanted_year_str</span>
+   
+   <span class="n">min_land_fraction</span> <span class="o">=</span> <span class="mf">0.0</span>
+   
+   <span class="n">xghg_unc_OK</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="n">title_unc</span> <span class="o">=</span> <span class="s1">&#39;Uncertainty - &#39;</span><span class="o">+</span><span class="n">product_ver</span><span class="o">+</span><span class="s1">&#39; - &#39;</span><span class="o">+</span><span class="n">wanted_month_str</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">wanted_year_str</span>
+   
+   <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="n">lonmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">179.0</span>
+      <span class="n">lonmax</span> <span class="o">=</span>  <span class="mf">179.0</span>
+      <span class="n">latmin</span> <span class="o">=</span>  <span class="o">-</span><span class="mf">85.0</span>
+      <span class="n">latmax</span> <span class="o">=</span>   <span class="mf">85.0</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="n">lonmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">30.0</span>
+      <span class="n">lonmax</span> <span class="o">=</span>  <span class="mf">80.0</span>
+      <span class="n">latmin</span> <span class="o">=</span>  <span class="mf">10.0</span>
+      <span class="n">latmax</span> <span class="o">=</span>  <span class="mf">70.0</span>
+   
+   <span class="c1"># Get time index:</span>
+   <span class="n">idx_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">year</span> <span class="o">==</span> <span class="n">wanted_year</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">month</span> <span class="o">==</span> <span class="n">wanted_month</span><span class="p">))</span>
+   <span class="n">len_idx_time</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx_time</span><span class="p">)</span>
+   <span class="c1">#</span>
+   <span class="c1"># If OK, then proceed:</span>
+   <span class="k">if</span> <span class="n">len_idx_time</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="c1"># Get global map for selected year and month;</span>
+      <span class="n">idx_time0</span> <span class="o">=</span> <span class="n">idx_time</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+      <span class="n">map_xghg_all</span>     <span class="o">=</span> <span class="n">xghg</span><span class="p">[</span><span class="n">idx_time0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> 
+      <span class="n">map_xghg_unc_all</span> <span class="o">=</span> <span class="n">xghg_unc</span><span class="p">[</span><span class="n">idx_time0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> 
+      <span class="c1"># Reduce to selected region:</span>
+      <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="n">idx_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">lat</span> <span class="o">&gt;=</span> <span class="n">latmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lat</span> <span class="o">&lt;=</span> <span class="n">latmax</span><span class="p">))</span>
+         <span class="n">idx_lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">lon</span> <span class="o">&gt;=</span> <span class="n">lonmin</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">lon</span> <span class="o">&lt;=</span> <span class="n">lonmax</span><span class="p">))</span>
+         <span class="n">lat_red</span>  <span class="o">=</span> <span class="n">lat</span><span class="p">[</span><span class="n">idx_lat</span><span class="p">]</span>
+         <span class="n">lon_red</span>  <span class="o">=</span> <span class="n">lon</span><span class="p">[</span><span class="n">idx_lon</span><span class="p">]</span>
+         <span class="n">xghg_red</span>     <span class="o">=</span> <span class="n">map_xghg_all</span><span class="p">[</span><span class="n">idx_lat</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">idx_lat</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx_lon</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">idx_lon</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+         <span class="n">xghg_unc_red</span> <span class="o">=</span> <span class="n">map_xghg_unc_all</span><span class="p">[</span><span class="n">idx_lat</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">idx_lat</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">idx_lon</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">idx_lon</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+      <span class="n">idx_good</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">xghg_red</span> <span class="o">&lt;</span> <span class="n">missing_val</span><span class="p">)</span>
+      <span class="c1"># --------------------------</span>
+      <span class="c1"># XGHG:</span>
+      <span class="n">tmp1</span> <span class="o">=</span> <span class="n">xghg_red</span><span class="p">[</span><span class="n">idx_good</span><span class="p">]</span>
+      <span class="n">xghg_median</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">tmp1</span><span class="p">))</span>
+      <span class="n">xghg_std</span>    <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">tmp1</span><span class="p">))</span>
+      <span class="n">rcen</span> <span class="o">=</span> <span class="n">xghg_median</span>
+      <span class="n">rmin</span> <span class="o">=</span> <span class="n">rcen</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">xghg_std</span>
+      <span class="n">rmax</span> <span class="o">=</span> <span class="n">rcen</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">xghg_std</span>
+      <span class="n">idx_bad</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">xghg_red</span> <span class="o">&gt;</span> <span class="n">missing_val</span><span class="p">)</span>
+      <span class="n">xghg_red</span><span class="p">[</span><span class="n">idx_bad</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># fill missing values with NaNs</span>
+      <span class="c1"># --------------------------</span>
+      <span class="c1"># XGHG uncertainty:</span>
+      <span class="n">tmp2</span> <span class="o">=</span> <span class="n">xghg_unc_red</span><span class="p">[</span><span class="n">idx_good</span><span class="p">]</span>
+      <span class="n">xghg_unc_median</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">tmp2</span><span class="p">))</span>
+      <span class="n">rmin_unc</span> <span class="o">=</span> <span class="mi">0</span>
+      <span class="n">rmax_unc</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">xghg_unc_median</span>
+      <span class="n">xghg_unc_red</span><span class="p">[</span><span class="n">idx_bad</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># fill missing values with NaNs</span>
+      <span class="n">xghg_unc_OK</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="c1"># --------------------------</span>
+      <span class="c1"># --------------------------------------</span>
+      <span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+      <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+         <span class="n">pos</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.02</span><span class="p">,</span><span class="mf">0.95</span><span class="p">,</span><span class="mf">0.95</span><span class="p">]</span>     <span class="c1"># pos (l,b,w,h) in page coord</span>
+         <span class="n">ax1</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+         <span class="c1">#ax1 = fig.add_subplot(1,1,1, projection=projection) # &#39;GeoAxesSubplot&#39; object</span>
+         <span class="c1">#ax1.set_position(pos=pos)</span>
+         <span class="n">ax1</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+         <span class="n">ax1</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;powderblue&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">drawmeridians_label</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">gl</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">draw_labels</span><span class="o">=</span><span class="n">drawmeridians_label</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+            <span class="c1">#gl.xlabels_top = False</span>
+            <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span>   <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">False</span>
+         <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">rmin</span><span class="p">,</span> <span class="n">rmax</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+         <span class="n">lat1</span> <span class="o">=</span> <span class="n">lat_red</span>
+         <span class="n">lon1</span> <span class="o">=</span> <span class="n">lon_red</span>
+         <span class="n">dat1</span> <span class="o">=</span> <span class="n">xghg_red</span>
+         <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Expand region (cell center coords -&gt; cell edge coords):</span>
+            <span class="n">dd</span> <span class="o">=</span> <span class="p">(</span><span class="n">lat1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.5</span>
+            <span class="n">lomi</span> <span class="o">=</span> <span class="n">lon1</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">dd</span>
+            <span class="n">loma</span> <span class="o">=</span> <span class="n">lon1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">dd</span>
+            <span class="n">lami</span> <span class="o">=</span> <span class="n">lat1</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">-</span> <span class="n">dd</span>
+            <span class="n">lama</span> <span class="o">=</span> <span class="n">lat1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">dd</span>
+            <span class="n">dat1_trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">dat1</span><span class="p">)</span>
+            <span class="n">im</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dat1_trans</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">lomi</span><span class="p">,</span> <span class="n">loma</span><span class="p">,</span> <span class="n">lami</span><span class="p">,</span> <span class="n">lama</span><span class="p">])</span>
+         <span class="k">else</span><span class="p">:</span>
+            <span class="n">im</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon1</span><span class="p">,</span> <span class="n">lat1</span><span class="p">,</span> <span class="n">dat1</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+      <span class="c1"># --------------------------------------</span>
+      <span class="n">do_cb</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="k">if</span> <span class="n">do_cb</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="c1">#cbar = plt.colorbar(im, extend=&#39;both&#39;, location=&#39;bottom&#39;, shrink=0.4)</span>
+         <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+         <span class="c1">#cbar = plt.colorbar(im, ax=ax)</span>
+         <span class="c1">#cbar.set_label(&#39;# of contacts&#39;, rotation=270)</span>
+         <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">xghg_str2</span><span class="p">)</span>
+      <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="c1">#plot_type = &#39;screen&#39;</span>
+         <span class="k">if</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s1">&#39;png&#39;</span><span class="p">:</span>
+            <span class="n">o_file_plot</span> <span class="o">=</span> <span class="n">main_product</span><span class="o">+</span><span class="s1">&#39;_OBS4MIPS_cmap.png&#39;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* generating: &#39;</span><span class="p">,</span> <span class="n">o_file_plot</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">o_file_plot</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+         <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+   <span class="k">else</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* ERROR: Cannot plot map: issue related to idx_time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* generating:  XCH4_OBS4MIPS_cmap.png
+</pre></div>
+</div>
+<img alt="../_images/1cb5f81d8b2de6d88ba96600a155940767e16d46284bf2bfd29e041587507b02.png" src="../_images/1cb5f81d8b2de6d88ba96600a155940767e16d46284bf2bfd29e041587507b02.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot uncertainty:</span>
+<span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+   <span class="k">if</span> <span class="n">xghg_unc_OK</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="c1">#figsize = (11,5)</span>
+         <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+         <span class="c1">#pos = [0.08,0.02,0.95,0.95]     # pos (l,b,w,h) in page coord</span>
+         <span class="n">ax1</span>  <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+         <span class="n">ax1</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+         <span class="n">ax1</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;powderblue&#39;</span><span class="p">)</span>
+         <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">drawmeridians_label</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">gl</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">draw_labels</span><span class="o">=</span><span class="n">drawmeridians_label</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+            <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span>   <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">False</span>
+         <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">rmin_unc</span><span class="p">,</span> <span class="n">rmax_unc</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+         <span class="n">dat1_unc</span> <span class="o">=</span> <span class="n">xghg_unc_red</span>
+         <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">dat1_unc_trans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">dat1_unc</span><span class="p">)</span>
+            <span class="n">im</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dat1_unc_trans</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">lomi</span><span class="p">,</span> <span class="n">loma</span><span class="p">,</span> <span class="n">lami</span><span class="p">,</span> <span class="n">lama</span><span class="p">])</span>
+         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title_unc</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+      <span class="c1"># --------------------------------------</span>
+      <span class="n">do_cb</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="k">if</span> <span class="n">do_cb</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+         <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Uncertainty (1-sigma) &#39;</span><span class="o">+</span><span class="n">xghg_str1</span><span class="o">+</span><span class="s1">&#39; [&#39;</span><span class="o">+</span><span class="n">xghg_unit</span><span class="o">+</span><span class="s1">&#39;]&#39;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+         <span class="c1">#plot_type = &#39;screen&#39;</span>
+         <span class="k">if</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s1">&#39;png&#39;</span><span class="p">:</span>
+            <span class="n">o_file_plot_unc</span> <span class="o">=</span> <span class="n">main_product</span><span class="o">+</span><span class="s1">&#39;_uncertainty_OBS4MIPS_cmap.png&#39;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* generating: &#39;</span><span class="p">,</span> <span class="n">o_file_plot_unc</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">o_file_plot_unc</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+         <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* generating:  XCH4_uncertainty_OBS4MIPS_cmap.png
+</pre></div>
+</div>
+<img alt="../_images/e7eeb2757e2102fc91b455649b793508848a15b04abbedece9e9b9037d0a8367.png" src="../_images/e7eeb2757e2102fc91b455649b793508848a15b04abbedece9e9b9037d0a8367.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ecv-notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-get-the-satellite-data-products">
+   How to get the satellite data products:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-download-via-the-cds-website">
+     Data download via the CDS website:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-read-and-process-the-satellite-data-with-python">
+   How to read and process the satellite data with Python:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#imports">
+   Imports:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-user-input">
+   Initial user input:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#initial-settings">
+   Initial settings:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions">
+   Functions:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-obs4mips-file">
+   Read OBS4MIPS file:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compute-and-plot-time-series">
+   Compute and plot time series:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#monthly-data-on-world-map">
+   Monthly data on world map
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  </body>
+</html>
