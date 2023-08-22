@@ -818,6 +818,18 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-timeseries-of-weekly">
+   Plotting Timeseries of Weekly
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vs-1991-2020-as-climate">
+     2022 vs 1991-2020 as Climate
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -864,12 +876,15 @@ title="Print to PDF"
 
 <span class="c1"># working with multidimensional arrays</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># libraries for plotting and visualising the data</span>
 <span class="kn">import</span> <span class="nn">cartopy</span> <span class="k">as</span> <span class="nn">cart</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
 <span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+
+<span class="kn">import</span> <span class="nn">datetime</span> <span class="k">as</span> <span class="nn">dt</span>
 </pre></div>
 </div>
 </div>
@@ -906,7 +921,7 @@ title="Print to PDF"
 </section>
 <section id="find-the-fire-danger-indices-historical-data">
 <h3>Find the fire danger indices historical data<a class="headerlink" href="#find-the-fire-danger-indices-historical-data" title="Permalink to this heading">#</a></h3>
-<p>In this notebook we calculate and plot the difference between number of days when FWI&gt;50 in 2022 and mean number of days per year when FWI&gt;50 for the period 2015 to 2020. The data used can be found in <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/cems-fire-historical-v1?tab=form">Fire danger indices historical data from the Copernicus Emergency Management Service</a></p>
+<p>In this notebook we calculate and plot the diffrence between number of days when FWI&gt;50 in 2022 and mean number between 1991-2020. The data can be found in <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/cems-fire-historical?tab=form">Fire danger indices historical data from the Copernicus Emergency Management Service</a></p>
 <div class="alert alert-block alert-info">
 <b>Note:</b> In this demonstrative example we're using only 5 years (2015-2020). For a representative climatology a period of 30 years is advised, and the latest ESOTC report use the period: 1991-2020.
 </div><p>For this example, we are using the following selection on the download page:</p>
@@ -915,35 +930,33 @@ title="Print to PDF"
 <li><p><strong>Varaiable</strong> : ‘Fire Weather Index’,</p></li>
 <li><p><strong>Version</strong> : ‘4.1’,</p></li>
 <li><p><strong>Dataset</strong> : ‘Consolidated Dataset’,</p></li>
-<li><p><strong>Year</strong> : ‘2015-2020’,</p></li>
-<li><p><strong>Month</strong> : ‘January - December’,</p></li>
+<li><p><strong>Year</strong> : ‘2015-2022’,</p></li>
 <li><p><strong>Day</strong> : ‘1-31’,</p></li>
 <li><p><strong>Grid</strong> : ‘0.5/0.5’,</p></li>
-<li><p><strong>Format</strong> : ‘GRIB2’,</p></li>
+<li><p><strong>Format</strong> : ‘netcdf’,</p></li>
 </ul>
 <p>After filling out the download form, select “<strong>Show API request</strong>”. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook. One important thing before being able to download the request, is to accept the <strong>Terms of use</strong> in the cell just before the API request. Having double checked your request, and accepted the terms of use, your request should be similar to that shown in the cell below. Please note we have added some additional lines which ensure that we do not repeat the download if we have already downloaded the file and include the option to provide the cdsapi credentials when we start the Client.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if you&#39;re not changing the request, only need to be run once</span>
 <span class="c1"># Choose the name and location of the donwload file</span>
-<span class="n">download_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s2">/download.grib&quot;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">download_file</span><span class="p">):</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span>
-        <span class="o">**</span><span class="n">cdsapi_kwargs</span>
-    <span class="p">)</span>
+<span class="n">download_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s2">/download_*.nc&quot;</span>
 
-    <span class="c1"># The CDS request based on your selections for this example:</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span>
+    <span class="o">**</span><span class="n">cdsapi_kwargs</span>
+<span class="p">)</span>
+
+<span class="c1"># The CDS request based on your selections for this example:</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1991</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)</span> <span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">.nc&#39;</span><span class="p">):</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
         <span class="s1">&#39;cems-fire-historical-v1&#39;</span><span class="p">,</span>
         <span class="p">{</span>
             <span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="s1">&#39;reanalysis&#39;</span><span class="p">,</span>
             <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;fire_weather_index&#39;</span><span class="p">,</span>
             <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;4.1&#39;</span><span class="p">,</span>
             <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="s1">&#39;Consolidated dataset&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s1">&#39;2015&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;2018&#39;</span><span class="p">,</span> <span class="s1">&#39;2019&#39;</span><span class="p">,</span> <span class="s1">&#39;2020&#39;</span><span class="p">,</span>
-            <span class="p">],</span>
+            <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">year</span><span class="p">,</span>
             <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span>
                 <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;02&#39;</span><span class="p">,</span> <span class="s1">&#39;03&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;04&#39;</span><span class="p">,</span> <span class="s1">&#39;05&#39;</span><span class="p">,</span> <span class="s1">&#39;06&#39;</span><span class="p">,</span>
@@ -964,8 +977,9 @@ title="Print to PDF"
                 <span class="s1">&#39;31&#39;</span><span class="p">,</span>
             <span class="p">],</span>
             <span class="s1">&#39;grid&#39;</span><span class="p">:</span> <span class="s1">&#39;0.5/0.5&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;format&#39;</span><span class="p">:</span><span class="s1">&#39;netcdf&#39;</span>
         <span class="p">},</span>
-        <span class="n">download_file</span><span class="p">)</span>
+        <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download_</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">.nc&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -981,7 +995,7 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For a global grid:</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
     <span class="n">download_file</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}</span>
 <span class="p">)</span>
 
@@ -991,6 +1005,19 @@ title="Print to PDF"
 
 <span class="c1"># We only have one variable (FWI), so we convert to a dataarray for easier computation:</span>
 <span class="n">da</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">fwinx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/apps/python3/3.8.8-01/lib/python3.8/site-packages/xarray/core/indexing.py:1369: PerformanceWarning: Slicing is producing a large chunk. To accept the large
+chunk and silence this warning, set the option
+    &gt;&gt;&gt; with dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: False}):
+    ...     array[indexer]
+
+To avoid creating the large chunks, set the option
+    &gt;&gt;&gt; with dask.config.set(**{&#39;array.slicing.split_large_chunks&#39;: True}):
+    ...     array[indexer]
+  return self.array[key]
 </pre></div>
 </div>
 </div>
@@ -1044,7 +1071,6 @@ title="Print to PDF"
 }
 
 html[theme=dark],
-body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -1057,7 +1083,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block !important;
+  display: block;
   min-width: 300px;
   max-width: 700px;
 }
@@ -1274,11 +1300,6 @@ body.vscode-dark {
   grid-column: 4;
 }
 
-.xr-index-preview {
-  grid-column: 2 / 5;
-  color: var(--xr-font-color2);
-}
-
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -1300,16 +1321,14 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data,
-.xr-index-data {
+.xr-var-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data,
-.xr-index-data-in:checked ~ .xr-index-data {
+.xr-var-data-in:checked ~ .xr-var-data {
   display: block;
 }
 
@@ -1319,16 +1338,13 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
-.xr-index-name div,
-.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data,
-.xr-index-data {
+.xr-var-data {
   grid-column: 1 / -1;
 }
 
@@ -1366,8 +1382,7 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2,
-.xr-no-icon {
+.xr-icon-file-text2 {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1376,135 +1391,119 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;fwinx&#x27; (year: 6, latitude: 361, longitude: 720)&gt;
-dask.array&lt;stack, shape=(6, 361, 720), dtype=int64, chunksize=(1, 361, 720), chunktype=numpy.ndarray&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;fwinx&#x27; (year: 32, latitude: 361, longitude: 720)&gt;
+dask.array&lt;stack, shape=(32, 361, 720), dtype=int64, chunksize=(1, 361, 720), chunktype=numpy.ndarray&gt;
 Coordinates:
     surface    float64 0.0
   * latitude   (latitude) float64 90.0 89.5 89.0 88.5 ... -89.0 -89.5 -90.0
   * longitude  (longitude) float64 -180.0 -179.5 -179.0 ... 178.5 179.0 179.5
-  * year       (year) int64 2015 2016 2017 2018 2019 2020
-Attributes: (12/28)
-    GRIB_paramId:                             260540
-    GRIB_dataType:                            fc
-    GRIB_numberOfPoints:                      259920
-    GRIB_typeOfLevel:                         surface
-    GRIB_stepType:                            instant
-    GRIB_gridType:                            regular_ll
-    ...                                       ...
-    GRIB_name:                                Forest fire weather index
-    GRIB_shortName:                           fwinx
-    GRIB_units:                               Numeric
-    long_name:                                Forest fire weather index
-    units:                                    Numeric
-    standard_name:                            unknown</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'fwinx'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>year</span>: 6</li><li><span class='xr-has-index'>latitude</span>: 361</li><li><span class='xr-has-index'>longitude</span>: 720</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-5a6271e1-bfa5-4345-862b-a254265a8b10' class='xr-array-in' type='checkbox' checked><label for='section-5a6271e1-bfa5-4345-862b-a254265a8b10' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 361, 720), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
-    <tr>
-        <td>
-            <table style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 11.90 MiB </td>
-                        <td> 1.98 MiB </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (6, 361, 720) </td>
-                        <td> (1, 361, 720) </td>
-                    </tr>
-                    <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 6 chunks in 37 graph layers </td>
-                    </tr>
-                    <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> int64 numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="194" height="125" style="stroke:rgb(0,0,0);stroke-width:1" >
+  * year       (year) int64 1991 1992 1993 1994 1995 ... 2019 2020 2021 2022</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'fwinx'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>year</span>: 32</li><li><span class='xr-has-index'>latitude</span>: 361</li><li><span class='xr-has-index'>longitude</span>: 720</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-d0be71c8-9088-4a58-9d81-1a469df24e12' class='xr-array-in' type='checkbox' checked><label for='section-d0be71c8-9088-4a58-9d81-1a469df24e12' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 361, 720), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 66.54 MB </td> <td> 2.08 MB </td></tr>
+    <tr><th> Shape </th><td> (32, 361, 720) </td> <td> (1, 361, 720) </td></tr>
+    <tr><th> Count </th><td> 440 Tasks </td><td> 32 Chunks </td></tr>
+    <tr><th> Type </th><td> int64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="199" height="130" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
-  <line x1="10" y1="60" x2="24" y2="75" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="29" y2="19" style="stroke-width:2" />
+  <line x1="10" y1="60" x2="29" y2="80" style="stroke-width:2" />
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
-  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="10" y1="0" x2="10" y2="60" />
+  <line x1="11" y1="1" x2="11" y2="62" />
+  <line x1="13" y1="3" x2="13" y2="63" />
+  <line x1="13" y1="3" x2="13" y2="63" />
   <line x1="14" y1="4" x2="14" y2="65" />
-  <line x1="17" y1="7" x2="17" y2="67" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="18" y1="8" x2="18" y2="68" />
+  <line x1="19" y1="9" x2="19" y2="69" />
   <line x1="19" y1="9" x2="19" y2="70" />
+  <line x1="21" y1="11" x2="21" y2="71" />
   <line x1="22" y1="12" x2="22" y2="72" />
-  <line x1="24" y1="14" x2="24" y2="75" style="stroke-width:2" />
+  <line x1="23" y1="13" x2="23" y2="73" />
+  <line x1="24" y1="14" x2="24" y2="74" />
+  <line x1="25" y1="15" x2="25" y2="75" />
+  <line x1="26" y1="16" x2="26" y2="76" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="28" y1="18" x2="28" y2="78" />
+  <line x1="29" y1="19" x2="29" y2="80" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 24.9485979497544,14.948597949754403 24.9485979497544,75.11526461642106 10.0,60.16666666666666" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="10.0,0.0 29.870090640095963,19.870090640095963 29.870090640095963,80.03675730676262 10.0,60.16666666666666" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
-  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="10" y1="0" x2="130" y2="0" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="13" y1="3" x2="133" y2="3" />
+  <line x1="13" y1="3" x2="133" y2="3" />
   <line x1="14" y1="4" x2="134" y2="4" />
-  <line x1="17" y1="7" x2="137" y2="7" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="18" y1="8" x2="138" y2="8" />
   <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="21" y1="11" x2="141" y2="11" />
   <line x1="22" y1="12" x2="142" y2="12" />
-  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="25" y1="15" x2="145" y2="15" />
+  <line x1="26" y1="16" x2="146" y2="16" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="28" y1="18" x2="148" y2="18" />
+  <line x1="29" y1="19" x2="149" y2="19" style="stroke-width:2" />
 
   <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
-  <line x1="130" y1="0" x2="144" y2="14" style="stroke-width:2" />
+  <line x1="10" y1="0" x2="29" y2="19" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="149" y2="19" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 130.0,0.0 144.9485979497544,14.948597949754403 24.9485979497544,14.948597949754403" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="10.0,0.0 130.0,0.0 149.87009064009595,19.870090640095963 29.870090640095963,19.870090640095963" style="fill:#8B4903A0;stroke-width:0"/>
 
   <!-- Horizontal lines -->
-  <line x1="24" y1="14" x2="144" y2="14" style="stroke-width:2" />
-  <line x1="24" y1="75" x2="144" y2="75" style="stroke-width:2" />
+  <line x1="29" y1="19" x2="149" y2="19" style="stroke-width:2" />
+  <line x1="29" y1="80" x2="149" y2="80" style="stroke-width:2" />
 
   <!-- Vertical lines -->
-  <line x1="24" y1="14" x2="24" y2="75" style="stroke-width:2" />
-  <line x1="144" y1="14" x2="144" y2="75" style="stroke-width:2" />
+  <line x1="29" y1="19" x2="29" y2="80" style="stroke-width:2" />
+  <line x1="149" y1="19" x2="149" y2="80" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
-  <polygon points="24.9485979497544,14.948597949754403 144.9485979497544,14.948597949754403 144.9485979497544,75.11526461642106 24.9485979497544,75.11526461642106" style="fill:#ECB172A0;stroke-width:0"/>
+  <polygon points="29.870090640095963,19.870090640095963 149.87009064009595,19.870090640095963 149.87009064009595,80.03675730676262 29.870090640095963,80.03675730676262" style="fill:#ECB172A0;stroke-width:0"/>
 
   <!-- Text -->
-  <text x="84.948598" y="95.115265" font-size="1.0rem" font-weight="100" text-anchor="middle" >720</text>
-  <text x="164.948598" y="45.031931" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,164.948598,45.031931)">361</text>
-  <text x="7.474299" y="87.640966" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,87.640966)">6</text>
+  <text x="89.870091" y="100.036757" font-size="1.0rem" font-weight="100" text-anchor="middle" >720</text>
+  <text x="169.870091" y="49.953424" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,169.870091,49.953424)">361</text>
+  <text x="9.935045" y="90.101712" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,9.935045,90.101712)">32</text>
 </svg>
-        </td>
-    </tr>
-</table></div></div></li><li class='xr-section-item'><input id='section-d00a8896-af0a-460a-a691-8bc00d4a768a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d00a8896-af0a-460a-a691-8bc00d4a768a' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>surface</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-06d052b0-3da1-4c06-9c84-784dac26f30a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-06d052b0-3da1-4c06-9c84-784dac26f30a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-feb894b4-bac6-4654-b79c-e491d331756c' class='xr-var-data-in' type='checkbox'><label for='data-feb894b4-bac6-4654-b79c-e491d331756c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>original GRIB coordinate for key: level(surface)</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array(0.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.5 89.0 ... -89.5 -90.0</div><input id='attrs-32379aa5-d401-4a84-87da-4d35bdcf3c18' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-32379aa5-d401-4a84-87da-4d35bdcf3c18' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-48914a95-2750-4bb3-a967-dfd1156ecc43' class='xr-var-data-in' type='checkbox'><label for='data-48914a95-2750-4bb3-a967-dfd1156ecc43' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90. ,  89.5,  89. , ..., -89. , -89.5, -90. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-180.0 -179.5 ... 179.0 179.5</div><input id='attrs-56161f9a-9ed3-4a02-a707-bdb075769424' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-56161f9a-9ed3-4a02-a707-bdb075769424' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-29924f95-c6c2-4e82-8f4c-5030239650dc' class='xr-var-data-in' type='checkbox'><label for='data-29924f95-c6c2-4e82-8f4c-5030239650dc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-180. , -179.5, -179. , ...,  178.5,  179. ,  179.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>year</span></div><div class='xr-var-dims'>(year)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2015 2016 2017 2018 2019 2020</div><input id='attrs-2ec30840-9409-4699-be8c-3139cc9c9039' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2ec30840-9409-4699-be8c-3139cc9c9039' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-35c976d5-c99c-41b4-9918-2d876ae16e2e' class='xr-var-data-in' type='checkbox'><label for='data-35c976d5-c99c-41b4-9918-2d876ae16e2e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([2015, 2016, 2017, 2018, 2019, 2020])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-377e5c6d-46ff-4d4c-a532-2447868d5e6f' class='xr-section-summary-in' type='checkbox'  ><label for='section-377e5c6d-46ff-4d4c-a532-2447868d5e6f' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-25f741af-d2a0-44f2-9612-c3d678dc66f3' class='xr-index-data-in' type='checkbox'/><label for='index-25f741af-d2a0-44f2-9612-c3d678dc66f3' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([ 90.0,  89.5,  89.0,  88.5,  88.0,  87.5,  87.0,  86.5,  86.0,
-               85.5,
-              ...
-              -85.5, -86.0, -86.5, -87.0, -87.5, -88.0, -88.5, -89.0, -89.5,
-              -90.0],
-             dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=361))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-6bfdd31f-b66c-40cd-b426-21f9b6f03c80' class='xr-index-data-in' type='checkbox'/><label for='index-6bfdd31f-b66c-40cd-b426-21f9b6f03c80' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([-180.0, -179.5, -179.0, -178.5, -178.0, -177.5, -177.0, -176.5,
-              -176.0, -175.5,
-              ...
-               175.0,  175.5,  176.0,  176.5,  177.0,  177.5,  178.0,  178.5,
-               179.0,  179.5],
-             dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=720))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>year</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-1d0e56c7-ed41-4869-9e90-739a79ca5bbc' class='xr-index-data-in' type='checkbox'/><label for='index-1d0e56c7-ed41-4869-9e90-739a79ca5bbc' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Int64Index([2015, 2016, 2017, 2018, 2019, 2020], dtype=&#x27;int64&#x27;, name=&#x27;year&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f52f440c-9aa5-4630-b45f-87cb252ea88c' class='xr-section-summary-in' type='checkbox'  ><label for='section-f52f440c-9aa5-4630-b45f-87cb252ea88c' class='xr-section-summary' >Attributes: <span>(28)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>GRIB_paramId :</span></dt><dd>260540</dd><dt><span>GRIB_dataType :</span></dt><dd>fc</dd><dt><span>GRIB_numberOfPoints :</span></dt><dd>259920</dd><dt><span>GRIB_typeOfLevel :</span></dt><dd>surface</dd><dt><span>GRIB_stepType :</span></dt><dd>instant</dd><dt><span>GRIB_gridType :</span></dt><dd>regular_ll</dd><dt><span>GRIB_NV :</span></dt><dd>0</dd><dt><span>GRIB_Nx :</span></dt><dd>720</dd><dt><span>GRIB_Ny :</span></dt><dd>361</dd><dt><span>GRIB_cfName :</span></dt><dd>unknown</dd><dt><span>GRIB_cfVarName :</span></dt><dd>fwinx</dd><dt><span>GRIB_gridDefinitionDescription :</span></dt><dd>Latitude/longitude</dd><dt><span>GRIB_iDirectionIncrementInDegrees :</span></dt><dd>0.5</dd><dt><span>GRIB_iScansNegatively :</span></dt><dd>0</dd><dt><span>GRIB_jDirectionIncrementInDegrees :</span></dt><dd>0.5</dd><dt><span>GRIB_jPointsAreConsecutive :</span></dt><dd>0</dd><dt><span>GRIB_jScansPositively :</span></dt><dd>0</dd><dt><span>GRIB_latitudeOfFirstGridPointInDegrees :</span></dt><dd>90.0</dd><dt><span>GRIB_latitudeOfLastGridPointInDegrees :</span></dt><dd>-90.0</dd><dt><span>GRIB_longitudeOfFirstGridPointInDegrees :</span></dt><dd>0.0</dd><dt><span>GRIB_longitudeOfLastGridPointInDegrees :</span></dt><dd>359.5</dd><dt><span>GRIB_missingValue :</span></dt><dd>3.4028234663852886e+38</dd><dt><span>GRIB_name :</span></dt><dd>Forest fire weather index</dd><dt><span>GRIB_shortName :</span></dt><dd>fwinx</dd><dt><span>GRIB_units :</span></dt><dd>Numeric</dd><dt><span>long_name :</span></dt><dd>Forest fire weather index</dd><dt><span>units :</span></dt><dd>Numeric</dd><dt><span>standard_name :</span></dt><dd>unknown</dd></dl></div></li></ul></div></div></div></div>
+</td>
+</tr>
+</table></div></div></li><li class='xr-section-item'><input id='section-343980f2-b52e-46b3-9d1d-cf217c8ca7df' class='xr-section-summary-in' type='checkbox'  checked><label for='section-343980f2-b52e-46b3-9d1d-cf217c8ca7df' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>surface</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-11de4868-9719-423b-a430-7b6feb202954' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-11de4868-9719-423b-a430-7b6feb202954' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-eced0434-c989-475a-a862-257b0507bbf5' class='xr-var-data-in' type='checkbox'><label for='data-eced0434-c989-475a-a862-257b0507bbf5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>original GRIB coordinate for key: level(surface)</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array(0.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.5 89.0 ... -89.5 -90.0</div><input id='attrs-75117027-c4c3-45fb-b465-d912bc85c909' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-75117027-c4c3-45fb-b465-d912bc85c909' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-91a582fc-8ddb-4d91-be40-ff6ee050b63c' class='xr-var-data-in' type='checkbox'><label for='data-91a582fc-8ddb-4d91-be40-ff6ee050b63c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90. ,  89.5,  89. , ..., -89. , -89.5, -90. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-180.0 -179.5 ... 179.0 179.5</div><input id='attrs-7cf5ca07-24f9-48b8-87e9-2dc8387caff9' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-7cf5ca07-24f9-48b8-87e9-2dc8387caff9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fa4abe7d-12f6-4c17-8935-78afcb2b8d20' class='xr-var-data-in' type='checkbox'><label for='data-fa4abe7d-12f6-4c17-8935-78afcb2b8d20' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-180. , -179.5, -179. , ...,  178.5,  179. ,  179.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>year</span></div><div class='xr-var-dims'>(year)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1991 1992 1993 ... 2020 2021 2022</div><input id='attrs-adf64841-a02a-4541-9d32-bf941c6b9cbb' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-adf64841-a02a-4541-9d32-bf941c6b9cbb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-321ac4e8-c8eb-47b9-bc38-ce26eec9c0cf' class='xr-var-data-in' type='checkbox'><label for='data-321ac4e8-c8eb-47b9-bc38-ce26eec9c0cf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
+       2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
+       2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c395cdb7-03d7-44c1-b360-d27c6ea80b24' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c395cdb7-03d7-44c1-b360-d27c6ea80b24' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
-<p>Then we calculate a climatology for the period 2015 to 2019 and use that to calculate the anomaly for 2020</p>
+<p>Then we calculate a climatology for the period 1991 to 2020 and use that to calculate the anomaly for 2020</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select year 2015 to 2019 and calculate the mean for each gridcell</span>
-<span class="n">nday_fwi_over_50_clim</span> <span class="o">=</span> <span class="n">nday_fwi_over_50</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2015</span><span class="p">,</span><span class="mi">2019</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select year 1991 to 2020 and calculate the mean for each gridcell</span>
+<span class="n">nday_fwi_over_50_clim</span> <span class="o">=</span> <span class="n">nday_fwi_over_50</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">1991</span><span class="p">,</span><span class="mi">2020</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
 
-<span class="c1"># Subtract the mean from the data for 2020</span>
-<span class="n">nday_fwi_over_50_anomaly_2020</span> <span class="o">=</span> <span class="n">nday_fwi_over_50</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span> <span class="o">-</span> <span class="n">nday_fwi_over_50_clim</span>
-<span class="n">nday_fwi_over_50_anomaly_2020</span>
+<span class="c1"># Subtract the mean from the data for 2022</span>
+<span class="n">nday_fwi_over_50_anomaly_2022</span> <span class="o">=</span> <span class="n">nday_fwi_over_50</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2022</span><span class="p">)</span> <span class="o">-</span> <span class="n">nday_fwi_over_50_clim</span>
+<span class="n">nday_fwi_over_50_anomaly_2022</span>
 </pre></div>
 </div>
 </div>
@@ -1540,7 +1539,6 @@ Attributes: (12/28)
 }
 
 html[theme=dark],
-body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -1553,7 +1551,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block !important;
+  display: block;
   min-width: 300px;
   max-width: 700px;
 }
@@ -1770,11 +1768,6 @@ body.vscode-dark {
   grid-column: 4;
 }
 
-.xr-index-preview {
-  grid-column: 2 / 5;
-  color: var(--xr-font-color2);
-}
-
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -1796,16 +1789,14 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data,
-.xr-index-data {
+.xr-var-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data,
-.xr-index-data-in:checked ~ .xr-index-data {
+.xr-var-data-in:checked ~ .xr-var-data {
   display: block;
 }
 
@@ -1815,16 +1806,13 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
-.xr-index-name div,
-.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data,
-.xr-index-data {
+.xr-var-data {
   grid-column: 1 / -1;
 }
 
@@ -1862,8 +1850,7 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2,
-.xr-no-icon {
+.xr-icon-file-text2 {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1878,43 +1865,23 @@ Coordinates:
     surface    float64 0.0
   * latitude   (latitude) float64 90.0 89.5 89.0 88.5 ... -89.0 -89.5 -90.0
   * longitude  (longitude) float64 -180.0 -179.5 -179.0 ... 178.5 179.0 179.5
-    year       int64 2020</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'fwinx'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 361</li><li><span class='xr-has-index'>longitude</span>: 720</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-95d3a02c-b640-48fc-88e4-5dca9ec2f7cc' class='xr-array-in' type='checkbox' checked><label for='section-95d3a02c-b640-48fc-88e4-5dca9ec2f7cc' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(361, 720), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
-    <tr>
-        <td>
-            <table style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 1.98 MiB </td>
-                        <td> 1.98 MiB </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (361, 720) </td>
-                        <td> (361, 720) </td>
-                    </tr>
-                    <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 1 chunks in 43 graph layers </td>
-                    </tr>
-                    <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> float64 numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="170" height="110" style="stroke:rgb(0,0,0);stroke-width:1" >
+    year       int64 2022</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'fwinx'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 361</li><li><span class='xr-has-index'>longitude</span>: 720</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-131d2d1c-7e40-4406-9a8e-132d84b5352a' class='xr-array-in' type='checkbox' checked><label for='section-131d2d1c-7e40-4406-9a8e-132d84b5352a' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(361, 720), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 2.08 MB </td> <td> 2.08 MB </td></tr>
+    <tr><th> Shape </th><td> (361, 720) </td> <td> (361, 720) </td></tr>
+    <tr><th> Count </th><td> 513 Tasks </td><td> 1 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="170" height="110" style="stroke:rgb(0,0,0);stroke-width:1" >
 
   <!-- Horizontal lines -->
   <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
@@ -1931,19 +1898,9 @@ Coordinates:
   <text x="60.000000" y="80.166667" font-size="1.0rem" font-weight="100" text-anchor="middle" >720</text>
   <text x="140.000000" y="30.083333" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,140.000000,30.083333)">361</text>
 </svg>
-        </td>
-    </tr>
-</table></div></div></li><li class='xr-section-item'><input id='section-7d7b13de-5474-4ff5-8d6c-c1f9956731c6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7d7b13de-5474-4ff5-8d6c-c1f9956731c6' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>surface</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-35d431e9-4cee-400f-b284-1b00ad6ba178' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-35d431e9-4cee-400f-b284-1b00ad6ba178' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-438ee616-6318-4310-993b-3c93fdcf69af' class='xr-var-data-in' type='checkbox'><label for='data-438ee616-6318-4310-993b-3c93fdcf69af' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>original GRIB coordinate for key: level(surface)</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array(0.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.5 89.0 ... -89.5 -90.0</div><input id='attrs-89ea4bf2-611c-45c6-b2cb-652f345aaf38' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-89ea4bf2-611c-45c6-b2cb-652f345aaf38' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-70e7c66c-2a91-402b-94ce-39f39539ce89' class='xr-var-data-in' type='checkbox'><label for='data-70e7c66c-2a91-402b-94ce-39f39539ce89' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90. ,  89.5,  89. , ..., -89. , -89.5, -90. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-180.0 -179.5 ... 179.0 179.5</div><input id='attrs-3fcdfb91-71c6-4efc-839a-ba4622f2bca2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3fcdfb91-71c6-4efc-839a-ba4622f2bca2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-df6d648d-7b2f-414a-b777-e3c7c6aa801f' class='xr-var-data-in' type='checkbox'><label for='data-df6d648d-7b2f-414a-b777-e3c7c6aa801f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-180. , -179.5, -179. , ...,  178.5,  179. ,  179.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>year</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2020</div><input id='attrs-f9734d7a-5789-4ca6-b2ab-2a880e862fb0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f9734d7a-5789-4ca6-b2ab-2a880e862fb0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-877cc365-0ca6-492a-9f21-776456766bce' class='xr-var-data-in' type='checkbox'><label for='data-877cc365-0ca6-492a-9f21-776456766bce' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(2020)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a9e2ad25-34bd-4839-b66c-278099890d9c' class='xr-section-summary-in' type='checkbox'  ><label for='section-a9e2ad25-34bd-4839-b66c-278099890d9c' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-bb2bde66-0fcb-43bc-b669-d37bef871a63' class='xr-index-data-in' type='checkbox'/><label for='index-bb2bde66-0fcb-43bc-b669-d37bef871a63' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([ 90.0,  89.5,  89.0,  88.5,  88.0,  87.5,  87.0,  86.5,  86.0,
-               85.5,
-              ...
-              -85.5, -86.0, -86.5, -87.0, -87.5, -88.0, -88.5, -89.0, -89.5,
-              -90.0],
-             dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=361))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-abf7ec2d-3147-4383-98a5-2d96cd9b3cc7' class='xr-index-data-in' type='checkbox'/><label for='index-abf7ec2d-3147-4383-98a5-2d96cd9b3cc7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([-180.0, -179.5, -179.0, -178.5, -178.0, -177.5, -177.0, -176.5,
-              -176.0, -175.5,
-              ...
-               175.0,  175.5,  176.0,  176.5,  177.0,  177.5,  178.0,  178.5,
-               179.0,  179.5],
-             dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=720))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-044ecba9-968a-498f-9082-23786b21d202' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-044ecba9-968a-498f-9082-23786b21d202' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</td>
+</tr>
+</table></div></div></li><li class='xr-section-item'><input id='section-07bd0d07-4aba-4808-9804-ba636c2d4a5a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-07bd0d07-4aba-4808-9804-ba636c2d4a5a' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>surface</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-347e9c76-e002-46a7-8a40-4b211408a8f3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-347e9c76-e002-46a7-8a40-4b211408a8f3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3375207f-ab81-4ddb-9afe-a4470328833b' class='xr-var-data-in' type='checkbox'><label for='data-3375207f-ab81-4ddb-9afe-a4470328833b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>original GRIB coordinate for key: level(surface)</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array(0.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.5 89.0 ... -89.5 -90.0</div><input id='attrs-06335266-d614-4c48-a7c6-4974f05997d8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-06335266-d614-4c48-a7c6-4974f05997d8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c0d142fc-0195-4486-87ec-9388b38b4285' class='xr-var-data-in' type='checkbox'><label for='data-c0d142fc-0195-4486-87ec-9388b38b4285' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90. ,  89.5,  89. , ..., -89. , -89.5, -90. ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-180.0 -179.5 ... 179.0 179.5</div><input id='attrs-6a92ec8f-740c-4937-90ca-7564c83bf03b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6a92ec8f-740c-4937-90ca-7564c83bf03b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c764c6c5-2761-47ae-9e37-98a9dde902eb' class='xr-var-data-in' type='checkbox'><label for='data-c764c6c5-2761-47ae-9e37-98a9dde902eb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-180. , -179.5, -179. , ...,  178.5,  179. ,  179.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>year</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2022</div><input id='attrs-efc1ced2-b672-4760-b19e-d00b075bfab0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-efc1ced2-b672-4760-b19e-d00b075bfab0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-24632275-9c70-498c-a7eb-0471910e6ff4' class='xr-var-data-in' type='checkbox'><label for='data-24632275-9c70-498c-a7eb-0471910e6ff4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(2022)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-23985681-10e4-4c22-b1fc-0e6b997e8061' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-23985681-10e4-4c22-b1fc-0e6b997e8061' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 </section>
 </section>
@@ -2031,15 +1988,15 @@ Coordinates:
 </div>
 </div>
 </div>
-<p>We then use this function to produce a global plot of the anomaly for 2020. Note that we mask areas where the anomaly is in between -1 and 1 to highlight the regions of interest.</p>
+<p>We then use this function to produce a global plot of the anomaly for 2022. Note that we mask areas where the anomaly is in between -1 and 1 to highlight the regions of interest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">produce_map_plot</span><span class="p">(</span><span class="n">nday_fwi_over_50_anomaly_2020</span><span class="p">,</span> <span class="n">borders</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;masked&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">produce_map_plot</span><span class="p">(</span><span class="n">nday_fwi_over_50_anomaly_2022</span><span class="p">,</span> <span class="n">borders</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;masked&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9e6dd0d1492e1146f6c81446c82771c83d201735b4e2fbe9df7639e6197430db.png" src="../_images/9e6dd0d1492e1146f6c81446c82771c83d201735b4e2fbe9df7639e6197430db.png" />
+<img alt="../_images/078f8bb500d47f22de446fde37875cc2f6963ec692cfab8fe40dc80d92897aa3.png" src="../_images/078f8bb500d47f22de446fde37875cc2f6963ec692cfab8fe40dc80d92897aa3.png" />
 </div>
 </div>
 <p>The figure above displays the 2020 anomaly, with respect to a 2015-2019 reference period, for the number of days where the FWI is considered high, i.e. &gt;50. Red indicates where there were more days with high FWI in 2020 than the refence period, and blue indicates that there were fewer days with high FWI.</p>
@@ -2055,11 +2012,11 @@ Central Europe: 2°–24°E, 45°–55°N</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">esotc_regions</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">72</span><span class="p">]},</span>
-    <span class="s1">&#39;Southwestern Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">50</span><span class="p">]},</span>
-    <span class="s1">&#39;Northwestern Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">72</span><span class="p">]},</span>
-    <span class="s1">&#39;Southeastern Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">34</span><span class="p">]},</span>
-    <span class="s1">&#39;Northeastern Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">72</span><span class="p">,</span><span class="mi">45</span><span class="p">]},</span>
+    <span class="s1">&#39;Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">72</span><span class="p">],</span> <span class="s1">&#39;limits&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">]},</span>
+    <span class="s1">&#39;Southwestern Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">50</span><span class="p">],</span> <span class="s1">&#39;limits&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">45</span><span class="p">]},</span>
+    <span class="s1">&#39;Northwestern Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">72</span><span class="p">],</span> <span class="s1">&#39;limits&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">]},</span>
+    <span class="s1">&#39;Southeastern Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">45</span><span class="p">],</span> <span class="s1">&#39;limits&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">45</span><span class="p">]},</span>
+    <span class="s1">&#39;Northeastern Europe&#39;</span><span class="p">:{</span><span class="s1">&#39;extent&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">72</span><span class="p">],</span> <span class="s1">&#39;limits&#39;</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">]},</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -2068,7 +2025,7 @@ Central Europe: 2°–24°E, 45°–55°N</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a subset of data to improve plotting speed</span>
-<span class="n">europe_data</span> <span class="o">=</span> <span class="n">nday_fwi_over_50_anomaly_2020</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
+<span class="n">europe_data</span> <span class="o">=</span> <span class="n">nday_fwi_over_50_anomaly_2022</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span>
     <span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="k">for</span> <span class="n">region</span><span class="p">,</span> <span class="n">config</span> <span class="ow">in</span> <span class="n">esotc_regions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -2083,11 +2040,116 @@ Central Europe: 2°–24°E, 45°–55°N</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/655601fdeddce623641d151a7c36dc6f5e0ba272867db21903d01dcfc241f516.png" src="../_images/655601fdeddce623641d151a7c36dc6f5e0ba272867db21903d01dcfc241f516.png" />
-<img alt="../_images/f046941286f21ecdff808f53968a5d27d6ce99d96ac5174ff6b4b3c4e1a4eff6.png" src="../_images/f046941286f21ecdff808f53968a5d27d6ce99d96ac5174ff6b4b3c4e1a4eff6.png" />
-<img alt="../_images/be236f1d29006d1ebfbe793e72492b323e29e228922939eea91ed9950c0b3ae9.png" src="../_images/be236f1d29006d1ebfbe793e72492b323e29e228922939eea91ed9950c0b3ae9.png" />
-<img alt="../_images/1dc609add74dbefd36e9398e7b5ce935f636c90f67251c9f0bd4e5cad8241d43.png" src="../_images/1dc609add74dbefd36e9398e7b5ce935f636c90f67251c9f0bd4e5cad8241d43.png" />
-<img alt="../_images/9578ad8c57ba93a0220364784326f8bb1f7a1f39efb3261825d9443a09f2f51f.png" src="../_images/9578ad8c57ba93a0220364784326f8bb1f7a1f39efb3261825d9443a09f2f51f.png" />
+<img alt="../_images/2d31153127c7fe70e27aa778a3458ab21b7c91df89ea3ae432cb803c07777575.png" src="../_images/2d31153127c7fe70e27aa778a3458ab21b7c91df89ea3ae432cb803c07777575.png" />
+<img alt="../_images/b8b835b71e5903777b5effabe46d3b1ff12dea660823704bfff0c2ebd3787eda.png" src="../_images/b8b835b71e5903777b5effabe46d3b1ff12dea660823704bfff0c2ebd3787eda.png" />
+<img alt="../_images/f03ad0cb6ce81367192b9abe80d88cde2299eff36584796938f25bb7288efc66.png" src="../_images/f03ad0cb6ce81367192b9abe80d88cde2299eff36584796938f25bb7288efc66.png" />
+<img alt="../_images/f180b4569893d7d8a0865f8702194926c55f4cdf5bbcc55bf39d7f9adeef9614.png" src="../_images/f180b4569893d7d8a0865f8702194926c55f4cdf5bbcc55bf39d7f9adeef9614.png" />
+<img alt="../_images/89d90dfb8ff1774a5d63d422d184bd766143d1d42ad2f5e5004c3c0e05b3f343.png" src="../_images/89d90dfb8ff1774a5d63d422d184bd766143d1d42ad2f5e5004c3c0e05b3f343.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="plotting-timeseries-of-weekly">
+<h2>Plotting Timeseries of Weekly<a class="headerlink" href="#plotting-timeseries-of-weekly" title="Permalink to this heading">#</a></h2>
+<section id="vs-1991-2020-as-climate">
+<h3>2022 vs 1991-2020 as Climate<a class="headerlink" href="#vs-1991-2020-as-climate" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">region</span><span class="p">,</span> <span class="n">config</span> <span class="ow">in</span> <span class="n">esotc_regions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">extent</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;extent&#39;</span><span class="p">)</span>
+    <span class="n">limits</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;limits&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+    <span class="n">lon1</span><span class="o">=</span><span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">lon2</span><span class="o">=</span><span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">lat2</span><span class="o">=</span><span class="n">extent</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">lat1</span><span class="o">=</span><span class="n">extent</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">cymin</span><span class="o">=</span><span class="n">limits</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cymax</span><span class="o">=</span><span class="n">limits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">small</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span><span class="n">lat2</span><span class="p">),</span> <span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">lon1</span><span class="p">,</span><span class="n">lon2</span><span class="p">))</span>
+<span class="c1"># Clima </span>
+    <span class="n">clim</span><span class="o">=</span> <span class="n">small</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1991-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;2020-12-31&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="s1">&#39;latitude&#39;</span><span class="p">])</span>
+    <span class="n">weekly_clim</span><span class="o">=</span> <span class="n">clim</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;W&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>  
+    <span class="n">weekly_clim</span><span class="o">=</span><span class="n">weekly_clim</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+    <span class="n">w_clim_mean</span><span class="o">=</span><span class="n">weekly_clim</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">weekly_clim</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="c1">#.load()</span>
+    <span class="n">w_clim_max</span><span class="o">=</span><span class="n">weekly_clim</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">weekly_clim</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="c1">#.load()</span>
+    <span class="n">w_clim_min</span><span class="o">=</span><span class="n">weekly_clim</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">weekly_clim</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="c1">#.load()</span>
+    <span class="n">w_clim_q10</span><span class="o">=</span><span class="n">weekly_clim</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">weekly_clim</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">)</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span><span class="c1">#.load()</span>
+    <span class="n">w_clim_q90</span><span class="o">=</span><span class="n">weekly_clim</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">weekly_clim</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">)</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.9</span><span class="p">)</span><span class="c1">#.load()</span>
+<span class="c1"># this year </span>
+    <span class="n">ty</span><span class="o">=</span> <span class="n">small</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2022-01-01&#39;</span><span class="p">,</span><span class="s1">&#39;2022-12-31&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="s1">&#39;latitude&#39;</span><span class="p">])</span>
+    <span class="n">weekly_ty</span><span class="o">=</span> <span class="n">ty</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;W&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>  
+    <span class="n">weekly_ty</span><span class="o">=</span><span class="n">weekly_ty</span><span class="o">.</span><span class="n">chunk</span><span class="p">({</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">})</span>
+    <span class="n">w_ty_mean</span><span class="o">=</span><span class="n">weekly_ty</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">weekly_ty</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">isocalendar</span><span class="p">()</span><span class="o">.</span><span class="n">week</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="c1">#.load()</span>
+<span class="c1"># variables for plotting </span>
+    <span class="n">x</span><span class="o">=</span><span class="n">w_clim_max</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">xdate</span> <span class="o">=</span> <span class="s2">&quot;2022-W26&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">xdate</span> <span class="o">+</span> <span class="s1">&#39;-1&#39;</span><span class="p">,</span> <span class="s2">&quot;%Y-W%W-%w&quot;</span><span class="p">)</span>
+    <span class="n">ymean</span><span class="o">=</span><span class="n">w_clim_mean</span><span class="o">.</span><span class="n">fwinx</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">ymin</span><span class="o">=</span><span class="n">w_clim_min</span><span class="o">.</span><span class="n">fwinx</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">ymax</span><span class="o">=</span><span class="n">w_clim_max</span><span class="o">.</span><span class="n">fwinx</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y10</span><span class="o">=</span><span class="n">w_clim_q10</span><span class="o">.</span><span class="n">fwinx</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y90</span><span class="o">=</span><span class="n">w_clim_q90</span><span class="o">.</span><span class="n">fwinx</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">tymean</span><span class="o">=</span><span class="n">w_ty_mean</span><span class="o">.</span><span class="n">fwinx</span><span class="o">.</span><span class="n">values</span>
+<span class="c1"># this only needed if odd number of weeks </span>
+    <span class="n">tymean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tymean</span><span class="p">,</span><span class="n">tymean</span><span class="p">[</span><span class="mi">51</span><span class="p">])</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> 
+                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> 
+                    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> 
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;min/max range&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y10</span><span class="p">,</span> <span class="n">y90</span><span class="p">,</span> 
+                    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+                    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> 
+                    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;10th/90th percentile range&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ymean</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> 
+            <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Reference period mean&quot;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ymean</span><span class="p">,</span><span class="n">tymean</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span> <span class="n">tymean</span><span class="o">&gt;=</span> <span class="n">ymean</span><span class="p">,</span>
+    <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2022 excess fire danger&quot;</span><span class="p">)</span>
+ 
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ymean</span><span class="p">,</span><span class="n">tymean</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span> <span class="n">tymean</span> <span class="o">&lt;=</span> <span class="n">ymean</span><span class="p">,</span>
+    <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tymean</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymax</span><span class="o">=</span><span class="n">cymax</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="n">cymin</span><span class="p">)</span>  <span class="c1"># this line</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xmax</span><span class="o">=</span><span class="mi">53</span><span class="p">,</span><span class="n">xmin</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Week&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Fire Weather Index&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="c1"># plt.savefig(f&#39;{region}_weeklyTS.tiff&#39;, format=&#39;tiff&#39;,facecolor=&#39;white&#39;)</span>
+    
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Europe
+end
+Southwestern Europe
+end
+Northwestern Europe
+end
+Southeastern Europe
+end
+Northeastern Europe
+end
+</pre></div>
+</div>
+<img alt="../_images/5820b51e6738b58a33b92b1201e58af624a0c5be63d069ca77e987d1b6f43f63.png" src="../_images/5820b51e6738b58a33b92b1201e58af624a0c5be63d069ca77e987d1b6f43f63.png" />
+<img alt="../_images/e0fa2a82c92d2c01624a1ca6e8dc17a82f32ccf52c1f703024227227836eab95.png" src="../_images/e0fa2a82c92d2c01624a1ca6e8dc17a82f32ccf52c1f703024227227836eab95.png" />
+<img alt="../_images/ddb7ab35a18056db069e5ea1247e96be5a9c9bae0cc114b0d720197ba8376531.png" src="../_images/ddb7ab35a18056db069e5ea1247e96be5a9c9bae0cc114b0d720197ba8376531.png" />
+<img alt="../_images/25d4419deda232c079d1a92642bd607798bfa51856b0e2680d372fe12dceac09.png" src="../_images/25d4419deda232c079d1a92642bd607798bfa51856b0e2680d372fe12dceac09.png" />
+<img alt="../_images/745bbd8a36b1126403c79dc4338b5f7caeb6dc77d9d8894b3cd4c87b755b361f.png" src="../_images/745bbd8a36b1126403c79dc4338b5f7caeb6dc77d9d8894b3cd4c87b755b361f.png" />
 </div>
 </div>
 </section>
@@ -2199,6 +2261,18 @@ Central Europe: 2°–24°E, 45°–55°N</p>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#produce-maps-for-each-of-the-esotc-regions">
      Produce maps for each of the ESOTC Regions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-timeseries-of-weekly">
+   Plotting Timeseries of Weekly
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vs-1991-2020-as-climate">
+     2022 vs 1991-2020 as Climate
     </a>
    </li>
   </ul>
