@@ -43,6 +43,7 @@ parts:
    - file: ecv-notebooks/greenhouse-gases-level3-products
      title: Greenhouse Gas Level 3 Products
    - file: ecv-notebooks/aerosol-single-sensor-demonstrator
+   - file: ecv-notebooks/total-ozone-columns
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
    - file: cems-notebooks/visualising-fwi-for-esotc
