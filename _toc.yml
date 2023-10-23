@@ -42,6 +42,7 @@ parts:
      title: Greenhouse Gas Level 2 Products
    - file: ecv-notebooks/greenhouse-gases-level3-products
      title: Greenhouse Gas Level 3 Products
+   - file: ecv-notebooks/aerosol-single-sensor-demonstrator
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
    - file: cems-notebooks/visualising-fwi-for-esotc
