@@ -61,7 +61,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/aerosol-single-sensor-demonstrator';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Demonstration on how to plot ozone datasets on the CDS." href="total-ozone-columns.html" />
+    <link rel="next" title="C3S Aerosol" href="aerosol-multi-sensor-record.html" />
     <link rel="prev" title="How to access, read and process satellite XCO2 and XCH4 Level 3 data products" href="greenhouse-gases-level3-products.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
@@ -241,6 +241,13 @@ const thebe_selector_output = ".output, .cell_output"
 
                     <li class="nav-item current active">
                       <a class="nav-link nav-internal" href="#">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
                         C3S Aerosol
                       </a>
                     </li>
@@ -464,6 +471,13 @@ const thebe_selector_output = ".output, .cell_output"
                 
 
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="total-ozone-columns.html">
                         Demonstration on how to plot  ozone datasets on the CDS.
                       </a>
@@ -604,6 +618,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
 <li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">Greenhouse Gas Level 3 Products</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">C3S Aerosol</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
+
+
+
 
 
 
@@ -1052,7 +1073,7 @@ We give a short introduction to the ECV Aerosol Properties, which contains 4 tot
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l2/529q7bzs665bnrn7_wjx1nsr0000gn/T/ipykernel_56288/2007949843.py:2: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l2/529q7bzs665bnrn7_wjx1nsr0000gn/T/ipykernel_55314/2007949843.py:2: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
   mplt.style.use(&#39;seaborn&#39;)
 </pre></div>
 </div>
@@ -1172,11 +1193,11 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-23 17:12:28,260 INFO Welcome to the CDS
-2023-10-23 17:12:28,261 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-aerosol-properties
-2023-10-23 17:12:28,392 INFO Request is completed
-2023-10-23 17:12:28,392 INFO Downloading https://download-0004-clone.copernicus-climate.eu/cache-compute-0004/cache/data9/dataset-satellite-aerosol-properties-b9a80ae7-7586-4080-9fad-b87d443c2e1d.zip to ./data_dir//download.zip (39.4M)
-2023-10-23 17:12:41,013 INFO Download rate 3.1M/s   
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-23 17:05:28,274 INFO Welcome to the CDS
+2023-10-23 17:05:28,275 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-aerosol-properties
+2023-10-23 17:05:28,392 INFO Request is completed
+2023-10-23 17:05:28,393 INFO Downloading https://download-0004-clone.copernicus-climate.eu/cache-compute-0004/cache/data9/dataset-satellite-aerosol-properties-b9a80ae7-7586-4080-9fad-b87d443c2e1d.zip to ./data_dir//download.zip (39.4M)
+2023-10-23 17:05:39,270 INFO Download rate 3.6M/s   
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=41326484,content_type=application/zip,location=https://download-0004-clone.copernicus-climate.eu/cache-compute-0004/cache/data9/dataset-satellite-aerosol-properties-b9a80ae7-7586-4080-9fad-b87d443c2e1d.zip)
@@ -1916,10 +1937,10 @@ Satellite Observations (Aerosol_cci), Remote Sensing, 8, 421; doi:10.3390/rs8050
           <p class="prev-next-title">How to access, read and process satellite XCO2 and XCH4 Level 3 data products</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="total-ozone-columns.html" title="next page">
+  <a class='right-next' id="next-link" href="aerosol-multi-sensor-record.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Demonstration on how to plot  ozone datasets on the CDS.</p>
+      <p class="prev-next-title">C3S Aerosol</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
