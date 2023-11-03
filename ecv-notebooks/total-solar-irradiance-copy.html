@@ -58,11 +58,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/total-solar-irradiance';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/total-solar-irradiance-copy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Analysis of Total Column Water Vapour using the COMBI product" href="total-column-water-vapour-combi.html" />
-    <link rel="prev" title="Calculation of global climatology and relative anomalies of Surface Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset" href="srb-climatology-and-anomaly.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -218,8 +216,8 @@ const thebe_selector_output = ".output, .cell_output"
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
                         Total Solar Irradiance
                       </a>
                     </li>
@@ -477,8 +475,8 @@ const thebe_selector_output = ".output, .cell_output"
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
                         Total Solar Irradiance
                       </a>
                     </li>
@@ -676,11 +674,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using Satellite Observations</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="erb-clara-climatologies.html">Earth radiation budget climatologies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Total Solar Irradiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-solar-irradiance.html">Total Solar Irradiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html">Soil Moisture Anomaly Analysis</a></li>
@@ -757,7 +755,7 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-rocket"></i>
   </button>
   <ul class="dropdown-menu">
-      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/total-solar-irradiance.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/total-solar-irradiance-copy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -812,7 +810,7 @@ title="Source repository"
 </a>
 </a>
       
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/total-solar-irradiance.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/total-solar-irradiance-copy.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -837,7 +835,7 @@ title="Open an issue"
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-      <li><a href="../_sources/ecv-notebooks/total-solar-irradiance.ipynb" target="_blank"
+      <li><a href="../_sources/ecv-notebooks/total-solar-irradiance-copy.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -965,7 +963,9 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-case-2-side-by-side-composite-products">
+  <a class="reference internal nav-link" href="#a-id-rmib-nrl-a-use-case-2-side-by-side-composite-products">
+   <a id="#rmib-nrl">
+   </a>
    Use case 2: Side-by-side composite products
   </a>
   <ul class="nav section-nav flex-column">
@@ -1328,9 +1328,9 @@ By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we c
 </div>
 </section>
 </section>
-<section id="use-case-2-side-by-side-composite-products">
-<h2>Use case 2: Side-by-side composite products<a class="headerlink" href="#use-case-2-side-by-side-composite-products" title="Permalink to this heading">#</a></h2>
-<p>The existing 44+ year TSI Climate Data Record (CDR) is the result of several overlapping TSI instruments onboard different satellites. Another well-known composite TSI data are produced by the Naval Research Laboratory (NRL). Each organization collects TSI measurements from various satellite instruments and combines them to create a composite dataset that represents the overall TSI variations over time. In this usecase we will plot these two composite datasets side-by-side.</p>
+<section id="a-id-rmib-nrl-a-use-case-2-side-by-side-composite-products">
+<h2><a id='#rmib-nrl'></a> Use case 2: Side-by-side composite products<a class="headerlink" href="#a-id-rmib-nrl-a-use-case-2-side-by-side-composite-products" title="Permalink to this heading">#</a></h2>
+<p>The existing 44+ year TSI Climate Data Record (CDR) is the result of several overlapping TSI instruments onboard different satellites. Another well-known composite TSI data are produced by the Naval Research Laboratory (NRL). Each organization collects TSI measurements from various satellite instruments and combines them to create a composite dataset that represents the overall TSI variations over time. In this usecase we will plot these two composite datasets side-by-side.</div></p>
 <section id="download-nrl-dataset-subselecting-the-time-range">
 <h3>Download NRL dataset, subselecting the time range<a class="headerlink" href="#download-nrl-dataset-subselecting-the-time-range" title="Permalink to this heading">#</a></h3>
 <p>The NRL TSI dataset is made available through LaTiS, which is a data serving system. It offers multiple methods to access the dataset, providing users with different options to retrieve the data according to their needs or preferences. We then download the selected parameters using <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
@@ -1466,20 +1466,6 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="srb-climatology-and-anomaly.html" title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-          <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology and relative anomalies of Surface Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
-      </div>
-  </a>
-  <a class='right-next' id="next-link" href="total-column-water-vapour-combi.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title"><a id='page-top'></a> Analysis of Total Column Water Vapour using the COMBI product</p>
-  </div>
-  <i class="fa-solid fa-angle-right"></i>
-  </a>
 </div>
             </footer>
             
@@ -1571,7 +1557,9 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#use-case-2-side-by-side-composite-products">
+  <a class="reference internal nav-link" href="#a-id-rmib-nrl-a-use-case-2-side-by-side-composite-products">
+   <a id="#rmib-nrl">
+   </a>
    Use case 2: Side-by-side composite products
   </a>
   <ul class="nav section-nav flex-column">
