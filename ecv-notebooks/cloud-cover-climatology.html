@@ -1,0 +1,1937 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset &#8212; C3S Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/cloud-cover-climatology';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="C3S Soil Moisture Data Access and Anomaly Analysis Notebook" href="soil-moisture-anomalies.html" />
+    <link rel="prev" title="Analysis of Total Column Water Vapour using the COMBI product" href="total-column-water-vapour-combi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
+                        CDS tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
+                        Climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
+                        Heatwave Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
+                        Climate Projections (CMIP6)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cordex.html">
+                        Climate Projections (CORDEX)
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
+                        Seasonal Forecast Anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-verification.html">
+                        Seasonal Forecast Verification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ci-windchill.html">
+                        Windchill Index Calculation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
+                        Outgoing Longwave Radiation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-clara-climatologies.html">
+                        Earth radiation budget climatologies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
+                        Total Solar Irradiance
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
+                        Total column water vapour
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Cloud fractional cover climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
+                        Soil Moisture Anomaly Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-water-level.html">
+                        Lake Water Level Timeseries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
+                        Lake Surface Water Temperature Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
+                        Greenhouse Gas Level 2 Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
+                        Greenhouse Gas Level 3 Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-single-sensor-demonstrator.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
+                        Demonstration on how to plot  ozone datasets on the CDS.
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
+                        Visualising fire weather index (FWI)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
+                        Observing major flood events
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
+                        Python library (ibicus) and tutorials on bias correction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
+                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
+                        CDS tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
+                        Climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
+                        Heatwave Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
+                        Climate Projections (CMIP6)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cordex.html">
+                        Climate Projections (CORDEX)
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
+                        Seasonal Forecast Anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-verification.html">
+                        Seasonal Forecast Verification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ci-windchill.html">
+                        Windchill Index Calculation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
+                        Outgoing Longwave Radiation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-clara-climatologies.html">
+                        Earth radiation budget climatologies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
+                        Total Solar Irradiance
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
+                        Total column water vapour
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Cloud fractional cover climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
+                        Soil Moisture Anomaly Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-water-level.html">
+                        Lake Water Level Timeseries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
+                        Lake Surface Water Temperature Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
+                        Greenhouse Gas Level 2 Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
+                        Greenhouse Gas Level 3 Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-single-sensor-demonstrator.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
+                        Demonstration on how to plot  ozone datasets on the CDS.
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
+                        Visualising fire weather index (FWI)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
+                        Observing major flood events
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
+                        Python library (ibicus) and tutorials on bias correction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
+                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cds-tutorial.html">CDS tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reanalysis Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections-cordex.html">Climate Projections (CORDEX)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sf-verification.html">Seasonal Forecast Verification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using Satellite Observations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-clara-climatologies.html">Earth radiation budget climatologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-solar-irradiance.html">Total Solar Irradiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cloud fractional cover climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html">Soil Moisture Anomaly Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">Greenhouse Gas Level 3 Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html">C3S Aerosol</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">Visualising fire weather index (FWI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cems-notebooks/glofas-bangladesh-floods.html">Observing major flood events</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/cloud-cover-climatology.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">repository</span>
+</a>
+</a>
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/cloud-cover-climatology.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">open issue</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/ecv-notebooks/cloud-cover-climatology.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-access-a-how-to-access-the-notebook">
+   <a id="access">
+   </a>
+   How to access the notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-tutorial-comprises-the-following-steps">
+   The tutorial comprises the following steps:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-introduction-a-1-introduction">
+   <a id="introduction">
+   </a>
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-data-retrieve-a-2-retrieve-data">
+   <a id="data_retrieve">
+   </a>
+   2. Retrieve data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-install-cdsapi-a-2-1-install-cds-api">
+     <a id="install_cdsapi">
+     </a>
+     2.1 Install CDS API
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-import-libraries-a-2-2-import-libraries">
+     <a id="import_libraries">
+     </a>
+     2.2 Import libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-cds-api-key-a-2-3-enter-cds-api-key">
+     <a id="cds_api_key">
+     </a>
+     2.3 Enter CDS API key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-get-data-a-2-4-get-the-data">
+     <a id="get_data">
+     </a>
+     2.4 Get the data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-uc1-a-3-mean-global-cloud-distribution">
+   <a id="uc1">
+   </a>
+   3. Mean global cloud distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-calculation-1-a-3-1-calculation-of-the-temporal-average-of-cloud-fractional-cover">
+     <a id="calculation_1">
+     </a>
+     3.1 Calculation of the temporal average of cloud fractional cover
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-plot-1-a-3-2-plot-of-the-temporal-average-of-cloud-fractional-cover">
+     <a id="plot_1">
+     </a>
+     3.2 Plot of the temporal average of cloud fractional cover
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-uc2-a-4-seasonal-variations-of-clouds">
+   <a id="uc2">
+   </a>
+   4. Seasonal variations of clouds
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-calculation-2-a-4-1-calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">
+     <a id="calculation_2">
+     </a>
+     4.1 Calculation and Plot of cloud coverage annual cycles on three different spots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-uc3-a-use-case-3-radiative-effects-of-clouds">
+   <a id="uc3">
+   </a>
+   Use case 3: Radiative effects of clouds
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-ref-a-references">
+   <a id="ref">
+   </a>
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <p><a id='page-top'></a> <img src='../img/LogoLine_horizon_C3S.png' alt='Logo EU Copernicus ECMWF' align='right' width='100%'></img></p>
+<section class="tex2jax_ignore mathjax_ignore" id="a-id-page-top-a-calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset">
+<h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#a-id-page-top-a-calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Permalink to this heading">#</a></h1>
+<p>This notebook provides you with an introduction to EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a>(CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Cloud Properties</em> as well as <em>Surface - and Earth Radiaiton Budget</em>, while this notebook focuses on <strong>Cloud Fractional Cover</strong> as part of the ECV <em>Cloud Properties</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Cloud properties global gridded monthly and daily data from 1982 to present derived from satellite observations</a>.</p>
+<p>In addition, the tutorial is about the <strong>Surface downwelling longwave/shortwave flux</strong> (as part of the ECV <em>Surface Radiation Budget</em>) to demonstrate the relation between clouds and radiation. The data is also available at the CDS: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Surface radiation budget from 1982 to present derived from satellite observations</a></p>
+<p>The tutorial covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests! After a short introduction how to use a Jupyter notebook the analysis starts!</p>
+<p><img src='./images/cloud-cover-overview.png' align='right' width='100%'></img></p>
+<section id="a-id-access-a-how-to-access-the-notebook">
+<h2><a id='access'></a> How to access the notebook<a class="headerlink" href="#a-id-access-a-how-to-access-the-notebook" title="Permalink to this heading">#</a></h2>
+<p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
+<style>
+td, th {
+   border: 1px solid white;
+   border-collapse: collapse;
+}
+</style>
+<table align="left">
+  <tr>
+    <th>Run the tutorial via free cloud platforms: </th>
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
+        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
+        <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
+        <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
+  </tr>
+</table>
+<p><br><br></p>
+<p>If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries you will need. You will also need to install <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> for working with multidimensional data in netcdf files, and the CDS API (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code>) for downloading data programatically from the CDS.</p>
+</section>
+<section id="the-tutorial-comprises-the-following-steps">
+<h2>The tutorial comprises the following steps:<a class="headerlink" href="#the-tutorial-comprises-the-following-steps" title="Permalink to this heading">#</a></h2>
+<p>These include a brief introduction into the variables followed by a step-by-step guidance how to retrieve the data. With this done the focus is on analysing and visualising the data in various ways.</p>
+<p><font size="4"><span class="xref myst">How to access the notebook</span> </font><br>
+<br>
+<font size="4"><span class="xref myst">1. Introduction</span> </font><br>
+<br>
+<font size="4"><span class="xref myst">2. Retrieve data</span> </font><br>
+<font size="2"><span class="xref myst">2.1 Install CDS API</span> </font><br>
+<font size="2"><span class="xref myst">2.2 Import libraries</span> </font><br>
+<font size="2"><span class="xref myst">2.3 Enter CDS API key</span> </font><br>
+<font size="2"><span class="xref myst">2.4 Get the data</span> </font><br>
+<br>
+<font size="4"><span class="xref myst">3. Mean global cloud distribution</span> </font><br>
+<br>
+<font size="4"><span class="xref myst">4. Seasonal variations of clouds</span> </font><br>
+<br>
+<font size="4"><span class="xref myst">5. Radiative effects of clouds</span> </font><br>
+<br></p>
+</section>
+<section id="a-id-introduction-a-1-introduction">
+<h2><a id='introduction'></a> 1. Introduction<a class="headerlink" href="#a-id-introduction-a-1-introduction" title="Permalink to this heading">#</a></h2>
+<p>This tutorial is about cloud and radiation parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
+<p>The CLARA-A3 dataset provides information of various Cloud Properties parameters as well as Surface Radiation Budget (SRB) and Earth Radiation Budget (ERB) parameters. Each ECV is covered by an own Jupyter Notebook (please also take a look at <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 SRB</a> and <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 ERB</a>).</p>
+<p>This notebook focuses on the Cloud Fractional Cover (CFC) as well as Surface Downwelling Longwave and Surface Incoming Shortwave Radiation (SDL and SIS, respectively) as an extra feature to demonstrate the connection between clouds and radiation. A first Use Case provides a general idea how clouds are distributed all over the globe (averaged for the time period of 1979-2022). A second Use Case provides a closer look on three selected locations and their corresponding annual cycles in terms of cloud coverage. Those locations are defined by their geographical coordinates. Feel free to change the code and investigate the cloud coverage at more locations of your interest! To sum it up and link to the connection between clouds and radiation two radiation parameters are focused and climatologies of Surface Downwelling Longwave and Surface Incoming Shortwave Radiation provided.</p>
+<p>The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (Latest status: 09/2023) of continuous observations of clouds from space, thereby monitoring their spatial and temporal variability on Earth. CLARA-A3 comes not just with a temporal extension, but also with significant algorithm, calibration and product improvements.</p>
+<p>As measurements cover the entire globe and time-coverage has reached climatological timescales by now, the dataset is first and foremost well suited to analyse long-term characteristics and climatological trends of clouds.</p>
+<p>Questions about the cloud distribution and trends are crucial as clouds play a decisive role in the Earth’s climate system: They produce precipitation and strongly interact with radiation, thereby define the Earth’s temperature. Therefore, the CLARA-A3 climatology might be useful to e.g. determine the radiative effects of clouds on climate and to study to what extent changes in the Earth’s radiation budget can be attributed to changes in clouds. Furthermore it can be used as reference to assess e.g. the prediction of clouds by climate and forecast models.</p>
+<p>As clouds strongly shield sunlight from the Earth’s surface, the above mentioned points might also concern, among others, the solar energy industry as well as tourism. Some regions are more suited for allocating photovoltaic power plants or spending holidays with nice weather conditions.</p>
+<p>In the following, some simple illustrations are presented to prompt ideas on the usage, visualisation and analysis of the CLARA-A3 dataset. It comprises several variables to capture various cloud and radiation characteristics.</p>
+<p>Please find further information about the datasets as well as the data in the Climate Data Store sections “Overview”, “Download data” and “Documentation”:</p>
+<ul class="simple">
+<li><p>Cloud Properties: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview</a></p></li>
+<li><p>Surface Radiation Budget: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></p></li>
+</ul>
+<p>A <a class="reference external" href="http://datastore.copernicus-climate.eu/documents/satellite-cloud-properties/C3S_312b_Lot1.4.2.4_201902_Tutorial_ECVCloudProperties_v1.4.mp4">tutorial video</a> describes the ECV <em>Cloud Properties</em> and its impact on the atmospheric conditions. In addition, it provides you with a small introduction of the satellite instruments and retrieval methods followed by general information about the dataset and support options provided by the CDS.</p>
+</section>
+<section id="a-id-data-retrieve-a-2-retrieve-data">
+<h2><a id='data_retrieve'></a> 2. Retrieve data<a class="headerlink" href="#a-id-data-retrieve-a-2-retrieve-data" title="Permalink to this heading">#</a></h2>
+<p>Before the start we need to prepare an environment in which we will work. Since we will retrieve the data via the Application Programming Interface (API) of the CDS we need to install the CDS API. This is followed by the import of some required python libraries which will help us to handle the data.</p>
+<section id="a-id-install-cdsapi-a-2-1-install-cds-api">
+<h3><a id='install_cdsapi'></a> 2.1 Install CDS API<a class="headerlink" href="#a-id-install-cdsapi-a-2-1-install-cds-api" title="Permalink to this heading">#</a></h3>
+<p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/bin/sh: pip: Kommando nicht gefunden.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-id-import-libraries-a-2-2-import-libraries">
+<h3><a id='import_libraries'></a> 2.2 Import libraries<a class="headerlink" href="#a-id-import-libraries-a-2-2-import-libraries" title="Permalink to this heading">#</a></h3>
+<p>Processing (climate) data with python requires some libraries. Libraries contain different functions for e.g. reading, processing and visualisation of large amounts of data and make it easier to work with it.</p>
+<p>The basic data format for climate data is NetCDF. This is also the case for CLARA-A3 and to handle this well we use a library to work with multidimensional arrays, named <strong>Xarray</strong>. For the calculations we use <strong>Numpy</strong>, which provides various mathmatical operations. We also need libraries for plotting and viewing the data, in this case we will use <strong>Matplotlib</strong> and <strong>Cartopy</strong>.</p>
+<p>Before we start analysing the data we need to take advantage of one of the two options to get the data:</p>
+<ul class="simple">
+<li><p>Fill in the download form on the CDS page and simply download the data to the download folder of your computer - <em>not preferred</em></p></li>
+<li><p>Use the API (Application Programming Interface) for programmatic access to the CDS data - <em>preferred</em>, check <span class="xref myst">Chapter 2.3 Enter CDS API key</span></p></li>
+</ul>
+<p>For this we import the <strong>cdsapi</strong>-library and a library to <strong>unzip</strong> the downloaded zip files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download data from CDS via cdsapi and unzip the files via zipfile</span>
+<span class="kn">import</span> <span class="nn">cdsapi</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+
+<span class="c1"># Libraries for data reading and processing</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Libraries for visualisation in form of maps or graphs</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-id-cds-api-key-a-2-3-enter-cds-api-key">
+<h3><a id='cds_api_key'></a> 2.3 Enter CDS API key<a class="headerlink" href="#a-id-cds-api-key-a-2-3-enter-cds-api-key" title="Permalink to this heading">#</a></h3>
+<p>The data can be found in the Climate Data Store: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>. In case you don’t have an account yet, please click on “Login/register” at the top right and select “Create new account” (Figure 1a). With the process finished you are able to login to the CDS and can search for your preferred data.</p>
+<p>We will request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: URL and KEY which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:” in the black block on the right (Figure 1b). Please replace the ######### below with this string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img src='./images/cloud-cover-cds.png' align='right' width='100%'></img></p>
+<p>Figure 1: This helps to create an account (Figure 1a, left) and use the CDS API (Figure 1b, right). The arrow on the top right of Figure 1a indicates where to start the register process with the arrow on the left side points to the button to create a new account. With that process finished the link in the text section above leads to Figure 1b. Please copy the text of the second line of the black block (see arrow) in the line “KEY” above.</p>
+<p>The current directory is defined as <strong>datadir</strong>. This is the central directory where we will create subfolders to save the data and output files.</p>
+<p>In advance of the download please create a folder named “Download” in the <strong>datadir</strong> directory. We will set this as the location where to store the downloaded zip-files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadir</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-id-get-data-a-2-4-get-the-data">
+<h3><a id='get_data'></a> 2.4 Get the data<a class="headerlink" href="#a-id-get-data-a-2-4-get-the-data" title="Permalink to this heading">#</a></h3>
+<p>For this tutorial we need data for Cloud Properties first, so please either click on “Datasets” in the CDS and search for “Cloud Properties” or simply click on: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview</a>.
+The name of the Cloud Properties landing page is: <strong>Cloud properties global gridded monthly and daily data from 1982 to present derived from satellite observations</strong>.</p>
+<p>Once you reached the landing page, feel free to have a look at the documentation and information provided.</p>
+<p>The data can be found in the “Download data”-tab with a form to select certain variables, years etc. For our use case we select as follows:</p>
+<ul class="simple">
+<li><p>Product family: CLARA (CLoud, Albedo and Radiation)</p></li>
+<li><p>Origin: EUMETSAT (European Organisation for the Exploitation of Meteorological Satellites)</p></li>
+<li><p>Variable: Cloud fraction</p></li>
+<li><p>Climate data record type: Thematic Climate Data Record (TCDR)</p></li>
+<li><p>Sensor on satellite: AVHRR on multiple satellites</p></li>
+<li><p>Time aggregation: Monthly mean</p></li>
+<li><p>Year: Every year from 1982-2018 (shortcut with “Select all” at the bottom right)</p></li>
+<li><p>Month: Every month from January to December (shortcut with “Select all” at the bottom right)</p></li>
+<li><p>Format: Compressed zip file (.zip)</p></li>
+<li><p>Geographical area: Whole available region</p></li>
+</ul>
+<p>Please make sure all <strong>Terms of use</strong> are accepted (see at the top of Figure 2). This can be done at the bottom of the <strong>Download data</strong> tab.</p>
+<p>At the bottom left of the page, click on <strong>Show API request</strong> and copy &amp; paste the text into the Jupyter notebook (see highlighted text in Figure 2). The first line can be skipped since it is already part of the <strong>Import libraries</strong> section.</p>
+<p><img src='./images/cloud-cover-cdsapi.png' align='right' width='100%'></img></p>
+<p>Figure 2 shows the CDS API at the bottom of the Download data section. Please focus at the <strong>Terms of use</strong>, the <strong>Show/Hide API request</strong>-Button and the highlighted text.</p>
+<p>Note: To make sure the zip-file will be saved in the correct place and with an appropriate name you can adjust the last line like below. In our case a folder “Download” was created manually in the defined directory to achieve a clear structure and the download file is called <strong>download_cld_tcdr.zip</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+    <span class="s1">&#39;satellite-cloud-properties&#39;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;product_family&#39;</span><span class="p">:</span> <span class="s1">&#39;clara&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;eumetsat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;cloud_fraction&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sensor_on_satellite&#39;</span><span class="p">:</span> <span class="s1">&#39;avhrr_on_multiple_satellites&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly_mean&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;1982&#39;</span><span class="p">,</span> <span class="s1">&#39;1983&#39;</span><span class="p">,</span> <span class="s1">&#39;1984&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1985&#39;</span><span class="p">,</span> <span class="s1">&#39;1986&#39;</span><span class="p">,</span> <span class="s1">&#39;1987&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1988&#39;</span><span class="p">,</span> <span class="s1">&#39;1989&#39;</span><span class="p">,</span> <span class="s1">&#39;1990&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="s1">&#39;1992&#39;</span><span class="p">,</span> <span class="s1">&#39;1993&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1994&#39;</span><span class="p">,</span> <span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;1996&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1997&#39;</span><span class="p">,</span> <span class="s1">&#39;1998&#39;</span><span class="p">,</span> <span class="s1">&#39;1999&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2001&#39;</span><span class="p">,</span> <span class="s1">&#39;2002&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2003&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2006&#39;</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2008&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2009&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2011&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2012&#39;</span><span class="p">,</span> <span class="s1">&#39;2013&#39;</span><span class="p">,</span> <span class="s1">&#39;2014&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2015&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2018&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;02&#39;</span><span class="p">,</span> <span class="s1">&#39;03&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;04&#39;</span><span class="p">,</span> <span class="s1">&#39;05&#39;</span><span class="p">,</span> <span class="s1">&#39;06&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;07&#39;</span><span class="p">,</span> <span class="s1">&#39;08&#39;</span><span class="p">,</span> <span class="s1">&#39;09&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">datadir</span><span class="si">}</span><span class="s1">Download/download_cld.zip&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-09-22 12:03:38,903 INFO Welcome to the CDS
+2023-09-22 12:03:38,904 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-cloud-properties
+2023-09-22 12:03:39,351 INFO Request is completed
+2023-09-22 12:03:39,352 INFO Downloading https://download-0021.copernicus-climate.eu/cache-compute-0021/cache/data7/dataset-satellite-cloud-properties-469e1eef-79a5-4e35-8f14-ea273779ca18.zip to ./Download/download_cld.zip (1.5G)
+2023-09-22 12:04:24,709 INFO Download rate 33.2M/s  
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=1576955238,content_type=application/zip,location=https://download-0021.copernicus-climate.eu/cache-compute-0021/cache/data7/dataset-satellite-cloud-properties-469e1eef-79a5-4e35-8f14-ea273779ca18.zip)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The zip-file should be downloaded and saved at the correct place. To unzip it to a certain folder please create a folder named <strong>Data</strong> in the same directory like <strong>Download</strong>. Within the <strong>Data</strong>-folder please create a folder named <strong>CLD</strong> where we plan do unzip the files to.</p>
+<p>The following lines unzip the data. <strong>datadir + ‘Downloda/download_cld.zip</strong> is the path to the zip-file. The first line constructs a ZipFile() object, the second line applies the function <strong>extractall</strong> to extract the content.</p>
+<p><em>datadir + ‘Data/CLD/’</em> is the path we want to store the files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;Download/download_cld.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;Data/CLD/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the zip-file unziped and files at the right place we can start reading and processing the data.</p>
+<p>The following line starting with “file” considers only files in the given directory starting the “CFCmm” and ending with “.nc” and creates a list with all matching files. The * means “everything” and takes every file into account. This is quite useful since year and month are part of the file names.</p>
+<p>The second line reads the defined file list with the xarray function “open_mfdataset” (mf - multiple file) and concatenates them according to the time dimension.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;Data/CLD/CFCmm*.nc&#39;</span>
+<span class="n">dataset_cfc</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Please find below the xarray dataset of the Cloud Properties exemplary:</p>
+<p>It provides information about the:</p>
+<ul class="simple">
+<li><p>Dimensions: Lat and Lon with 0.25°x0.25° resolution and a lenght of 720/1440 and 524 months (almost 44 years * 12 months)</p>
+<ul>
+<li><p>Note: No data available for 02/1985 due to missing satellite data</p></li>
+</ul>
+</li>
+<li><p>Coordinates: Spatial coordinates for Latitude and Longitude, temporal coordinates for time</p></li>
+<li><p>Data variables: List of different variables (in our case “cfc” is relevant)</p></li>
+<li><p>Attributes: Various important information about the dataset</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_cfc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:     (bndsize: 2, lat: 720, lon: 1440, time: 443)
+Coordinates:
+  * lat         (lat) float32 -89.875 -89.625 -89.375 ... 89.375 89.625 89.875
+  * lon         (lon) float32 -179.875 -179.625 -179.375 ... 179.625 179.875
+  * time        (time) datetime64[ns] 1982-01-01 1982-02-01 ... 2018-12-01
+Dimensions without coordinates: bndsize
+Data variables:
+    time_bnds   (time, bndsize) datetime64[ns] dask.array&lt;shape=(443, 2), chunksize=(1, 2)&gt;
+    nobs        (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    nobs_day    (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    nobs_night  (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    cfc         (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    cfc_std     (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    cfc_low     (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    cfc_middle  (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    cfc_high    (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    cfc_day     (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+    cfc_night   (time, lat, lon) float64 dask.array&lt;shape=(443, 720, 1440), chunksize=(1, 720, 1440)&gt;
+Attributes:
+    title:                       CM SAF cLoud, Albedo and RAdiation dataset, ...
+    summary:                     This file contains AVHRR-based Thematic Clim...
+    product_version:             2.0
+    creator_name:                DE/DWD
+    creator_email:               contact.cmsaf@dwd.de
+    creator_url:                 www.cmsaf.eu
+    institution:                 EUMETSAT/CMSAF
+    project:                     Satellite Application Facility on Climate Mo...
+    references:                  http://dx.doi.org/10.5676/EUM_SAF_CM/CLARA_A...
+    keywords_vocabulary:         GCMD Science Keywords, Version 8.1
+    keywords:                    EARTH SCIENCE &gt; ATMOSPHERE &gt; CLOUDS &gt; CLOUD ...
+    Conventions:                 CF-1.6,ACDD-1.3
+    standard_name_vocabulary:    Standard Name Table (v28, 07 January 2015)
+    date_created:                2016-01-09T21:14:34Z
+    geospatial_lat_units:        degrees_north
+    geospatial_lat_min:          -90.0
+    geospatial_lat_max:          90.0
+    geospatial_lon_units:        degrees_east
+    geospatial_lon_min:          -180.0
+    geospatial_lon_max:          180.0
+    geospatial_lat_resolution:   0.25 degree
+    geospatial_lon_resolution:   0.25 degree
+    time_coverage_start:         1982-01-01T00:00:00Z
+    time_coverage_end:           1982-01-31T23:59:59Z
+    time_coverage_duration:      P1M
+    time_coverage_resolution:    P1M
+    platform_vocabulary:         GCMD Platforms, Version 8.1
+    platform:                    NOAA POES &gt; NOAA Polar Orbiting Environmenta...
+    instrument_vocabulary:       GCMD Instruments, Version 8.1
+    CMSAF_included_Daily_Means:  31.0
+    CMSAF_L1_processor:          PyGAC
+    CMSAF_L2_processor:          PPS2014 incl. patch 1 and CPP
+    CMSAF_L3_processor:          CMSAFGACL3_V2.0
+    date_modified:               
+    date_metadata_modified:      
+    history:                     
+    instrument:                  AVHRR &gt; Advanced Very High Resolution Radiom...
+    id:                          DOI:10.5676/EUM_SAF_CM/CLARA_AVHRR/V002
+</pre></div>
+</div>
+</div>
+</div>
+<p>In advance of the following processing and visualisation part we set a directory where to save the figures. Please create a folder “Figures” in the “datadir” directory.</p>
+<p>Here we define the path were to save the plots as <strong>figpath</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figpath</span> <span class="o">=</span> <span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;Figures/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="a-id-uc1-a-3-mean-global-cloud-distribution">
+<h2><a id='uc1'></a> 3. Mean global cloud distribution<a class="headerlink" href="#a-id-uc1-a-3-mean-global-cloud-distribution" title="Permalink to this heading">#</a></h2>
+<p>Use Case #1 aims to give a general overview about the global distribution of clouds.</p>
+<section id="a-id-calculation-1-a-3-1-calculation-of-the-temporal-average-of-cloud-fractional-cover">
+<h3><a id='calculation_1'></a> 3.1 Calculation of the temporal average of cloud fractional cover<a class="headerlink" href="#a-id-calculation-1-a-3-1-calculation-of-the-temporal-average-of-cloud-fractional-cover" title="Permalink to this heading">#</a></h3>
+<p>We therefore calculate the temporal average with the function np.nanmean. np is short for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to dataset_cfc and the variable “cfc”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal average</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">dataset_cfc</span><span class="p">[</span><span class="s1">&#39;cfc&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Get longitude and latitude coordinates. Both are variables of the dataset and available with</span>
+<span class="c1"># the &quot;.variables[&#39;lat/lon&#39;]&quot; function; [:] usually means [&quot;from&quot;:&quot;till&quot;] but</span>
+<span class="c1"># without numbers it means &quot;everything&quot;</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_cfc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_cfc</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-id-plot-1-a-3-2-plot-of-the-temporal-average-of-cloud-fractional-cover">
+<h3><a id='plot_1'></a> 3.2 Plot of the temporal average of cloud fractional cover<a class="headerlink" href="#a-id-plot-1-a-3-2-plot-of-the-temporal-average-of-cloud-fractional-cover" title="Permalink to this heading">#</a></h3>
+<p>With the caluculation done the data is ready for a plot. Please find the plot and settings in the next sectio.</p>
+<p>Some further notes:</p>
+<ul class="simple">
+<li><p>Matplotlib provides a wide range of colorbars: <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">https://matplotlib.org/stable/users/explain/colors/colormaps.html</a>; the addition <em>_r</em> reverses the colorbar</p></li>
+<li><p>The “add_subplot” part provides the option to plot more than one figure (e.g. a 2x2 matrix with four plots together). In this case (1,1,1) means that the panel is a 1x1 matrix and the following plot is the first subplot.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure and size</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Create the figure panel and define the Cartopy map projection (PlateCarree)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Plot the data and set colorbar, minimum and maximum values</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Set title and size</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Cloud Fractional Cover from CLARA-A3 for 1979-2022&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set x- and y-axis labels to True or False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabels_top</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">xlabels_bottom</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">ylabels_left</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Set coastlines</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="c1"># Set colorbar and adjust size, location and text</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Cloud Fractional Cover (%)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save figure in defined path and name</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figpath</span> <span class="o">+</span> <span class="s1">&#39;Cloud_mean.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show plot and close it afterwards to reduce the amount of storage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/170c4e64c60fc41161f66adec08e2c28e30c187f19734591e0977107e15ddadf.png" src="../_images/170c4e64c60fc41161f66adec08e2c28e30c187f19734591e0977107e15ddadf.png" />
+</div>
+</div>
+<p>Figure 3 shows the time-averaged global distribution of clouds on Earth. It has been calculated as a time average over the monthly mean cloud fractional cover data from 1979-2022 based on the CLARA-A3 dataset. As shown here, especially cloudy regions can be found along the storm tracks of the midlatitudes, which are known for the frequent occurence of cyclones. They typically result in vertical motion of air, a prerequisite for the formation of clouds. High concentrations of clouds also appear in the tropics near the equator, where strong insolation triggers intense convection, thus cloud formation (compare with Inter-Tropical Convergence Zone, ITCZ). The smallest amount are mainly present in the subtropics in Australia, North Africa, Southern Africa, and Soutwest South America, where large-scale downwelling motion generally prevails.</p>
+</section>
+</section>
+<section id="a-id-uc2-a-4-seasonal-variations-of-clouds">
+<h2><a id='uc2'></a> 4. Seasonal variations of clouds<a class="headerlink" href="#a-id-uc2-a-4-seasonal-variations-of-clouds" title="Permalink to this heading">#</a></h2>
+<p>Use Case #2 shows three annual cycles of cloud fractional cover for different locations. As insolation and flow patterns vary significantly over the year in many parts of the Earth, the mean presence of clouds also exhibits seasonal differences. As one example that neatly demonstrates steady variations throughout the year, Use Case #2 shows the mean monthly evolution of the fractional cloud cover for Frankfurt (Germany), Mumbai (India) and Darwin (Australia).</p>
+<section id="a-id-calculation-2-a-4-1-calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">
+<h3><a id='calculation_2'></a> 4.1 Calculation and Plot of cloud coverage annual cycles on three different spots<a class="headerlink" href="#a-id-calculation-2-a-4-1-calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots" title="Permalink to this heading">#</a></h3>
+<p>We define three locations of interest in terms of latitude and longitude coordinates. Feel free to discover different locations and change the coordinates according to your interests!
+The basic setup consists of Frankfurt (Germany) with a warm and temperate climate of central Europe, Mumbai (India) with its influence of the monsoon and Darwin (Australia) in the tropical savanna climate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Frankfurt, Germany</span>
+<span class="n">point_lat_1</span> <span class="o">=</span> <span class="mf">50.11</span>
+<span class="n">point_lon_1</span> <span class="o">=</span> <span class="mf">8.68</span>
+
+<span class="c1"># Mumbai, India</span>
+<span class="n">point_lat_2</span> <span class="o">=</span> <span class="mf">19.08</span>
+<span class="n">point_lon_2</span> <span class="o">=</span> <span class="mf">72.88</span>
+
+<span class="c1"># Darwin, Australia</span>
+<span class="n">point_lat_3</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12.46</span>
+<span class="n">point_lon_3</span> <span class="o">=</span> <span class="mf">130.84</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following operations are applied on all three points, so we try to make advantage of a loop. A loop runs a defined set of commands a defined number of times. Before we run the loop we define vectors containing the information for all three points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Latitude/Longitude points and labels with index 0 for Frankfurt, 1 for Mumbai and 2 for Darwin</span>
+<span class="n">point_lat</span> <span class="o">=</span> <span class="p">[</span><span class="n">point_lat_1</span><span class="p">,</span> <span class="n">point_lat_2</span><span class="p">,</span> <span class="n">point_lat_3</span><span class="p">]</span>
+<span class="n">point_lon</span> <span class="o">=</span> <span class="p">[</span><span class="n">point_lon_1</span><span class="p">,</span> <span class="n">point_lon_2</span><span class="p">,</span> <span class="n">point_lon_3</span><span class="p">]</span>
+<span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Frankfurt, Germany&#39;</span><span class="p">,</span> <span class="s1">&#39;Mumbai, India&#39;</span><span class="p">,</span> <span class="s1">&#39;Darwin, Australia&#39;</span><span class="p">]</span>
+
+<span class="c1"># X-axis values to plot against</span>
+<span class="n">year</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span> <span class="s1">&#39;Apr&#39;</span><span class="p">,</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span> <span class="s1">&#39;Jun&#39;</span><span class="p">,</span> <span class="s1">&#39;Jul&#39;</span><span class="p">,</span> <span class="s1">&#39;Aug&#39;</span><span class="p">,</span> <span class="s1">&#39;Sep&#39;</span><span class="p">,</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span> <span class="s1">&#39;Nov&#39;</span><span class="p">,</span> <span class="s1">&#39;Dec&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the actual calculation and visualisation takes place. The for-loop defines that the steps will be runned three times (range(0,3) with indices 0, 1 and 2). The first run with index “0” takes the first element of a vector with the addition [i], e.g. point_lat[i] and therefore point_lat_1 (see above).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Annual cycle of Cloud Fractional Cover from CLARA-A3 for 1979-2022&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    
+    <span class="c1"># Search for the nearest grid point with respect to the entered data</span>
+    <span class="c1"># Get latitudes of the dataset as array</span>
+    <span class="n">latitude_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dataset_cfc</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate differences between every latitude and defined latitude for the location (np.abs)</span>
+    <span class="c1"># Search for the smallest difference (.argmin()) and save the index</span>
+    <span class="n">idx_lat</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">latitude_point</span> <span class="o">-</span> <span class="n">point_lat</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
+    
+    <span class="c1"># Repeat steps for longitude</span>
+    <span class="n">longitude_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">dataset_cfc</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">idx_lon</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">longitude_point</span> <span class="o">-</span> <span class="n">point_lon</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="o">.</span><span class="n">argmin</span><span class="p">()</span>
+    
+    <span class="c1"># The data description table in the CDS mentioned a gap for February 1985, so in case of</span>
+    <span class="c1"># calculation of a annual cycle there should be a &quot;nan&quot; inserted at the certain point</span>
+    <span class="c1"># Take global dataset and cut for selected location but keep every time step</span>
+    <span class="c1"># [:,idx_lat,idx_lon]</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">dataset_cfc</span><span class="p">[</span><span class="s1">&#39;cfc&#39;</span><span class="p">][:,</span> <span class="n">idx_lat</span><span class="p">,</span> <span class="n">idx_lon</span><span class="p">]</span>
+    <span class="c1"># Convert from xarray to array</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">point</span><span class="o">.</span><span class="n">values</span>
+    <span class="c1"># Take created array &quot;point&quot; and insert nan (np.nan) at index 37 - which is 02/1985 with</span>
+    <span class="c1"># a start date of 01/1982)</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate annual cycle</span>
+    <span class="c1"># Define vectors with 12 elements</span>
+    <span class="n">cycle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">cycle_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">cycle_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate annual cycle, loop runs 12 times starting with 0 (January) and takes the average</span>
+    <span class="c1"># of every 12th element to get the average for January. Index 1 averages all Februaries etc.</span>
+    <span class="c1"># In addition the minimum and maximum of all 37 e.g. Januaries will be calculated</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">):</span>
+        <span class="n">cycle</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="n">j</span><span class="p">::</span><span class="mi">12</span><span class="p">])</span>
+        <span class="n">cycle_max</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="n">j</span><span class="p">::</span><span class="mi">12</span><span class="p">])</span>
+        <span class="n">cycle_min</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">point</span><span class="p">[</span><span class="n">j</span><span class="p">::</span><span class="mi">12</span><span class="p">])</span>
+    
+    <span class="c1"># Set title and size</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Annual cycle of Cloud Fractional Cover from CLARA-A3 for 1979-2022&#39;</span><span class="p">,</span>
+                    <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    
+    <span class="c1"># Plot data and adjust color, linewidth and label</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">cycle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Fill space between min and max values</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">cycle_min</span><span class="p">,</span> <span class="n">cycle_max</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Set legend, axis-labels and ticks, the y-axis label is just defined for the left/first plot</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;CFC in %&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Save figure in defined path and name</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figpath</span> <span class="o">+</span> <span class="s1">&#39;Cycle_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3fd1267f3bce92b429b559e673df629c0a41203b7f012aad81ffdcca4e39b4a4.png" src="../_images/3fd1267f3bce92b429b559e673df629c0a41203b7f012aad81ffdcca4e39b4a4.png" />
+</div>
+</div>
+<p>Figure 4 shows the mean monthly annual cycle of the fractional cloud cover near to Mumbai, a city situated in the Southwest of India. Mumbai exhibits a very strong seasonal cycle in cloud coverage with averages reaching up to 90% in summer and less than 20% in winter. This is due to the Asian monsoon, advecting dry continental air in winter and moist oceanic air in summer to India. As counterpart to the Asian monsoon, a further figure shows the north Australian monsoon, showing fractional cloud cover data next to Darwin, Australia.</p>
+<p>Annual cycles are not only observed in the subtropical monsoon regions, but also e.g. in midlatitudes, although much less pronounced. A further figure depicts the monthly mean cloudiness near to Frankfurt, Germany. The amplitude is considerably smaller, but a slightly larger amount of cloud cover is evident in winter. This can be ascribed to increased cyclonic activity in winter due to particulary large differences in temperatures between the equator and the poles.</p>
+<p>The blue shaddow is defined by the minimum and maximum month out of all 44 years (e.g. the lower end of January for Frankfurt is the January from 1979 - 2022 with the least cloud coverage).</p>
+</section>
+</section>
+<section id="a-id-uc3-a-use-case-3-radiative-effects-of-clouds">
+<h2><a id='uc3'></a> Use case 3: Radiative effects of clouds<a class="headerlink" href="#a-id-uc3-a-use-case-3-radiative-effects-of-clouds" title="Permalink to this heading">#</a></h2>
+<p>To demonstrate the basic relation between clouds and radiation, which is why clouds are ascribed a crucial role in the Earth’s climate system, Figure 5 presents time-averaged data from the CLARA-A3 dataset on radiation. This dataset was simultaneously compiled with the CLARA-A3 dataset on clouds by EUMETSAT’s CM SAF.</p>
+<p>The calculation of the temporal-averaged radiation is similar to Use Case 1 but with different variables.</p>
+<p>Please click on “Datasets” in the bar at the top and either search for “Surface Radiation Budget” or click on <strong><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></strong>. The name of the landing page is <strong>Surface radiation budget from 1982 to present derived from satellite observations</strong>.</p>
+<p>Please select in the “Download data” tab the following:</p>
+<ul class="simple">
+<li><p>Product family: CLARA (CLoud, Albedo and Radiation)</p></li>
+<li><p>Origin: EUMETSAT (European Organisation for the Exploitation of Meteorological Satellites)</p></li>
+<li><p>Variable: Surface downwelling shortwave flux and Surface downwelling longwave flux</p></li>
+<li><p>Climate data record type: Thematic Climate Data Record (TCDR)</p></li>
+<li><p>Sensor on satellite: AVHRR on multiple satellites</p></li>
+<li><p>Time aggregation: Monthly mean</p></li>
+<li><p>Year: Every year from 1979-2022</p></li>
+<li><p>Month: Every month from January to December</p></li>
+<li><p>Version: v2.0</p></li>
+<li><p>Format: Zip file (.zip)</p></li>
+</ul>
+<p>Please click on <strong>Show API request</strong>. Copy &amp; paste the code to your Jupyter Notebook and adjust the last line accordingly.
+Watch out to accept the <strong>Terms of use</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+    <span class="s1">&#39;satellite-surface-radiation-budget&#39;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;product_family&#39;</span><span class="p">:</span> <span class="s1">&#39;clara&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;eumetsat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;surface_downwelling_longwave_flux&#39;</span><span class="p">,</span> <span class="s1">&#39;surface_downwelling_shortwave_flux&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;sensor_on_satellite&#39;</span><span class="p">:</span> <span class="s1">&#39;avhrr_on_multiple_satellites&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly_mean&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;1982&#39;</span><span class="p">,</span> <span class="s1">&#39;1983&#39;</span><span class="p">,</span> <span class="s1">&#39;1984&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1985&#39;</span><span class="p">,</span> <span class="s1">&#39;1986&#39;</span><span class="p">,</span> <span class="s1">&#39;1987&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1988&#39;</span><span class="p">,</span> <span class="s1">&#39;1989&#39;</span><span class="p">,</span> <span class="s1">&#39;1990&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="s1">&#39;1992&#39;</span><span class="p">,</span> <span class="s1">&#39;1993&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1994&#39;</span><span class="p">,</span> <span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;1996&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;1997&#39;</span><span class="p">,</span> <span class="s1">&#39;1998&#39;</span><span class="p">,</span> <span class="s1">&#39;1999&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2001&#39;</span><span class="p">,</span> <span class="s1">&#39;2002&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2003&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;2005&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2006&#39;</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2008&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2009&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">,</span> <span class="s1">&#39;2011&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2012&#39;</span><span class="p">,</span> <span class="s1">&#39;2013&#39;</span><span class="p">,</span> <span class="s1">&#39;2014&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2015&#39;</span><span class="p">,</span> <span class="s1">&#39;2016&#39;</span><span class="p">,</span> <span class="s1">&#39;2017&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;2018&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;02&#39;</span><span class="p">,</span> <span class="s1">&#39;03&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;04&#39;</span><span class="p">,</span> <span class="s1">&#39;05&#39;</span><span class="p">,</span> <span class="s1">&#39;06&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;07&#39;</span><span class="p">,</span> <span class="s1">&#39;08&#39;</span><span class="p">,</span> <span class="s1">&#39;09&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;v2_0&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">datadir</span><span class="si">}</span><span class="s1">Download/download_srb.zip&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-09-22 12:05:57,579 INFO Welcome to the CDS
+2023-09-22 12:05:57,581 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-surface-radiation-budget
+2023-09-22 12:05:57,802 INFO Request is completed
+2023-09-22 12:05:57,804 INFO Downloading https://download-0019.copernicus-climate.eu/cache-compute-0019/cache/data0/dataset-satellite-surface-radiation-budget-ad165317-cd73-4d13-a8ae-fda9de1173cb.zip to ./Download/download_srb.zip (6.2G)
+2023-09-22 12:12:30,050 INFO Download rate 16.3M/s  
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=6708606670,content_type=application/zip,location=https://download-0019.copernicus-climate.eu/cache-compute-0019/cache/data0/dataset-satellite-surface-radiation-budget-ad165317-cd73-4d13-a8ae-fda9de1173cb.zip)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The next steps are a repeat of the way the cloud fractional cover data was processed before:</p>
+<ul class="simple">
+<li><p>Unzip the files</p></li>
+<li><p>Create list with files</p></li>
+<li><p>Read file list via “xr.open_mfdataset”</p></li>
+<li><p>Temporal average of data</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;Download/download_srb.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;Data/SRB/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;Data/SRB/SDLmm*.nc&#39;</span>
+<span class="n">dataset_sdl</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="n">datadir</span> <span class="o">+</span> <span class="s1">&#39;Data/SRB/SISmm*.nc&#39;</span>
+<span class="n">dataset_sis</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal average of dataset_sdl/sis and corresponding variables, np.nanmean averages and</span>
+<span class="c1"># ignores nan&#39;s</span>
+<span class="n">average_sdl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">dataset_sdl</span><span class="p">[</span><span class="s1">&#39;SDL&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">average_sis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">dataset_sis</span><span class="p">[</span><span class="s1">&#39;SIS&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/cmsaf/nfshome/routcm/Modules_CentOS/python/3.7.2/lib/python3.7/site-packages/ipykernel_launcher.py:3: RuntimeWarning: Mean of empty slice
+  This is separate from the ipykernel package so we can avoid doing imports until
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similar to Use Case 2 more than one figure will be created. This gives us the chance to use a loop with two runs. A set of vectors with two entries is created below, using the first entry for SDL and the second entry for SIS.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">average_sdl</span><span class="p">,</span> <span class="n">average_sis</span><span class="p">]</span>
+<span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mean Surface Downwelling Longwave Radiation from CLARA-A3 for 1979-2020&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;Mean Surface Downwelling Shortwave Radiation from CLARA-A3 for 1979-2022&#39;</span><span class="p">]</span>
+<span class="n">var</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SDL&#39;</span><span class="p">,</span> <span class="s1">&#39;SIS&#39;</span><span class="p">]</span>
+<span class="n">cbar_text</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Surface Downwelling Longwave Radiation (W/m²)&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;Surface Incoming Shortwave Radiation (W/m²)&#39;</span><span class="p">]</span>
+<span class="n">lowerlimit</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">upperlimit</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">320</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Following the visualisation takes place with a similar setup compared to Use Case 1. The loop makes sure everything happens twice for Surface Downwelling Longwave Radiation and Surface Downwelling Shortwave Radiation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    
+    <span class="c1"># Create figure and size</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    
+    <span class="c1"># Create the figure panel and define the Cartopy map projection (PlateCarree)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+    
+    <span class="c1"># Plot the data and set colorbar, minimum and maximum values</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">lowerlimit</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">vmax</span><span class="o">=</span><span class="n">upperlimit</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="c1"># Set title and size</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    
+    <span class="c1"># Define gridlabels and lines</span>
+    <span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">gl</span><span class="o">.</span><span class="n">xlabels_top</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">gl</span><span class="o">.</span><span class="n">xlabels_bottom</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">gl</span><span class="o">.</span><span class="n">ylabels_left</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">gl</span><span class="o">.</span><span class="n">xlines</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">gl</span><span class="o">.</span><span class="n">ylines</span> <span class="o">=</span> <span class="kc">True</span>
+    
+    <span class="c1"># Set coastlines</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+    
+    <span class="c1"># Set colorbar and adjust size, location and text</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbar_text</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    
+    <span class="c1"># Save figure in defined path and name</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">figpath</span> <span class="o">+</span> <span class="s1">&#39;Radiation_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Show plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/45e299473b4797d44e4ba53ea38ff6c34f9602bed3a96e8f20c3ef23b9d247d1.png" src="../_images/45e299473b4797d44e4ba53ea38ff6c34f9602bed3a96e8f20c3ef23b9d247d1.png" />
+<img alt="../_images/f57ee09d71d066a3dca900c591e3953ce74bd9c4f0d1718a9f5535743dc76115.png" src="../_images/f57ee09d71d066a3dca900c591e3953ce74bd9c4f0d1718a9f5535743dc76115.png" />
+</div>
+</div>
+<p>Figure 5 shows the mean incoming long- and shortwave radiation at the Earth’s surface. It can nicely be linked to the mean fractional cloud cover in Figure 1, especially in regions where solar insolation is particulary high, mainly near the equator. As clouds reflect great parts of solar (shortwave) radiation, regions with low values of shortwave radiation at the surface correspond to regions with high fractional cloud cover in the mean. Clouds act as kind of mirrors, preventing solar radiation from reaching the Earth’s surface.</p>
+<p>At the same time, clouds also prevent terrestrial (longwave) radiation, i.e. heat, from passing back into space. Thus, many spots of high cloud coverage correspond to high values of incomming longwave radiation, and vice versa. Clouds act like a blanket, trapping some of the energy the Earth emits. That is why starry nights usually become colder than cloudy ones.</p>
+<p>Hence, clouds play a dual role for the Earth’s energy budget: They have both a cooling and a warming radiative impact. Their net effect strongly depends on the cloud’s physical properties and their height. Usually, high clouds tend to have a net warming effect on the earth, whereas mid- and low-level clouds rather cool it. Globally and annually, the shortwave effect of clouds overweights the longwave one, by abouth 20 W/m² at present (5th IPCC assessment report, chapter 7.2.1).</p>
+</section>
+<section id="a-id-ref-a-references">
+<h2><a id='ref'></a> References<a class="headerlink" href="#a-id-ref-a-references" title="Permalink to this heading">#</a></h2>
+<p>5th IPCC assessment report, chapter 7:</p>
+<p>Boucher, O., D. Randall, P. Artaxo, C. Bretherton, G. Feingold, P. Forster, V.-M. Kerminen, Y. Kondo, H. Liao, U.
+Lohmann, P. Rasch, S.K. Satheesh, S. Sherwood, B. Stevens and X.Y. Zhang, 2013: Clouds and Aerosols. In: <em>Climate
+Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the
+Intergovernmental Panel on Climate Change</em> [Stocker, T.F., D. Qin, G.-K. Plattner, M. Tignor, S.K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex and P.M. Midgley (eds.)]. Cambridge University Press, Cambridge, United Kingdom and
+New York, NY, USA</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ecv-notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="total-column-water-vapour-combi.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title"><a id='page-top'></a> Analysis of Total Column Water Vapour using the COMBI product</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="soil-moisture-anomalies.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title"><strong>C3S Soil Moisture Data Access and Anomaly Analysis Notebook</strong></p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-access-a-how-to-access-the-notebook">
+   <a id="access">
+   </a>
+   How to access the notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-tutorial-comprises-the-following-steps">
+   The tutorial comprises the following steps:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-introduction-a-1-introduction">
+   <a id="introduction">
+   </a>
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-data-retrieve-a-2-retrieve-data">
+   <a id="data_retrieve">
+   </a>
+   2. Retrieve data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-install-cdsapi-a-2-1-install-cds-api">
+     <a id="install_cdsapi">
+     </a>
+     2.1 Install CDS API
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-import-libraries-a-2-2-import-libraries">
+     <a id="import_libraries">
+     </a>
+     2.2 Import libraries
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-cds-api-key-a-2-3-enter-cds-api-key">
+     <a id="cds_api_key">
+     </a>
+     2.3 Enter CDS API key
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-get-data-a-2-4-get-the-data">
+     <a id="get_data">
+     </a>
+     2.4 Get the data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-uc1-a-3-mean-global-cloud-distribution">
+   <a id="uc1">
+   </a>
+   3. Mean global cloud distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-calculation-1-a-3-1-calculation-of-the-temporal-average-of-cloud-fractional-cover">
+     <a id="calculation_1">
+     </a>
+     3.1 Calculation of the temporal average of cloud fractional cover
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-plot-1-a-3-2-plot-of-the-temporal-average-of-cloud-fractional-cover">
+     <a id="plot_1">
+     </a>
+     3.2 Plot of the temporal average of cloud fractional cover
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-uc2-a-4-seasonal-variations-of-clouds">
+   <a id="uc2">
+   </a>
+   4. Seasonal variations of clouds
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-calculation-2-a-4-1-calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">
+     <a id="calculation_2">
+     </a>
+     4.1 Calculation and Plot of cloud coverage annual cycles on three different spots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-uc3-a-use-case-3-radiative-effects-of-clouds">
+   <a id="uc3">
+   </a>
+   Use case 3: Radiative effects of clouds
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-id-ref-a-references">
+   <a id="ref">
+   </a>
+   References
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  </body>
+</html>
