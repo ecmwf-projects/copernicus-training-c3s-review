@@ -993,13 +993,13 @@ title="Print to PDF"
 
             <article class="bd-article" role="main">
               
-  <p><a id='page-top'></a> <img src='../img/LogoLine_horizon_C3S.png' alt='Logo EU Copernicus ECMWF' align='right' width='100%'></img></p>
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="a-id-page-top-a-calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset">
 <h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#a-id-page-top-a-calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Permalink to this heading">#</a></h1>
 <p>This notebook provides you with an introduction to EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a>(CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Cloud Properties</em> as well as <em>Surface - and Earth Radiaiton Budget</em>, while this notebook focuses on <strong>Cloud Fractional Cover</strong> as part of the ECV <em>Cloud Properties</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Cloud properties global gridded monthly and daily data from 1982 to present derived from satellite observations</a>.</p>
 <p>In addition, the tutorial is about the <strong>Surface downwelling longwave/shortwave flux</strong> (as part of the ECV <em>Surface Radiation Budget</em>) to demonstrate the relation between clouds and radiation. The data is also available at the CDS: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Surface radiation budget from 1982 to present derived from satellite observations</a></p>
 <p>The tutorial covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests! After a short introduction how to use a Jupyter notebook the analysis starts!</p>
-<p><img src='./images/cloud-cover-overview.png' align='right' width='100%'></img></p>
+<p><img alt="cc-overview" src="../_images/cloud-cover-overview.png" /></p>
 <section id="a-id-access-a-how-to-access-the-notebook">
 <h2><a id='access'></a> How to access the notebook<a class="headerlink" href="#a-id-access-a-how-to-access-the-notebook" title="Permalink to this heading">#</a></h2>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
@@ -1110,7 +1110,7 @@ td, th {
 </div>
 </div>
 </div>
-<p><img src='./images/cloud-cover-cds.png' align='right' width='100%'></img></p>
+<p><img alt="CDS access" src="../_images/cloud-cover-cds.png" /></p>
 <p>Figure 1: This helps to create an account (Figure 1a, left) and use the CDS API (Figure 1b, right). The arrow on the top right of Figure 1a indicates where to start the register process with the arrow on the left side points to the button to create a new account. With that process finished the link in the text section above leads to Figure 1b. Please copy the text of the second line of the black block (see arrow) in the line “KEY” above.</p>
 <p>The current directory is defined as <strong>datadir</strong>. This is the central directory where we will create subfolders to save the data and output files.</p>
 <p>In advance of the download please create a folder named “Download” in the <strong>datadir</strong> directory. We will set this as the location where to store the downloaded zip-files.</p>
@@ -1142,7 +1142,7 @@ The name of the Cloud Properties landing page is: <strong>Cloud properties globa
 </ul>
 <p>Please make sure all <strong>Terms of use</strong> are accepted (see at the top of Figure 2). This can be done at the bottom of the <strong>Download data</strong> tab.</p>
 <p>At the bottom left of the page, click on <strong>Show API request</strong> and copy &amp; paste the text into the Jupyter notebook (see highlighted text in Figure 2). The first line can be skipped since it is already part of the <strong>Import libraries</strong> section.</p>
-<p><img src='./images/cloud-cover-cdsapi.png' align='right' width='100%'></img></p>
+<p><img alt="CDS API" src="../_images/cloud-cover-cdsapi.png" /></p>
 <p>Figure 2 shows the CDS API at the bottom of the Download data section. Please focus at the <strong>Terms of use</strong>, the <strong>Show/Hide API request</strong>-Button and the highlighted text.</p>
 <p>Note: To make sure the zip-file will be saved in the correct place and with an appropriate name you can adjust the last line like below. In our case a folder “Download” was created manually in the defined directory to achieve a clear structure and the download file is called <strong>download_cld_tcdr.zip</strong>.</p>
 <div class="cell docutils container">
