@@ -32,6 +32,14 @@ parts:
    chapters:
    - file: ecv-notebooks/erb-outgoing-longwave-radiation
      title: Outgoing Longwave Radiation
+   - file: ecv-notebooks/erb-clara-climatologies
+     title: Earth radiation budget climatologies
+   - file: ecv-notebooks/total-solar-irradiance
+     title: Total Solar Irradiance
+   - file: ecv-notebooks/total-column-water-vapour-combi
+     title: Total column water vapour
+   - file: ecv-notebooks/cloud-cover-climatology.ipynb
+     title: Cloud fractional cover climatology
    - file: ecv-notebooks/soil-moisture-anomalies
      title: Soil Moisture Anomaly Analysis
    - file: ecv-notebooks/lake-water-level
