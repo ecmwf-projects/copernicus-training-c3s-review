@@ -687,12 +687,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
@@ -976,14 +970,14 @@ title="Print to PDF"
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="c3s-soil-moisture-data-access-and-anomaly-analysis-notebook">
 <h1><strong>C3S Soil Moisture Data Access and Anomaly Analysis Notebook</strong><a class="headerlink" href="#c3s-soil-moisture-data-access-and-anomaly-analysis-notebook" title="Permalink to this heading">#</a></h1>
-<p>In this tutorial we will download C3S Satellite Soil Moisture data from the <a class="reference external" href="https://doi.org/10.24381/cds.d7782f18">Copernicus Climate Data Store (CDS)</a>, read data stacks in python using <span class="xref myst">xarray</span> and perform simple analyses of soil moisture anomalies over selected study areas.</p>
+<p>In this tutorial we will download C3S Satellite Soil Moisture data from the <a class="reference external" href="https://doi.org/10.24381/cds.d7782f18">Copernicus Climate Data Store (CDS)</a>, read data stacks in python using <a class="reference external" href="https://xarray.pydata.org/">xarray</a> and perform simple analyses of soil moisture anomalies over selected study areas.</p>
 <p>The tutorial consists of the following main steps:</p>
 <ol class="arabic simple">
-<li><p><span class="xref myst">A short description of the data sets</span></p></li>
-<li><p><span class="xref myst">Download satellite soil moisture images from CDS using the CDS API</span></p></li>
-<li><p><span class="xref myst">Application 1: Open downloaded data and visualize the soil moisture variable</span></p></li>
-<li><p><span class="xref myst">Application 2: Extract a time series for a single location and compute the soil moisture anomaly</span></p></li>
-<li><p><span class="xref myst">Application 3: Vectorized anomaly computation and data extraction for a study area</span></p></li>
+<li><p>A short description of the data sets</p></li>
+<li><p>Download satellite soil moisture images from CDS using the CDS API</p></li>
+<li><p>Application 1: Open downloaded data and visualize the soil moisture variable</p></li>
+<li><p>Application 2: Extract a time series for a single location and compute the soil moisture anomaly</p></li>
+<li><p>Application 3: Vectorized anomaly computation and data extraction for a study area</p></li>
 </ol>
 <style>
 td, th {
@@ -1005,8 +999,7 @@ td, th {
 <p>First we ensure that the <a class="reference external" href="https://pypi.org/project/cdsapi/">CDS API</a> is installed by running the following command using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%%capture --no-display
-!pip install cdsapi
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
 </pre></div>
 </div>
 </div>
@@ -1184,7 +1177,7 @@ td, th {
 </section>
 <section id="unpacking-loading-data-with-xarray">
 <h3>Unpacking &amp; Loading Data with xarray<a class="headerlink" href="#unpacking-loading-data-with-xarray" title="Permalink to this heading">#</a></h3>
-<p>From the previous cell, we have a variable <code class="docutils literal notranslate"><span class="pre">DATA_PATH</span></code> which points to a .zip archive (either newly downloaded or the one provided with this tutorial) containing the selected data from CDS as individual images. We use the library <span class="xref myst">xarray</span> to read these data, but first we have to extract them. In the next cell we extract all files from the downloaded .zip archive into a new folder. We do this using standard python libraries. This step might take up to 1 minute to process during first execution!</p>
+<p>From the previous cell, we have a variable <code class="docutils literal notranslate"><span class="pre">DATA_PATH</span></code> which points to a .zip archive (either newly downloaded or the one provided with this tutorial) containing the selected data from CDS as individual images. We use the library <a class="reference external" href="https://xarray.pydata.org/">xarray</a> to read these data, but first we have to extract them. In the next cell we extract all files from the downloaded .zip archive into a new folder. We do this using standard python libraries. This step might take up to 1 minute to process during first execution!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">):</span>

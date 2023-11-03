@@ -682,12 +682,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
@@ -1032,22 +1026,13 @@ td, th {
 <section id="the-tutorial-comprises-the-following-steps">
 <h2>The tutorial comprises the following steps:<a class="headerlink" href="#the-tutorial-comprises-the-following-steps" title="Permalink to this heading">#</a></h2>
 <p>These include a brief introduction into the variables followed by a step-by-step guidance how to retrieve the data. With this done the focus is on analysing and visualising the data in various ways.</p>
-<p><font size="4"><span class="xref myst">How to access the notebook</span> </font><br>
-<br>
-<font size="4"><span class="xref myst">1. Introduction</span> </font><br>
-<br>
-<font size="4"><span class="xref myst">2. Retrieve data</span> </font><br>
-<font size="2"><span class="xref myst">2.1 Install CDS API</span> </font><br>
-<font size="2"><span class="xref myst">2.2 Import libraries</span> </font><br>
-<font size="2"><span class="xref myst">2.3 Enter CDS API key</span> </font><br>
-<font size="2"><span class="xref myst">2.4 Get the data</span> </font><br>
-<br>
-<font size="4"><span class="xref myst">3. Mean global cloud distribution</span> </font><br>
-<br>
-<font size="4"><span class="xref myst">4. Seasonal variations of clouds</span> </font><br>
-<br>
-<font size="4"><span class="xref myst">5. Radiative effects of clouds</span> </font><br>
-<br></p>
+<ol class="arabic simple">
+<li><p>Introduction</p></li>
+<li><p>Retrieve data</p></li>
+<li><p>Mean global cloud distribution</p></li>
+<li><p>Seasonal variations of clouds</p></li>
+<li><p>Radiative effects of clouds</p></li>
+</ol>
 </section>
 <section id="a-id-introduction-a-1-introduction">
 <h2><a id='introduction'></a> 1. Introduction<a class="headerlink" href="#a-id-introduction-a-1-introduction" title="Permalink to this heading">#</a></h2>
@@ -1092,7 +1077,7 @@ td, th {
 <p>Before we start analysing the data we need to take advantage of one of the two options to get the data:</p>
 <ul class="simple">
 <li><p>Fill in the download form on the CDS page and simply download the data to the download folder of your computer - <em>not preferred</em></p></li>
-<li><p>Use the API (Application Programming Interface) for programmatic access to the CDS data - <em>preferred</em>, check <span class="xref myst">Chapter 2.3 Enter CDS API key</span></p></li>
+<li><p>Use the API (Application Programming Interface) for programmatic access to the CDS data - <em>preferred</em>, check Chapter 2.3 Enter CDS API key</p></li>
 </ul>
 <p>For this we import the <strong>cdsapi</strong>-library and a library to <strong>unzip</strong> the downloaded zip files.</p>
 <div class="cell docutils container">

@@ -682,12 +682,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">C3S Aerosol</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
@@ -881,90 +875,79 @@ title="Print to PDF"
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   C3S Aerosol
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#table-of-contents">
-     Table of Contents
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-access-the-notebook">
-       How to access the notebook
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-access-the-notebook">
+   How to access the notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-intro-a-introduction">
    <a id="intro">
    </a>
    Introduction
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#import-libraries">
      Import libraries
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-cdsapi-a-download-data-using-cds-api">
    <a id="cdsapi">
    </a>
    Download data using CDS API
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
      Set up CDS API credentials
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#long-timeseries">
    Long Timeseries
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-timeseries-a-use-case-1-extract-long-time-series-and-plot-it">
    <a id="timeseries">
    </a>
    Use case 1: extract long time series and plot it
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-climatology-a-use-case-2-calculate-and-plot-a-multi-annual-mean-climatology">
    <a id="climatology">
    </a>
    Use case 2: calculate and plot a multi-annual mean (“climatology”)
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-anomaly-a-use-case-3-calculate-and-plot-the-anomaly-timeseries">
    <a id="anomaly">
    </a>
    Use case 3: Calculate and plot the anomaly timeseries
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
-     Get more information about Earth Radiation Budget:
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#references">
-     References
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
+   Get more information about Earth Radiation Budget:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
  </li>
 </ul>
 
@@ -975,7 +958,8 @@ title="Print to PDF"
 
             <article class="bd-article" role="main">
               
-  <section class="tex2jax_ignore mathjax_ignore" id="c3s-aerosol">
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="c3s-aerosol">
 <h1>C3S Aerosol<a class="headerlink" href="#c3s-aerosol" title="Permalink to this heading">#</a></h1>
 <p>This second notebook extends the practical introduction of the first notebook to the
 <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-aerosol-properties?tab=overview">C3S Aerosol properties gridded data from 1995 to present derived from satellite observations</a>
@@ -985,15 +969,16 @@ We create a full Climate Data Record by combining subsequent data record pieces 
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><span class="xref myst">Introduction</span></p></li>
-<li><p><span class="xref myst">Download Data Using CDS API</span></p></li>
-<li><p><span class="xref myst">Use case 1: Create and plot regional data record</span></p></li>
-<li><p><span class="xref myst">Use case 2: Calculate and plot regional climatology</span></p></li>
-<li><p><span class="xref myst">Use case 3: Plot regional Anomaly time series</span></p></li>
-<li><p><span class="xref myst">References</span></p></li>
+<li><p>Introduction</p></li>
+<li><p>Download Data Using CDS API</p></li>
+<li><p>Use case 1: Create and plot regional data record</p></li>
+<li><p>Use case 2: Calculate and plot regional climatology</p></li>
+<li><p>Use case 3: Plot regional Anomaly time series</p></li>
+<li><p>References</p></li>
 </ul>
+</section>
 <section id="how-to-access-the-notebook">
-<h3>How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Permalink to this heading">#</a></h3>
+<h2>How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Permalink to this heading">#</a></h2>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <table class="table">
 <thead>
@@ -1018,13 +1003,11 @@ We create a full Climate Data Record by combining subsequent data record pieces 
 </table>
 <p>If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries you will need. You will also need to install  the CDS API (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code>) for downloading data in batch mode from the CDS.</p>
 </section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-intro-a-introduction">
-<h1><a id='intro'></a> Introduction<a class="headerlink" href="#a-id-intro-a-introduction" title="Permalink to this heading">#</a></h1>
+<section id="a-id-intro-a-introduction">
+<h2><a id='intro'></a>Introduction<a class="headerlink" href="#a-id-intro-a-introduction" title="Permalink to this heading">#</a></h2>
 <p>This second notebook focuses on vombining subsequent parts of a long term record from a sequence of similar sensors, so that relevant Cliamte Data Records can be provided. While exceptionally large expisodic extreme events may be seen in short records of a few years only, slower long-term changes of atmospheric aerosols can only be seen in records of one or more decades.</p>
 <section id="import-libraries">
-<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h2>
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
 <p>We will be working with data in NetCDF format. To best handle this data we will use the netCDF4 python library. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
 <p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it: <br></p>
 <div class="cell docutils container">
@@ -1102,10 +1085,10 @@ We create a full Climate Data Record by combining subsequent data record pieces 
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-cdsapi-a-download-data-using-cds-api">
-<h1><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#a-id-cdsapi-a-download-data-using-cds-api" title="Permalink to this heading">#</a></h1>
+<section id="a-id-cdsapi-a-download-data-using-cds-api">
+<h2><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#a-id-cdsapi-a-download-data-using-cds-api" title="Permalink to this heading">#</a></h2>
 <section id="set-up-cds-api-credentials">
-<h2>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h2>
+<h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h3>
 <div style="text-align: justify"> We will request data from the Climate Data Store (CDS): https://cds.climate.copernicus.eu/cdsapp#!/home. In case you don't have an account yet, please click on "Login/register" at the right top and select "Create new account". With the process finished you are able to login to the CDS and can search for your preferred data.</div>
 <p>We will request data from the CDS programmatically with the help of the CDS API.
 First, we need to manually set the CDS API credentials.
@@ -1131,8 +1114,8 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="long-timeseries">
-<h1>Long Timeseries<a class="headerlink" href="#long-timeseries" title="Permalink to this heading">#</a></h1>
+<section id="long-timeseries">
+<h2>Long Timeseries<a class="headerlink" href="#long-timeseries" title="Permalink to this heading">#</a></h2>
 <p>To start, we need to define the variable, algorithm and region for our analysis. Furthermore, latest dataset versions for each Dual view algorithm are specified.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -19273,8 +19256,8 @@ Do not worry, as there may be many error messages for missing months in gaps.</p
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-timeseries-a-use-case-1-extract-long-time-series-and-plot-it">
-<h1><a id='timeseries'></a> Use case 1: extract long time series and plot it<a class="headerlink" href="#a-id-timeseries-a-use-case-1-extract-long-time-series-and-plot-it" title="Permalink to this heading">#</a></h1>
+<section id="a-id-timeseries-a-use-case-1-extract-long-time-series-and-plot-it">
+<h2><a id='timeseries'></a> Use case 1: extract long time series and plot it<a class="headerlink" href="#a-id-timeseries-a-use-case-1-extract-long-time-series-and-plot-it" title="Permalink to this heading">#</a></h2>
 <p>Finally, we get the regional timeseries as list. Since the valdiation showed a significant bias for SLSTR algorithms with some but limited regional variations, we have to subtract it before combining the time series. Note that we use a global average bias here, while a more sophisticated correction will use regional biases.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -19331,8 +19314,8 @@ Do not worry, as there may be many error messages for missing months in gaps.</p
 </div>
 <p><strong>FIGURE 1:</strong> This time series shows the long term behaviour of aerosol preoperties in the selected region.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-climatology-a-use-case-2-calculate-and-plot-a-multi-annual-mean-climatology">
-<h1><a id='climatology'></a> Use case 2: calculate and plot a multi-annual mean (“climatology”)<a class="headerlink" href="#a-id-climatology-a-use-case-2-calculate-and-plot-a-multi-annual-mean-climatology" title="Permalink to this heading">#</a></h1>
+<section id="a-id-climatology-a-use-case-2-calculate-and-plot-a-multi-annual-mean-climatology">
+<h2><a id='climatology'></a> Use case 2: calculate and plot a multi-annual mean (“climatology”)<a class="headerlink" href="#a-id-climatology-a-use-case-2-calculate-and-plot-a-multi-annual-mean-climatology" title="Permalink to this heading">#</a></h2>
 <p>We calculate a multi-annual mean for each sensor in the time series, i.e. for ATSR-2 (1995-2002), AATSR (2003-2011) and SLSTR (2017-2022) and use each of them for the respective time series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -19452,8 +19435,8 @@ Do not worry, as there may be many error messages for missing months in gaps.</p
 </div>
 <p><strong>FIGURE 2:</strong> This time series overplotted to the repeated annual climatologies (per sensor) already indicates any episodic events outside the long-term variabiliy.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-anomaly-a-use-case-3-calculate-and-plot-the-anomaly-timeseries">
-<h1><a id='anomaly'></a> Use case 3: Calculate and plot the anomaly timeseries<a class="headerlink" href="#a-id-anomaly-a-use-case-3-calculate-and-plot-the-anomaly-timeseries" title="Permalink to this heading">#</a></h1>
+<section id="a-id-anomaly-a-use-case-3-calculate-and-plot-the-anomaly-timeseries">
+<h2><a id='anomaly'></a> Use case 3: Calculate and plot the anomaly timeseries<a class="headerlink" href="#a-id-anomaly-a-use-case-3-calculate-and-plot-the-anomaly-timeseries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anomaly</span> <span class="o">=</span> <span class="p">[</span><span class="n">aod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">aod_climatology_ges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aod</span><span class="p">))]</span>
@@ -19475,6 +19458,7 @@ Do not worry, as there may be many error messages for missing months in gaps.</p
 </div>
 <p><strong>FIGURE 3:</strong> This anomaly record shows more clearly those episodic extreme events as outliers outside the shaded long-term variability and possibly also any trend of the data record in this region (e.g. decreases in Europe or the U.S., increases in India or on Sout-Eact China increases before ~2008 and decreases since ~2012).</p>
 <p>This closes our second Jupyter notebook on aerosol properties.</p>
+</section>
 <section id="get-more-information-about-earth-radiation-budget">
 <h2>Get more information about Earth Radiation Budget:<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -19493,7 +19477,6 @@ Adam Povey, Charles Robert, Michael Schulz, Larisa Sogacheva, Kerstin Stebel, De
 Gareth Thomas, Lieuwe Gijsbert Tilstra, Sophie Vandenbussche, Pepijn Veefkind, Marco Vountas and
 Yong Xue, Development, Production and Evaluation of Aerosol Climate Data Records from European
 Satellite Observations (Aerosol_cci), Remote Sensing, 8, 421; doi:10.3390/rs8050421, 2016</a></p>
-<p><span class="xref myst">Back to top the Page</span></p>
 </section>
 </section>
 
@@ -19555,90 +19538,79 @@ Satellite Observations (Aerosol_cci), Remote Sensing, 8, 421; doi:10.3390/rs8050
 </div>
 <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   C3S Aerosol
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#table-of-contents">
+   Table of Contents
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#table-of-contents">
-     Table of Contents
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-access-the-notebook">
-       How to access the notebook
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-access-the-notebook">
+   How to access the notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-intro-a-introduction">
    <a id="intro">
    </a>
    Introduction
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#import-libraries">
      Import libraries
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-cdsapi-a-download-data-using-cds-api">
    <a id="cdsapi">
    </a>
    Download data using CDS API
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
      Set up CDS API credentials
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#long-timeseries">
    Long Timeseries
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-timeseries-a-use-case-1-extract-long-time-series-and-plot-it">
    <a id="timeseries">
    </a>
    Use case 1: extract long time series and plot it
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-climatology-a-use-case-2-calculate-and-plot-a-multi-annual-mean-climatology">
    <a id="climatology">
    </a>
    Use case 2: calculate and plot a multi-annual mean (“climatology”)
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#a-id-anomaly-a-use-case-3-calculate-and-plot-the-anomaly-timeseries">
    <a id="anomaly">
    </a>
    Use case 3: Calculate and plot the anomaly timeseries
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
-     Get more information about Earth Radiation Budget:
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#references">
-     References
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
+   Get more information about Earth Radiation Budget:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
  </li>
 </ul>
 

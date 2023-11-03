@@ -682,12 +682,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
@@ -998,26 +992,26 @@ title="Print to PDF"
 
             <article class="bd-article" role="main">
               
-  <p><a id='page-top'></a> <img src='../img/LogoLine_horizon_C3S.png' alt='Logo EU Copernicus ECMWF' align='right' width='100%'></img></p>
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="a-id-page-top-a-calculation-of-global-climatology-of-earth-radiation-from-eumetsat-s-cm-saf-clara-a3-dataset">
 <h1><a id='page-top'></a> Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#a-id-page-top-a-calculation-of-global-climatology-of-earth-radiation-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Permalink to this heading">#</a></h1>
 <p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Earth Radiation Budget</em>, as well as <em>Cloud Properties and Surface Radiaiton Budget</em>, while this notebook focuses on <strong>Earth Radiation Budget</strong> as part of the ECV <em>Earth Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth Radiation Budget from 1982 to present derived from satellite observations</a>.</p>
 <p>The notebook covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests. After a short introduction how to use a Jupyter notebook the analysis starts.<br>
 Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
-<p><img src='./images/erb-clara-climatologies.png' align='right' width='100%'></img></p>
+<p><img alt="logo" src="../_images/erb-clara-climatologies.png" /></p>
 <p>The notebook has two main sections with the following outline:</p>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><span class="xref myst">Introduction</span></p></li>
-<li><p><span class="xref myst">Prerequisites and data acquisition</span></p></li>
-<li><p><span class="xref myst">Use cases</span></p>
+<li><p>Introduction</p></li>
+<li><p>Prerequisites and data acquisition</p></li>
+<li><p>Use cases</p>
 <ul>
-<li><p><span class="xref myst">Use case 1: The mean global Outgoing Longwave Radiation (OLR) distribution</span></p></li>
-<li><p><span class="xref myst">Use case 2: The mean global Reflected Solar Flux (RSF) distribution</span></p></li>
+<li><p>Use case 1: The mean global Outgoing Longwave Radiation (OLR) distribution</p></li>
+<li><p>Use case 2: The mean global Reflected Solar Flux (RSF) distribution</p></li>
 </ul>
 </li>
-<li><p><span class="xref myst">References</span></p></li>
+<li><p>References</p></li>
 </ul>
 </section>
 <section id="a-id-introduction-a-introduction">
@@ -1225,7 +1219,7 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 <p><a id='uc1'></a></p>
 <section id="use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">
 <h3><strong>Use case 1:</strong> The mean global Outgoing Longwave Radiation (OLR) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution" title="Permalink to this heading">#</a></h3>
-<p>Use Case #2 aims to give an overview about the OLR distribution. We do that by plotting the global mean OLR from the CLARA-A3 dataset. Please note that you need to open dataset to be able to execute this usecase, as described in the previous section <span class="xref myst">“Load dataset”</span></p>
+<p>Use Case #2 aims to give an overview about the OLR distribution. We do that by plotting the global mean OLR from the CLARA-A3 dataset. Please note that you need to open dataset to be able to execute this usecase, as described in the previous section “Load dataset”</p>
 <section id="a-id-calculation-1-a-calculation-of-the-temporal-average-of-olr">
 <h4><a id='calculation_1'></a> Calculation of the temporal average of OLR<a class="headerlink" href="#a-id-calculation-1-a-calculation-of-the-temporal-average-of-olr" title="Permalink to this heading">#</a></h4>
 <p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Outgoing Longwave Radiation or “OLR”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
@@ -1300,7 +1294,7 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 </section>
 <section id="use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">
 <h3><strong>Use case 2:</strong> The mean global Reflected Solar Flux (RSF) distribution<a class="headerlink" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution" title="Permalink to this heading">#</a></h3>
-<p>Use Case #2 aims to give an overview about the RSF distribution. We do that by plotting the global mean RSF from the CLARA-A3 dataset. Please note that you need to open dataset to be able to execute this usecase, as described in the previous section <span class="xref myst">“Load dataset”</span></p>
+<p>Use Case #2 aims to give an overview about the RSF distribution. We do that by plotting the global mean RSF from the CLARA-A3 dataset. Please note that you need to open dataset to be able to execute this usecase, as described in the previous section “Load dataset”</p>
 <section id="a-id-calculation-2-a-calculation-of-the-temporal-average-of-rsf">
 <h4><a id='calculation_2'></a> Calculation of the temporal average of RSF<a class="headerlink" href="#a-id-calculation-2-a-calculation-of-the-temporal-average-of-rsf" title="Permalink to this heading">#</a></h4>
 <p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Reflected Solar Flux or “RSF”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>

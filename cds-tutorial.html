@@ -682,12 +682,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
@@ -1020,8 +1014,8 @@ td, th {
 <h2>Data retrieval<a class="headerlink" href="#data-retrieval" title="Permalink to this heading">#</a></h2>
 <p>There are two ways to access data from the Copernicus Climate Data Store (CDS):</p>
 <ul class="simple">
-<li><p><span class="xref myst">interactively</span> via the CDS web interface, or</p></li>
-<li><p><span class="xref myst">programmatically</span> with the CDS API</p></li>
+<li><p>interactively via the CDS web interface, or</p></li>
+<li><p>programmatically with the CDS API</p></li>
 </ul>
 <section id="access-data-interactively-via-the-cds-web-interface">
 <h3>Access data interactively via the CDS web interface<a class="headerlink" href="#access-data-interactively-via-the-cds-web-interface" title="Permalink to this heading">#</a></h3>
@@ -1044,7 +1038,7 @@ td, th {
 </ul>
 <p>At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>, you get three options: <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code>. If you want to download the data interactively, the data requests will be executed as soon as you click on the <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code> button.</p>
 <p><strong>Note:</strong> You need to be logged into the ADS portal and you have to accept the Terms and Conditions of the dataset before being able to download data.</p>
-<p>You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See <span class="xref myst">Section 2.2</span> for further information. You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code>  if you want to request data via the CDS Toolbox. Learn more about the CDS Toolbox <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/toolbox">here</a>.</p>
+<p>You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See Section 2.2 for further information. You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code>  if you want to request data via the CDS Toolbox. Learn more about the CDS Toolbox <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/toolbox">here</a>.</p>
 <div class="alert alert-block alert-success">
 <b>NOTE</b>: <br>
     Under the tab <code>Your requests</code> in the main menu, you can monitor the status of your data requests.</div>
@@ -1079,7 +1073,7 @@ td, th {
 </div>
 </div>
 </div>
-<br></section>
+</section>
 <section id="alternative-set-cds-api-credentials-manually">
 <h4>Alternative: Set CDS API credentials manually<a class="headerlink" href="#alternative-set-cds-api-credentials-manually" title="Permalink to this heading">#</a></h4>
 <p>Alternatively, you can also define variables for <code class="docutils literal notranslate"><span class="pre">url</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>. These variables can then be set when you define the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client(url=URL,</span> <span class="pre">key=KEY)</span></code> in your script (see next section for the different components of a data retrieval request).</p>
@@ -1092,7 +1086,7 @@ td, th {
 </div>
 </div>
 </div>
-<br></section>
+</section>
 <section id="install-the-cds-api-client">
 <h4>Install the CDS API client<a class="headerlink" href="#install-the-cds-api-client" title="Permalink to this heading">#</a></h4>
 <p>The next step is to install the <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">client</span></code>. You can do this with the package management system <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
@@ -1103,7 +1097,7 @@ td, th {
 </div>
 </div>
 </div>
-<br></section>
+</section>
 <section id="use-the-cds-api-client-for-data-access">
 <h4>Use the CDS API client for data access<a class="headerlink" href="#use-the-cds-api-client-for-data-access" title="Permalink to this heading">#</a></h4>
 <p>Once the <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span></code> is installed, it can be used to request data from the Climate Data Store.</p>
@@ -1130,9 +1124,6 @@ td, th {
 <h2>Example data request<a class="headerlink" href="#example-data-request" title="Permalink to this heading">#</a></h2>
 <section id="a-id-era5-land-hourly-a-example-era5-land-hourly-data-from-1950-to-present">
 <h3><a id='era5-land_hourly'></a>Example: <strong>ERA5-Land hourly data from 1950 to present</strong><a class="headerlink" href="#a-id-era5-land-hourly-a-example-era5-land-hourly-data-from-1950-to-present" title="Permalink to this heading">#</a></h3>
-<blockquote>
-<div><p>Data used in <span class="xref myst">113_c3s_climate_indices</span></p>
-</div></blockquote>
 <p>CDS API name: <code class="docutils literal notranslate"><span class="pre">reanalysis-era5-land</span></code></p>
 <blockquote>
 <div><ul class="simple">
