@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset &#8212; C3S Training</title>
+    <title>Calculation of global climatology and relative anomalies of Surface Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset &#8212; C3S Training</title>
   
   
   
@@ -58,11 +58,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/erb-clara-climatologies';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/srb-climatology-and-anomaly';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Calculation of global climatology and relative anomalies of Surface Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset" href="srb-climatology-and-anomaly.html" />
-    <link rel="prev" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="erb-outgoing-longwave-radiation.html" />
+    <link rel="next" title="The Total Solar Irradiance (TSI) from RMIB" href="total-solar-irradiance.html" />
+    <link rel="prev" title="Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset" href="erb-clara-climatologies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="docsearch:language" content="en">
   </head>
@@ -204,15 +204,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-clara-climatologies.html">
                         Earth radiation budget climatologies
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
                         Surface radiation budget climatologies and anomalies
                       </a>
                     </li>
@@ -463,15 +463,15 @@ const thebe_selector_output = ".output, .cell_output"
                     </li>
                 
 
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-clara-climatologies.html">
                         Earth radiation budget climatologies
                       </a>
                     </li>
                 
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
                         Surface radiation budget climatologies and anomalies
                       </a>
                     </li>
@@ -678,8 +678,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using Satellite Observations</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Earth radiation budget climatologies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-clara-climatologies.html">Earth radiation budget climatologies</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Surface radiation budget climatologies and anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-solar-irradiance.html">Total Solar Irradiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
@@ -757,7 +757,7 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-rocket"></i>
   </button>
   <ul class="dropdown-menu">
-      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/erb-clara-climatologies.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/srb-climatology-and-anomaly.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -812,7 +812,7 @@ title="Source repository"
 </a>
 </a>
       
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/erb-clara-climatologies.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/srb-climatology-and-anomaly.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -837,7 +837,7 @@ title="Open an issue"
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
-      <li><a href="../_sources/ecv-notebooks/erb-clara-climatologies.ipynb" target="_blank"
+      <li><a href="../_sources/ecv-notebooks/srb-climatology-and-anomaly.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
@@ -880,7 +880,7 @@ title="Print to PDF"
             
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><a id='page-top'></a> Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
+    <h1><a id='page-top'></a> Calculation of global climatology and relative anomalies of Surface Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -944,49 +944,25 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">
+    <a class="reference internal nav-link" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">
      <strong>
       Use case 1:
      </strong>
-     The mean global Outgoing Longwave Radiation (OLR) radiation distribution
+     The mean global Surface Incoming Shortwave (SIS) radiation distribution
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-id-calculation-1-a-calculation-of-the-temporal-average-of-olr">
+      <a class="reference internal nav-link" href="#a-id-calculation-1-a-calculation-of-the-temporal-average-of-sis">
        <a id="calculation_1">
        </a>
-       Calculation of the temporal average of OLR
+       Calculation of the temporal average of SIS
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-id-plot-1-a-plot-of-the-temporal-average-of-olr">
+      <a class="reference internal nav-link" href="#a-id-plot-1-a-plot-of-the-temporal-average-of-sis">
        <a id="plot_1">
        </a>
-       Plot of the temporal average of OLR
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">
-     <strong>
-      Use case 2:
-     </strong>
-     The mean global Reflected Solar Flux (RSF) distribution
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-id-calculation-2-a-calculation-of-the-temporal-average-of-rsf">
-       <a id="calculation_2">
-       </a>
-       Calculation of the temporal average of RSF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-id-plot-2-a-plot-of-the-temporal-average-of-rsf">
-       <a id="plot_2">
-       </a>
-       Plot of the temporal average of RSF
+       Plot of the temporal average of SIS
       </a>
      </li>
     </ul>
@@ -994,8 +970,27 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
-   Get more information about Earth Radiation Budget:
+  <a class="reference internal nav-link" href="#a-id-uc2-a-use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">
+   <a id="uc2">
+   </a>
+   <strong>
+    Use case 2:
+   </strong>
+   Relative Anomaly. Hot summer of the year 2003 in Europe
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-plot-2-a-plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-temporal-average-of-sis">
+     <a id="plot_2">
+     </a>
+     Plot of the relative anomaly in 2003 of SIS for Europe temporal average of SIS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-more-information-about-surface-radiation-budget">
+   Get more information about Surface Radiation Budget:
   </a>
  </li>
 </ul>
@@ -1008,12 +1003,12 @@ title="Print to PDF"
             <article class="bd-article" role="main">
               
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-page-top-a-calculation-of-global-climatology-of-earth-radiation-from-eumetsat-s-cm-saf-clara-a3-dataset">
-<h1><a id='page-top'></a> Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#a-id-page-top-a-calculation-of-global-climatology-of-earth-radiation-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Permalink to this heading">#</a></h1>
-<p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Earth Radiation Budget</em>, as well as <em>Cloud Properties and Surface Radiaiton Budget</em>, while this notebook focuses on <strong>Earth Radiation Budget</strong> as part of the ECV <em>Earth Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth Radiation Budget from 1982 to present derived from satellite observations</a>.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="a-id-page-top-a-calculation-of-global-climatology-and-relative-anomalies-of-surface-radiation-from-eumetsat-s-cm-saf-clara-a3-dataset">
+<h1><a id='page-top'></a> Calculation of global climatology and relative anomalies of Surface Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#a-id-page-top-a-calculation-of-global-climatology-and-relative-anomalies-of-surface-radiation-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Permalink to this heading">#</a></h1>
+<p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Surface Radiation Budget</em>, as well as <em>Cloud Properties and Earth Radiaiton Budget</em>, while this notebook focuses on <strong>Surface Radiation Budget</strong> as part of the ECV <em>Surface Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">Surface Radiation Budget from 1982 to present derived from satellite observations</a>.</p>
 <p>The notebook covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests. After a short introduction how to use a Jupyter notebook the analysis starts.<br>
 Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
-<p><img alt="logo" src="../_images/erb-clara-climatologies.png" /></p>
+<p><img alt="banner" src="../_images/srb-climatology-and-anomaly-banner.png" /></p>
 <p>The notebook has two main sections with the following outline:</p>
 <section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
@@ -1022,8 +1017,8 @@ Two figures below are results of Use Case 1 and 2, and the result of a successfu
 <li><p>Prerequisites and data acquisition</p></li>
 <li><p>Use cases</p>
 <ul>
-<li><p>Use case 1: The mean global Outgoing Longwave Radiation (OLR) distribution</p></li>
-<li><p>Use case 2: The mean global Reflected Solar Flux (RSF) distribution</p></li>
+<li><p>Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution</p></li>
+<li><p>Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe</p></li>
 </ul>
 </li>
 <li><p>References</p></li>
@@ -1031,18 +1026,19 @@ Two figures below are results of Use Case 1 and 2, and the result of a successfu
 </section>
 <section id="a-id-introduction-a-introduction">
 <h2><a id='introduction'></a> Introduction<a class="headerlink" href="#a-id-introduction-a-introduction" title="Permalink to this heading">#</a></h2>
-<p>This tutorial is about Earth radiation (top of atmosphere) parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
-<p>The CLARA-A3 dataset provides information of various Earth Radiation Budget (ERB) and Surface Radiation Budget (SRB) parameters as well as Cloud Properties parameters. Each ECV is covered by an own Jupyter Notebook (please also take a look at <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 SRB</a> and <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 Clouds</a>).</p>
-<div style="text-align: justify">In the following, we will concentrate on the surface radiation part. The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (latest status: 09/2023) of continuous observations of radiation, clouds from space, thereby monitoring their spatial and temporal variability on Earth. Earth Radiation Budget parameters were not included in CLARA-A2.1<br> 
+<p>This tutorial is about surface radiation parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
+<p>The CLARA-A3 dataset provides information of various Surface Radiation Budget (SRB) and Earth Radiation Budget (ERB) parameters as well as Cloud Properties parameters. Each ECV is covered by an own Jupyter Notebook (please also take a look at <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 SRB</a> and <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 Clouds</a>).</p>
+<div style="text-align: justify">In the following, we will concentrate on the surface radiation part. The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (latest status: 09/2023) of continuous observations of radiation, clouds from space, thereby monitoring their spatial and temporal variability on Earth.<br> 
+CLARA-A3 comes not just with a temporal extension, but also with significant algorithm, calibration and product improvements.
 The CLARA-A3 radiation dataset contains all surface and Earth (top-of-the-atmosphere) fluxes, and Thus, it enables studies of the full surface radiation budget.</div>
 <p>In the following, two examples are presented to illustrate some ideas on the usage, visualisation, and analysis of the CLARA-A3 surface radiation dataset.</p>
 <p>Please find further information about the datasets as well as the data in the Climate Data Store sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
-<li><p>Earth Radiation: Budget <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview</a></p></li>
 <li><p>Surface Radiation Budget: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></p></li>
 <li><p>Cloud Properties: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview</a></p></li>
+<li><p>Earth Radiation: Budget <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview</a></p></li>
 </ul>
-<p>A <a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-earth-radiation-budget/C3S_D312b_Lot1.4.2.5_201902_Tutorial_ECVEarthRadiationBudget_v1.4.mp4">tutorial video</a> describes the ECV <em>Earth Radiation Budget</em> and its impact on the atmospheric conditions. In addition, it provides you with a small introduction of the satellite instruments and retrieval methods followed by general information about the dataset and support options provided by the CDS.</p>
+<p>A <a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-surface-radiation-budget/C3S_D312b_Lot1.4.2.2_201902_Tutorial_ECVSurfaceRadiationBudget_v1.4.mp4">tutorial video</a> describes the ECV <em>Surface Radiation Budget</em> and its impact on the atmospheric conditions. In addition, it provides you with a small introduction of the satellite instruments and retrieval methods followed by general information about the dataset and support options provided by the CDS.</p>
 </section>
 <section id="a-id-data-a-prerequisites-and-data-acquisition">
 <h2><a id='data'></a> Prerequisites and data acquisition<a class="headerlink" href="#a-id-data-a-prerequisites-and-data-acquisition" title="Permalink to this heading">#</a></h2>
@@ -1138,22 +1134,24 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 <section id="search-for-data">
 <h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h3>
 <p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
-Here you can search for “Earth Radiation Budget” or simply “ERB” data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Surface Radiation Budget from 1979 to present derived from satellite observations</a>.
-The Earth Radiation Budget (SRB) comprises the quantification of the reflected radiation from the Sun and the emitted longwave radiation from  Earth. This catalogue entry comprises data from a number of sources.</p>
-<p>For this tutorial we need data for Earth Radiation Budget, so please either click on “Datasets” in the CDS and search for “Earth Radiation Budget” or simply click on: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview</a>.
-The name of the Surface Radiation Budget landing page is: <strong>Earth radiation budget from 1979 to present derived from satellite observations</strong>.</p>
+Here you can search for “Surface Radiation Budget” or simply “SRB” data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">Surface Radiation Budget from 1979 to present derived from satellite observations</a>.
+The Surface Radiation Budget (SRB) comprises the quantification of the incoming radiation from the Sun and the outgoing reflected shortwave and emitted longwave radiation, and also net fluxes. This catalogue entry comprises data from a number of sources.</p>
+<p>For this tutorial we need data for Surface Radiation Budget first, so please either click on “Datasets” in the CDS and search for “Surface Radiation Budget” or simply click on: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a>.
+The name of the Surface Radiation Budget landing page is: <strong>Surface radiation budget from 1982 to present derived from satellite observations</strong>.</p>
 <p>Once you reached the landing page, feel free to have a look at the documentation and information provided.</p>
 <p>The data can be found in the “Download data”-tab with a form to select certain variables, years etc. For our use case we select as follows:</p>
 <ul class="simple">
 <li><p>Product family: <code class="docutils literal notranslate"><span class="pre">CLARA</span> <span class="pre">(CLoud,</span> <span class="pre">Albedo</span> <span class="pre">and</span> <span class="pre">Radiation)</span></code></p></li>
 <li><p>Origin: <code class="docutils literal notranslate"><span class="pre">EUMETSAT</span> <span class="pre">(European</span> <span class="pre">Organisation</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">Exploitation</span> <span class="pre">of</span> <span class="pre">Meteorological</span> <span class="pre">Satellites)</span></code></p></li>
-<li><p>Variable: <code class="docutils literal notranslate"><span class="pre">Outgoing</span> <span class="pre">Longwave</span> <span class="pre">Radiation</span></code>, <code class="docutils literal notranslate"><span class="pre">Reflected</span> <span class="pre">Solar</span> <span class="pre">Flux</span></code></p></li>
+<li><p>Variable: <code class="docutils literal notranslate"><span class="pre">Surface</span> <span class="pre">downwelling</span> <span class="pre">shortwave</span> <span class="pre">flux</span></code></p></li>
 <li><p>Climate data record type: <code class="docutils literal notranslate"><span class="pre">Thematic</span> <span class="pre">Climate</span> <span class="pre">Data</span> <span class="pre">Record</span> <span class="pre">(TCDR)</span></code></p></li>
-<li><p>Time aggregation: <code class="docutils literal notranslate"><span class="pre">Monthly</span></code></p></li>
+<li><p>Sensor on satellite: <code class="docutils literal notranslate"><span class="pre">AVHRR</span> <span class="pre">on</span> <span class="pre">multiple</span> <span class="pre">satellites</span></code></p></li>
+<li><p>Time aggregation: <code class="docutils literal notranslate"><span class="pre">Monthly</span> <span class="pre">mean</span></code></p></li>
 <li><p>Year: <code class="docutils literal notranslate"><span class="pre">Every</span> <span class="pre">year</span> <span class="pre">from</span> <span class="pre">1979-2022</span> <span class="pre">(shortcut</span> <span class="pre">with</span> <span class="pre">&quot;Select</span> <span class="pre">all&quot;</span> <span class="pre">at</span> <span class="pre">the</span> <span class="pre">bottom</span> <span class="pre">right)</span></code></p></li>
 <li><p>Month: <code class="docutils literal notranslate"><span class="pre">Every</span> <span class="pre">month</span> <span class="pre">from</span> <span class="pre">January</span> <span class="pre">to</span> <span class="pre">December</span> <span class="pre">(shortcut</span> <span class="pre">with</span> <span class="pre">&quot;Select</span> <span class="pre">all&quot;</span> <span class="pre">at</span> <span class="pre">the</span> <span class="pre">bottom</span> <span class="pre">right)</span></code></p></li>
 <li><p>Format: <code class="docutils literal notranslate"><span class="pre">Compressed</span> <span class="pre">zip</span> <span class="pre">file</span> <span class="pre">(.zip)</span></code></p></li>
 <li><p>Geographical area: <code class="docutils literal notranslate"><span class="pre">Whole</span> <span class="pre">available</span> <span class="pre">region</span></code></p></li>
+<li><p>Version: <code class="docutils literal notranslate"><span class="pre">v3.0</span></code></p></li>
 </ul>
 <p>Please make sure all <strong>Terms of use</strong> are accepted. This can be done at the bottom of the <strong>Download data</strong> tab.</p>
 <p>At the bottom left of the page, click on <strong>Show API request</strong> and copy &amp; paste the text into the Jupyter notebook. The first line can be skipped since it is already part of the <strong>Import libraries</strong> section.</p>
@@ -1162,13 +1160,15 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
 
 <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-    <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;satellite-surface-radiation-budget&#39;</span><span class="p">,</span>
     <span class="p">{</span>
+        <span class="s1">&#39;product_family&#39;</span><span class="p">:</span> <span class="s1">&#39;clara&#39;</span><span class="p">,</span>
         <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;eumetsat&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;outgoing_longwave_radiation&#39;</span><span class="p">,</span> <span class="s1">&#39;reflected_solar_flux&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;surface_downwelling_shortwave_flux&#39;</span><span class="p">,</span>
         <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2019</span><span class="p">)],</span>
+        <span class="s1">&#39;sensor_on_satellite&#39;</span><span class="p">:</span> <span class="s1">&#39;avhrr_on_multiple_satellites&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly_mean&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1982</span><span class="p">,</span> <span class="mi">2019</span><span class="p">)],</span>
         <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
         <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;v2_0&#39;</span><span class="p">,</span>
     <span class="p">},</span>
@@ -1179,11 +1179,11 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 </div>
 </div>
 <p>The zip-file should be downloaded and saved at the correct place, that we have defined earlier. The zip archive one variable for monthly mean needs several GB of storage space.</p>
-<p>The following lines unzip the data. <strong>DATADIR + ‘/download_claraA3_erb.zip</strong> is the path to the zip-file. The first line constructs a ZipFile() object, the second line applies the function <strong>extractall</strong> to extract the content.</p>
+<p>The following lines unzip the data. <strong>DATADIR + ‘/download_claraA3_srb.zip</strong> is the path to the zip-file. The first line constructs a ZipFile() object, the second line applies the function <strong>extractall</strong> to extract the content.</p>
 <p>DATADIR/’_ is the path we want to store the files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/download_claraA3_erb.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/download_claraA3_srb.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
     <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1194,20 +1194,17 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 </section>
 <section id="load-dataset">
 <h3>Load dataset<a class="headerlink" href="#load-dataset" title="Permalink to this heading">#</a></h3>
-<p>The following line starting with “file” considers only files in the given directory starting the “OLRmm”, “RSFmm” and ending with “.nc” and creates a list with all matching files. The “*” means “everything” and takes every file into account. This is quite useful since year and month are part of the file names.</p>
+<p>The following line starting with “file” considers only files in the given directory starting the “SISmm” and ending with “.nc” and creates a list with all matching files. The “*” means “everything” and takes every file into account. This is quite useful since year and month are part of the file names.</p>
 <p>The second line reads the defined file list with the xarray function “open_mfdataset” (mf - multiple file) and concatenates them according to the time dimension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_olr</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/OLRmm*.nc&#39;</span>
-<span class="n">file_rsf</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/RSFmm*.nc&#39;</span>
-
-<span class="n">dataset_olr</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file_olr</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
-<span class="n">dataset_rsf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file_rsf</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/SISmm*.nc&#39;</span>
+<span class="n">dataset_sis</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Please find below the xarray dataset of the Earth Radiation Budget exemplary:</p>
+<p>Please find below the xarray dataset of the Surface Radiation Budget exemplary:</p>
 <p>It provides information about the:</p>
 <ul class="simple">
 <li><p>Dimensions: Lat and Lon with 0.25°x0.25° resolution and a lenght of 720/1440 and 524 months (almost 44 years * 12 months)</p>
@@ -1216,12 +1213,12 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 </ul>
 </li>
 <li><p>Coordinates: Spatial coordinates for Latitude and Longitude, temporal coordinates for time</p></li>
-<li><p>Data variables: List of different variables (in our case “OLR” and “RSF” are relevant)</p></li>
+<li><p>Data variables: List of different variables (in our case “SIS” is relevant)</p></li>
 <li><p>Attributes: Various important information about the dataset</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_olr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_sis</span>
 </pre></div>
 </div>
 </div>
@@ -1232,29 +1229,29 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 <section id="use-cases">
 <h2>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this heading">#</a></h2>
 <p><a id='uc1'></a></p>
-<section id="use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">
-<h3><strong>Use case 1:</strong> The mean global Outgoing Longwave Radiation (OLR) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution" title="Permalink to this heading">#</a></h3>
-<p>Use Case #2 aims to give an overview about the OLR distribution. We do that by plotting the global mean OLR from the CLARA-A3 dataset. Please note that you need to open dataset to be able to execute this usecase, as described in the previous section “Load dataset”</p>
-<section id="a-id-calculation-1-a-calculation-of-the-temporal-average-of-olr">
-<h4><a id='calculation_1'></a> Calculation of the temporal average of OLR<a class="headerlink" href="#a-id-calculation-1-a-calculation-of-the-temporal-average-of-olr" title="Permalink to this heading">#</a></h4>
-<p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Outgoing Longwave Radiation or “OLR”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
+<section id="use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">
+<h3><strong>Use case 1:</strong> The mean global Surface Incoming Shortwave (SIS) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution" title="Permalink to this heading">#</a></h3>
+<p>Use Case #1 aims to give an overview about the SIS radiation distribution. We do that by plotting the global mean SIS from the CLARA-A3 dataset. Please note that you need to open dataset to be able to execute this usecase, as described in the previous section “Load dataset”</p>
+<section id="a-id-calculation-1-a-calculation-of-the-temporal-average-of-sis">
+<h4><a id='calculation_1'></a> Calculation of the temporal average of SIS<a class="headerlink" href="#a-id-calculation-1-a-calculation-of-the-temporal-average-of-sis" title="Permalink to this heading">#</a></h4>
+<p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_sis” and the variable Surface Incoming Radiation or “SIS”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal average</span>
-<span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">dataset_olr</span><span class="p">[</span><span class="s1">&#39;OLR&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">dataset_sis</span><span class="p">[</span><span class="s1">&#39;SIS&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Get longitude and latitude coordinates. Both are variables of the dataset and available with</span>
 <span class="c1"># the &quot;.variables[&#39;lat/lon&#39;]&quot; function; [:] usually means [&quot;from&quot;:&quot;till&quot;] but</span>
 <span class="c1"># without numbers it means &quot;everything&quot;</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_olr</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>
-<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_olr</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="a-id-plot-1-a-plot-of-the-temporal-average-of-olr">
-<h4><a id='plot_1'></a> Plot of the temporal average of OLR<a class="headerlink" href="#a-id-plot-1-a-plot-of-the-temporal-average-of-olr" title="Permalink to this heading">#</a></h4>
+<section id="a-id-plot-1-a-plot-of-the-temporal-average-of-sis">
+<h4><a id='plot_1'></a> Plot of the temporal average of SIS<a class="headerlink" href="#a-id-plot-1-a-plot-of-the-temporal-average-of-sis" title="Permalink to this heading">#</a></h4>
 <p>With the caluculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
 <p>Some further notes:</p>
 <ul class="simple">
@@ -1270,10 +1267,10 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 <span class="c1"># Plot the data and set colorbar, minimum and maximum values</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGnBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 
 <span class="c1"># Set title and size</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Outgoing Longwave Radiation from CLARA-A3 for 1979-2022&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Surface Incoming Radiation from CLARA-A3 for 1979-2022&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
 <span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
@@ -1288,10 +1285,10 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 
 <span class="c1"># Set colorbar and adjust size, location and text</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Outgoing Longwave Radiation (%)&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Surface Incoming Radiation (%)&#39;</span><span class="p">)</span>
 
 <span class="c1"># Save figure in defined path and name</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/OLRmm_mean.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/SISmm_mean.png&#39;</span><span class="p">)</span>
 
 <span class="c1"># Show plot and close it afterwards to reduce the amount of storage</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -1300,50 +1297,47 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/78c4e3ab623f9d710ea5917435d49c126197a7478892ac7d1c46d0f01bd97141.png" src="../_images/78c4e3ab623f9d710ea5917435d49c126197a7478892ac7d1c46d0f01bd97141.png" />
+<img alt="../_images/84968a7d6d15c27b85842c0e407f07f944d1152fbe0a53d73422b4f7601ff6f7.png" src="../_images/84968a7d6d15c27b85842c0e407f07f944d1152fbe0a53d73422b4f7601ff6f7.png" />
 </div>
 </div>
-<p><strong>Figure 1</strong> shows the global mean values of the Outgoing Longwave Radiation (OLR).</p>
-<p><a id='uc2'></a></p>
+<p><strong>Figure 1</strong> shows the global mean values of the Surface Incoming Shortwave radiation (SIS). The highest values of Surface Incoming Radiation (SIS) are observed in the tropical regions and gradually decreasing towards the poles. There are however some irregularities. They are mostly caused by cloud coverage. So, the maximum values of SIS occur in the tropical and subtropical deserts (Sahara, Atacama, Namib deserts) and not at the equator where cloudy days are more common. Another example of high SIS values is the eastern parts of the tropical oceans, where trade winds cause a decrease in cloudiness (eastern parts of the Pacific and Atlantic oceans near the North American and African continents respectively). Monsoons in eastern and south-eastern Asia cause a decrease in the surface radiation as well. The sun does not rise above the horizon during the winter seasons in the Polar Regions, thus the annual averaged SIS values are the lowest there.</p>
+<br>
+<br></section>
 </section>
 </section>
-<section id="use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">
-<h3><strong>Use case 2:</strong> The mean global Reflected Solar Flux (RSF) distribution<a class="headerlink" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution" title="Permalink to this heading">#</a></h3>
-<p>Use Case #2 aims to give an overview about the RSF distribution. We do that by plotting the global mean RSF from the CLARA-A3 dataset. Please note that you need to open dataset to be able to execute this usecase, as described in the previous section “Load dataset”</p>
-<section id="a-id-calculation-2-a-calculation-of-the-temporal-average-of-rsf">
-<h4><a id='calculation_2'></a> Calculation of the temporal average of RSF<a class="headerlink" href="#a-id-calculation-2-a-calculation-of-the-temporal-average-of-rsf" title="Permalink to this heading">#</a></h4>
-<p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Reflected Solar Flux or “RSF”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
+<section id="a-id-uc2-a-use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">
+<h2><a id='uc2'></a> <strong>Use case 2:</strong> Relative Anomaly. Hot summer of the year 2003 in Europe<a class="headerlink" href="#a-id-uc2-a-use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe" title="Permalink to this heading">#</a></h2>
+<p>Please note that you need to open dataset to be able to execute this usecase, as described in the previous section “Load dataset”</p>
+<p>The spatial resolution of the CLARA-A3 radiation dataset is 0.25ºx0.25º that is roughly equal to 25x25 km. With this resolution, it is possible to conduct a regional analysis using the CLARA-A3 radiation datasets. Furthermore, we can use the CLARA-A3 radiation datasets to investigate recent meteorological events. This could be a research project for a student or provide complementary information on a special event, e.g., the analysis of recent heat waves. In recent years, a high number of heat waves appeared in Europe. Particularly interesting is the summer 2003.</p>
+<p>Firstly, we will select the data for year 2003 using <code class="docutils literal notranslate"><span class="pre">sel</span></code> argument.</p>
+<p>Then, we split the SRB data according to the seasons by using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, and then averaged over the years.
+Seasons are defined as follows:</p>
+<ul class="simple">
+<li><p>Spring: March, April, May</p></li>
+<li><p>Summer: June, July, August</p></li>
+<li><p>Autumn: September, October, November</p></li>
+<li><p>Winter: December, January, February</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal average</span>
-<span class="c1">#average = np.nanmean(dataset_rsf[&#39;RSF&#39;], axis=0)</span>
-<span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">dataset_rsf</span><span class="p">[</span><span class="s1">&#39;toa_sw_all_mon&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the &#39;JJA&#39; season for the year 2003</span>
+<span class="n">jja_data_2003</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="p">[</span><span class="s1">&#39;SIS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2003-06-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2003-08-31&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 
-<span class="c1"># Get longitude and latitude coordinates. Both are variables of the dataset and available with</span>
-<span class="c1"># the &quot;.variables[&#39;lat/lon&#39;]&quot; function; [:] usually means [&quot;from&quot;:&quot;till&quot;] but</span>
-<span class="c1"># without numbers it means &quot;everything&quot;</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_rsf</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:]</span>
-<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_rsf</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:]</span>
+<span class="c1"># Calculate the climatology (average) for the &#39;JJA&#39; season over all years</span>
+<span class="n">jja_climatology</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="p">[</span><span class="s1">&#39;SIS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate the anomaly for the year 2003 by subtracting the climatology</span>
+<span class="n">anomaly_2003</span> <span class="o">=</span> <span class="n">jja_data_2003</span> <span class="o">-</span> <span class="n">jja_climatology</span>
+
+<span class="c1"># Calculate the relative anomaly by dividing the anomaly by the climatology</span>
+<span class="n">relative_anomaly_2003</span> <span class="o">=</span> <span class="n">anomaly_2003</span> <span class="o">/</span> <span class="n">jja_climatology</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="a-id-plot-2-a-plot-of-the-temporal-average-of-rsf">
-<h4><a id='plot_2'></a> Plot of the temporal average of RSF<a class="headerlink" href="#a-id-plot-2-a-plot-of-the-temporal-average-of-rsf" title="Permalink to this heading">#</a></h4>
+<section id="a-id-plot-2-a-plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-temporal-average-of-sis">
+<h3><a id='plot_2'></a> Plot of the relative anomaly in 2003 of SIS for Europe temporal average of SIS<a class="headerlink" href="#a-id-plot-2-a-plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-temporal-average-of-sis" title="Permalink to this heading">#</a></h3>
 <p>With the caluculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">average</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.821404
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure and size</span>
@@ -1353,47 +1347,63 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 <span class="c1"># Plot the data and set colorbar, minimum and maximum values</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Wistia_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+    <span class="n">relative_anomaly_2003</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span>
+    <span class="n">relative_anomaly_2003</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span>
+    <span class="n">relative_anomaly_2003</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">season</span><span class="o">=</span><span class="s1">&#39;JJA&#39;</span><span class="p">),</span>
+    <span class="n">vmin</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlBu_r&#39;</span><span class="p">,</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1"># Only plot Europe</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">12.</span><span class="p">,</span> <span class="mf">32.</span><span class="p">,</span> <span class="mf">33.</span><span class="p">,</span> <span class="mf">65.</span><span class="p">])</span>
 
 <span class="c1"># Set title and size</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Reflected Solar Flux from CLARA-A3 for 1979-2022&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-
-<span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
-<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Surface incoming radiation anomaly, summer 2003&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Set x- and y-axis labels to True or False</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">bottom_labels</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">left_labels</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="c1"># Set coastlines</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+<span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add country borders, and coastlines.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># Add title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Surface incoming radiation anomaly, summer 2003&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="c1"># Set colorbar and adjust size, location and text</span>
-<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Reflected Solar Flux (%)&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;SIS Relative Anomaly [ % ]&#39;</span><span class="p">)</span>
 
 <span class="c1"># Save figure in defined path and name</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/RSFmm_mean.png&#39;</span><span class="p">)</span>
-
-<span class="c1"># Show plot and close it afterwards to reduce the amount of storage</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/SISmm_Anomaly2003.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8e4fa2cf6d9ad4ecdc74e88ae73292a9fc72cfa9295e59c175bdf22d1b61ed08.png" src="../_images/8e4fa2cf6d9ad4ecdc74e88ae73292a9fc72cfa9295e59c175bdf22d1b61ed08.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/cmsaf/copernicus1/Alex/progs/mambaforge/envs/mmb_pycharm/lib/python3.10/site-packages/dask/core.py:119: RuntimeWarning: invalid value encountered in divide
+  return func(*(_execute_task(a, cache) for a in args))
+</pre></div>
+</div>
+<img alt="../_images/4d3d8e2ec348c62e3cf1aa2e940f5b77f12a515c1ed1f4b774871104c41279d0.png" src="../_images/4d3d8e2ec348c62e3cf1aa2e940f5b77f12a515c1ed1f4b774871104c41279d0.png" />
 </div>
 </div>
-<p><strong>Figure 2</strong> shows the global mean values of the Reflected Solar Flux (RSF).</p>
+<p><strong>Figure 2</strong>, shows SIS relative anomaly for the summer 2003. The summer of 2003 was anomalously hot and dry with the most extreme heat wave in August. The unusually dry spring contributed to enhanced heating. Long-lasting anticyclones during the summer season caused clear-sky conditions and led to high surface radiative fluxes.</p>
+<p>The heat wave mostly affected western and central Europe. In southern and central Germany, the difference (anomaly) to the mean climatological SIS values, were as high as 30 W/m2. The climatological mean SIS values for central Europe are 200 W/m2, this increase corresponds to a relative increase of 15%. European Mediterranean countries: Spain, France, Italy, Serbia, Greece and Turkey experienced SIS values 10-15 % higher than the climatological mean. At the same time, in the northern part of Europe, the summer was nice and warm.</p>
+<p>The dry spring and hot summer had an effect on the crop yields throughout Europe. On the other hand, the ice-cream sales boomed. Also, winemakers praise 2003 as being exceptionally good for winemaking.</p>
+<br></section>
 </section>
-</section>
-</section>
-<section id="get-more-information-about-earth-radiation-budget">
-<h2>Get more information about Earth Radiation Budget:<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
+<section id="get-more-information-about-surface-radiation-budget">
+<h2>Get more information about Surface Radiation Budget:<a class="headerlink" href="#get-more-information-about-surface-radiation-budget" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">About Earth radiation budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">About Surface radiation budget from 1982 to present derived from satellite observations</a></p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">About the Climate Data Store</a></p></li>
 </ul>
 </section>
@@ -1427,17 +1437,17 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
             <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="erb-outgoing-longwave-radiation.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="erb-clara-climatologies.html" title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</p>
+          <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="srb-climatology-and-anomaly.html" title="next page">
+  <a class='right-next' id="next-link" href="total-solar-irradiance.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology and relative anomalies of Surface Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
+      <p class="prev-next-title">The Total Solar Irradiance (TSI) from RMIB</p>
   </div>
   <i class="fa-solid fa-angle-right"></i>
   </a>
@@ -1511,49 +1521,25 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">
+    <a class="reference internal nav-link" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">
      <strong>
       Use case 1:
      </strong>
-     The mean global Outgoing Longwave Radiation (OLR) radiation distribution
+     The mean global Surface Incoming Shortwave (SIS) radiation distribution
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-id-calculation-1-a-calculation-of-the-temporal-average-of-olr">
+      <a class="reference internal nav-link" href="#a-id-calculation-1-a-calculation-of-the-temporal-average-of-sis">
        <a id="calculation_1">
        </a>
-       Calculation of the temporal average of OLR
+       Calculation of the temporal average of SIS
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-id-plot-1-a-plot-of-the-temporal-average-of-olr">
+      <a class="reference internal nav-link" href="#a-id-plot-1-a-plot-of-the-temporal-average-of-sis">
        <a id="plot_1">
        </a>
-       Plot of the temporal average of OLR
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">
-     <strong>
-      Use case 2:
-     </strong>
-     The mean global Reflected Solar Flux (RSF) distribution
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-id-calculation-2-a-calculation-of-the-temporal-average-of-rsf">
-       <a id="calculation_2">
-       </a>
-       Calculation of the temporal average of RSF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#a-id-plot-2-a-plot-of-the-temporal-average-of-rsf">
-       <a id="plot_2">
-       </a>
-       Plot of the temporal average of RSF
+       Plot of the temporal average of SIS
       </a>
      </li>
     </ul>
@@ -1561,8 +1547,27 @@ The name of the Surface Radiation Budget landing page is: <strong>Earth radiatio
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
-   Get more information about Earth Radiation Budget:
+  <a class="reference internal nav-link" href="#a-id-uc2-a-use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">
+   <a id="uc2">
+   </a>
+   <strong>
+    Use case 2:
+   </strong>
+   Relative Anomaly. Hot summer of the year 2003 in Europe
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-id-plot-2-a-plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-temporal-average-of-sis">
+     <a id="plot_2">
+     </a>
+     Plot of the relative anomaly in 2003 of SIS for Europe temporal average of SIS
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-more-information-about-surface-radiation-budget">
+   Get more information about Surface Radiation Budget:
   </a>
  </li>
 </ul>
