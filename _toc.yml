@@ -34,6 +34,8 @@ parts:
      title: Outgoing Longwave Radiation
    - file: ecv-notebooks/erb-clara-climatologies
      title: Earth radiation budget climatologies
+   - file: ecv-notebooks/srb-climatology-and-anomaly
+     title: Surface radiation budget climatologies and anomalies
    - file: ecv-notebooks/total-solar-irradiance
      title: Total Solar Irradiance
    - file: ecv-notebooks/total-column-water-vapour-combi
