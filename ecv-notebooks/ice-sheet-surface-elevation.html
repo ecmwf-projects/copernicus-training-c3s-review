@@ -1,0 +1,1370 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Ice sheet surface elevation change rates &#8212; C3S Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/ice-sheet-surface-elevation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
+                        CDS tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
+                        Climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
+                        Heatwave Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
+                        Climate Projections (CMIP6)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cordex.html">
+                        Climate Projections (CORDEX)
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
+                        Seasonal Forecast Anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-verification.html">
+                        Seasonal Forecast Verification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ci-windchill.html">
+                        Windchill Index Calculation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
+                        Outgoing Longwave Radiation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-clara-climatology.html">
+                        Analysis of the CLARA Earth radiation budget product
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
+                        Total Solar Irradiance
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
+                        Surface radiation budget climatologies and anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
+                        Total column water vapour
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="cloud-cover-climatology.html">
+                        Cloud fractional cover climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
+                        Greenhouse Gas Level 2 Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
+                        Greenhouse Gas Level 3 Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-single-sensor-demonstrator.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
+                        Demonstration on how to plot  ozone datasets on the CDS.
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
+                        Soil Moisture Anomaly Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-water-level.html">
+                        Lake Water Level Timeseries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
+                        Lake Surface Water Temperature Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="glacier-mass-change.html">
+                        Explore glacier_mass_change
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
+                        Visualising fire weather index (FWI)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
+                        Observing major flood events
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
+                        Python library (ibicus) and tutorials on bias correction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
+                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
+                        CDS tutorial
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
+                        Climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
+                        Heatwave Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
+                        Climate Projections (CMIP6)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../projections-cordex.html">
+                        Climate Projections (CORDEX)
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
+                        Seasonal Forecast Anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../sf-verification.html">
+                        Seasonal Forecast Verification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../ci-windchill.html">
+                        Windchill Index Calculation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
+                        Outgoing Longwave Radiation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="erb-clara-climatology.html">
+                        Analysis of the CLARA Earth radiation budget product
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
+                        Total Solar Irradiance
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
+                        Surface radiation budget climatologies and anomalies
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
+                        Total column water vapour
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="cloud-cover-climatology.html">
+                        Cloud fractional cover climatology
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
+                        Greenhouse Gas Level 2 Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
+                        Greenhouse Gas Level 3 Products
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-single-sensor-demonstrator.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
+                        C3S Aerosol
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
+                        Demonstration on how to plot  ozone datasets on the CDS.
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
+                        Soil Moisture Anomaly Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-water-level.html">
+                        Lake Water Level Timeseries
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
+                        Lake Surface Water Temperature Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="glacier-mass-change.html">
+                        Explore glacier_mass_change
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
+                        Visualising fire weather index (FWI)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
+                        Observing major flood events
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
+                        Python library (ibicus) and tutorials on bias correction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
+                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cds-tutorial.html">CDS tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reanalysis Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections-cordex.html">Climate Projections (CORDEX)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sf-verification.html">Seasonal Forecast Verification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using Satellite Observations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-solar-irradiance.html">Total Solar Irradiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">Greenhouse Gas Level 3 Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html">C3S Aerosol</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html">Soil Moisture Anomaly Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Explore <code class="docutils literal notranslate"><span class="pre">glacier_mass_change</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">Visualising fire weather index (FWI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cems-notebooks/glofas-bangladesh-floods.html">Observing major flood events</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/ice-sheet-surface-elevation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">repository</span>
+</a>
+</a>
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/ice-sheet-surface-elevation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">open issue</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/ecv-notebooks/ice-sheet-surface-elevation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ice sheet surface elevation change rates</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about">
+   About
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-your-environment">
+   Prepare your environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries">
+   Import libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-data">
+   Download data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examine-the-data">
+   Examine the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-averages-and-plot">
+   Calculate averages and plot
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-data-missing-from-the-south-pole">
+     Why is data missing from the South Pole?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-would-be-a-good-colour-palette-for-the-plot">
+     What would be a good colour palette for the plot?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="ice-sheet-surface-elevation-change-rates">
+<h1>Ice sheet surface elevation change rates<a class="headerlink" href="#ice-sheet-surface-elevation-change-rates" title="Permalink to this heading">#</a></h1>
+<p>By Sebastian B. Simonsen, DTU Space, <a class="reference external" href="mailto:ssim&#37;&#52;&#48;space&#46;dtu&#46;dk">ssim<span>&#64;</span>space<span>&#46;</span>dtu<span>&#46;</span>dk</a></p>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
+<p>This tutorial will demonstrate how to plot a map of the average surface elevation change rates across the Greenland or Antarctic ice sheets, using data from the Copernicus Climate Change Service (C3S).</p>
+<p>It should be noted that the Antarctica product is not updated since February 2023, hence are the folowing code provided using the version 3 of the CDS data. Newer dataversion are avilable for Greenland.</p>
+<p>It will show you how to download data from the C3S Climate Data Store (CDS), calculate average change rates over a selectable period, and display the results.</p>
+</section>
+<section id="prepare-your-environment">
+<h2>Prepare your environment<a class="headerlink" href="#prepare-your-environment" title="Permalink to this heading">#</a></h2>
+<p>To download data from the CDS, you must complete three steps;</p>
+<ol class="arabic simple">
+<li><p>Register for free with the CDS at <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">https://cds.climate.copernicus.eu/#!/home</a></p></li>
+<li><p>Set up the CDS Application Program Interface (API), as described at <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a></p></li>
+<li><p>Agree to the dataset terms of use - if you have not already done so you will be directed to the correct webpage the first time you try to download data. Accept the terms and conditions, and re-run the downloading code.</p></li>
+</ol>
+</section>
+<section id="import-libraries">
+<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h2>
+<p>The data is stored in netCDF4 files. To work with them, several libraries are needed. These are used to retrieve the data, unpack it, run calculations and plot the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API</span>
+<span class="kn">import</span> <span class="nn">cdsapi</span>
+
+<span class="c1"># File handling</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Calculations</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="c1"># Mapping</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+
+<span class="c1"># Plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-data">
+<h2>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h2>
+<p>Select the ice sheet of interest and retrieve the dataset. An example of how to retrieve the data is given on the CDS, under ‘Show API request’ on the dataset’s webpage at <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-ice-sheet-elevation-change?tab=form">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-ice-sheet-elevation-change?tab=form</a></p>
+<p>The dataset comes in a zip file, and may include several files. Only the most recent is necessary - this contains all of the data in previous files, plus the latest update.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set ice_sheet to the desired ice sheet, either &#39;antarctica&#39; or &#39;greenland&#39;</span>
+<span class="c1"># This will be used to select data, and later to set up plot defaults</span>
+
+<span class="n">ice_sheet</span> <span class="o">=</span> <span class="s1">&#39;greenland&#39;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    
+    <span class="c1"># Download data from the CDS</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+
+    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+        <span class="s1">&#39;satellite-ice-sheet-elevation-change&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;domain&#39;</span><span class="p">:</span> <span class="n">ice_sheet</span><span class="p">,</span>
+            <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;icdr&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="s1">&#39;3_0&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Unpack the zip file and remove the zipped data</span>
+
+    <span class="n">shutil</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="c1"># List the files contained and select the latest netCDF (.nc) file. Print its filename</span>
+
+<span class="n">list_of_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.nc&#39;</span><span class="p">)</span> <span class="c1"># * means all if need specific format then *.nc</span>
+<span class="n">latest_file</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getctime</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In the following you are seeing the data from: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">latest_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-31 09:48:23,489 INFO Welcome to the CDS
+2023-10-31 09:48:23,490 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-ice-sheet-elevation-change
+2023-10-31 09:48:23,617 INFO Request is completed
+2023-10-31 09:48:23,619 INFO Downloading https://download-0003-clone.copernicus-climate.eu/cache-compute-0003/cache/data6/dataset-satellite-ice-sheet-elevation-change-4c0011a9-bb7c-4efb-9d37-cb8b5789d6b0.zip to download.zip (17.7M)
+2023-10-31 09:48:25,967 INFO Download rate 7.5M/s   
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the following you are seeing the data from: 
+C3S_GrIS_RA_SEC_25km_vers3_2023-09-16.nc
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="examine-the-data">
+<h2>Examine the data<a class="headerlink" href="#examine-the-data" title="Permalink to this heading">#</a></h2>
+<p>Open the data file and list its contents. These include descriptive comments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the NetCDF file</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">latest_file</span><span class="p">)</span>
+
+<span class="c1"># Print contents list</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The data file contains the following:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The data file contains the following:
+&lt;xarray.Dataset&gt;
+Dimensions:          (x: 65, y: 123, t: 375)
+Coordinates:
+  * x                (x) float32 -7.393e+05 -7.143e+05 ... 8.357e+05 8.607e+05
+  * y                (y) float32 -3.478e+06 -3.453e+06 ... -4.531e+05 -4.281e+05
+Dimensions without coordinates: t
+Data variables: (12/16)
+    time             (t) datetime64[ns] ...
+    start_time       (t) datetime64[ns] ...
+    end_time         (t) datetime64[ns] ...
+    grid_projection  |S1 ...
+    lat              (y, x) float32 ...
+    lon              (y, x) float32 ...
+    ...               ...
+    dhdt_stabil      (y, x, t) float32 ...
+    dhdt_ok          (y, x, t) int8 ...
+    dist             (y, x, t) float32 ...
+    land_mask        (y, x) int8 ...
+    high_slope       (y, x) int8 ...
+    area             (y, x) float32 ...
+Attributes: (12/32)
+    Title:                Surface Elevation change of the Greenland ice sheet...
+    institution:          Copernicus Climate Change Service, DTU Space - Div....
+    reference:            Simonsen and Sørensen (2017), Sørensen et al. (2018)
+    contact:              copernicus-support@ecmwf.int
+    file_creation_date:   2023-09-16 18:17:29.268392
+    project:              C3S_312b_Lot4_ice_sheets_and_shelves
+    ...                   ...
+    netCDF_version:       NETCDF4
+    product_version:      vers3
+    Conventions:          CF-1.7
+    keywords:             EARTH SCIENCE CRYOSPHERE GLACIERS/ICE SHEETS/GLACIE...
+    license:              C3S general license
+    summary:              Surface elevation change rate derived for Greenland...
+</pre></div>
+</div>
+</div>
+</div>
+<p>This NetCDF file contains data related to surface elevation change of the ice sheet. Here’s a breakdown of the file structure and its contents:</p>
+<p><strong>Dimensions:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>: Projected longitudinal coordinates with values ranging from approximately -739,300 to 860,700 (for Greenland).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: Projected latitudinal coordinates with values ranging from approximately -3,478,000 to -428,100 (for Greenland).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t</span></code>: Time coordinates.</p></li>
+</ul>
+<p><strong>Data Variables:</strong></p>
+<ul class="simple">
+<li><p>Among others, the elevation change is represented in the variable <code class="docutils literal notranslate"><span class="pre">dhdt</span></code>.</p></li>
+</ul>
+<p>Additional meta-data is included in the file’s attributes.</p>
+</section>
+<section id="calculate-averages-and-plot">
+<h2>Calculate averages and plot<a class="headerlink" href="#calculate-averages-and-plot" title="Permalink to this heading">#</a></h2>
+<p>The ice sheets are split into 25km by 25km cells. In each cell is a series of surface elevation change rates (called ‘sec’ for Antarctica or ‘dhdt’ for Greenland), at times given by the ‘time’ array. Take the average of the rates for your chosen time period. Plot using a mapping library.</p>
+<section id="why-is-data-missing-from-the-south-pole">
+<h3>Why is data missing from the South Pole?<a class="headerlink" href="#why-is-data-missing-from-the-south-pole" title="Permalink to this heading">#</a></h3>
+<p>The change rates series may not have a value at every time - a blank (represented by not-a-number or ‘NaN’) is left where measurements could not be made or were of low quality. A special case is the interior of the Antarctic ice sheet, below 81.5°S. Five of the six satellites used to make the dataset could not see into this region. All the data there came from CryoSat-2, which has a more tilted orbit. Even CryoSat-2 can only see down to 88°S and so there is a circular region around the South Pole which never contains data.</p>
+<p>This has a further consequence. In the simple averaging calculation below, data from the region seen only by CryoSat-2 will only be available for the CryoSat-2 mission period, which began in 2010, even if the start of the averaging period is before that.</p>
+</section>
+<section id="what-would-be-a-good-colour-palette-for-the-plot">
+<h3>What would be a good colour palette for the plot?<a class="headerlink" href="#what-would-be-a-good-colour-palette-for-the-plot" title="Permalink to this heading">#</a></h3>
+<p>Many published plots, such as the one on this page <a class="reference external" href="https://www.cnet.com/science/climate/nasa-study-reveals-decades-of-antarctic-ice-loss-that-went-under-the-radar/plots">https://www.cnet.com/science/climate/nasa-study-reveals-decades-of-antarctic-ice-loss-that-went-under-the-radar/plots</a>, use a red-to-blue colour scale, where red represents ice loss, blue represents gain and the white centre represents no change. This works well if the data range is centred on zero, but looks misleading when it is not. The scale used in the example code, a red-to-green-to-blue scale, is a colourblind accessible alternative.</p>
+<p>If the data range is not centred on zero, then the python ‘viridis’ colour scale, which is also colourblind accessible, is an example of a better choice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use start_time and end_time to define the averaging time range. Here it&#39;s a 10 year period starting in 2010. </span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;2010-01-01 00:00:00&#39;</span><span class="p">)</span>
+<span class="n">end_time</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;2020-01-01 00:00:00&#39;</span><span class="p">)</span>
+<span class="n">Tbool</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">&gt;=</span> <span class="n">start_time</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">&lt;</span> <span class="n">end_time</span><span class="p">)</span>
+
+<span class="c1"># Read in data from the selected ice sheet and calculate the mean surface elevation change rate over the time range. </span>
+<span class="c1"># The variable names inside the netCDF files differ between ice sheets. Also specific to the selected ice sheet are </span>
+<span class="c1"># the map projection and the longitude and latitude boundaries, so set them up here.</span>
+
+<span class="k">if</span> <span class="s1">&#39;green&#39;</span> <span class="ow">in</span> <span class="n">ice_sheet</span><span class="p">:</span>
+
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+    
+    <span class="n">dhdt_ave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;dhdt&#39;</span><span class="p">][:,:,</span><span class="n">Tbool</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">()</span>
+    <span class="c1">#ext = [-73, -12, 59, 83]    # map boundaries, in degrees, [east, west, south, north]</span>
+    
+<span class="k">else</span><span class="p">:</span>
+
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span>
+    
+    <span class="n">dhdt_ave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;sec&#39;</span><span class="p">][:,:,</span><span class="n">Tbool</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">SouthPolarStereo</span><span class="p">()</span>
+    <span class="c1">#ext = [-180, 180, -90, -60]</span>
+
+<span class="c1"># Create a new figure</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="c1"># Add a new subplot to the figure with the projection defined above</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+
+<span class="c1"># Set the extent of the map to the longitude and latitude range defined above</span>
+
+<span class="c1">#ax.set_extent(ext, crs=ccrs.PlateCarree())</span>
+
+<span class="c1"># Add the coastlines to the map</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;50m&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the data on the map using the longitude and latitude variables. Customise the plot settings.</span>
+
+<span class="n">vmin</span><span class="o">=-</span><span class="mf">1.0</span>         <span class="c1"># Datapoints below this value will be set to the bottom of the colour range</span>
+<span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span>          <span class="c1"># Datapoints above this value will be set to the top of the colour range</span>
+<span class="n">marker_size</span><span class="o">=</span><span class="mi">2</span>     <span class="c1"># The size of the dots used to mark each datapoint</span>
+<span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;turbo&#39;</span>      <span class="c1"># Alternatively use &#39;bwr_r&#39; for red to blue if the data range is centred on zero, otherwise try &#39;viridis&#39;</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">dhdt_ave</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">marker_size</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="c1"># Add a colorbar to the map</span>
+
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">)</span>
+
+<span class="c1"># Add a label to the colorbar, giving the selected time range and the data units</span>
+
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Average elevation change rate </span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">start_time</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span><span class="o">+</span> <span class="s1">&#39; to &#39;</span> <span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">end_time</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span><span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">[m/yr]&#39;</span><span class="p">)</span>
+
+<span class="c1"># Display the plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ssim/miniconda3/envs/py38/lib/python3.8/site-packages/shapely/constructive.py:181: RuntimeWarning: invalid value encountered in buffer
+  return lib.buffer(
+/Users/ssim/miniconda3/envs/py38/lib/python3.8/site-packages/shapely/constructive.py:181: RuntimeWarning: invalid value encountered in buffer
+  return lib.buffer(
+</pre></div>
+</div>
+<img alt="../_images/6165eb3e9f714d82436019fc0b1d10a31fd51fc065c7491653db2834b48b9a17.png" src="../_images/6165eb3e9f714d82436019fc0b1d10a31fd51fc065c7491653db2834b48b9a17.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ecv-notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about">
+   About
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prepare-your-environment">
+   Prepare your environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-libraries">
+   Import libraries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-data">
+   Download data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examine-the-data">
+   Examine the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-averages-and-plot">
+   Calculate averages and plot
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-is-data-missing-from-the-south-pole">
+     Why is data missing from the South Pole?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-would-be-a-good-colour-palette-for-the-plot">
+     What would be a good colour palette for the plot?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  </body>
+</html>
