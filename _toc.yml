@@ -32,8 +32,10 @@ parts:
    chapters:
    - file: ecv-notebooks/erb-outgoing-longwave-radiation
      title: Outgoing Longwave Radiation
-   - file: ecv-notebooks/erb-clara-climatologies
-     title: Earth radiation budget climatologies
+   - file: ecv-notebooks/erb-clara-climatology
+     title: Analysis of the CLARA Earth radiation budget product
+   - file: ecv-notebook/erb-ceres-climatology  # COPCO-1716
+     title: Analysis of the CERES Earth radiation budget product
    - file: ecv-notebooks/srb-climatology-and-anomaly
      title: Surface radiation budget climatologies and anomalies
    - file: ecv-notebooks/total-solar-irradiance
@@ -42,6 +44,8 @@ parts:
      title: Total column water vapour
    - file: ecv-notebooks/cloud-cover-climatology.ipynb
      title: Cloud fractional cover climatology
+   - file: ecv-notebook/tropospheric-humidity-from-radio-occultation
+     title: Tropospheric humidity estimates from satellite-based radio occultation measurements
    - file: ecv-notebooks/soil-moisture-anomalies
      title: Soil Moisture Anomaly Analysis
    - file: ecv-notebooks/lake-water-level
@@ -55,6 +59,7 @@ parts:
    - file: ecv-notebooks/aerosol-single-sensor-demonstrator
    - file: ecv-notebooks/aerosol-multi-sensor-record
    - file: ecv-notebooks/total-ozone-columns
+   - file: ecv-notebooks/glacier-mass-change  # COPCO-1697
  - caption: Turorials using Copernicus Emergency Management Service data
    chapters:
    - file: cems-notebooks/visualising-fwi-for-esotc
