@@ -1,732 +1,173 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>C3S Aerosol &#8212; C3S Training</title>
+    <title>Exploring gridded data on Aerosol properties available on C3S &#8212; C3S Training</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/aerosol-single-sensor-demonstrator';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="C3S Aerosol" href="aerosol-multi-sensor-record.html" />
-    <link rel="prev" title="How to access, read and process satellite XCO2 and XCH4 Level 3 data products" href="greenhouse-gases-level3-products.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+    <link rel="next" title="Visualising a full Climate Data Record of multi-sensor Aerosol data" href="aerosol-multi-sensor-record.html" />
+    <link rel="prev" title="How to access, read and use satellite XCO2 and XCH4 Level 3 data products" href="greenhouse-gases-level3-products.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
-  <label class="overlay overlay-primary" for="__primary"></label>
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
+</form></div>
   </div>
 
-  
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
-  </label>
-  <div id="navbar-start">
-    
-    
-  
-
-
-<a class="navbar-brand logo" href="../intro.html">
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    
-  </div>
-
-  
-  <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
-                        CDS tutorial
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
-                        Climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
-                        Heatwave Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
-                        Climate Projections (CMIP6)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cordex.html">
-                        Climate Projections (CORDEX)
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
-                        Seasonal Forecast Anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-verification.html">
-                        Seasonal Forecast Verification
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../ci-windchill.html">
-                        Windchill Index Calculation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
-                        Outgoing Longwave Radiation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-clara-climatology.html">
-                        Analysis of the CLARA Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-ceres-climatology.html">
-                        Analysis of the CERES Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
-                        Total Solar Irradiance
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
-                        Surface radiation budget climatologies and anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
-                        Total column water vapour
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tropospheric-humidity-from-radio-occultation.html">
-                        Tropospheric humidity estimates from satellite-based radio occultation measurements
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="cloud-cover-climatology.html">
-                        Cloud fractional cover climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
-                        Greenhouse Gas Level 2 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
-                        Greenhouse Gas Level 3 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
-                        Demonstration on how to plot  ozone datasets on the CDS.
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
-                        Soil Moisture Anomaly Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-water-level.html">
-                        Lake Water Level Timeseries
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
-                        Lake Surface Water Temperature Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-surface-elevation.html">
-                        Ice sheet surface elevation change rates
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-velocity.html">
-                        Greenland Ice Sheet velocity
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-mass-balance.html">
-                        Gravimetric Mass Balance for Ice Sheet
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="glacier-mass-change.html">
-                        Glacier mass change
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
-                        Visualising fire weather index (FWI)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
-                        Observing major flood events
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
-                        Python library (ibicus) and tutorials on bias correction
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
-      
-    </div>
-
-    <div id="navbar-end">
-      
-        <div class="navbar-end-item navbar-persistent--container">
-          
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-        </div>
-      
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-
-
-  
-  
-    <div class="navbar-persistent--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-    </div>
-  
-
-  
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fa-solid fa-outdent"></span>
-  </label>
-  
-
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-  </nav>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
+      
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
+
   
   <div class="sidebar-header-items sidebar-primary__section">
     
     
-      <div class="sidebar-header-items__center">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
-                        CDS tutorial
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
-                        Climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
-                        Heatwave Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
-                        Climate Projections (CMIP6)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cordex.html">
-                        Climate Projections (CORDEX)
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
-                        Seasonal Forecast Anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-verification.html">
-                        Seasonal Forecast Verification
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../ci-windchill.html">
-                        Windchill Index Calculation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
-                        Outgoing Longwave Radiation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-clara-climatology.html">
-                        Analysis of the CLARA Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-ceres-climatology.html">
-                        Analysis of the CERES Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
-                        Total Solar Irradiance
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
-                        Surface radiation budget climatologies and anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
-                        Total column water vapour
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tropospheric-humidity-from-radio-occultation.html">
-                        Tropospheric humidity estimates from satellite-based radio occultation measurements
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="cloud-cover-climatology.html">
-                        Cloud fractional cover climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
-                        Greenhouse Gas Level 2 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
-                        Greenhouse Gas Level 3 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
-                        Demonstration on how to plot  ozone datasets on the CDS.
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
-                        Soil Moisture Anomaly Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-water-level.html">
-                        Lake Water Level Timeseries
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
-                        Lake Surface Water Temperature Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-surface-elevation.html">
-                        Ice sheet surface elevation change rates
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-velocity.html">
-                        Greenland Ice Sheet velocity
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-mass-balance.html">
-                        Gravimetric Mass Balance for Ice Sheet
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="glacier-mass-change.html">
-                        Glacier mass change
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
-                        Visualising fire weather index (FWI)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
-                        Observing major flood events
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
-                        Python library (ibicus) and tutorials on bias correction
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
-      
-      </div>
     
-
-    
-    
-    <div class="sidebar-header-items__end">
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
     
   </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
   
-  <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item">
-  
-
 
 <a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="C3S Training - Home"/>
+    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="C3S Training - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
 
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    </div>
-    <div class="sidebar-start-items__item">
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
-    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -769,14 +210,33 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tropospheric-humidity-from-radio-occultation.html">Tropospheric humidity estimates from satellite-based radio occultation measurements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
-<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">Greenhouse Gas Level 3 Products</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">C3S Aerosol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">How to access, read and use satellite XCO2 and XCH4 Level 3 data products</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><a id="title"></a> Exploring gridded data on Aerosol properties available on C3S</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html"><a id="title"></a> Visualising a full Climate Data Record of multi-sensor Aerosol data</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html">Soil Moisture Anomaly Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
 
@@ -804,42 +264,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav>
+</nav></div>
     </div>
-  </div>
   
-
   
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-
   
   <div id="rtd-footer-container"></div>
 
+
       </div>
-      <main id="main-content" class="bd-main">
+      
+      <main id="main-content" class="bd-main" role="main">
         
         
 
 <div class="sbt-scroll-pixel-helper"></div>
 
-        <div class="bd-content">
-          <div class="bd-article-container">
-            
-            <div class="bd-header-article">
-                
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
-            <span class="fa-solid fa-bars"></span>
-        </label>
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
 
 
 <div class="dropdown dropdown-launch-buttons">
@@ -847,11 +312,13 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-rocket"></i>
   </button>
   <ul class="dropdown-menu">
+      
+      
+      
       <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/aerosol-single-sensor-demonstrator.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
@@ -861,16 +328,113 @@ title="Launch on Binder"
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
-</a>
+</li>
       
   </ul>
 </div>
 
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/aerosol-single-sensor-demonstrator.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ecv-notebooks/aerosol-single-sensor-demonstrator.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
@@ -882,95 +446,38 @@ title="Fullscreen mode"
 
 
 
-<div class="dropdown dropdown-repository-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">repository</span>
-</a>
-</a>
-      
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/aerosol-single-sensor-demonstrator.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">open issue</span>
-</a>
-</a>
-      
-  </ul>
-</div>
+`);
+</script>
 
 
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="../_sources/ecv-notebooks/aerosol-single-sensor-demonstrator.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</a>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
       
-      <li>
-<button onclick="printPdf(this)"
-  class="btn btn-sm dropdown-item"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</a>
-      
-  </ul>
-</div>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
-            <span class="fa-solid fa-list"></span>
-        </label>
     </div>
+  
 </div>
-            </div>
-            
-            
+</div>
+              
+              
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>C3S Aerosol</h1>
+    <h1><a id='title'></a> Exploring gridded data on Aerosol properties available on C3S</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -980,125 +487,33 @@ title="Print to PDF"
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   C3S Aerosol
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#table-of-contents">
-     Table of Contents
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-access-the-notebook">
-       How to access the notebook
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-intro-a-introduction">
-     <a id="intro">
-     </a>
-     Introduction
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#import-libraries">
-       Import libraries
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-cdsapi-a-download-data-using-cds-api">
-     <a id="cdsapi">
-     </a>
-     Download data using CDS API
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
-       Set up CDS API credentials
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#search-for-data">
-       Search for data
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#unpack-the-data">
-       Unpack the data
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-map-plot-a-use-case-1-plot-map">
-   <a id="map_plot">
-   </a>
-   Use case 1: Plot map
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-timeseries-a-use-case-2-regional-time-series">
-   <a id="timeseries">
-   </a>
-   Use case 2: Regional time series
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-climatology-a-use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series">
-   <a id="climatology">
-   </a>
-   Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-climatology-map-a-open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">
-     <a id="climatology_map">
-     </a>
-     Open NetCDF4 File and plot climatology map for selected calendar month
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regional-climatology-calculate-and-plot-as-time-series">
-     Regional climatology: calculate and plot as time series
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#plot-climatology-and-its-standard-deviation">
-       Plot “climatology” and its standard deviation
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#plot-timeseries-with-climatology">
-       Plot timeseries with climatology
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#anomaly-time-series">
-     Anomaly time series
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
-     Get more information about Earth Radiation Budget:
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#references">
-     References
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><a id="title"></a> Exploring gridded data on Aerosol properties available on C3S</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><a id="data_description"></a> Data description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cds-api-credentials">CDS API credentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-plot-map"><a id="map_plot"></a> Use case 1: Plot map</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-regional-time-series"><a id="timeseries"></a> Use case 2: Regional time series</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series"><a id="climatology"></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">Open NetCDF4 File and plot climatology map for selected calendar month</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-climatology-calculate-and-plot-as-time-series">Regional climatology: calculate and plot as time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-climatology-and-its-standard-deviation">Plot “climatology” and its standard deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-timeseries-with-climatology">Plot timeseries with climatology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomaly-time-series">Anomaly time series</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store">Get more information about Aerosol properties and the Climate Data Store</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="references"></a> References</a></li>
 </ul>
 
             </nav>
@@ -1106,30 +521,33 @@ title="Print to PDF"
     </div>
 </div>
 
-            <article class="bd-article" role="main">
               
-  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="c3s-aerosol">
-<h1>C3S Aerosol<a class="headerlink" href="#c3s-aerosol" title="Permalink to this heading">#</a></h1>
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exploring-gridded-data-on-aerosol-properties-available-on-c3s">
+<h1><a id='title'></a> Exploring gridded data on Aerosol properties available on C3S<a class="headerlink" href="#exploring-gridded-data-on-aerosol-properties-available-on-c3s" title="Link to this heading">#</a></h1>
 <p>This first notebook provides a practical introduction to the
 <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-aerosol-properties?tab=overview">C3S Aerosol properties gridded data from 1995 to present derived from satellite observations</a>
-dataset.
-We give a short introduction to the ECV Aerosol Properties, which contains 4 total column variables: Aerosol Optical Depth (AOD), AOD of components (Fine Mode, Dust), and aerosol single scattering albedo (SSA) as a measure of aerosol absorption; and 2 vertically resolved variables:  (dust) aerosol layer height and stratospheric aerosol extinction coefficient (vertical profiles). The algorithms and best practices for these aerosol properties have been developed within the ESA CLimate Change Initiative (CCI) and then were transferred for further extension and regular reprocessing + user support to the C3S. We start by downloading the data from the Climate Data Store (CDS) and then demonstrate three use cases for monthly mean single sensor datasets: plot a global mean map, calculate and plot a regional time series and calcculate and plot a regional multi-annual mean (“climatology”) and anomaly maps and time series.</p>
+dataset.</p>
+<p>We give a short introduction to the ECV Aerosol Properties, which contains 4 total column variables: Aerosol Optical Depth (AOD), AOD of components (Fine Mode, Dust), and aerosol single scattering albedo (SSA) as a measure of aerosol absorption; and 2 vertically resolved variables:  (dust) aerosol layer height and stratospheric aerosol extinction coefficient (vertical profiles). The algorithms and best practices for these aerosol properties have been developed within the ESA Climate Change Initiative (CCI) and then were transferred for further extension and regular reprocessing + user support to the C3S. We start by downloading the data from the Climate Data Store (CDS) and then demonstrate three use cases for monthly mean single sensor datasets: plot a global mean map, calculate and plot a regional time series and calculate and plot a regional multi-annual mean (“climatology”) and anomaly maps and time series.</p>
 <p>The notebook has six main sections with the following outline:</p>
-<section id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="table-of-contents">
+<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Introduction</p></li>
-<li><p>Download Data Using CDS API</p></li>
-<li><p>Use case 1: Plot Map</p></li>
-<li><p>Use case 2: Regional time series</p></li>
-<li><p>Use case 3: “Climatology” (multi-annual mean) and Anomaly - maps and time series</p></li>
-<li><p>References</p></li>
+<li><p><a class="reference internal" href="#intro"><span class="xref myst">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="#cdsapi"><span class="xref myst">Download Data Using CDS API</span></a></p></li>
+<li><p><a class="reference internal" href="#map_plot"><span class="xref myst">Use case 1: Plot Map</span></a></p></li>
+<li><p><a class="reference internal" href="#timeseries"><span class="xref myst">Use case 2: Regional time series</span></a></p></li>
+<li><p><a class="reference internal" href="#climatology"><span class="xref myst">Use case 3: “Climatology” (multi-annual mean) and Anomaly - maps and time series</span></a></p></li>
+<li><p><a class="reference internal" href="#references"><span class="xref myst">References</span></a></p></li>
 </ul>
 <section id="how-to-access-the-notebook">
-<h3>How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Permalink to this heading">#</a></h3>
+<h2>How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Link to this heading">#</a></h2>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>Binder</p></th>
 <th class="head text-center"><p>Kaggle</p></th>
@@ -1150,20 +568,25 @@ We give a short introduction to the ECV Aerosol Properties, which contains 4 tot
 </tr>
 </tbody>
 </table>
+</div>
 <p>If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries you will need. You will also need to install the CDS API (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code>) for downloading data in batch mode from the CDS.</p>
 </section>
 </section>
-<section id="a-id-intro-a-introduction">
-<h2><a id='intro'></a> Introduction<a class="headerlink" href="#a-id-intro-a-introduction" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1><a id='intro'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <br>
-<div style="text-align: justify"> Aerosols are minor constituents of the atmosphere by mass, but critical components in terms of impact on climate. Aerosols influence the global radiation balance directly by scattering and absorbing radiation, and indirectly through influencing cloud reflectivity, cloud cover and cloud lifetime. Aerosols have a lifetime in the atmosphere of a few days upto a week so that they can be transported over thousands of kilometers. They are emitted from several different sources (e.g. natural and anthropogenic combustion processes, biogenic secondary organics, sea spray uplifting over oceans, mineral dust erosion from deserts, volcanic eruptions). Due to the inhomogenous distribution and episodic or seasonal / diurnal patterns of the various sources they exhibit large spatial and temporal variability. The different sources emmit a large range of different aerosol particles with sizes from few nanometers to many micrometers and different chemical composition. On global average aerosol have not changed over the last decades, but regionally there are significant trends and major episodes could be observed (e.g. Australian wildfires, Sahara outbreaks). </div>
+<div style="text-align: justify"> Aerosols are minor constituents of the atmosphere by mass, but critical components in terms of impact on climate. Aerosols influence the global radiation balance directly by scattering and absorbing radiation, and indirectly through influencing cloud reflectivity, cloud cover and cloud lifetime. Aerosols have a lifetime in the atmosphere of a few days up to a week so that they can be transported over thousands of kilometers. They are emitted from several different sources (e.g. natural and anthropogenic combustion processes, biogenic secondary organics, sea spray uplifting over oceans, mineral dust erosion from deserts, volcanic eruptions). Due to the inhomogenous distribution and episodic or seasonal / diurnal patterns of the various sources they exhibit large spatial and temporal variability. The different sources emmit a large range of different aerosol particles with sizes from few nanometers to many micrometers and different chemical composition. On global average aerosol have not changed over the last decades, but regionally there are significant trends and major episodes could be observed (e.g. Australian wildfires, Sahara outbreaks). </div><section id="data-description">
+<h2><a id='data_description'></a> Data description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
 <div style="text-align: justify"> The main variables provided by this dataset are meant to cover all relevant information on the global atmospheric aerosol distribution: aerosol optical depth (total abundance), fine mode aerosol optical depth (particles with diameter smaller than 1 micron), dust aerosol optical depth (mineral dust), single scattering albedo (ranging from 0 = fully absorbing to 1 = non-absorbing), (dust) aerosol layer height and stratospheric aerosol extinction coefficient (vertical profiles). These variables are derived from observations from several satellite sensors using a set of different processing techniques. This provides the possibility to derive a large set of complementary aerosol properties needed to describe the complex nature of atmospheric aerosols. Furthermore, different algorithms have their specific strengths and weaknesses, meaning that datasets originating from the same sensor but processed by different algorithms provide a way to evaluate uncertainties (e.g. areas of good or bad agreement between them). Altogether, the aerosol properties dataset is very extensive and offers a choice of complementary options – which is appropriate depends on the intended application. </div>
+<p>The data are provided in netCDF format.</p>
 <p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Aerosol properties, sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-aerosol-properties?tab=overview">C3S Aerosol properties gridded data from 1995 to present derived from satellite observations</a></p></li>
 </ul>
+<p>There in the “Documentation” part, one can find the Product User Guide and Specifications (PUGS) and the Algorithm Theoretical Baseline (ATBD) for further information on the different algorithms.</p>
+</section>
 <section id="import-libraries">
-<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
+<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <p>We will be working with data in NetCDF format. To best handle this data we will use the netCDF4 python library. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
 <p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it: <br></p>
 <div class="cell docutils container">
@@ -1233,7 +656,7 @@ We give a short introduction to the ECV Aerosol Properties, which contains 4 tot
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l2/529q7bzs665bnrn7_wjx1nsr0000gn/T/ipykernel_55314/2007949843.py:2: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1981012/2007949843.py:2: MatplotlibDeprecationWarning: The seaborn styles shipped by Matplotlib are deprecated since 3.6, as they no longer correspond to the styles shipped by seaborn. However, they will remain available as &#39;seaborn-v0_8-&lt;style&gt;&#39;. Alternatively, directly use the seaborn API instead.
   mplt.style.use(&#39;seaborn&#39;)
 </pre></div>
 </div>
@@ -1241,10 +664,10 @@ We give a short introduction to the ECV Aerosol Properties, which contains 4 tot
 </div>
 </section>
 </section>
-<section id="a-id-cdsapi-a-download-data-using-cds-api">
-<h2><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#a-id-cdsapi-a-download-data-using-cds-api" title="Permalink to this heading">#</a></h2>
-<section id="set-up-cds-api-credentials">
-<h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h3>
+<section class="tex2jax_ignore mathjax_ignore" id="download-data-using-cds-api">
+<h1><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h1>
+<section id="cds-api-credentials">
+<h2>CDS API credentials<a class="headerlink" href="#cds-api-credentials" title="Link to this heading">#</a></h2>
 <div style="text-align: justify"> We will request data from the Climate Data Store (CDS): https://cds.climate.copernicus.eu/cdsapp#!/home. In case you don't have an account yet, please click on "Login/register" at the right top and select "Create new account". With the process finished you are able to login to the CDS and can search for your preferred data.</div>
 <p>We will request data from the CDS in batch mode with the help of the CDS API.
 First, we need to manually set the CDS API credentials.
@@ -1261,18 +684,15 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 <p>Next, we specify a data directory in which we will download our data and all output files that we will generate:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span><span class="o">=</span><span class="s1">&#39;./data_dir/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span><span class="o">=</span><span class="s1">&#39;./&#39;</span>
 <span class="n">PLOTDIR</span><span class="o">=</span><span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;plots/&#39;</span>
-<span class="k">for</span> <span class="n">_dir</span> <span class="ow">in</span> <span class="p">[</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">PLOTDIR</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">PLOTDIR</span><span class="p">):</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">PLOTDIR</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">PLOTDIR</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">PLOTDIR</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="search-for-data">
-<h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h3>
+<p>Then we can search for data.</p>
 <p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
 Here you can search for aerosol data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-aerosol-properties?tab=overview">C3S Aerosol properties gridded data from 1995 to present derived from satellite observations</a>.
 The Aerosol properties comprise several total column aerosol variables: (total) AOD, Fine-Mode AOD, Dust AOD, Single Scattering Albedo and further vertically resolved aerosol variables: stratospheric extinction profiles, aerosol layer height. Most catalogue entries comprise data from a number of sensors and algorithms.</p>
@@ -1291,11 +711,11 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </ul>
 <p>If you have not already done so, you will need to accept the <strong>terms &amp; conditions</strong> of the data before you can download it.</p>
 <p>At the end of the download form, select <strong><code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code></strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cell below) …</p>
-<p>Depending on the lenght of the record chosen and the internet traffic the download may take one to several minutes.</p>
+<p>Depending on the length of the record chosen and the internet traffic the download may take one to several minutes.</p>
 <p>To illustrate the variability we include 3 examples below (2 as comment lines only).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>  <span class="c1">#url=URL, key=KEY)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
 
 <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;satellite-aerosol-properties&#39;</span><span class="p">,</span>
@@ -1348,25 +768,27 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
         <span class="c1">#4         &#39;13&#39;, &#39;14&#39;, &#39;15&#39;, &#39;16&#39;, &#39;17&#39;, &#39;18&#39;, &#39;19&#39;, &#39;20&#39;, &#39;21&#39;,&#39;22&#39;, &#39;23&#39;, &#39;24&#39;,</span>
         <span class="c1">#4         &#39;25&#39;, &#39;26&#39;, &#39;27&#39;, &#39;28&#39;, &#39;29&#39;, &#39;30&#39;, &#39;31&#39;,],</span>
     <span class="p">},</span>
-    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download.zip&#39;</span><span class="p">)</span>
+    <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-10-23 17:05:28,274 INFO Welcome to the CDS
-2023-10-23 17:05:28,275 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-aerosol-properties
-2023-10-23 17:05:28,392 INFO Request is completed
-2023-10-23 17:05:28,393 INFO Downloading https://download-0004-clone.copernicus-climate.eu/cache-compute-0004/cache/data9/dataset-satellite-aerosol-properties-b9a80ae7-7586-4080-9fad-b87d443c2e1d.zip to ./data_dir//download.zip (39.4M)
-2023-10-23 17:05:39,270 INFO Download rate 3.6M/s   
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-05-15 10:07:49,299 INFO Welcome to the CDS
+2024-05-15 10:07:49,300 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-aerosol-properties
+2024-05-15 10:07:49,415 INFO Request is queued
+2024-05-15 10:07:50,453 INFO Request is running
+2024-05-15 10:08:10,419 INFO Request is completed
+2024-05-15 10:08:10,420 INFO Downloading https://download-0011-clone.copernicus-climate.eu/cache-compute-0011/cache/data6/dataset-satellite-aerosol-properties-89832bd3-d183-4192-a186-09446311a330.zip to download.zip (39.4M)
+2024-05-15 10:08:12,689 INFO Download rate 17.4M/s  
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=41326484,content_type=application/zip,location=https://download-0004-clone.copernicus-climate.eu/cache-compute-0004/cache/data9/dataset-satellite-aerosol-properties-b9a80ae7-7586-4080-9fad-b87d443c2e1d.zip)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=41326484,content_type=application/zip,location=https://download-0011-clone.copernicus-climate.eu/cache-compute-0011/cache/data6/dataset-satellite-aerosol-properties-89832bd3-d183-4192-a186-09446311a330.zip)
 </pre></div>
 </div>
 </div>
 </div>
 <p>Please define your dataset characteristics (copy from above as used in the CDS Download page).</p>
-<p>IMPORTANT NOTE: If you have once donwloaded a specific dataset and want to re-use it, you can re-start from here using this dataset. Then you need to skip the code block “Unpack the data”.</p>
+<p>IMPORTANT NOTE: If you have once downloaded a specific dataset and want to re-use it, you can re-start from here using this dataset. Then you need to skip the code block “Unpack the data”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#0 SLSTR on Sentinel-3A: Swansea algorithm, Fine Mode AOD</span>
@@ -1402,7 +824,8 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </div>
 </div>
-<p>Correction of variable names: There are a few variable naming inconsistencies which we automtically adjusted by the following code block.</p>
+<p>Correction of variable names: There are a few variable naming inconsistencies which we automatically adjust by the following code block.</p>
+<p>Those inconsistencies are remaining despite of strong format harmonization efforts from the fact that the algorithms / datasets come from different providers who have somewhat different coding practices.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;aerosol_optical_depth&#39;</span><span class="p">:</span>
@@ -1439,22 +862,24 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </section>
 <section id="unpack-the-data">
-<h3>Unpack the data<a class="headerlink" href="#unpack-the-data" title="Permalink to this heading">#</a></h3>
+<h2>Unpack the data<a class="headerlink" href="#unpack-the-data" title="Link to this heading">#</a></h2>
 <p>The zip-files have now been requested and downloaded to the data directory that we have specified earlier.
 For the purposes of our use cases, we will unzip the archive and store all netCDF files in a specific directory for this algorithm.
-There you can also search and open individual files with any tool suitable for reading netCDF format, e.g. Panoply.</p>
-<p>IMPORTANT NOTE: If you had already downloaded and unzpped the record you intend to visualize now, then you need to skip this block. (To check you need to confirm that the directory timeseries_<algorithm>1 exists and contains all the monthly data you intend to use).</p>
+There you can also search and open individual files with any tool suitable for reading netCDF format, e.g. Panoply.
+The files contain gridded data with 1 degree spatial resolution.</p>
+<p>IMPORTANT NOTE: If you had already downloaded and unzipped the record you intend to visualize now, then you need to skip this block. (To check you need to confirm that the directory time series_<algorithm>1 exists and contains all the monthly data you intend to use).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">download.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
-    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">timeseries_</span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s1">1&#39;</span><span class="p">)</span>
-<span class="nb">dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">timeseries_</span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s1">1/&#39;</span>
+    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s1">&#39;timeseries_&#39;</span> <span class="o">+</span> <span class="n">algorithm</span> <span class="o">+</span> <span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="nb">dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;timeseries_&#39;</span> <span class="o">+</span> <span class="n">algorithm</span> <span class="o">+</span> <span class="s1">&#39;1/&#39;</span>
 <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="nb">dir</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>One IASI algorithm (MAPIR) provides less than global coverage; in this case we make the datasets global (filling the empty parts with NaN values) for consistent technical treatment in the use cases.</p>
+<p>For one IASI algorithm (IMARS) the data needs to be transposed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">algorithm</span> <span class="o">==</span> <span class="s1">&#39;mapir&#39;</span><span class="p">:</span>
@@ -1497,17 +922,16 @@ There you can also search and open individual files with any tool suitable for r
 </div>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-map-plot-a-use-case-1-plot-map">
-<h1><a id='map_plot'></a> Use case 1: Plot map<a class="headerlink" href="#a-id-map-plot-a-use-case-1-plot-map" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="use-case-1-plot-map">
+<h1><a id='map_plot'></a> Use case 1: Plot map<a class="headerlink" href="#use-case-1-plot-map" title="Link to this heading">#</a></h1>
 <p>Firstly, we should get an overview of the parameter by plotting the time averaged monthly global distribution.
 The data are stored in NetCDF format, and we will use NetCDF4 Python library to work with the data.
-We will then use Matplotlib and Catropy to visualise the data.</p>
-<p>Select the dataset by copying one filename from the specific directory for this algorithm (which is automatically tranferred from the unpacking code block above).
+We will then use Matplotlib and Cartopy to visualise the data.</p>
+<p>Select the dataset by copying one filename from the specific directory for this algorithm (which is automatically transferred from the unpacking code block above).
 The dataset is then read into the Jupyter notebook and the map plot is created, displayed and stored into your main directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">timeseries_</span><span class="si">{</span><span class="n">algorithm</span><span class="si">}</span><span class="s1">1/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="s1">&#39;timeseries_&#39;</span> <span class="o">+</span> <span class="n">algorithm</span> <span class="o">+</span> <span class="s1">&#39;1/&#39;</span>
 
 <span class="c1">#0 filename = &#39;202106-C3S-L3_AEROSOL-AER_PRODUCTS-SLSTR-SENTINEL3A-SWANSEA-MONTHLY-v1.12.nc&#39;</span>
 <span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;202106-C3S-L3_AEROSOL-AER_PRODUCTS-IASI-METOPC-ULB-MONTHLY-v9DN.nc&#39;</span>
@@ -1550,7 +974,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 
@@ -1564,7 +988,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 <span class="k">elif</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;AEX&#39;</span><span class="p">:</span>
     <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.0021</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="n">endpoint</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">)</span>
 
-<span class="n">pc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span>  <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span>  <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;twilight&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
 <span class="c1">#ax.set_extent([0, 30, 40, 60]) # region (lon_min, lon_max, lat_min, lat_mx) in map</span>
 
 <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="c1"># single scattering albedo</span>
@@ -1589,14 +1013,14 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/09356c68569f4f97964a2c3eb448897f2f50b58bae6be6e2e3d3ca66f6c9c8df.png" src="../_images/09356c68569f4f97964a2c3eb448897f2f50b58bae6be6e2e3d3ca66f6c9c8df.png" />
+<img alt="../_images/057d0d4f1785f392e263c6c6a327ec0823369c6a49796adedd3f6f799fbd533b.png" src="../_images/057d0d4f1785f392e263c6c6a327ec0823369c6a49796adedd3f6f799fbd533b.png" />
 </div>
 </div>
 <p><strong>FIGURE 1:</strong> You can see here a typical global aerosol map with well-known features (depending on season and variable) such as the spring Sahara dust outflow over the Atlantic (Dust AOD), the autumn biomass burning in Southern Africa and the Amazonas (Fine Mode AOD), and several more.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-timeseries-a-use-case-2-regional-time-series">
-<h1><a id='timeseries'></a> Use case 2: Regional time series<a class="headerlink" href="#a-id-timeseries-a-use-case-2-regional-time-series" title="Permalink to this heading">#</a></h1>
-<p>After looking at one example of a monthly time averagged global distribution, in the next step we further investigate the dataset. The single sensor aerosol datasets are upto 15 years long, so that another useful way of visualizing is a time series. We will calculate a regional time series, plot it, and discuss its features.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="use-case-2-regional-time-series">
+<h1><a id='timeseries'></a> Use case 2: Regional time series<a class="headerlink" href="#use-case-2-regional-time-series" title="Link to this heading">#</a></h1>
+<p>After looking at one example of a monthly time averaged global distribution, in the next step we further investigate the dataset. The single sensor aerosol datasets are up to 15 years long, so that another useful way of visualizing is a time series. We will calculate a regional time series, plot it, and discuss its features.</p>
 <p>Here is a common definition for a set of areas with rather homogeneous aerosol properties and meaningful aerosol behaviour. Own regions can be easily defined the same way.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1628,7 +1052,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 </div>
-<p>We now choose one region and set the minimum required coverage (fraction of years with valid data in a month) for the timeseries.</p>
+<p>We now choose one region and set the minimum required coverage (fraction of years with valid data in a month) for the time series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#0 region = &#39;Europe&#39;</span>
@@ -1760,13 +1184,13 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6c158651f75dde28a4ee79abf8cd15d6ce348c9a07e83f8025645b0f68ff5b03.png" src="../_images/6c158651f75dde28a4ee79abf8cd15d6ce348c9a07e83f8025645b0f68ff5b03.png" />
+<img alt="../_images/ec4c1032f430c786701b0c3c3c568ee519247b07014357ff30f1115c00107630.png" src="../_images/ec4c1032f430c786701b0c3c3c568ee519247b07014357ff30f1115c00107630.png" />
 </div>
 </div>
 <p><strong>FIGURE 2:</strong> Such an aerosol time series typically shows a more or less obvious annual cycle related to the annual cycle of the relevant sources and meteorological conditions. In some years and regions exceptional peaks may be seen.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-climatology-a-use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series">
-<h1><a id='climatology'></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series<a class="headerlink" href="#a-id-climatology-a-use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series">
+<h1><a id='climatology'></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series<a class="headerlink" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series" title="Link to this heading">#</a></h1>
 <p>In the next step we further investigate the dataset by comparing the data of individual months to a longer-term mean state (multi-annual mean or “climatology” if of sufficient length).</p>
 <p>We define the sub directory in which the climatology data will be stored.</p>
 <p>Note that the following code blocks are not yet prepared for the stratospheric aerosol extinction profiles.</p>
@@ -1841,8 +1265,8 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 </div>
-<section id="a-id-climatology-map-a-open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">
-<h2><a id='climatology_map'></a> Open NetCDF4 File and plot climatology map for selected calendar month<a class="headerlink" href="#a-id-climatology-map-a-open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month" title="Permalink to this heading">#</a></h2>
+<section id="open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">
+<h2>Open NetCDF4 File and plot climatology map for selected calendar month<a class="headerlink" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month" title="Link to this heading">#</a></h2>
 <p>We select one calendar month, read its netCDF file and prepare the monthly multi-annual mean map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1868,7 +1292,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 <span class="k">elif</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;AOD&#39;</span> <span class="ow">or</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;FM&#39;</span> <span class="ow">or</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;DA&#39;</span> <span class="ow">or</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Da&#39;</span> <span class="ow">or</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;D_AOD&#39;</span><span class="p">:</span>
     <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.701</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="n">endpoint</span> <span class="o">=</span> <span class="kc">False</span> <span class="p">)</span> 
 
-<span class="n">pc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span>  <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">pc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">levels</span><span class="p">,</span>  <span class="n">transform</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;twilight&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
 <span class="c1">#ax.set_extent([0, 30, 40, 60]) # region (lon_min, lon_max, lat_min, lat_mx) in map</span>
 
 <span class="k">if</span> <span class="n">variable</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;S&#39;</span><span class="p">:</span> <span class="c1"># single scattering albedo</span>
@@ -1886,13 +1310,13 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/80d097734b61251368fe9298185b46227ef4d3bdac232eb82b2ba855587b5f1a.png" src="../_images/80d097734b61251368fe9298185b46227ef4d3bdac232eb82b2ba855587b5f1a.png" />
+<img alt="../_images/fa4ffb84f0d23b5fedcce61e6802e781711145137ba7c035b5af6a24ec8da042.png" src="../_images/fa4ffb84f0d23b5fedcce61e6802e781711145137ba7c035b5af6a24ec8da042.png" />
 </div>
 </div>
 <p><strong>FIGURE 3:</strong> This figure shows (similar to the example monthly mean map above) those typical aerosol features which occur in the selected calendar month, but now averaged over several years and thus showing a multi-annual mean state of the atmosphere in that calendar month.</p>
 </section>
 <section id="regional-climatology-calculate-and-plot-as-time-series">
-<h2>Regional climatology: calculate and plot as time series<a class="headerlink" href="#regional-climatology-calculate-and-plot-as-time-series" title="Permalink to this heading">#</a></h2>
+<h2>Regional climatology: calculate and plot as time series<a class="headerlink" href="#regional-climatology-calculate-and-plot-as-time-series" title="Link to this heading">#</a></h2>
 <p>For the region and variable as selected above and the full timerange used for the multi-annual mean, we calculate now regional averages of the climatology in each calendar month and of each invidual month in the time series. We also calculate the standard deviation for each calendar month as measure of the multi-annual variability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1921,8 +1345,9 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 </div>
+</section>
 <section id="plot-climatology-and-its-standard-deviation">
-<h3>Plot “climatology” and its standard deviation<a class="headerlink" href="#plot-climatology-and-its-standard-deviation" title="Permalink to this heading">#</a></h3>
+<h2>Plot “climatology” and its standard deviation<a class="headerlink" href="#plot-climatology-and-its-standard-deviation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdev_p</span> <span class="o">=</span> <span class="p">[</span><span class="n">climatology</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">sdev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">climatology</span><span class="p">))]</span> 
@@ -1949,13 +1374,13 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/75a22fcbeb96f3b1d224c1ec0a0ac3a302344455f5401a5fd1ae683b976b5026.png" src="../_images/75a22fcbeb96f3b1d224c1ec0a0ac3a302344455f5401a5fd1ae683b976b5026.png" />
+<img alt="../_images/1baadc9b5fa5e9d02715b0d9b3be4fef40ca86bc4092ea592a8e8bd0063a38ce.png" src="../_images/1baadc9b5fa5e9d02715b0d9b3be4fef40ca86bc4092ea592a8e8bd0063a38ce.png" />
 </div>
 </div>
 <p><strong>FIGURE 4:</strong> The figure shows now the average annual cycle in the selected region extracted from the multi-annual dataset.</p>
 </section>
 <section id="plot-timeseries-with-climatology">
-<h3>Plot timeseries with climatology<a class="headerlink" href="#plot-timeseries-with-climatology" title="Permalink to this heading">#</a></h3>
+<h2>Plot timeseries with climatology<a class="headerlink" href="#plot-timeseries-with-climatology" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climatology_ges</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1996,14 +1421,13 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1b219241a6cd81873800eb58eaf452525d7940cf67a6e68a0e6c74157ff1bc23.png" src="../_images/1b219241a6cd81873800eb58eaf452525d7940cf67a6e68a0e6c74157ff1bc23.png" />
+<img alt="../_images/8b859730101a9f8ae6a9084a651ef2bdff387b95b3f47c552ff092f8f73b5cc4.png" src="../_images/8b859730101a9f8ae6a9084a651ef2bdff387b95b3f47c552ff092f8f73b5cc4.png" />
 </div>
 </div>
 <p><strong>FIGURE 5:</strong> The next figure shows the time series in red compared to the multiannual mean in blue and its standard deviation in light blue shading (both repeated from year to year). Exceptional episodes stand out if the red line breaks out of the blue shade.</p>
 </section>
-</section>
 <section id="anomaly-time-series">
-<h2>Anomaly time series<a class="headerlink" href="#anomaly-time-series" title="Permalink to this heading">#</a></h2>
+<h2>Anomaly time series<a class="headerlink" href="#anomaly-time-series" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anomaly</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">climatology_ges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">))]</span> 
@@ -2033,23 +1457,24 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fc3bcc511020c4dce8ad7e1041dfaafac795cb30aa8637acd762ce21f2838e94.png" src="../_images/fc3bcc511020c4dce8ad7e1041dfaafac795cb30aa8637acd762ce21f2838e94.png" />
+<img alt="../_images/dba03e5db3bc78dfe8f10c288a78b275426725540a17fc70813efa55457271b4.png" src="../_images/dba03e5db3bc78dfe8f10c288a78b275426725540a17fc70813efa55457271b4.png" />
 </div>
 </div>
 <p><strong>FIGURE 6:</strong> This final regional time series plot shows the data record in the form of anomalies, i.e. differences between individual monthly data points and the multi-annual monthly mean compared to the multi-annual monthly variations around the zero anomaly line.</p>
 <p>This closes our first Jupyter notebook on aerosol properties.</p>
 <p>A second Jupyter notebook will create a full Climate Data Record by combining subsequent data record pieces of similar sensors.</p>
 </section>
-<section id="get-more-information-about-earth-radiation-budget">
-<h2>Get more information about Earth Radiation Budget:<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="get-more-information-about-aerosol-properties-and-the-climate-data-store">
+<h1>Get more information about Aerosol properties and the Climate Data Store<a class="headerlink" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-aerosol-properties?tab=overview">C3S Aerosol properties gridded data from 1995 to present derived from satellite observations</a></p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">About the Climate Data Store</a></p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/toolbox/doc/index.html">About the Toolbox documentation</a></p></li>
 </ul>
 </section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1><a id='references'></a> References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="http://wdc.dlr.de/C3S_312b_Lot2/Documentation/AER/C3S2_312a_Lot2_PUGS_AER_latest.pdf">Product User Guide for CDS Aerosol Properties</a></p>
 <p><a class="reference external" href="https://www.mdpi.com/2072-4292/8/5/421">Thomas Popp, Gerrit de Leeuw, Christine Bingen, Christoph Brühl, Virginie Capelle, Alain Chedin,
 Lieven Clarisse, Oleg Dubovik, Roy Grainger, Jan Griesfeller, Andreas Heckel, Stefan Kinne, Lars Klüser,
@@ -2058,7 +1483,7 @@ Adam Povey, Charles Robert, Michael Schulz, Larisa Sogacheva, Kerstin Stebel, De
 Gareth Thomas, Lieuwe Gijsbert Tilstra, Sophie Vandenbussche, Pepijn Veefkind, Marco Vountas and
 Yong Xue, Development, Production and Evaluation of Aerosol Climate Data Records from European
 Satellite Observations (Aerosol_cci), Remote Sensing, 8, 421; doi:10.3390/rs8050421, 2016</a></p>
-</section>
+<p><a class="reference internal" href="#title"><span class="xref myst">Back to top the Page</span></a></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2081,174 +1506,86 @@ Satellite Observations (Aerosol_cci), Remote Sensing, 8, 421; doi:10.3390/rs8050
     </script>
     <script>kernelName = 'python3'</script>
 
-            </article>
-            
+                </article>
+              
 
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="greenhouse-gases-level3-products.html" title="previous page">
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="greenhouse-gases-level3-products.html"
+       title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-          <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">How to access, read and process satellite XCO2 and XCH4 Level 3 data products</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">How to access, read and use satellite XCO2 and XCH4 Level 3 data products</p>
       </div>
-  </a>
-  <a class='right-next' id="next-link" href="aerosol-multi-sensor-record.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">C3S Aerosol</p>
-  </div>
-  <i class="fa-solid fa-angle-right"></i>
-  </a>
+    </a>
+    <a class="right-next"
+       href="aerosol-multi-sensor-record.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><a id='title'></a> Visualising a full Climate Data Record of multi-sensor Aerosol data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-            </footer>
-            
-          </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
+                </footer>
               
-<div class="toc-item">
-  
-<div class="tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-</div>
-<nav id="bd-toc-nav" class="page-toc">
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   C3S Aerosol
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#table-of-contents">
-     Table of Contents
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-to-access-the-notebook">
-       How to access the notebook
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-intro-a-introduction">
-     <a id="intro">
-     </a>
-     Introduction
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#import-libraries">
-       Import libraries
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-cdsapi-a-download-data-using-cds-api">
-     <a id="cdsapi">
-     </a>
-     Download data using CDS API
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
-       Set up CDS API credentials
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#search-for-data">
-       Search for data
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#unpack-the-data">
-       Unpack the data
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-map-plot-a-use-case-1-plot-map">
-   <a id="map_plot">
-   </a>
-   Use case 1: Plot map
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-timeseries-a-use-case-2-regional-time-series">
-   <a id="timeseries">
-   </a>
-   Use case 2: Regional time series
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-climatology-a-use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series">
-   <a id="climatology">
-   </a>
-   Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-climatology-map-a-open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">
-     <a id="climatology_map">
-     </a>
-     Open NetCDF4 File and plot climatology map for selected calendar month
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regional-climatology-calculate-and-plot-as-time-series">
-     Regional climatology: calculate and plot as time series
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#plot-climatology-and-its-standard-deviation">
-       Plot “climatology” and its standard deviation
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#plot-timeseries-with-climatology">
-       Plot timeseries with climatology
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#anomaly-time-series">
-     Anomaly time series
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">
-     Get more information about Earth Radiation Budget:
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#references">
-     References
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><a id="title"></a> Exploring gridded data on Aerosol properties available on C3S</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><a id="data_description"></a> Data description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cds-api-credentials">CDS API credentials</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-plot-map"><a id="map_plot"></a> Use case 1: Plot map</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-regional-time-series"><a id="timeseries"></a> Use case 2: Regional time series</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series"><a id="climatology"></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">Open NetCDF4 File and plot climatology map for selected calendar month</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-climatology-calculate-and-plot-as-time-series">Regional climatology: calculate and plot as time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-climatology-and-its-standard-deviation">Plot “climatology” and its standard deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-timeseries-with-climatology">Plot timeseries with climatology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomaly-time-series">Anomaly time series</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store">Get more information about Aerosol properties and the Climate Data Store</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="references"></a> References</a></li>
 </ul>
 
-</nav>
-</div>
+  </nav></div>
 
-            </div>
-          
-          
-        </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
             
 <div class="bd-footer-content__inner container">
   
@@ -2262,18 +1599,18 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   
   <div class="footer-item">
     
-<p class="copyright">
 
-    &copy; Copyright 2022.<br>
-
-</p>
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
 
   </div>
   
   <div class="footer-item">
-    <p class="last-updated">
-Last updated on None.<br>
-</p>
+    
   </div>
   
   <div class="footer-item">
@@ -2281,19 +1618,18 @@ Last updated on None.<br>
   </div>
   
 </div>
-          </div>
-        </footer>
+          </footer>
         
 
       </main>
     </div>
   </div>
-
   
-    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

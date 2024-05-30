@@ -1,10 +1,12 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset &#8212; C3S Training</title>
   
@@ -12,721 +14,160 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/cloud-cover-climatology';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="How to access, read and process satellite CO2 and CH4 Level 2 products" href="greenhouse-gases-level2-products.html" />
+    <link rel="next" title="How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?" href="greenhouse-gases-level2-products.html" />
     <link rel="prev" title="Monthly mean tropospheric humidity data from satellite-based Radio Occultation measurements" href="tropospheric-humidity-from-radio-occultation.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
-  <label class="overlay overlay-primary" for="__primary"></label>
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
+</form></div>
   </div>
 
-  
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
-  </label>
-  <div id="navbar-start">
-    
-    
-  
-
-
-<a class="navbar-brand logo" href="../intro.html">
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    
-  </div>
-
-  
-  <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
-                        CDS tutorial
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
-                        Climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
-                        Heatwave Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
-                        Climate Projections (CMIP6)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cordex.html">
-                        Climate Projections (CORDEX)
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
-                        Seasonal Forecast Anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-verification.html">
-                        Seasonal Forecast Verification
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../ci-windchill.html">
-                        Windchill Index Calculation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
-                        Outgoing Longwave Radiation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-clara-climatology.html">
-                        Analysis of the CLARA Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-ceres-climatology.html">
-                        Analysis of the CERES Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
-                        Total Solar Irradiance
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
-                        Surface radiation budget climatologies and anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
-                        Total column water vapour
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tropospheric-humidity-from-radio-occultation.html">
-                        Tropospheric humidity estimates from satellite-based radio occultation measurements
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Cloud fractional cover climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
-                        Greenhouse Gas Level 2 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
-                        Greenhouse Gas Level 3 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-single-sensor-demonstrator.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
-                        Demonstration on how to plot  ozone datasets on the CDS.
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
-                        Soil Moisture Anomaly Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-water-level.html">
-                        Lake Water Level Timeseries
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
-                        Lake Surface Water Temperature Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-surface-elevation.html">
-                        Ice sheet surface elevation change rates
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-velocity.html">
-                        Greenland Ice Sheet velocity
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-mass-balance.html">
-                        Gravimetric Mass Balance for Ice Sheet
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="glacier-mass-change.html">
-                        Glacier mass change
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
-                        Visualising fire weather index (FWI)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
-                        Observing major flood events
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
-                        Python library (ibicus) and tutorials on bias correction
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
-      
-    </div>
-
-    <div id="navbar-end">
-      
-        <div class="navbar-end-item navbar-persistent--container">
-          
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-        </div>
-      
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-
-
-  
-  
-    <div class="navbar-persistent--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-    </div>
-  
-
-  
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fa-solid fa-outdent"></span>
-  </label>
-  
-
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-  </nav>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
+      
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
+
   
   <div class="sidebar-header-items sidebar-primary__section">
     
     
-      <div class="sidebar-header-items__center">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
-                        CDS tutorial
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
-                        Climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
-                        Heatwave Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
-                        Climate Projections (CMIP6)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cordex.html">
-                        Climate Projections (CORDEX)
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
-                        Seasonal Forecast Anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-verification.html">
-                        Seasonal Forecast Verification
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../ci-windchill.html">
-                        Windchill Index Calculation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
-                        Outgoing Longwave Radiation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-clara-climatology.html">
-                        Analysis of the CLARA Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-ceres-climatology.html">
-                        Analysis of the CERES Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
-                        Total Solar Irradiance
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
-                        Surface radiation budget climatologies and anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
-                        Total column water vapour
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tropospheric-humidity-from-radio-occultation.html">
-                        Tropospheric humidity estimates from satellite-based radio occultation measurements
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Cloud fractional cover climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
-                        Greenhouse Gas Level 2 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
-                        Greenhouse Gas Level 3 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-single-sensor-demonstrator.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
-                        Demonstration on how to plot  ozone datasets on the CDS.
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
-                        Soil Moisture Anomaly Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-water-level.html">
-                        Lake Water Level Timeseries
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
-                        Lake Surface Water Temperature Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-surface-elevation.html">
-                        Ice sheet surface elevation change rates
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-velocity.html">
-                        Greenland Ice Sheet velocity
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-mass-balance.html">
-                        Gravimetric Mass Balance for Ice Sheet
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="glacier-mass-change.html">
-                        Glacier mass change
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
-                        Visualising fire weather index (FWI)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
-                        Observing major flood events
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
-                        Python library (ibicus) and tutorials on bias correction
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
-      
-      </div>
     
-
-    
-    
-    <div class="sidebar-header-items__end">
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
     
   </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
   
-  <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item">
-  
-
 
 <a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="C3S Training - Home"/>
+    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="C3S Training - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
 
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    </div>
-    <div class="sidebar-start-items__item">
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
-    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -769,14 +210,33 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tropospheric-humidity-from-radio-occultation.html">Tropospheric humidity estimates from satellite-based radio occultation measurements</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cloud fractional cover climatology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
-<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">Greenhouse Gas Level 3 Products</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html">C3S Aerosol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">How to access, read and use satellite XCO2 and XCH4 Level 3 data products</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html"><a id="title"></a> Exploring gridded data on Aerosol properties available on C3S</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html"><a id="title"></a> Visualising a full Climate Data Record of multi-sensor Aerosol data</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html">Soil Moisture Anomaly Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
 
@@ -804,42 +264,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav>
+</nav></div>
     </div>
-  </div>
   
-
   
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-
   
   <div id="rtd-footer-container"></div>
 
+
       </div>
-      <main id="main-content" class="bd-main">
+      
+      <main id="main-content" class="bd-main" role="main">
         
         
 
 <div class="sbt-scroll-pixel-helper"></div>
 
-        <div class="bd-content">
-          <div class="bd-article-container">
-            
-            <div class="bd-header-article">
-                
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
-            <span class="fa-solid fa-bars"></span>
-        </label>
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
 
 
 <div class="dropdown dropdown-launch-buttons">
@@ -847,11 +312,13 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-rocket"></i>
   </button>
   <ul class="dropdown-menu">
+      
+      
+      
       <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/cloud-cover-climatology.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
@@ -861,16 +328,113 @@ title="Launch on Binder"
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
-</a>
+</li>
       
   </ul>
 </div>
 
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/cloud-cover-climatology.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ecv-notebooks/cloud-cover-climatology.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
@@ -882,92 +446,35 @@ title="Fullscreen mode"
 
 
 
-<div class="dropdown dropdown-repository-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">repository</span>
-</a>
-</a>
-      
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/cloud-cover-climatology.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">open issue</span>
-</a>
-</a>
-      
-  </ul>
-</div>
+`);
+</script>
 
 
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="../_sources/ecv-notebooks/cloud-cover-climatology.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</a>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
       
-      <li>
-<button onclick="printPdf(this)"
-  class="btn btn-sm dropdown-item"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</a>
-      
-  </ul>
-</div>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
-            <span class="fa-solid fa-list"></span>
-        </label>
     </div>
+  
 </div>
-            </div>
-            
-            
+</div>
+              
+              
 
 <div id="jb-print-docs-body" class="onlyprint">
     <h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
@@ -980,133 +487,47 @@ title="Print to PDF"
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-access-a-how-to-access-the-notebook">
-   <a id="access">
-   </a>
-   How to access the notebook
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-tutorial-comprises-the-following-steps">
-   The tutorial comprises the following steps:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-introduction-a-1-introduction">
-   <a id="introduction">
-   </a>
-   1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-data-retrieve-a-2-retrieve-data">
-   <a id="data_retrieve">
-   </a>
-   2. Retrieve data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-install-cdsapi-a-2-1-install-cds-api">
-     <a id="install_cdsapi">
-     </a>
-     2.1 Install CDS API
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-import-libraries-a-2-2-import-libraries">
-     <a id="import_libraries">
-     </a>
-     2.2 Import libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-cds-api-key-a-2-3-enter-cds-api-key">
-     <a id="cds_api_key">
-     </a>
-     2.3 Enter CDS API key
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-get-data-a-2-4-get-the-data">
-     <a id="get_data">
-     </a>
-     2.4 Get the data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-uc1-a-3-mean-global-cloud-distribution">
-   <a id="uc1">
-   </a>
-   3. Mean global cloud distribution
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-calculation-1-a-3-1-calculation-of-the-temporal-average-of-cloud-fractional-cover">
-     <a id="calculation_1">
-     </a>
-     3.1 Calculation of the temporal average of cloud fractional cover
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-plot-1-a-3-2-plot-of-the-temporal-average-of-cloud-fractional-cover">
-     <a id="plot_1">
-     </a>
-     3.2 Plot of the temporal average of cloud fractional cover
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-uc2-a-4-seasonal-variations-of-clouds">
-   <a id="uc2">
-   </a>
-   4. Seasonal variations of clouds
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-calculation-2-a-4-1-calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">
-     <a id="calculation_2">
-     </a>
-     4.1 Calculation and Plot of cloud coverage annual cycles on three different spots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-uc3-a-use-case-3-radiative-effects-of-clouds">
-   <a id="uc3">
-   </a>
-   Use case 3: Radiative effects of clouds
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-ref-a-references">
-   <a id="ref">
-   </a>
-   References
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook"><a id="access"></a> How to access the notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tutorial-comprises-the-following-steps">The tutorial comprises the following steps:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> 1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-data"><a id="data_retrieve"></a> 2. Retrieve data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api"><a id="install_cdsapi"></a> 2.1 Install CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import_libraries"></a> 2.2 Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-cds-api-key"><a id="cds_api_key"></a> 2.3 Enter CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data"><a id="get_data"></a> 2.4 Get the data</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-global-cloud-distribution"><a id="uc1"></a> 3. Mean global cloud distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover"><a id="calculation_1"></a> 3.1 Calculation of the temporal average of cloud fractional cover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-cloud-fractional-cover"><a id="plot_1"></a> 3.2 Plot of the temporal average of cloud fractional cover</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seasonal-variations-of-clouds"><a id="uc2"></a> 4. Seasonal variations of clouds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots"><a id="calculation_2"></a> 4.1 Calculation and Plot of cloud coverage annual cycles on three different spots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-radiative-effects-of-clouds"><a id="uc3"></a> Use case 3: Radiative effects of clouds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="ref"></a> References</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
 
-            <article class="bd-article" role="main">
               
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-page-top-a-calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset">
-<h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#a-id-page-top-a-calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset">
+<h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
 <p>This notebook provides you with an introduction to EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a>(CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Cloud Properties</em> as well as <em>Surface - and Earth Radiaiton Budget</em>, while this notebook focuses on <strong>Cloud Fractional Cover</strong> as part of the ECV <em>Cloud Properties</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Cloud properties global gridded monthly and daily data from 1982 to present derived from satellite observations</a>.</p>
 <p>In addition, the tutorial is about the <strong>Surface downwelling longwave/shortwave flux</strong> (as part of the ECV <em>Surface Radiation Budget</em>) to demonstrate the relation between clouds and radiation. The data is also available at the CDS: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Surface radiation budget from 1982 to present derived from satellite observations</a></p>
 <p>The tutorial covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests! After a short introduction how to use a Jupyter notebook the analysis starts!</p>
 <p><img alt="cc-overview" src="../_images/cloud-cover-overview.png" /></p>
-<section id="a-id-access-a-how-to-access-the-notebook">
-<h2><a id='access'></a> How to access the notebook<a class="headerlink" href="#a-id-access-a-how-to-access-the-notebook" title="Permalink to this heading">#</a></h2>
+<section id="how-to-access-the-notebook">
+<h2><a id='access'></a> How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Link to this heading">#</a></h2>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <style>
 td, th {
@@ -1129,7 +550,7 @@ td, th {
 <p>If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries you will need. You will also need to install <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> for working with multidimensional data in netcdf files, and the CDS API (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code>) for downloading data programatically from the CDS.</p>
 </section>
 <section id="the-tutorial-comprises-the-following-steps">
-<h2>The tutorial comprises the following steps:<a class="headerlink" href="#the-tutorial-comprises-the-following-steps" title="Permalink to this heading">#</a></h2>
+<h2>The tutorial comprises the following steps:<a class="headerlink" href="#the-tutorial-comprises-the-following-steps" title="Link to this heading">#</a></h2>
 <p>These include a brief introduction into the variables followed by a step-by-step guidance how to retrieve the data. With this done the focus is on analysing and visualising the data in various ways.</p>
 <ol class="arabic simple">
 <li><p>Introduction</p></li>
@@ -1139,8 +560,8 @@ td, th {
 <li><p>Radiative effects of clouds</p></li>
 </ol>
 </section>
-<section id="a-id-introduction-a-1-introduction">
-<h2><a id='introduction'></a> 1. Introduction<a class="headerlink" href="#a-id-introduction-a-1-introduction" title="Permalink to this heading">#</a></h2>
+<section id="introduction">
+<h2><a id='introduction'></a> 1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This tutorial is about cloud and radiation parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
 <p>The CLARA-A3 dataset provides information of various Cloud Properties parameters as well as Surface Radiation Budget (SRB) and Earth Radiation Budget (ERB) parameters. Each ECV is covered by an own Jupyter Notebook (please also take a look at <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 SRB</a> and <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 ERB</a>).</p>
 <p>This notebook focuses on the Cloud Fractional Cover (CFC) as well as Surface Downwelling Longwave and Surface Incoming Shortwave Radiation (SDL and SIS, respectively) as an extra feature to demonstrate the connection between clouds and radiation. A first Use Case provides a general idea how clouds are distributed all over the globe (averaged for the time period of 1979-2022). A second Use Case provides a closer look on three selected locations and their corresponding annual cycles in terms of cloud coverage. Those locations are defined by their geographical coordinates. Feel free to change the code and investigate the cloud coverage at more locations of your interest! To sum it up and link to the connection between clouds and radiation two radiation parameters are focused and climatologies of Surface Downwelling Longwave and Surface Incoming Shortwave Radiation provided.</p>
@@ -1156,11 +577,11 @@ td, th {
 </ul>
 <p>A <a class="reference external" href="http://datastore.copernicus-climate.eu/documents/satellite-cloud-properties/C3S_312b_Lot1.4.2.4_201902_Tutorial_ECVCloudProperties_v1.4.mp4">tutorial video</a> describes the ECV <em>Cloud Properties</em> and its impact on the atmospheric conditions. In addition, it provides you with a small introduction of the satellite instruments and retrieval methods followed by general information about the dataset and support options provided by the CDS.</p>
 </section>
-<section id="a-id-data-retrieve-a-2-retrieve-data">
-<h2><a id='data_retrieve'></a> 2. Retrieve data<a class="headerlink" href="#a-id-data-retrieve-a-2-retrieve-data" title="Permalink to this heading">#</a></h2>
+<section id="retrieve-data">
+<h2><a id='data_retrieve'></a> 2. Retrieve data<a class="headerlink" href="#retrieve-data" title="Link to this heading">#</a></h2>
 <p>Before the start we need to prepare an environment in which we will work. Since we will retrieve the data via the Application Programming Interface (API) of the CDS we need to install the CDS API. This is followed by the import of some required python libraries which will help us to handle the data.</p>
-<section id="a-id-install-cdsapi-a-2-1-install-cds-api">
-<h3><a id='install_cdsapi'></a> 2.1 Install CDS API<a class="headerlink" href="#a-id-install-cdsapi-a-2-1-install-cds-api" title="Permalink to this heading">#</a></h3>
+<section id="install-cds-api">
+<h3><a id='install_cdsapi'></a> 2.1 Install CDS API<a class="headerlink" href="#install-cds-api" title="Link to this heading">#</a></h3>
 <p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1175,8 +596,8 @@ td, th {
 </div>
 </div>
 </section>
-<section id="a-id-import-libraries-a-2-2-import-libraries">
-<h3><a id='import_libraries'></a> 2.2 Import libraries<a class="headerlink" href="#a-id-import-libraries-a-2-2-import-libraries" title="Permalink to this heading">#</a></h3>
+<section id="import-libraries">
+<h3><a id='import_libraries'></a> 2.2 Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <p>Processing (climate) data with python requires some libraries. Libraries contain different functions for e.g. reading, processing and visualisation of large amounts of data and make it easier to work with it.</p>
 <p>The basic data format for climate data is NetCDF. This is also the case for CLARA-A3 and to handle this well we use a library to work with multidimensional arrays, named <strong>Xarray</strong>. For the calculations we use <strong>Numpy</strong>, which provides various mathmatical operations. We also need libraries for plotting and viewing the data, in this case we will use <strong>Matplotlib</strong> and <strong>Cartopy</strong>.</p>
 <p>Before we start analysing the data we need to take advantage of one of the two options to get the data:</p>
@@ -1203,8 +624,8 @@ td, th {
 </div>
 </div>
 </section>
-<section id="a-id-cds-api-key-a-2-3-enter-cds-api-key">
-<h3><a id='cds_api_key'></a> 2.3 Enter CDS API key<a class="headerlink" href="#a-id-cds-api-key-a-2-3-enter-cds-api-key" title="Permalink to this heading">#</a></h3>
+<section id="enter-cds-api-key">
+<h3><a id='cds_api_key'></a> 2.3 Enter CDS API key<a class="headerlink" href="#enter-cds-api-key" title="Link to this heading">#</a></h3>
 <p>The data can be found in the Climate Data Store: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>. In case you don’t have an account yet, please click on “Login/register” at the top right and select “Create new account” (Figure 1a). With the process finished you are able to login to the CDS and can search for your preferred data.</p>
 <p>We will request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: URL and KEY which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:” in the black block on the right (Figure 1b). Please replace the ######### below with this string.</p>
 <div class="cell docutils container">
@@ -1227,8 +648,8 @@ td, th {
 </div>
 </div>
 </section>
-<section id="a-id-get-data-a-2-4-get-the-data">
-<h3><a id='get_data'></a> 2.4 Get the data<a class="headerlink" href="#a-id-get-data-a-2-4-get-the-data" title="Permalink to this heading">#</a></h3>
+<section id="get-the-data">
+<h3><a id='get_data'></a> 2.4 Get the data<a class="headerlink" href="#get-the-data" title="Link to this heading">#</a></h3>
 <p>For this tutorial we need data for Cloud Properties first, so please either click on “Datasets” in the CDS and search for “Cloud Properties” or simply click on: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview</a>.
 The name of the Cloud Properties landing page is: <strong>Cloud properties global gridded monthly and daily data from 1982 to present derived from satellite observations</strong>.</p>
 <p>Once you reached the landing page, feel free to have a look at the documentation and information provided.</p>
@@ -1417,11 +838,11 @@ Attributes:
 </div>
 </section>
 </section>
-<section id="a-id-uc1-a-3-mean-global-cloud-distribution">
-<h2><a id='uc1'></a> 3. Mean global cloud distribution<a class="headerlink" href="#a-id-uc1-a-3-mean-global-cloud-distribution" title="Permalink to this heading">#</a></h2>
+<section id="mean-global-cloud-distribution">
+<h2><a id='uc1'></a> 3. Mean global cloud distribution<a class="headerlink" href="#mean-global-cloud-distribution" title="Link to this heading">#</a></h2>
 <p>Use Case #1 aims to give a general overview about the global distribution of clouds.</p>
-<section id="a-id-calculation-1-a-3-1-calculation-of-the-temporal-average-of-cloud-fractional-cover">
-<h3><a id='calculation_1'></a> 3.1 Calculation of the temporal average of cloud fractional cover<a class="headerlink" href="#a-id-calculation-1-a-3-1-calculation-of-the-temporal-average-of-cloud-fractional-cover" title="Permalink to this heading">#</a></h3>
+<section id="calculation-of-the-temporal-average-of-cloud-fractional-cover">
+<h3><a id='calculation_1'></a> 3.1 Calculation of the temporal average of cloud fractional cover<a class="headerlink" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover" title="Link to this heading">#</a></h3>
 <p>We therefore calculate the temporal average with the function np.nanmean. np is short for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to dataset_cfc and the variable “cfc”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1438,8 +859,8 @@ Attributes:
 </div>
 </div>
 </section>
-<section id="a-id-plot-1-a-3-2-plot-of-the-temporal-average-of-cloud-fractional-cover">
-<h3><a id='plot_1'></a> 3.2 Plot of the temporal average of cloud fractional cover<a class="headerlink" href="#a-id-plot-1-a-3-2-plot-of-the-temporal-average-of-cloud-fractional-cover" title="Permalink to this heading">#</a></h3>
+<section id="plot-of-the-temporal-average-of-cloud-fractional-cover">
+<h3><a id='plot_1'></a> 3.2 Plot of the temporal average of cloud fractional cover<a class="headerlink" href="#plot-of-the-temporal-average-of-cloud-fractional-cover" title="Link to this heading">#</a></h3>
 <p>With the caluculation done the data is ready for a plot. Please find the plot and settings in the next sectio.</p>
 <p>Some further notes:</p>
 <ul class="simple">
@@ -1491,11 +912,11 @@ Attributes:
 <p>Figure 3 shows the time-averaged global distribution of clouds on Earth. It has been calculated as a time average over the monthly mean cloud fractional cover data from 1979-2022 based on the CLARA-A3 dataset. As shown here, especially cloudy regions can be found along the storm tracks of the midlatitudes, which are known for the frequent occurence of cyclones. They typically result in vertical motion of air, a prerequisite for the formation of clouds. High concentrations of clouds also appear in the tropics near the equator, where strong insolation triggers intense convection, thus cloud formation (compare with Inter-Tropical Convergence Zone, ITCZ). The smallest amount are mainly present in the subtropics in Australia, North Africa, Southern Africa, and Soutwest South America, where large-scale downwelling motion generally prevails.</p>
 </section>
 </section>
-<section id="a-id-uc2-a-4-seasonal-variations-of-clouds">
-<h2><a id='uc2'></a> 4. Seasonal variations of clouds<a class="headerlink" href="#a-id-uc2-a-4-seasonal-variations-of-clouds" title="Permalink to this heading">#</a></h2>
+<section id="seasonal-variations-of-clouds">
+<h2><a id='uc2'></a> 4. Seasonal variations of clouds<a class="headerlink" href="#seasonal-variations-of-clouds" title="Link to this heading">#</a></h2>
 <p>Use Case #2 shows three annual cycles of cloud fractional cover for different locations. As insolation and flow patterns vary significantly over the year in many parts of the Earth, the mean presence of clouds also exhibits seasonal differences. As one example that neatly demonstrates steady variations throughout the year, Use Case #2 shows the mean monthly evolution of the fractional cloud cover for Frankfurt (Germany), Mumbai (India) and Darwin (Australia).</p>
-<section id="a-id-calculation-2-a-4-1-calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">
-<h3><a id='calculation_2'></a> 4.1 Calculation and Plot of cloud coverage annual cycles on three different spots<a class="headerlink" href="#a-id-calculation-2-a-4-1-calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots" title="Permalink to this heading">#</a></h3>
+<section id="calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">
+<h3><a id='calculation_2'></a> 4.1 Calculation and Plot of cloud coverage annual cycles on three different spots<a class="headerlink" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots" title="Link to this heading">#</a></h3>
 <p>We define three locations of interest in terms of latitude and longitude coordinates. Feel free to discover different locations and change the coordinates according to your interests!
 The basic setup consists of Frankfurt (Germany) with a warm and temperate climate of central Europe, Mumbai (India) with its influence of the monsoon and Darwin (Australia) in the tropical savanna climate.</p>
 <div class="cell docutils container">
@@ -1606,8 +1027,8 @@ The basic setup consists of Frankfurt (Germany) with a warm and temperate climat
 <p>The blue shaddow is defined by the minimum and maximum month out of all 44 years (e.g. the lower end of January for Frankfurt is the January from 1979 - 2022 with the least cloud coverage).</p>
 </section>
 </section>
-<section id="a-id-uc3-a-use-case-3-radiative-effects-of-clouds">
-<h2><a id='uc3'></a> Use case 3: Radiative effects of clouds<a class="headerlink" href="#a-id-uc3-a-use-case-3-radiative-effects-of-clouds" title="Permalink to this heading">#</a></h2>
+<section id="use-case-3-radiative-effects-of-clouds">
+<h2><a id='uc3'></a> Use case 3: Radiative effects of clouds<a class="headerlink" href="#use-case-3-radiative-effects-of-clouds" title="Link to this heading">#</a></h2>
 <p>To demonstrate the basic relation between clouds and radiation, which is why clouds are ascribed a crucial role in the Earth’s climate system, Figure 5 presents time-averaged data from the CLARA-A3 dataset on radiation. This dataset was simultaneously compiled with the CLARA-A3 dataset on clouds by EUMETSAT’s CM SAF.</p>
 <p>The calculation of the temporal-averaged radiation is similar to Use Case 1 but with different variables.</p>
 <p>Please click on “Datasets” in the bar at the top and either search for “Surface Radiation Budget” or click on <strong><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></strong>. The name of the landing page is <strong>Surface radiation budget from 1982 to present derived from satellite observations</strong>.</p>
@@ -1788,8 +1209,8 @@ Watch out to accept the <strong>Terms of use</strong>.</p>
 <p>At the same time, clouds also prevent terrestrial (longwave) radiation, i.e. heat, from passing back into space. Thus, many spots of high cloud coverage correspond to high values of incomming longwave radiation, and vice versa. Clouds act like a blanket, trapping some of the energy the Earth emits. That is why starry nights usually become colder than cloudy ones.</p>
 <p>Hence, clouds play a dual role for the Earth’s energy budget: They have both a cooling and a warming radiative impact. Their net effect strongly depends on the cloud’s physical properties and their height. Usually, high clouds tend to have a net warming effect on the earth, whereas mid- and low-level clouds rather cool it. Globally and annually, the shortwave effect of clouds overweights the longwave one, by abouth 20 W/m² at present (5th IPCC assessment report, chapter 7.2.1).</p>
 </section>
-<section id="a-id-ref-a-references">
-<h2><a id='ref'></a> References<a class="headerlink" href="#a-id-ref-a-references" title="Permalink to this heading">#</a></h2>
+<section id="references">
+<h2><a id='ref'></a> References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p>5th IPCC assessment report, chapter 7:</p>
 <p>Boucher, O., D. Randall, P. Artaxo, C. Bretherton, G. Feingold, P. Forster, V.-M. Kerminen, Y. Kondo, H. Liao, U.
 Lohmann, P. Rasch, S.K. Satheesh, S. Sherwood, B. Stevens and X.Y. Zhang, 2013: Clouds and Aerosols. In: <em>Climate
@@ -1819,164 +1240,79 @@ New York, NY, USA</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-            </article>
-            
+                </article>
+              
 
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="tropospheric-humidity-from-radio-occultation.html" title="previous page">
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tropospheric-humidity-from-radio-occultation.html"
+       title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-          <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Monthly mean tropospheric humidity data from satellite-based Radio Occultation measurements</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Monthly mean tropospheric humidity data from satellite-based Radio Occultation measurements</p>
       </div>
-  </a>
-  <a class='right-next' id="next-link" href="greenhouse-gases-level2-products.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">How to access, read and process satellite CO2 and CH4 Level 2 products</p>
-  </div>
-  <i class="fa-solid fa-angle-right"></i>
-  </a>
+    </a>
+    <a class="right-next"
+       href="greenhouse-gases-level2-products.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-            </footer>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook"><a id="access"></a> How to access the notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tutorial-comprises-the-following-steps">The tutorial comprises the following steps:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> 1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-data"><a id="data_retrieve"></a> 2. Retrieve data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api"><a id="install_cdsapi"></a> 2.1 Install CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import_libraries"></a> 2.2 Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-cds-api-key"><a id="cds_api_key"></a> 2.3 Enter CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data"><a id="get_data"></a> 2.4 Get the data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-global-cloud-distribution"><a id="uc1"></a> 3. Mean global cloud distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover"><a id="calculation_1"></a> 3.1 Calculation of the temporal average of cloud fractional cover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-cloud-fractional-cover"><a id="plot_1"></a> 3.2 Plot of the temporal average of cloud fractional cover</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seasonal-variations-of-clouds"><a id="uc2"></a> 4. Seasonal variations of clouds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots"><a id="calculation_2"></a> 4.1 Calculation and Plot of cloud coverage annual cycles on three different spots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-radiative-effects-of-clouds"><a id="uc3"></a> Use case 3: Radiative effects of clouds</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="ref"></a> References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
-              
-<div class="toc-item">
-  
-<div class="tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-</div>
-<nav id="bd-toc-nav" class="page-toc">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-access-a-how-to-access-the-notebook">
-   <a id="access">
-   </a>
-   How to access the notebook
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-tutorial-comprises-the-following-steps">
-   The tutorial comprises the following steps:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-introduction-a-1-introduction">
-   <a id="introduction">
-   </a>
-   1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-data-retrieve-a-2-retrieve-data">
-   <a id="data_retrieve">
-   </a>
-   2. Retrieve data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-install-cdsapi-a-2-1-install-cds-api">
-     <a id="install_cdsapi">
-     </a>
-     2.1 Install CDS API
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-import-libraries-a-2-2-import-libraries">
-     <a id="import_libraries">
-     </a>
-     2.2 Import libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-cds-api-key-a-2-3-enter-cds-api-key">
-     <a id="cds_api_key">
-     </a>
-     2.3 Enter CDS API key
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-get-data-a-2-4-get-the-data">
-     <a id="get_data">
-     </a>
-     2.4 Get the data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-uc1-a-3-mean-global-cloud-distribution">
-   <a id="uc1">
-   </a>
-   3. Mean global cloud distribution
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-calculation-1-a-3-1-calculation-of-the-temporal-average-of-cloud-fractional-cover">
-     <a id="calculation_1">
-     </a>
-     3.1 Calculation of the temporal average of cloud fractional cover
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-plot-1-a-3-2-plot-of-the-temporal-average-of-cloud-fractional-cover">
-     <a id="plot_1">
-     </a>
-     3.2 Plot of the temporal average of cloud fractional cover
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-uc2-a-4-seasonal-variations-of-clouds">
-   <a id="uc2">
-   </a>
-   4. Seasonal variations of clouds
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-calculation-2-a-4-1-calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">
-     <a id="calculation_2">
-     </a>
-     4.1 Calculation and Plot of cloud coverage annual cycles on three different spots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-uc3-a-use-case-3-radiative-effects-of-clouds">
-   <a id="uc3">
-   </a>
-   Use case 3: Radiative effects of clouds
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-ref-a-references">
-   <a id="ref">
-   </a>
-   References
-  </a>
- </li>
-</ul>
-
-</nav>
-</div>
-
-            </div>
-          
-          
-        </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
+          <footer class="bd-footer-content">
             
 <div class="bd-footer-content__inner container">
   
@@ -1990,18 +1326,18 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   
   <div class="footer-item">
     
-<p class="copyright">
 
-    &copy; Copyright 2022.<br>
-
-</p>
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
 
   </div>
   
   <div class="footer-item">
-    <p class="last-updated">
-Last updated on None.<br>
-</p>
+    
   </div>
   
   <div class="footer-item">
@@ -2009,19 +1345,18 @@ Last updated on None.<br>
   </div>
   
 </div>
-          </div>
-        </footer>
+          </footer>
         
 
       </main>
     </div>
   </div>
-
   
-    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

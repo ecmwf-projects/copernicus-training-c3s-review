@@ -1,10 +1,12 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Analysis of the Earth’s Radiation Budget using the CERES product &#8212; C3S Training</title>
   
@@ -12,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/erb-ceres-climatology';</script>
@@ -65,670 +64,112 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The Total Solar Irradiance (TSI) from RMIB" href="total-solar-irradiance.html" />
     <link rel="prev" title="Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset" href="erb-clara-climatology.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
-  <label class="overlay overlay-primary" for="__primary"></label>
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
+</form></div>
   </div>
 
-  
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
-  </label>
-  <div id="navbar-start">
-    
-    
-  
-
-
-<a class="navbar-brand logo" href="../intro.html">
-
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    
-  </div>
-
-  
-  <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
-                        CDS tutorial
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
-                        Climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
-                        Heatwave Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
-                        Climate Projections (CMIP6)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cordex.html">
-                        Climate Projections (CORDEX)
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
-                        Seasonal Forecast Anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-verification.html">
-                        Seasonal Forecast Verification
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../ci-windchill.html">
-                        Windchill Index Calculation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
-                        Outgoing Longwave Radiation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-clara-climatology.html">
-                        Analysis of the CLARA Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Analysis of the CERES Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
-                        Total Solar Irradiance
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
-                        Surface radiation budget climatologies and anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
-                        Total column water vapour
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tropospheric-humidity-from-radio-occultation.html">
-                        Tropospheric humidity estimates from satellite-based radio occultation measurements
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="cloud-cover-climatology.html">
-                        Cloud fractional cover climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
-                        Greenhouse Gas Level 2 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
-                        Greenhouse Gas Level 3 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-single-sensor-demonstrator.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
-                        Demonstration on how to plot  ozone datasets on the CDS.
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
-                        Soil Moisture Anomaly Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-water-level.html">
-                        Lake Water Level Timeseries
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
-                        Lake Surface Water Temperature Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-surface-elevation.html">
-                        Ice sheet surface elevation change rates
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-velocity.html">
-                        Greenland Ice Sheet velocity
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-mass-balance.html">
-                        Gravimetric Mass Balance for Ice Sheet
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="glacier-mass-change.html">
-                        Glacier mass change
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
-                        Visualising fire weather index (FWI)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
-                        Observing major flood events
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
-                        Python library (ibicus) and tutorials on bias correction
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
-      
-    </div>
-
-    <div id="navbar-end">
-      
-        <div class="navbar-end-item navbar-persistent--container">
-          
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-        </div>
-      
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
-  </div>
-
-
-  
-  
-    <div class="navbar-persistent--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-    </div>
-  
-
-  
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fa-solid fa-outdent"></span>
-  </label>
-  
-
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
 </div>
-  </nav>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
+      
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
+
   
   <div class="sidebar-header-items sidebar-primary__section">
     
     
-      <div class="sidebar-header-items__center">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cds-tutorial.html">
-                        CDS tutorial
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-climatology.html">
-                        Climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../reanalysis-heatwave.html">
-                        Heatwave Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cmip6.html">
-                        Climate Projections (CMIP6)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../projections-cordex.html">
-                        Climate Projections (CORDEX)
-                      </a>
-                    </li>
-                
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-anomalies.html">
-                        Seasonal Forecast Anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../sf-verification.html">
-                        Seasonal Forecast Verification
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../ci-windchill.html">
-                        Windchill Index Calculation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-outgoing-longwave-radiation.html">
-                        Outgoing Longwave Radiation
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="erb-clara-climatology.html">
-                        Analysis of the CLARA Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item current active">
-                      <a class="nav-link nav-internal" href="#">
-                        Analysis of the CERES Earth radiation budget product
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-solar-irradiance.html">
-                        Total Solar Irradiance
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="srb-climatology-and-anomaly.html">
-                        Surface radiation budget climatologies and anomalies
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-column-water-vapour-combi.html">
-                        Total column water vapour
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="tropospheric-humidity-from-radio-occultation.html">
-                        Tropospheric humidity estimates from satellite-based radio occultation measurements
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="cloud-cover-climatology.html">
-                        Cloud fractional cover climatology
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level2-products.html">
-                        Greenhouse Gas Level 2 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="greenhouse-gases-level3-products.html">
-                        Greenhouse Gas Level 3 Products
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-single-sensor-demonstrator.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="aerosol-multi-sensor-record.html">
-                        C3S Aerosol
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="total-ozone-columns.html">
-                        Demonstration on how to plot  ozone datasets on the CDS.
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="soil-moisture-anomalies.html">
-                        Soil Moisture Anomaly Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-water-level.html">
-                        Lake Water Level Timeseries
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="lake-surface-water-temperature.html">
-                        Lake Surface Water Temperature Analysis
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-surface-elevation.html">
-                        Ice sheet surface elevation change rates
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-velocity.html">
-                        Greenland Ice Sheet velocity
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="ice-sheet-mass-balance.html">
-                        Gravimetric Mass Balance for Ice Sheet
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="glacier-mass-change.html">
-                        Glacier mass change
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">
-                        Visualising fire weather index (FWI)
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../cems-notebooks/glofas-bangladesh-floods.html">
-                        Observing major flood events
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
-                        Python library (ibicus) and tutorials on bias correction
-                      </a>
-                    </li>
-                
-
-                    <li class="nav-item">
-                      <a class="nav-link nav-external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-                        Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-                      </a>
-                    </li>
-                
-                </div>
-            </div>
-            
-    </ul>
-</nav>
-      </div>
-      
-      </div>
     
-
-    
-    
-    <div class="sidebar-header-items__end">
-      
-      <div class="navbar-end-item">
-        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-</button>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
     
   </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
   
-  <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item">
-  
-
 
 <a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="C3S Training - Home"/>
+    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="C3S Training - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
 
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image">
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
-    </div>
-    <div class="sidebar-start-items__item">
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
-    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -771,14 +212,33 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tropospheric-humidity-from-radio-occultation.html">Tropospheric humidity estimates from satellite-based radio occultation measurements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
-<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">Greenhouse Gas Level 3 Products</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html">C3S Aerosol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">How to access, read and use satellite XCO2 and XCH4 Level 3 data products</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html"><a id="title"></a> Exploring gridded data on Aerosol properties available on C3S</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">C3S Aerosol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Demonstration on how to plot  ozone datasets on the CDS.</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html"><a id="title"></a> Visualising a full Climate Data Record of multi-sensor Aerosol data</a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html">Soil Moisture Anomaly Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
 
@@ -806,42 +266,47 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav>
+</nav></div>
     </div>
-  </div>
   
-
   
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
-
   
   <div id="rtd-footer-container"></div>
 
+
       </div>
-      <main id="main-content" class="bd-main">
+      
+      <main id="main-content" class="bd-main" role="main">
         
         
 
 <div class="sbt-scroll-pixel-helper"></div>
 
-        <div class="bd-content">
-          <div class="bd-article-container">
-            
-            <div class="bd-header-article">
-                
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
-            <span class="fa-solid fa-bars"></span>
-        </label>
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <div class="header-article__right">
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
 
 
 <div class="dropdown dropdown-launch-buttons">
@@ -849,11 +314,13 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-rocket"></i>
   </button>
   <ul class="dropdown-menu">
+      
+      
+      
       <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/erb-ceres-climatology.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
@@ -863,16 +330,113 @@ title="Launch on Binder"
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
-</a>
+</li>
       
   </ul>
 </div>
 
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/erb-ceres-climatology.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ecv-notebooks/erb-ceres-climatology.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
@@ -884,92 +448,35 @@ title="Fullscreen mode"
 
 
 
-<div class="dropdown dropdown-repository-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">repository</span>
-</a>
-</a>
-      
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/erb-ceres-climatology.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">open issue</span>
-</a>
-</a>
-      
-  </ul>
-</div>
+`);
+</script>
 
 
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <ul class="dropdown-menu">
-      <li><a href="../_sources/ecv-notebooks/erb-ceres-climatology.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.ipynb</span>
-</a>
-</a>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
       
-      <li>
-<button onclick="printPdf(this)"
-  class="btn btn-sm dropdown-item"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</a>
-      
-  </ul>
-</div>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
-            <span class="fa-solid fa-list"></span>
-        </label>
     </div>
+  
 </div>
-            </div>
-            
-            
+</div>
+              
+              
 
 <div id="jb-print-docs-body" class="onlyprint">
     <h1><a id='page-top'></a> Analysis of the Earth’s Radiation Budget using the CERES product</h1>
@@ -982,288 +489,88 @@ title="Print to PDF"
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#table-of-content">
-   Table of content
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-intro-a-1-introduction">
-   <a id="intro">
-   </a>
-   1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-cdsapi-a-2-search-download-and-view-data">
-   <a id="cdsapi">
-   </a>
-   2. Search, download and view data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-access-the-notebooks">
-     How to access the notebooks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-data-using-cds-api">
-     Download Data Using CDS API
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
-       Set up CDS API credentials
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#search-for-data">
-     Search for data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-data">
-     Download data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inspect-data">
-     Inspect data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-data">
-     Plot data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-climatology-a-3-climatology-of-the-earth-s-radiation-budget">
-   <a id="climatology">
-   </a>
-   3. Climatology of the Earth’s Radiation Budget
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-tsi-climatology-a-3-1-climatology-of-the-top-of-atmosphere-incoming-solar-radiation">
-     <a id="tsi_climatology">
-     </a>
-     3.1. Climatology of the top-of-atmosphere incoming solar radiation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-tis">
-       Time averaged global climatological distribution of TIS
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-tis">
-       Time averaged seasonal climatological distribution of TIS
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-tis">
-       Zonally averaged montly mean climatology of TIS
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-rsf-climatology-a-3-2-climatology-of-the-top-of-atmosphere-reflected-solar-flux">
-     <a id="rsf_climatology">
-     </a>
-     3.2. Climatology of the top-of-atmosphere reflected solar flux
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-rsf">
-       Time averaged global climatological distribution of TOA RSF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-rsf">
-       Time averaged seasonal climatological distribution of TOA RSF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-rsf">
-       Zonally averaged montly mean climatology of TOA RSF
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-olr-climatology-a-3-3-climatology-of-the-top-of-atmosphere-outgoing-longwave-radiation">
-     <a id="olr_climatology">
-     </a>
-     3.3. Climatology of the top-of-atmosphere outgoing longwave radiation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-olr">
-       Time averaged global climatological distribution of TOA OLR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-olr">
-       Time averaged seasonal climatological distribution of TOA OLR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#inter-annual-variability-of-toa-olr">
-       Inter-annual variability of TOA OLR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-olr">
-       Zonally averaged montly mean climatology of TOA OLR
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-erb-climatology-a-3-4-climatology-of-the-top-of-atmosphere-net-earth-s-radiation-budget">
-     <a id="erb_climatology">
-     </a>
-     3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-net-erb">
-       Time averaged global climatological distribution of TOA net ERB
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-erb">
-       Time averaged seasonal climatological distribution of TOA ERB
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-net-erb">
-       Zonally averaged montly mean climatology of TOA net ERB
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-timeseries-a-4-time-series-and-trend-analysis-of-the-earth-s-radiation-budget">
-   <a id="timeseries">
-   </a>
-   4. Time series and trend analysis of the Earth’s Radiation Budget
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spatial-aggregation">
-     Spatial aggregation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-tsi-timeseries-a-4-1-time-series-and-trend-analysis-of-the-top-of-atmosphere-incoming-solar-radiation">
-     <a id="tsi_timeseries">
-     </a>
-     4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-time-series-of-tis">
-       Global time series of TIS
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-tis">
-       Trend analysis and seasonal cycle of TIS
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-rsf-timeseries-a-4-2-time-series-and-trend-analysis-of-the-top-of-atmosphere-reflected-solar-flux">
-     <a id="rsf_timeseries">
-     </a>
-     4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-time-series-of-toa-rsf">
-       Global time series of TOA RSF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-rsf">
-       Trend analysis and seasonal cycle of TOA RSF
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-olr-timeseries-a-4-3-time-series-and-trend-analysis-of-the-top-of-atmosphere-outgoing-longwave-radiation">
-     <a id="olr_timeseries">
-     </a>
-     4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-time-series-of-toa-olr">
-       Global time series of TOA OLR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-olr">
-       Trend analysis and seasonal cycle of TOA OLR
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-erb-timeseries-a-4-4-time-series-and-trend-analysis-of-the-top-of-atmosphere-net-earth-s-radiation-budget">
-     <a id="erb_timeseries">
-     </a>
-     4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-time-series-of-toa-net-erb">
-       Global time series of TOA net ERB
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-net-erb">
-       Trend analysis and seasonal cycle of TOA net ERB
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-conclusion-a-5-conclusion">
-   <a id="conclusion">
-   </a>
-   5. Conclusion
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-content">Table of content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> 1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data"><a id="cdsapi"></a> 2. Search, download and view data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebooks">How to access the notebooks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download Data Using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">Plot data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-earth-s-radiation-budget"><a id="climatology"></a> 3. Climatology of the Earth’s Radiation Budget</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-top-of-atmosphere-incoming-solar-radiation"><a id="tsi_climatology"></a> 3.1. Climatology of the top-of-atmosphere incoming solar radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-tis">Time averaged global climatological distribution of TIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-tis">Time averaged seasonal climatological distribution of TIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-tis">Zonally averaged montly mean climatology of TIS</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-top-of-atmosphere-reflected-solar-flux"><a id="rsf_climatology"></a> 3.2. Climatology of the top-of-atmosphere reflected solar flux</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-rsf">Time averaged global climatological distribution of TOA RSF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-rsf">Time averaged seasonal climatological distribution of TOA RSF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-rsf">Zonally averaged montly mean climatology of TOA RSF</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-top-of-atmosphere-outgoing-longwave-radiation"><a id="olr_climatology"></a> 3.3. Climatology of the top-of-atmosphere outgoing longwave radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-olr">Time averaged global climatological distribution of TOA OLR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-olr">Time averaged seasonal climatological distribution of TOA OLR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-annual-variability-of-toa-olr">Inter-annual variability of TOA OLR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-olr">Zonally averaged montly mean climatology of TOA OLR</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-top-of-atmosphere-net-earth-s-radiation-budget"><a id="erb_climatology"></a> 3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-net-erb">Time averaged global climatological distribution of TOA net ERB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-erb">Time averaged seasonal climatological distribution of TOA ERB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-net-erb">Zonally averaged montly mean climatology of TOA net ERB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-earth-s-radiation-budget"><a id="timeseries"></a> 4. Time series and trend analysis of the Earth’s Radiation Budget</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-aggregation">Spatial aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-incoming-solar-radiation"><a id="tsi_timeseries"></a> 4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-tis">Global time series of TIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-tis">Trend analysis and seasonal cycle of TIS</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-reflected-solar-flux"><a id="rsf_timeseries"></a> 4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-toa-rsf">Global time series of TOA RSF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-rsf">Trend analysis and seasonal cycle of TOA RSF</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-outgoing-longwave-radiation"><a id="olr_timeseries"></a> 4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-toa-olr">Global time series of TOA OLR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-olr">Trend analysis and seasonal cycle of TOA OLR</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-net-earth-s-radiation-budget"><a id="erb_timeseries"></a> 4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-toa-net-erb">Global time series of TOA net ERB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-net-erb">Trend analysis and seasonal cycle of TOA net ERB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><a id="conclusion"></a> 5. Conclusion</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
 
-            <article class="bd-article" role="main">
               
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="a-id-page-top-a-analysis-of-the-earth-s-radiation-budget-using-the-ceres-product">
-<h1><a id='page-top'></a> Analysis of the Earth’s Radiation Budget using the CERES product<a class="headerlink" href="#a-id-page-top-a-analysis-of-the-earth-s-radiation-budget-using-the-ceres-product" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="analysis-of-the-earth-s-radiation-budget-using-the-ceres-product">
+<h1><a id='page-top'></a> Analysis of the Earth’s Radiation Budget using the CERES product<a class="headerlink" href="#analysis-of-the-earth-s-radiation-budget-using-the-ceres-product" title="Link to this heading">#</a></h1>
 <p>This notebook-tutorial provides an introduction to the use of the
 Cloud and Earth’s Radiant Energy System (CERES) Energy Balanced and Filled (EBAF) Earth’s Radiation Budget (<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">ERB</a>) data record
 for climate studies.</p>
@@ -1271,31 +578,31 @@ for climate studies.</p>
 <div style="text-align: justify"> The three figures below show some results from the use cases and illustrate the successful run of the code. </div><p><img alt="" src="ecv-notebooks/Figures/erb-ceres_banner.png" /></p>
 <p>The notebook comprises the following sections:</p>
 <section id="table-of-content">
-<h2>Table of content<a class="headerlink" href="#table-of-content" title="Permalink to this heading">#</a></h2>
+<h2>Table of content<a class="headerlink" href="#table-of-content" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><span class="xref myst">1. Introduction</span></p></li>
-<li><p><span class="xref myst">2. Search, download and view data</span></p></li>
-<li><p><span class="xref myst">3. Climatology of the Earth’s Radiation Budget</span></p>
+<li><p><a class="reference internal" href="#intro"><span class="xref myst">1. Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="#cdsapi"><span class="xref myst">2. Search, download and view data</span></a></p></li>
+<li><p><a class="reference internal" href="#climatology"><span class="xref myst">3. Climatology of the Earth’s Radiation Budget</span></a></p>
 <ul>
-<li><p><span class="xref myst">3.1. Climatology of the top-of-atmosphere incoming solar radiation</span></p></li>
-<li><p><span class="xref myst">3.2. Climatology of the top-of-atmosphere reflected solar flux</span></p></li>
-<li><p><span class="xref myst">3.3. Climatology of the top-of-atmosphere outgoing longwave radiation</span></p></li>
-<li><p><span class="xref myst">3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget</span></p></li>
+<li><p><a class="reference internal" href="#tsi_climatology"><span class="xref myst">3.1. Climatology of the top-of-atmosphere incoming solar radiation</span></a></p></li>
+<li><p><a class="reference internal" href="#rsf_climatology"><span class="xref myst">3.2. Climatology of the top-of-atmosphere reflected solar flux</span></a></p></li>
+<li><p><a class="reference internal" href="#olr_climatology"><span class="xref myst">3.3. Climatology of the top-of-atmosphere outgoing longwave radiation</span></a></p></li>
+<li><p><a class="reference internal" href="#erb_climatology"><span class="xref myst">3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget</span></a></p></li>
 </ul>
 </li>
-<li><p><span class="xref myst">4. Time series and trend analysis of the Earth’s Radiaton Budget</span></p>
+<li><p><a class="reference internal" href="#timeseries"><span class="xref myst">4. Time series and trend analysis of the Earth’s Radiaton Budget</span></a></p>
 <ul>
-<li><p><span class="xref myst">4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation</span></p></li>
-<li><p><span class="xref myst">4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux</span></p></li>
-<li><p><span class="xref myst">4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation</span></p></li>
-<li><p><span class="xref myst">4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget</span></p></li>
+<li><p><a class="reference internal" href="#tsi_timeseries"><span class="xref myst">4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation</span></a></p></li>
+<li><p><a class="reference internal" href="#rsf_timeseries"><span class="xref myst">4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux</span></a></p></li>
+<li><p><a class="reference internal" href="#olr_timeseries"><span class="xref myst">4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation</span></a></p></li>
+<li><p><a class="reference internal" href="#erb_timeseries"><span class="xref myst">4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget</span></a></p></li>
 </ul>
 </li>
-<li><p><span class="xref myst">5. Conclusion</span></p></li>
+<li><p><a class="reference internal" href="#conclusion"><span class="xref myst">5. Conclusion</span></a></p></li>
 </ul>
 </section>
-<section id="a-id-intro-a-1-introduction">
-<h2><a id='intro'></a> 1. Introduction<a class="headerlink" href="#a-id-intro-a-1-introduction" title="Permalink to this heading">#</a></h2>
+<section id="introduction">
+<h2><a id='intro'></a> 1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <br>
 <div style="text-align: justify"> The Earth’s Radiation Budget (ERB) represents the overall balance between incoming and outgoing radiant energy at the Earth’s top-of-the-atmosphere (TOA). This Essential Climate Variable (ECV) is the primary forcing of the climate system and is therefore a fundamental quantity to be monitored to understand the Earth’s climate and its variability. The ERB comprises the quantification of the incoming radiation from the sun and the outgoing reflected shortwave and emitted longwave radiations. The Earth is in a state of dynamic radiative balance; energy arriving from the sun is balanced by outgoing radiation from the top-of-the-atmosphere. Changes in the Earth’s surface and atmosphere (including cloud amount and properties, and concentrations of greenhouse gases) will alter the radiative forcing of the Earth system and change the balance and distribution of outgoing thermal radiation and reflected solar radiation. </div>
 <div style="text-align: justify"> In the Copernicus Climate Data Store (CDS), a dataset of ERB has been “brokered” from the Clouds and Earth’s Radiant Energy System (CERES) Energy Balanced And Filled (EBAF) edition 4.2. CERES EBAF provides a state-of-the-art Climate Data Record (CDR) of monthly mean top of atmosphere (TOA) radiative fluxes. This widely used CDR is produced by the CERES team at the NASA/Langley center from the CERES instruments onboard the Terra and Aqua satellites. The CERES EBAF data is suitable for analysis of variability at the intra-seasonal, inter-annual, and longer time scales. </div>
@@ -1304,11 +611,11 @@ for climate studies.</p>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
 </ul>
 </section>
-<section id="a-id-cdsapi-a-2-search-download-and-view-data">
-<h2><a id='cdsapi'></a> 2. Search, download and view data<a class="headerlink" href="#a-id-cdsapi-a-2-search-download-and-view-data" title="Permalink to this heading">#</a></h2>
+<section id="search-download-and-view-data">
+<h2><a id='cdsapi'></a> 2. Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Link to this heading">#</a></h2>
 <br>
 Before we begin, we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.<section id="how-to-access-the-notebooks">
-<h3>How to access the notebooks<a class="headerlink" href="#how-to-access-the-notebooks" title="Permalink to this heading">#</a></h3>
+<h3>How to access the notebooks<a class="headerlink" href="#how-to-access-the-notebooks" title="Link to this heading">#</a></h3>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>, written in <a class="reference external" href="https://www.python.org/downloads/release/python-394/">Python 3.9.4</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <style>
 td, th {
@@ -1330,7 +637,7 @@ td, th {
 <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code></p>
 </section>
 <section id="import-libraries">
-<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <p>To run this notebook in your own environment, we advise you to install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries you will need. You will also need to install the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a> (<code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code>) for downloading data programatically from the CDS. It is also recommended to use <a class="reference external" href="https://www.python.org/downloads/release/python-394/">Python 3.9.4</a> for the purpose of reproducibility and compatibility, with respect to the latest updates of the different libraries.</p>
 <p>The data have been stored in files written in NetCDF format. To best handle these, we will import the library <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> which is specifically designed for manipulating multidimensional arrays in the field of geosciences. The libraries <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a> will also be imported for plotting and visualising the analysed data. We will also import the libraries <a class="reference external" href="https://docs.python.org/3/library/zipfile.html">zipfile</a> to work with zip-archives, <a class="reference external" href="https://docs.python.org/3/library/os.html">OS</a> to use OS-functions and pattern expansion, and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> for disabling warnings for data download via CDS API.</p>
 <div class="cell docutils container">
@@ -1363,9 +670,9 @@ td, th {
 </div>
 </section>
 <section id="download-data-using-cds-api">
-<h3>Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Permalink to this heading">#</a></h3>
+<h3>Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
 <section id="set-up-cds-api-credentials">
-<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h4>
+<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h4>
 <p>We will request data from the Climate Data Store (CDS): <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>. If you do not have an account yet, please click on <strong>“login/register”</strong> at the right top and select <strong>“Create new account”</strong>. Once the registration process is finished, you will be able to login to the CDS and have a look at your favourite data.</p>
 <p>We will request data from the CDS programmatically with the help of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a>.
 First, we need to manually set the CDS API credentials.
@@ -1395,7 +702,7 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </section>
 </section>
 <section id="search-for-data">
-<h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h3>
+<h3>Search for data<a class="headerlink" href="#search-for-data" title="Link to this heading">#</a></h3>
 <p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
 Here you can search for CERES EBAF data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a>.
 This catalogue entry provides data from various sources: NASA CERES EBAF, NOAA/NCEI HIRS OLR, ESA Cloud-CCI, EUMETSAT’s CM SAF CLARA-A3, C3S CCI and C3S RMIB TSI.</p>
@@ -1416,7 +723,7 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 <p>At the end of the download form, select <strong>“Show API request”</strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cell below) …</p>
 </section>
 <section id="download-data">
-<h3>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h3>
+<h3>Download data<a class="headerlink" href="#download-data" title="Link to this heading">#</a></h3>
 <p>… Having copied the API request into the cell below, running this will retrieve and download the data you requested into your local directory. However, before you run the cell below, the terms and conditions of this particular dataset need to have been accepted in the CDS. The option to view and accept these conditions is given at the end of the download form, just above the <strong>“Show API request”</strong> option.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1456,7 +763,7 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </section>
 <section id="inspect-data">
-<h3>Inspect data<a class="headerlink" href="#inspect-data" title="Permalink to this heading">#</a></h3>
+<h3>Inspect data<a class="headerlink" href="#inspect-data" title="Link to this heading">#</a></h3>
 <p>The data have been downloaded. We can now unzip the archive and merge all files into one NetCDF file to inspect them. NetCDF is a commonly used format for array-oriented scientifc data. To read and process these data, we will make use of the <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html">Xarray</a> library. Xarray is an open source project and Python package that makes working with labelled multi-dimensional arrays simple and efficient. We will read the data from our NetCDF file into an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html">Xarray Dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2385,7 +1692,7 @@ Attributes:
 </div>
 </section>
 <section id="plot-data">
-<h3>Plot data<a class="headerlink" href="#plot-data" title="Permalink to this heading">#</a></h3>
+<h3>Plot data<a class="headerlink" href="#plot-data" title="Link to this heading">#</a></h3>
 <p>We can visualize one time step to figure out what the data look like. Xarray offers built-in matplotlib functions that allow you to plot a <code class="docutils literal notranslate"><span class="pre">DataArray</span></code>. With the function <code class="docutils literal notranslate"><span class="pre">plot()</span></code>, you can easily plot e.g. the first time step of the loaded array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2403,14 +1710,14 @@ Attributes:
 <p>An alternative to the built-in Xarray plotting functions is to make use of a combination of the plotting libraries <a class="reference external" href="https://matplotlib.org/">matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a>. One of Cartopy’s key features is its ability to transform array data into different geographic projections. In combination with matplotlib, it is a very powerful way to create high-quality visualisations and animations. In later plots, we will make use of these libraries to produce more customised visualisations.</p>
 </section>
 </section>
-<section id="a-id-climatology-a-3-climatology-of-the-earth-s-radiation-budget">
-<h2><a id='climatology'></a> 3. Climatology of the Earth’s Radiation Budget<a class="headerlink" href="#a-id-climatology-a-3-climatology-of-the-earth-s-radiation-budget" title="Permalink to this heading">#</a></h2>
+<section id="climatology-of-the-earth-s-radiation-budget">
+<h2><a id='climatology'></a> 3. Climatology of the Earth’s Radiation Budget<a class="headerlink" href="#climatology-of-the-earth-s-radiation-budget" title="Link to this heading">#</a></h2>
 <br>
-<div style="text-align: justify"> In this section we will study the Earth's radiation budget by analysing separately the averaged global and seasonal climatological distributions of the incoming radiation from the sun, of the outgoing reflected shortwave and emitted longwave radiations, and of the net radiation at the top of the atmosphere. </div><section id="a-id-tsi-climatology-a-3-1-climatology-of-the-top-of-atmosphere-incoming-solar-radiation">
-<h3><a id='tsi_climatology'></a> 3.1. Climatology of the top-of-atmosphere incoming solar radiation<a class="headerlink" href="#a-id-tsi-climatology-a-3-1-climatology-of-the-top-of-atmosphere-incoming-solar-radiation" title="Permalink to this heading">#</a></h3>
+<div style="text-align: justify"> In this section we will study the Earth's radiation budget by analysing separately the averaged global and seasonal climatological distributions of the incoming radiation from the sun, of the outgoing reflected shortwave and emitted longwave radiations, and of the net radiation at the top of the atmosphere. </div><section id="climatology-of-the-top-of-atmosphere-incoming-solar-radiation">
+<h3><a id='tsi_climatology'></a> 3.1. Climatology of the top-of-atmosphere incoming solar radiation<a class="headerlink" href="#climatology-of-the-top-of-atmosphere-incoming-solar-radiation" title="Link to this heading">#</a></h3>
 <br>
 <div style="text-align: justify"> In this section we will analyse the time averaged global and seasonal climatological distributions of the TOA incoming solar radiation (TIS). </div><section id="time-averaged-global-climatological-distribution-of-tis">
-<h4>Time averaged global climatological distribution of TIS<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-tis" title="Permalink to this heading">#</a></h4>
+<h4>Time averaged global climatological distribution of TIS<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-tis" title="Link to this heading">#</a></h4>
 <p>To calculate the mean climatology of the top of the atmosphere incoming solar radiation for the time period January 2001 to December 2021, we have to select the specific time range using the Xarray method <code class="docutils literal notranslate"><span class="pre">sel()</span></code> that indexes the data and dimensions by the appropriate indexers. We can then use the method <code class="docutils literal notranslate"><span class="pre">mean()</span></code> to calculate the mean along the time dimension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2465,7 +1772,7 @@ Attributes:
 <p><strong>Figure 1</strong> shows the regular latitude dependent climatological distribution of the incoming solar radiation at the top of the atmosphere, with values decreasing from the tropics to the high latitudes.</p>
 </section>
 <section id="time-averaged-seasonal-climatological-distribution-of-tis">
-<h4>Time averaged seasonal climatological distribution of TIS<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-tis" title="Permalink to this heading">#</a></h4>
+<h4>Time averaged seasonal climatological distribution of TIS<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-tis" title="Link to this heading">#</a></h4>
 <p>The TOA incoming solar radiation data can also be splitted according to the seasons by using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, and then averaged over the years.
 Seasons are defined as follows, using the Northern Hemisphere (NH) as reference:</p>
 <ul class="simple">
@@ -3004,7 +2311,7 @@ Coordinates:
 <p><strong>Figure 2</strong> shows the seasonal mean climatology of the top of the atmosphere incoming solar radiation from spring to winter (top left to bottom right panels) derived from CERES EBAF.</p>
 <div style="text-align: justify"> The seasonal and latitudinal variability of the incoming solar radiation is remarkable, with the values decreasing progressively from the summer hemisphere to the winter hemisphere and increasing from the winter hemisphere to the summer hemisphere. </div></section>
 <section id="zonally-averaged-montly-mean-climatology-of-tis">
-<h4>Zonally averaged montly mean climatology of TIS<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-tis" title="Permalink to this heading">#</a></h4>
+<h4>Zonally averaged montly mean climatology of TIS<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-tis" title="Link to this heading">#</a></h4>
 <p>We will now calculate the monthly mean climatology of the top-of-atmosphere incoming solar radiation over the time period January 2001 - December 2021 by first applying the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the data array by month and then calculating the average for each monthly group. The resulting data array is the monthly climatology for the top of atmosphere incident solar radiation based on reference January 2001 - December 2021.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3476,11 +2783,11 @@ Coordinates:
 <p><strong>Figure 3</strong> is a Hovmöller diagram that describes the annual variability of the incoming solar radiation at the top of the atmosphere with latitude over the time period January 2001 to December 2021. It is used in meteorology and for climate studies to show how a variable varies with latitude over time.</p>
 <div style="text-align: justify"> The main features discussed in the seasonal climatological distribution of the incoming solar flux are present in this plot. Moreover, we observe the influence of the changes in the sun-Earth's distance and geometry (e.g. solar zenith angle) on the (slightly non-symmetric) distribution of the incoming solar radiation. </div></section>
 </section>
-<section id="a-id-rsf-climatology-a-3-2-climatology-of-the-top-of-atmosphere-reflected-solar-flux">
-<h3><a id='rsf_climatology'></a> 3.2. Climatology of the top-of-atmosphere reflected solar flux<a class="headerlink" href="#a-id-rsf-climatology-a-3-2-climatology-of-the-top-of-atmosphere-reflected-solar-flux" title="Permalink to this heading">#</a></h3>
+<section id="climatology-of-the-top-of-atmosphere-reflected-solar-flux">
+<h3><a id='rsf_climatology'></a> 3.2. Climatology of the top-of-atmosphere reflected solar flux<a class="headerlink" href="#climatology-of-the-top-of-atmosphere-reflected-solar-flux" title="Link to this heading">#</a></h3>
 <br>
 <div style="text-align: justify"> In this section we will analyse the time averaged global and seasonal climatological distributions of the top of the atmosphere (TOA) reflected solar flux (RSF). </div><section id="time-averaged-global-climatological-distribution-of-toa-rsf">
-<h4>Time averaged global climatological distribution of TOA RSF<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-toa-rsf" title="Permalink to this heading">#</a></h4>
+<h4>Time averaged global climatological distribution of TOA RSF<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-toa-rsf" title="Link to this heading">#</a></h4>
 <p>To calculate the mean climatology of the top of the atmosphere reflected solar flux for the time period January 2001 to December 2021, we have to select the specific time range using the Xarray method <code class="docutils literal notranslate"><span class="pre">sel()</span></code> that indexes the data and dimensions by the appropriate indexers. We can then use the method <code class="docutils literal notranslate"><span class="pre">mean()</span></code> to calculate the mean along the time dimension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3535,7 +2842,7 @@ Coordinates:
 <p><strong>Figure 4</strong> shows the global climatology of the top of the atmospohere reflected solar radiation for the time period of January 2001 - December 2021.</p>
 <div style="text-align: justify"> The RSF values are the lowest over cloud free ocean areas. The maximum values correspond to high albedo surfaces, such as snow or deserts. Some regions which experience intense convective activity appear as bright areas (central South America, Congo basin and Indonesia). Persistent cloud areas are also clearly visible in this climatology (i.e. the Intertropical Convergence Zone, ITCZ, near the equator, persistent marine stratocumulus clouds around the coast of Namibia and the coast of Peru, for instance). </div></section>
 <section id="time-averaged-seasonal-climatological-distribution-of-toa-rsf">
-<h4>Time averaged seasonal climatological distribution of TOA RSF<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-toa-rsf" title="Permalink to this heading">#</a></h4>
+<h4>Time averaged seasonal climatological distribution of TOA RSF<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-toa-rsf" title="Link to this heading">#</a></h4>
 <p>We now split the TOA RSF data according to the seasons by using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, and then average them over the years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3610,7 +2917,7 @@ Coordinates:
 <p>The influence of the albedo surfaces on the outgoing shorwave radiation observed in <strong>Figure 5</strong> is confirmed by the seasonal climatology, with much higher values of TOA RSF over snow and ice in the summer Arctic and Antarctic regions.</p>
 </section>
 <section id="zonally-averaged-montly-mean-climatology-of-toa-rsf">
-<h4>Zonally averaged montly mean climatology of TOA RSF<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-toa-rsf" title="Permalink to this heading">#</a></h4>
+<h4>Zonally averaged montly mean climatology of TOA RSF<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-toa-rsf" title="Link to this heading">#</a></h4>
 <p>We will now calculate the monthly mean climatology of the outgoing shortwave radiation over the time period January 2001 - December 2021 by first applying the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the data array by month and then calculating the average for each monthly group. The resulting data array is the monthly climatology for the TOA reflected solar radiation based on reference January 2001 - December 2021.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3682,11 +2989,11 @@ Coordinates:
 <p><strong>Figure 6</strong> shows the seasonal variation of the top the atmosphere shortwave flux.</p>
 <div style="text-align: justify"> The extreme values are observed over the high latitudes. During the Arctic or Antarctic summer, the highest values of TOA reflected solar flux are observed in these regions because a lot of solar radiation is reflected by high albedo surfaces (snow or ice). During the Arctic or Antarctic winter, the lack of solar radiation induces low TOA SWF values. </div></section>
 </section>
-<section id="a-id-olr-climatology-a-3-3-climatology-of-the-top-of-atmosphere-outgoing-longwave-radiation">
-<h3><a id='olr_climatology'></a> 3.3. Climatology of the top-of-atmosphere outgoing longwave radiation<a class="headerlink" href="#a-id-olr-climatology-a-3-3-climatology-of-the-top-of-atmosphere-outgoing-longwave-radiation" title="Permalink to this heading">#</a></h3>
+<section id="climatology-of-the-top-of-atmosphere-outgoing-longwave-radiation">
+<h3><a id='olr_climatology'></a> 3.3. Climatology of the top-of-atmosphere outgoing longwave radiation<a class="headerlink" href="#climatology-of-the-top-of-atmosphere-outgoing-longwave-radiation" title="Link to this heading">#</a></h3>
 <br>
 <div style="text-align: justify"> In this section we will analyse the time averaged global and seasonal climatological distributions of the top of atmosphere longwave flux, also called outgoing longwave radiation (OLR). </div><section id="time-averaged-global-climatological-distribution-of-toa-olr">
-<h4>Time averaged global climatological distribution of TOA OLR<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-toa-olr" title="Permalink to this heading">#</a></h4>
+<h4>Time averaged global climatological distribution of TOA OLR<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-toa-olr" title="Link to this heading">#</a></h4>
 <p>To calculate the mean climatology of the TOA outgoing longwave radiation for the period January 2001 to December 2021, we select the specific time range using the Xarray method <code class="docutils literal notranslate"><span class="pre">sel()</span></code> that indexes the data and dimensions by the appropriate indexers. We then use the method <code class="docutils literal notranslate"><span class="pre">mean()</span></code> to calculate the mean along the time dimension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3741,7 +3048,7 @@ Coordinates:
 <p><strong>Figure 7</strong> shows the global climatology of the top of the atmospohere outgoing longwave radiation for the time period of January 2001 - December 2021.</p>
 <div style="text-align: justify"> The outgoing longwave radiation values are the highest in the tropics and decrease toward the poles. The relative minimum near the equator, in yellow colour, corresponds to the intertropical convergence zone (ITCZ) and the convection areas, where persistent and relatively high cloud cover reduces the LW radiation at the top of the atmosphere. Antarctica is cooler than the corresponding northern latitudes. </div></section>
 <section id="time-averaged-seasonal-climatological-distribution-of-toa-olr">
-<h4>Time averaged seasonal climatological distribution of TOA OLR<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-toa-olr" title="Permalink to this heading">#</a></h4>
+<h4>Time averaged seasonal climatological distribution of TOA OLR<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-toa-olr" title="Link to this heading">#</a></h4>
 <p>We now split the TOA outgoing longwave radiation data according to the seasons by using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument; the new data are then averaged over the years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3816,7 +3123,7 @@ Coordinates:
 <p>The general pattern is overall the same as in <strong>Figure 7</strong> with higher values of outgoing longwave flux in the tropics and lower values in the high latitude, especially during winter. The relatively low values of OLR corresponding to high convection areas are also very well observed in the tropical summer.</p>
 </section>
 <section id="inter-annual-variability-of-toa-olr">
-<h4>Inter-annual variability of TOA OLR<a class="headerlink" href="#inter-annual-variability-of-toa-olr" title="Permalink to this heading">#</a></h4>
+<h4>Inter-annual variability of TOA OLR<a class="headerlink" href="#inter-annual-variability-of-toa-olr" title="Link to this heading">#</a></h4>
 <p>We can now analyse the inter-annual variability of the outgoing longwave radiation at the top of the atmopshere. It is defined as the root mean square of the inter-annual anomaly in the TOA OLR.</p>
 <p>First, we apply the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the data array by year and calculate the time-averaged TOA OLR for each year.</p>
 <div class="cell docutils container">
@@ -3889,7 +3196,7 @@ Coordinates:
 <p><strong>Figure 9</strong> shows that the main variability occurs in the convective regions, in particular, in the Monsoon regions and along the Pacific Basin, following “El Niño” and “La Niña” oscillations.</p>
 </section>
 <section id="zonally-averaged-montly-mean-climatology-of-toa-olr">
-<h4>Zonally averaged montly mean climatology of TOA OLR<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-toa-olr" title="Permalink to this heading">#</a></h4>
+<h4>Zonally averaged montly mean climatology of TOA OLR<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-toa-olr" title="Link to this heading">#</a></h4>
 <p>We will now calculate the monthly mean climatology of the outgoing longwave radiation over the time period January 2001 - December 2021 by first applying the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the data array by month and then calculating the average for each monthly group. The resulting data array is the monthly climatology for the total column water vapour based on reference January 2001 - December 2021.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3961,11 +3268,11 @@ Coordinates:
 <p><strong>Figure 10</strong> shows the seasonal variation of the top of the atmosphere longwave flux.</p>
 <div style="text-align: justify"> The lowest values of the outgoing longwave flux are observed over the coldest surfaces corresponding to the high latitude winter. Two bands of high values over the tropics separated by relatively low values near the equator (corresponding to the ITCZ) oscillate and reach a maximum near the equator in the winter hemisphere, confirming the influence of (relatively) low convection and incoming solar radiation (high surface temperatures) on the OLF. </div></section>
 </section>
-<section id="a-id-erb-climatology-a-3-4-climatology-of-the-top-of-atmosphere-net-earth-s-radiation-budget">
-<h3><a id='erb_climatology'></a> 3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget<a class="headerlink" href="#a-id-erb-climatology-a-3-4-climatology-of-the-top-of-atmosphere-net-earth-s-radiation-budget" title="Permalink to this heading">#</a></h3>
+<section id="climatology-of-the-top-of-atmosphere-net-earth-s-radiation-budget">
+<h3><a id='erb_climatology'></a> 3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget<a class="headerlink" href="#climatology-of-the-top-of-atmosphere-net-earth-s-radiation-budget" title="Link to this heading">#</a></h3>
 <br>
 <div style="text-align: justify"> In this section we will analyse the time averaged global and seasonal climatological distributions of the net Earth's radiative budget (or net radiative flux). It is defined as the balance between the incoming (solar) and outgoing (solar reflelcted and Earth emitted) energy at the top of the atmospohere. </div><section id="time-averaged-global-climatological-distribution-of-toa-net-erb">
-<h4>Time averaged global climatological distribution of TOA net ERB<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-toa-net-erb" title="Permalink to this heading">#</a></h4>
+<h4>Time averaged global climatological distribution of TOA net ERB<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-toa-net-erb" title="Link to this heading">#</a></h4>
 <br>
 <div style="text-align: justify"> To calculate the mean climatology of the net radiative flux at the the top of the atmosphere, we just have to compute the difference between the time averaged incoming solar flux and the sum of shortwave (solar reflected) and longwave (Earth emitted) fluxes at the top of the atmposphere for the period January 2001 to December 2021. All the variables have been computed in the previous sections. </div><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4017,7 +3324,7 @@ Coordinates:
 <p><strong>Figure 11</strong> shows the global climatology of the (net) Earth’s radiation budget at the top of the atmosphere for the time period of January 2001 - December 2021.</p>
 <div style="text-align: justify"> In general, the net radiation is positive (energy surplus) in the tropical areas (shown in red) and negative (energy deficit) in high latitudes (in blue). However, in some of the desert regions the TOA net ERB becomes negative due to the combined high values of albedo and OLR (Sahara desert or Arabic peninsula for instance). Areas in which incoming radiation balances the outgoing are in white. </div></section>
 <section id="time-averaged-seasonal-climatological-distribution-of-toa-erb">
-<h4>Time averaged seasonal climatological distribution of TOA ERB<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-toa-erb" title="Permalink to this heading">#</a></h4>
+<h4>Time averaged seasonal climatological distribution of TOA ERB<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-toa-erb" title="Link to this heading">#</a></h4>
 <p>To compute the time averaged seasonal climatological distribution of TOA net ERB, the data are splitted according to the seasons by using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, and then averaged over the years.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4094,7 +3401,7 @@ Coordinates:
 <p><strong>Figure 12</strong> shows the seasonal mean climatology of the TOA net radiation from spring to winter (top left to bottom right panels) derived from CERES EBAF.</p>
 <div style='text-align: justify'> The general pattern exhibits negative values of TOA net ERB in the high latitudes and a band of positive values that oscillates (between 60° N/S) around the equator, reaching a maximum in the summer hemisphere (except for high albedo regions such as Sahara desert and the Arabic Peninsula). It confirms the dominant effect of solar radiation on the net Earth's radiation budget. In the high latitudes of the summer hemisphere, because of the high surface (snow, ice) albedo, the reflected solar radiation compensates the incident solar radiation. </div></section>
 <section id="zonally-averaged-montly-mean-climatology-of-toa-net-erb">
-<h4>Zonally averaged montly mean climatology of TOA net ERB<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-toa-net-erb" title="Permalink to this heading">#</a></h4>
+<h4>Zonally averaged montly mean climatology of TOA net ERB<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-toa-net-erb" title="Link to this heading">#</a></h4>
 <p>We will now calculate the monthly mean climatology of TOA net radiative flux over the period January 2001 - December 2021 by first applying the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the data array by month and then calculating the average for each monthly group. The resulting data array is the monthly climatology for the TOA ERB based on reference January 2001 - December 2021.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4169,8 +3476,8 @@ Coordinates:
 <div style="text-align: justify"> Modifications in the globally averaged net radiation flux are a good indicator of climate change since if this average is not close to zero it will imply an increase or decrease of the average temperature of the globe. In the next use case, we will therefore analyse the temporal evolution of the Earth's radiation budget and its annual seasonal variation. </div></section>
 </section>
 </section>
-<section id="a-id-timeseries-a-4-time-series-and-trend-analysis-of-the-earth-s-radiation-budget">
-<h2><a id='timeseries'></a> 4. Time series and trend analysis of the Earth’s Radiation Budget<a class="headerlink" href="#a-id-timeseries-a-4-time-series-and-trend-analysis-of-the-earth-s-radiation-budget" title="Permalink to this heading">#</a></h2>
+<section id="time-series-and-trend-analysis-of-the-earth-s-radiation-budget">
+<h2><a id='timeseries'></a> 4. Time series and trend analysis of the Earth’s Radiation Budget<a class="headerlink" href="#time-series-and-trend-analysis-of-the-earth-s-radiation-budget" title="Link to this heading">#</a></h2>
 <br>
 <div style='text-align: justify'> After looking at the time averaged global distribution of the Earth's radiation budget, we further investigate the dataset. The CERES-EBAF product spans over 20 years of satellite observations, and another useful way of analysing and visualizing the temporal evolution of total column water vapour is using the time series. We will calculate global time series, plot it, and discuss most important features. </div><p>We first create a temporal subset for the time period January 2001 to December 2021.</p>
 <div class="cell docutils container">
@@ -4191,7 +3498,7 @@ Coordinates:
 </div>
 </div>
 <section id="spatial-aggregation">
-<h3>Spatial aggregation<a class="headerlink" href="#spatial-aggregation" title="Permalink to this heading">#</a></h3>
+<h3>Spatial aggregation<a class="headerlink" href="#spatial-aggregation" title="Link to this heading">#</a></h3>
 <br>
 <div style="text-align: justify"> We would like to visualise these data, not in maps but as one dimensional time series of global average values. To do this, we will first need to aggregate the data spatially to create a single global average at each time step. In order to aggregate over the latitudinal dimension, we need to take into account the variation in area as a function of latitude. We will do this by using the cosine of the latitude as a proxy: </div><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4233,10 +3540,10 @@ Coordinates:
 </div>
 </div>
 </section>
-<section id="a-id-tsi-timeseries-a-4-1-time-series-and-trend-analysis-of-the-top-of-atmosphere-incoming-solar-radiation">
-<h3><a id='tsi_timeseries'></a> 4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation<a class="headerlink" href="#a-id-tsi-timeseries-a-4-1-time-series-and-trend-analysis-of-the-top-of-atmosphere-incoming-solar-radiation" title="Permalink to this heading">#</a></h3>
+<section id="time-series-and-trend-analysis-of-the-top-of-atmosphere-incoming-solar-radiation">
+<h3><a id='tsi_timeseries'></a> 4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation<a class="headerlink" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-incoming-solar-radiation" title="Link to this heading">#</a></h3>
 <section id="global-time-series-of-tis">
-<h4>Global time series of TIS<a class="headerlink" href="#global-time-series-of-tis" title="Permalink to this heading">#</a></h4>
+<h4>Global time series of TIS<a class="headerlink" href="#global-time-series-of-tis" title="Link to this heading">#</a></h4>
 <p>Now we can plot the time series of globally averaged TIS data over time using the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4264,7 +3571,7 @@ Coordinates:
 <p><strong>Figure 14</strong> shows the time series of the incoming solar flux at the top of the atmosphere.</p>
 <div style="text-align: justify"> From the time series, we can infer a clear seasonal cycle with an amplitude of over 20 W/m$^{2}$ in the global space and time averaged TSI, associated to the Earth's orbit around the sun. Another very slight long-term seasonal trend is also noticeable, that corresponds to the sunspot cycle. The Earth and solar seasonal cycles will now be studied in more details by the seasonal decomposition of the incoming solar flux. </div></section>
 <section id="trend-analysis-and-seasonal-cycle-of-tis">
-<h4>Trend analysis and seasonal cycle of TIS<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-tis" title="Permalink to this heading">#</a></h4>
+<h4>Trend analysis and seasonal cycle of TIS<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-tis" title="Link to this heading">#</a></h4>
 <br>
 The time series can be further analysed by extracting the trend, or the running annual mean, and the seasonal cycle.<p>To this end, we will convert the Xarray Data Array into a time series with the <a class="reference external" href="https://pandas.pydata.org/">pandas</a> library before decomposing it into the trend, the seasonal cycle and the residuals by using the <code class="docutils literal notranslate"><span class="pre">seasonal_decompose()</span></code> method and visualizing the results.</p>
 <div class="cell docutils container">
@@ -4293,10 +3600,10 @@ The time series can be further analysed by extracting the trend, or the running 
 <p><strong>Figure 15</strong> shows the decomposition of the TIS time series into the trend corresponding to the sunspot cycle (2nd panel), and the seasonal cycle with the confirmed amplitude of 20 W/m<span class="math notranslate nohighlight">\(^{2}\)</span> (3rd panel), from which are derived the anomalies or de-trended and de-seasonalised time series that have the characteristics of an uncorrelated noise pattern (4th panel).</p>
 </section>
 </section>
-<section id="a-id-rsf-timeseries-a-4-2-time-series-and-trend-analysis-of-the-top-of-atmosphere-reflected-solar-flux">
-<h3><a id='rsf_timeseries'></a> 4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux<a class="headerlink" href="#a-id-rsf-timeseries-a-4-2-time-series-and-trend-analysis-of-the-top-of-atmosphere-reflected-solar-flux" title="Permalink to this heading">#</a></h3>
+<section id="time-series-and-trend-analysis-of-the-top-of-atmosphere-reflected-solar-flux">
+<h3><a id='rsf_timeseries'></a> 4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux<a class="headerlink" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-reflected-solar-flux" title="Link to this heading">#</a></h3>
 <section id="global-time-series-of-toa-rsf">
-<h4>Global time series of TOA RSF<a class="headerlink" href="#global-time-series-of-toa-rsf" title="Permalink to this heading">#</a></h4>
+<h4>Global time series of TOA RSF<a class="headerlink" href="#global-time-series-of-toa-rsf" title="Link to this heading">#</a></h4>
 <p>We will now plot the time series of globally averaged TOA RSF data over time using the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4325,7 +3632,7 @@ The time series can be further analysed by extracting the trend, or the running 
 <p>From the time series of the global space and time averaged RSF, we can infer a clear seasonal cycle associated to the Earth’s orbit around the sun and a long-term seasonal cycle corresponding to the sunspot cycle together with a negative trend. They will now be further examined through the seasonal decomposition of the incoming solar flux.</p>
 </section>
 <section id="trend-analysis-and-seasonal-cycle-of-toa-rsf">
-<h4>Trend analysis and seasonal cycle of TOA RSF<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-toa-rsf" title="Permalink to this heading">#</a></h4>
+<h4>Trend analysis and seasonal cycle of TOA RSF<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-toa-rsf" title="Link to this heading">#</a></h4>
 <br>
 The time series can be further analysed by extracting the trend, or the running annual mean, and the seasonal cycle.<p>To this end, we will convert the Xarray Data Array into a time series with the <a class="reference external" href="https://pandas.pydata.org/">pandas</a> library before decomposing it into the trend, the seasonal cycle and the residuals by using the <code class="docutils literal notranslate"><span class="pre">seasonal_decompose()</span></code> method and visualizing the results.</p>
 <div class="cell docutils container">
@@ -4354,10 +3661,10 @@ The time series can be further analysed by extracting the trend, or the running 
 <p><strong>Figure 17</strong> shows the decomposition of the TOA RSF time series into a negative trend of ~-0.1 W/m<span class="math notranslate nohighlight">\(^{2}\)</span>/year (2nd panel) and a seasonal cycle with an amplitude of ~15 W/m<span class="math notranslate nohighlight">\(^{2}\)</span> (3rd panel), from which are derived the anomalies that have the characteristics of an uncorrelated noise pattern (4th panel).</p>
 <div style="text-align: justify"> As explained earlier (see the climatologcal distribution of the TOA RSF), the minimum values of the reflected solar flux are found over cloud free ocean areas and the maximum values over high albedo surfaces, such as snow or deserts. The negative trend can thus be due to a loss of snow and ice, especially in the Arctic and Antarctic regions. </div></section>
 </section>
-<section id="a-id-olr-timeseries-a-4-3-time-series-and-trend-analysis-of-the-top-of-atmosphere-outgoing-longwave-radiation">
-<h3><a id='olr_timeseries'></a> 4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation<a class="headerlink" href="#a-id-olr-timeseries-a-4-3-time-series-and-trend-analysis-of-the-top-of-atmosphere-outgoing-longwave-radiation" title="Permalink to this heading">#</a></h3>
+<section id="time-series-and-trend-analysis-of-the-top-of-atmosphere-outgoing-longwave-radiation">
+<h3><a id='olr_timeseries'></a> 4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation<a class="headerlink" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-outgoing-longwave-radiation" title="Link to this heading">#</a></h3>
 <section id="global-time-series-of-toa-olr">
-<h4>Global time series of TOA OLR<a class="headerlink" href="#global-time-series-of-toa-olr" title="Permalink to this heading">#</a></h4>
+<h4>Global time series of TOA OLR<a class="headerlink" href="#global-time-series-of-toa-olr" title="Link to this heading">#</a></h4>
 <p>We will now plot the time series of globally averaged outgoing longwave radiation data over time using the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4386,7 +3693,7 @@ The time series can be further analysed by extracting the trend, or the running 
 <p>We will now procede to the seasonal decomposition of the Earth-emitted longwave radiation at the top of the atmosphere and analyse more specifically the trend and seasonal cycle of CERES-EBAF OLR.</p>
 </section>
 <section id="trend-analysis-and-seasonal-cycle-of-toa-olr">
-<h4>Trend analysis and seasonal cycle of TOA OLR<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-toa-olr" title="Permalink to this heading">#</a></h4>
+<h4>Trend analysis and seasonal cycle of TOA OLR<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-toa-olr" title="Link to this heading">#</a></h4>
 <br>
 The time series can be further analysed by extracting the trend, or the running annual mean, and the seasonal cycle.<p>To this end, we will convert the Xarray Data Array into a time series with the <a class="reference external" href="https://pandas.pydata.org/">pandas</a> library before decomposing it into the trend, the seasonal cycle and the residuals by using the <code class="docutils literal notranslate"><span class="pre">seasonal_decompose()</span></code> method and visualizing the results.</p>
 <div class="cell docutils container">
@@ -4416,10 +3723,10 @@ The time series can be further analysed by extracting the trend, or the running 
 <p>The observed inter-annual variations in the 2nd panel of <strong>Figure 19</strong> suggest an influence of the “El Niño” or “La Niña” Southern Oscillation on the TOA OLR. The increase in this Earth-emitted longwave radiation is clearly related to the increase of surface temperatures.</p>
 </section>
 </section>
-<section id="a-id-erb-timeseries-a-4-4-time-series-and-trend-analysis-of-the-top-of-atmosphere-net-earth-s-radiation-budget">
-<h3><a id='erb_timeseries'></a> 4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget<a class="headerlink" href="#a-id-erb-timeseries-a-4-4-time-series-and-trend-analysis-of-the-top-of-atmosphere-net-earth-s-radiation-budget" title="Permalink to this heading">#</a></h3>
+<section id="time-series-and-trend-analysis-of-the-top-of-atmosphere-net-earth-s-radiation-budget">
+<h3><a id='erb_timeseries'></a> 4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget<a class="headerlink" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-net-earth-s-radiation-budget" title="Link to this heading">#</a></h3>
 <section id="global-time-series-of-toa-net-erb">
-<h4>Global time series of TOA net ERB<a class="headerlink" href="#global-time-series-of-toa-net-erb" title="Permalink to this heading">#</a></h4>
+<h4>Global time series of TOA net ERB<a class="headerlink" href="#global-time-series-of-toa-net-erb" title="Link to this heading">#</a></h4>
 <p>We will now plot the time series of the globally averaged TOA net Earth’s radiative flux over time using the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4447,7 +3754,7 @@ The time series can be further analysed by extracting the trend, or the running 
 <p><strong>Figure 20</strong> shows the time series of the net Earth’s radiation budget at the top of the atmosphere. From the time series, we can infer a seasonal pattern together with a slightly increasing trend in the global space and time averaged TOA net ERB.</p>
 <div style="text-align: justify"> Since CERES EBAF is a stable and robust product which has been validated with other data, this trend can be assumed to be a real climatological variability in the net Earth's radiation flux at the top of the atmosphere. </div><div style="text-align: justify"> We will now procede to the seasonal decomposition of the net Earth's radiation budget and analyse more specifically the trend and seasonal cycle of the TOA net ERB. </div></section>
 <section id="trend-analysis-and-seasonal-cycle-of-toa-net-erb">
-<h4>Trend analysis and seasonal cycle of TOA net ERB<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-toa-net-erb" title="Permalink to this heading">#</a></h4>
+<h4>Trend analysis and seasonal cycle of TOA net ERB<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-toa-net-erb" title="Link to this heading">#</a></h4>
 <br>
 The time series can be further analysed by extracting the trend, or the running annual mean, and the seasonal cycle.<div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4476,8 +3783,8 @@ The time series can be further analysed by extracting the trend, or the running 
 <div style="text-align: justify"> The trend analysis presents an oscilation around the year 2010 that can be related to a moderate “El Niño” event in this time period. The positive trend of the net Earth's radiative flux confirms global warming. </div></section>
 </section>
 </section>
-<section id="a-id-conclusion-a-5-conclusion">
-<h2><a id='conclusion'></a> 5. Conclusion<a class="headerlink" href="#a-id-conclusion-a-5-conclusion" title="Permalink to this heading">#</a></h2>
+<section id="conclusion">
+<h2><a id='conclusion'></a> 5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <br>
 <div style='text-align: justify'> In this notebook we have provided use cases, based on the Cloud and Earth’s Radiant Energy System (CERES) Energy Balanced And Filled (EBAF) Earth's radiation budget (ERB) data record, to illustrate the way this dataset can be used to study, analyse and visualise this essential climate variable. The current dataset indicates a clear increase of the net Earth's radiative flux between January 2001 and December 2021. Comparisons with other independent datasets can be made to further investigate the trends that can be attributed to global warming, El-Niño events and external solar cycle forcing. </div></section>
 </section>
@@ -4502,325 +3809,126 @@ The time series can be further analysed by extracting the trend, or the running 
     </script>
     <script>kernelName = 'python3'</script>
 
-            </article>
-            
+                </article>
+              
 
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="erb-clara-climatology.html" title="previous page">
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="erb-clara-climatology.html"
+       title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-          <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
       </div>
-  </a>
-  <a class='right-next' id="next-link" href="total-solar-irradiance.html" title="next page">
-  <div class="prev-next-info">
-      <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">The Total Solar Irradiance (TSI) from RMIB</p>
-  </div>
-  <i class="fa-solid fa-angle-right"></i>
-  </a>
+    </a>
+    <a class="right-next"
+       href="total-solar-irradiance.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Total Solar Irradiance (TSI) from RMIB</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-            </footer>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-content">Table of content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> 1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data"><a id="cdsapi"></a> 2. Search, download and view data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebooks">How to access the notebooks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download Data Using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">Plot data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-earth-s-radiation-budget"><a id="climatology"></a> 3. Climatology of the Earth’s Radiation Budget</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-top-of-atmosphere-incoming-solar-radiation"><a id="tsi_climatology"></a> 3.1. Climatology of the top-of-atmosphere incoming solar radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-tis">Time averaged global climatological distribution of TIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-tis">Time averaged seasonal climatological distribution of TIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-tis">Zonally averaged montly mean climatology of TIS</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-top-of-atmosphere-reflected-solar-flux"><a id="rsf_climatology"></a> 3.2. Climatology of the top-of-atmosphere reflected solar flux</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-rsf">Time averaged global climatological distribution of TOA RSF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-rsf">Time averaged seasonal climatological distribution of TOA RSF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-rsf">Zonally averaged montly mean climatology of TOA RSF</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-top-of-atmosphere-outgoing-longwave-radiation"><a id="olr_climatology"></a> 3.3. Climatology of the top-of-atmosphere outgoing longwave radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-olr">Time averaged global climatological distribution of TOA OLR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-olr">Time averaged seasonal climatological distribution of TOA OLR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inter-annual-variability-of-toa-olr">Inter-annual variability of TOA OLR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-olr">Zonally averaged montly mean climatology of TOA OLR</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-top-of-atmosphere-net-earth-s-radiation-budget"><a id="erb_climatology"></a> 3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-net-erb">Time averaged global climatological distribution of TOA net ERB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-erb">Time averaged seasonal climatological distribution of TOA ERB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-net-erb">Zonally averaged montly mean climatology of TOA net ERB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-earth-s-radiation-budget"><a id="timeseries"></a> 4. Time series and trend analysis of the Earth’s Radiation Budget</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-aggregation">Spatial aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-incoming-solar-radiation"><a id="tsi_timeseries"></a> 4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-tis">Global time series of TIS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-tis">Trend analysis and seasonal cycle of TIS</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-reflected-solar-flux"><a id="rsf_timeseries"></a> 4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-toa-rsf">Global time series of TOA RSF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-rsf">Trend analysis and seasonal cycle of TOA RSF</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-outgoing-longwave-radiation"><a id="olr_timeseries"></a> 4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-toa-olr">Global time series of TOA OLR</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-olr">Trend analysis and seasonal cycle of TOA OLR</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-top-of-atmosphere-net-earth-s-radiation-budget"><a id="erb_timeseries"></a> 4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-toa-net-erb">Global time series of TOA net ERB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-net-erb">Trend analysis and seasonal cycle of TOA net ERB</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><a id="conclusion"></a> 5. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
-              
-<div class="toc-item">
-  
-<div class="tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-</div>
-<nav id="bd-toc-nav" class="page-toc">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#table-of-content">
-   Table of content
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-intro-a-1-introduction">
-   <a id="intro">
-   </a>
-   1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-cdsapi-a-2-search-download-and-view-data">
-   <a id="cdsapi">
-   </a>
-   2. Search, download and view data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-access-the-notebooks">
-     How to access the notebooks
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-data-using-cds-api">
-     Download Data Using CDS API
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#set-up-cds-api-credentials">
-       Set up CDS API credentials
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#search-for-data">
-     Search for data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-data">
-     Download data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inspect-data">
-     Inspect data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#plot-data">
-     Plot data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-climatology-a-3-climatology-of-the-earth-s-radiation-budget">
-   <a id="climatology">
-   </a>
-   3. Climatology of the Earth’s Radiation Budget
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-tsi-climatology-a-3-1-climatology-of-the-top-of-atmosphere-incoming-solar-radiation">
-     <a id="tsi_climatology">
-     </a>
-     3.1. Climatology of the top-of-atmosphere incoming solar radiation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-tis">
-       Time averaged global climatological distribution of TIS
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-tis">
-       Time averaged seasonal climatological distribution of TIS
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-tis">
-       Zonally averaged montly mean climatology of TIS
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-rsf-climatology-a-3-2-climatology-of-the-top-of-atmosphere-reflected-solar-flux">
-     <a id="rsf_climatology">
-     </a>
-     3.2. Climatology of the top-of-atmosphere reflected solar flux
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-rsf">
-       Time averaged global climatological distribution of TOA RSF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-rsf">
-       Time averaged seasonal climatological distribution of TOA RSF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-rsf">
-       Zonally averaged montly mean climatology of TOA RSF
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-olr-climatology-a-3-3-climatology-of-the-top-of-atmosphere-outgoing-longwave-radiation">
-     <a id="olr_climatology">
-     </a>
-     3.3. Climatology of the top-of-atmosphere outgoing longwave radiation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-olr">
-       Time averaged global climatological distribution of TOA OLR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-olr">
-       Time averaged seasonal climatological distribution of TOA OLR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#inter-annual-variability-of-toa-olr">
-       Inter-annual variability of TOA OLR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-olr">
-       Zonally averaged montly mean climatology of TOA OLR
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-erb-climatology-a-3-4-climatology-of-the-top-of-atmosphere-net-earth-s-radiation-budget">
-     <a id="erb_climatology">
-     </a>
-     3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-toa-net-erb">
-       Time averaged global climatological distribution of TOA net ERB
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-toa-erb">
-       Time averaged seasonal climatological distribution of TOA ERB
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-toa-net-erb">
-       Zonally averaged montly mean climatology of TOA net ERB
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-timeseries-a-4-time-series-and-trend-analysis-of-the-earth-s-radiation-budget">
-   <a id="timeseries">
-   </a>
-   4. Time series and trend analysis of the Earth’s Radiation Budget
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spatial-aggregation">
-     Spatial aggregation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-tsi-timeseries-a-4-1-time-series-and-trend-analysis-of-the-top-of-atmosphere-incoming-solar-radiation">
-     <a id="tsi_timeseries">
-     </a>
-     4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-time-series-of-tis">
-       Global time series of TIS
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-tis">
-       Trend analysis and seasonal cycle of TIS
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-rsf-timeseries-a-4-2-time-series-and-trend-analysis-of-the-top-of-atmosphere-reflected-solar-flux">
-     <a id="rsf_timeseries">
-     </a>
-     4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-time-series-of-toa-rsf">
-       Global time series of TOA RSF
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-rsf">
-       Trend analysis and seasonal cycle of TOA RSF
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-olr-timeseries-a-4-3-time-series-and-trend-analysis-of-the-top-of-atmosphere-outgoing-longwave-radiation">
-     <a id="olr_timeseries">
-     </a>
-     4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-time-series-of-toa-olr">
-       Global time series of TOA OLR
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-olr">
-       Trend analysis and seasonal cycle of TOA OLR
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-id-erb-timeseries-a-4-4-time-series-and-trend-analysis-of-the-top-of-atmosphere-net-earth-s-radiation-budget">
-     <a id="erb_timeseries">
-     </a>
-     4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#global-time-series-of-toa-net-erb">
-       Global time series of TOA net ERB
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-toa-net-erb">
-       Trend analysis and seasonal cycle of TOA net ERB
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-id-conclusion-a-5-conclusion">
-   <a id="conclusion">
-   </a>
-   5. Conclusion
-  </a>
- </li>
-</ul>
-
-</nav>
-</div>
-
-            </div>
-          
-          
-        </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
+          <footer class="bd-footer-content">
             
 <div class="bd-footer-content__inner container">
   
@@ -4834,18 +3942,18 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   
   <div class="footer-item">
     
-<p class="copyright">
 
-    &copy; Copyright 2022.<br>
-
-</p>
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
 
   </div>
   
   <div class="footer-item">
-    <p class="last-updated">
-Last updated on None.<br>
-</p>
+    
   </div>
   
   <div class="footer-item">
@@ -4853,19 +3961,18 @@ Last updated on None.<br>
   </div>
   
 </div>
-          </div>
-        </footer>
+          </footer>
         
 
       </main>
     </div>
   </div>
-
   
-    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
