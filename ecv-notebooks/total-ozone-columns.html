@@ -580,6 +580,17 @@ From the examples in this notebook, one should have an idea on how data from the
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-07-02 13:44:35,888 INFO Welcome to the CDS
+2024-07-02 13:44:35,889 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-ozone-v1
+2024-07-02 13:44:36,140 INFO Request is queued
+2024-07-02 13:44:37,186 INFO Request is running
+2024-07-02 13:50:54,394 INFO Request is completed
+2024-07-02 13:50:54,397 INFO Downloading https://download-0015-clone.copernicus-climate.eu/cache-compute-0015/cache/data4/dataset-satellite-ozone-v1-da57dfc9-884e-4d94-ac22-2d38014f58aa.zip to dataset-satellite-ozone-v1-da57dfc9-884e-4d94-ac22-2d38014f58aa.zip (392.9M)
+2024-07-02 13:53:44,434 INFO Download rate 2.3M/s  
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="analysis-and-visualisation-of-the-data">
@@ -637,6 +648,9 @@ Next code block visualizes the dataset with a very limited number of code lines.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/5ceba653748de5eb294e6ea71d9b2c4494f5e530e5fb9390cd5954e4a8abb94f.png" src="../_images/5ceba653748de5eb294e6ea71d9b2c4494f5e530e5fb9390cd5954e4a8abb94f.png" />
+</div>
 </div>
 <p>In this plot we see how the ozone distribution varies with  latitude and time (per month). The lowest columns are found in the equatorial and tropical regions, while larger and more variable columns are observed at mid-latitude and in polar regions. This behavior results from large scale transport of air masses in the atmosphere. The signature of the ozone hole can be clearly identified each year during the austral spring season. These data can be further analysed to study the details of the variability and trends in total ozone.
 The blank areas in the plot correspond to missing data (e.g. yearly polar night for measurement techniques based on solar UV radiation).</p>
@@ -682,6 +696,13 @@ The blank areas in the plot correspond to missing data (e.g. yearly polar night 
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniforge/base/envs/CDS/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_physical/ne_110m_coastline.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<img alt="../_images/6b8d8c73bbd1db84f4fdcc3aa38fd806a0a3b6c7c77d28ba6f58bbdebbd0a0cd.png" src="../_images/6b8d8c73bbd1db84f4fdcc3aa38fd806a0a3b6c7c77d28ba6f58bbdebbd0a0cd.png" />
+</div>
 </div>
 <p>These plots illustrate the seasonal evolution of the global ozone distribution. The variability of stratospheric ozone in the Arctic and at mid-latitudes is particularly important in spring when returning sunlight (after the polar night) alters stratospheric temperatures via shortwave heating, thus modifying atmospheric dynamics. During the mid-latitude summer season and in the tropics, ozone columns are smaller and show less variability. The Southern hemisphere is characterised by the ozone hole, which develops each year in early spring (from September to November). The signature of this ozone hole is captured in the data noting that at high southern latitudes data remain unavailable (the blank regions corresponds to the polar night when no measurements can be performed).</p>
 </section>
@@ -714,6 +735,13 @@ the ozone hole over Antartica during austral spring.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniforge/base/envs/CDS/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline.zip
+  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
+</pre></div>
+</div>
+<img alt="../_images/f0a36840448772ad742db54b4131ec095abce4de28ec0b8a99dbdeda31447113.png" src="../_images/f0a36840448772ad742db54b4131ec095abce4de28ec0b8a99dbdeda31447113.png" />
 </div>
 </div>
 <p>This plot shows the ozone hole in the Southern hemisphere seen from a polar projection. The ozone hole (dark region) develops each year in early spring (from September to November). As mentioned already, the blank regions are due to the polar night.</p>
@@ -754,6 +782,9 @@ the ozone hole over Antartica during austral spring.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/94ac3ec3e01515f897ab95b703aa1f01b05455c198c5f6300944eb33317d8473.png" src="../_images/94ac3ec3e01515f897ab95b703aa1f01b05455c198c5f6300944eb33317d8473.png" />
 </div>
 </div>
 <p>This plot shows the ozone hole in the southern hemisphere seen from a polar projection, from 1995 to 2022 in October. Up to 2002 the GTO-ECV data record consists out of GOME/ERS-2 data only. This sensor had a relatively sparse spatial sampling compared to
