@@ -5,4 +5,5 @@
 _build
 
 data_dir/
+data/
 output/
