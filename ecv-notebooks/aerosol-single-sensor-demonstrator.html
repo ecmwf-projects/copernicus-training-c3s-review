@@ -216,24 +216,8 @@
 <li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">How to access, read and use satellite XCO2 and XCH4 Level 3 data products</a></li>
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><a id="title"></a> Exploring gridded data on Aerosol properties available on C3S</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"></a> Exploring gridded data on Aerosol properties available on C3S</li>
 <li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html"><a id="title"></a> Visualising a full Climate Data Record of multi-sensor Aerosol data</a></li>
-
-
-
-
-
-
-
-
 
 
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
@@ -477,7 +461,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><a id='title'></a> Exploring gridded data on Aerosol properties available on C3S</h1>
+    <h1></a> Exploring gridded data on Aerosol properties available on C3S</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -487,35 +471,33 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><a id="title"></a> Exploring gridded data on Aerosol properties available on C3S</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><a id="data_description"></a> Data description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><a id="data_description"></a> Data description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cds-api-credentials">CDS API credentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cds-api-credentials">CDS API credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-plot-map"><a id="map_plot"></a> Use case 1: Plot map</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-regional-time-series"><a id="timeseries"></a> Use case 2: Regional time series</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series"><a id="climatology"></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">Open NetCDF4 File and plot climatology map for selected calendar month</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-climatology-calculate-and-plot-as-time-series">Regional climatology: calculate and plot as time series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-climatology-and-its-standard-deviation">Plot “climatology” and its standard deviation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-timeseries-with-climatology">Plot timeseries with climatology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomaly-time-series">Anomaly time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-plot-map"><a id="map_plot"></a> Use case 1: Plot map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-regional-time-series"><a id="timeseries"></a> Use case 2: Regional time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series"><a id="climatology"></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">Open NetCDF4 File and plot climatology map for selected calendar month</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-climatology-calculate-and-plot-as-time-series">Regional climatology: calculate and plot as time series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-climatology-and-its-standard-deviation">Plot “climatology” and its standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-timeseries-with-climatology">Plot timeseries with climatology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anomaly-time-series">Anomaly time series</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store">Get more information about Aerosol properties and the Climate Data Store</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="references"></a> References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store">Get more information about Aerosol properties and the Climate Data Store</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="references"></a> References</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -527,15 +509,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exploring-gridded-data-on-aerosol-properties-available-on-c3s">
-<h1><a id='title'></a> Exploring gridded data on Aerosol properties available on C3S<a class="headerlink" href="#exploring-gridded-data-on-aerosol-properties-available-on-c3s" title="Link to this heading">#</a></h1>
+<h1></a> Exploring gridded data on Aerosol properties available on C3S<a class="headerlink" href="#exploring-gridded-data-on-aerosol-properties-available-on-c3s" title="Link to this heading">#</a></h1>
 <p>This first notebook provides a practical introduction to the
 <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-aerosol-properties?tab=overview">C3S Aerosol properties gridded data from 1995 to present derived from satellite observations</a>
 dataset.</p>
 <p>We give a short introduction to the ECV Aerosol Properties, which contains 4 total column variables: Aerosol Optical Depth (AOD), AOD of components (Fine Mode, Dust), and aerosol single scattering albedo (SSA) as a measure of aerosol absorption; and 2 vertically resolved variables:  (dust) aerosol layer height and stratospheric aerosol extinction coefficient (vertical profiles). The algorithms and best practices for these aerosol properties have been developed within the ESA Climate Change Initiative (CCI) and then were transferred for further extension and regular reprocessing + user support to the C3S. We start by downloading the data from the Climate Data Store (CDS) and then demonstrate three use cases for monthly mean single sensor datasets: plot a global mean map, calculate and plot a regional time series and calculate and plot a regional multi-annual mean (“climatology”) and anomaly maps and time series.</p>
 <p>The notebook has six main sections with the following outline:</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="table-of-contents">
-<h1>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="#intro"><span class="xref myst">Introduction</span></a></p></li>
 <li><p><a class="reference internal" href="#cdsapi"><span class="xref myst">Download Data Using CDS API</span></a></p></li>
@@ -545,7 +526,7 @@ dataset.</p>
 <li><p><a class="reference internal" href="#references"><span class="xref myst">References</span></a></p></li>
 </ul>
 <section id="how-to-access-the-notebook">
-<h2>How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Link to this heading">#</a></h2>
+<h3>How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Link to this heading">#</a></h3>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -572,11 +553,11 @@ dataset.</p>
 <p>If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries you will need. You will also need to install the CDS API (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code>) for downloading data in batch mode from the CDS.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1><a id='intro'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><a id='intro'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <br>
 <div style="text-align: justify"> Aerosols are minor constituents of the atmosphere by mass, but critical components in terms of impact on climate. Aerosols influence the global radiation balance directly by scattering and absorbing radiation, and indirectly through influencing cloud reflectivity, cloud cover and cloud lifetime. Aerosols have a lifetime in the atmosphere of a few days up to a week so that they can be transported over thousands of kilometers. They are emitted from several different sources (e.g. natural and anthropogenic combustion processes, biogenic secondary organics, sea spray uplifting over oceans, mineral dust erosion from deserts, volcanic eruptions). Due to the inhomogenous distribution and episodic or seasonal / diurnal patterns of the various sources they exhibit large spatial and temporal variability. The different sources emmit a large range of different aerosol particles with sizes from few nanometers to many micrometers and different chemical composition. On global average aerosol have not changed over the last decades, but regionally there are significant trends and major episodes could be observed (e.g. Australian wildfires, Sahara outbreaks). </div><section id="data-description">
-<h2><a id='data_description'></a> Data description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
+<h3><a id='data_description'></a> Data description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h3>
 <div style="text-align: justify"> The main variables provided by this dataset are meant to cover all relevant information on the global atmospheric aerosol distribution: aerosol optical depth (total abundance), fine mode aerosol optical depth (particles with diameter smaller than 1 micron), dust aerosol optical depth (mineral dust), single scattering albedo (ranging from 0 = fully absorbing to 1 = non-absorbing), (dust) aerosol layer height and stratospheric aerosol extinction coefficient (vertical profiles). These variables are derived from observations from several satellite sensors using a set of different processing techniques. This provides the possibility to derive a large set of complementary aerosol properties needed to describe the complex nature of atmospheric aerosols. Furthermore, different algorithms have their specific strengths and weaknesses, meaning that datasets originating from the same sensor but processed by different algorithms provide a way to evaluate uncertainties (e.g. areas of good or bad agreement between them). Altogether, the aerosol properties dataset is very extensive and offers a choice of complementary options – which is appropriate depends on the intended application. </div>
 <p>The data are provided in netCDF format.</p>
 <p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Aerosol properties, sections “Overview”, “Download data” and “Documentation”:</p>
@@ -586,7 +567,7 @@ dataset.</p>
 <p>There in the “Documentation” part, one can find the Product User Guide and Specifications (PUGS) and the Algorithm Theoretical Baseline (ATBD) for further information on the different algorithms.</p>
 </section>
 <section id="import-libraries">
-<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <p>We will be working with data in NetCDF format. To best handle this data we will use the netCDF4 python library. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
 <p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it: <br></p>
 <div class="cell docutils container">
@@ -664,10 +645,10 @@ dataset.</p>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="download-data-using-cds-api">
-<h1><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h1>
+<section id="download-data-using-cds-api">
+<h2><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h2>
 <section id="cds-api-credentials">
-<h2>CDS API credentials<a class="headerlink" href="#cds-api-credentials" title="Link to this heading">#</a></h2>
+<h3>CDS API credentials<a class="headerlink" href="#cds-api-credentials" title="Link to this heading">#</a></h3>
 <div style="text-align: justify"> We will request data from the Climate Data Store (CDS): https://cds.climate.copernicus.eu/cdsapp#!/home. In case you don't have an account yet, please click on "Login/register" at the right top and select "Create new account". With the process finished you are able to login to the CDS and can search for your preferred data.</div>
 <p>We will request data from the CDS in batch mode with the help of the CDS API.
 First, we need to manually set the CDS API credentials.
@@ -862,7 +843,7 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </section>
 <section id="unpack-the-data">
-<h2>Unpack the data<a class="headerlink" href="#unpack-the-data" title="Link to this heading">#</a></h2>
+<h3>Unpack the data<a class="headerlink" href="#unpack-the-data" title="Link to this heading">#</a></h3>
 <p>The zip-files have now been requested and downloaded to the data directory that we have specified earlier.
 For the purposes of our use cases, we will unzip the archive and store all netCDF files in a specific directory for this algorithm.
 There you can also search and open individual files with any tool suitable for reading netCDF format, e.g. Panoply.
@@ -922,8 +903,8 @@ The files contain gridded data with 1 degree spatial resolution.</p>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="use-case-1-plot-map">
-<h1><a id='map_plot'></a> Use case 1: Plot map<a class="headerlink" href="#use-case-1-plot-map" title="Link to this heading">#</a></h1>
+<section id="use-case-1-plot-map">
+<h2><a id='map_plot'></a> Use case 1: Plot map<a class="headerlink" href="#use-case-1-plot-map" title="Link to this heading">#</a></h2>
 <p>Firstly, we should get an overview of the parameter by plotting the time averaged monthly global distribution.
 The data are stored in NetCDF format, and we will use NetCDF4 Python library to work with the data.
 We will then use Matplotlib and Cartopy to visualise the data.</p>
@@ -1018,8 +999,8 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 <p><strong>FIGURE 1:</strong> You can see here a typical global aerosol map with well-known features (depending on season and variable) such as the spring Sahara dust outflow over the Atlantic (Dust AOD), the autumn biomass burning in Southern Africa and the Amazonas (Fine Mode AOD), and several more.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="use-case-2-regional-time-series">
-<h1><a id='timeseries'></a> Use case 2: Regional time series<a class="headerlink" href="#use-case-2-regional-time-series" title="Link to this heading">#</a></h1>
+<section id="use-case-2-regional-time-series">
+<h2><a id='timeseries'></a> Use case 2: Regional time series<a class="headerlink" href="#use-case-2-regional-time-series" title="Link to this heading">#</a></h2>
 <p>After looking at one example of a monthly time averaged global distribution, in the next step we further investigate the dataset. The single sensor aerosol datasets are up to 15 years long, so that another useful way of visualizing is a time series. We will calculate a regional time series, plot it, and discuss its features.</p>
 <p>Here is a common definition for a set of areas with rather homogeneous aerosol properties and meaningful aerosol behaviour. Own regions can be easily defined the same way.</p>
 <div class="cell docutils container">
@@ -1189,8 +1170,8 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 <p><strong>FIGURE 2:</strong> Such an aerosol time series typically shows a more or less obvious annual cycle related to the annual cycle of the relevant sources and meteorological conditions. In some years and regions exceptional peaks may be seen.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series">
-<h1><a id='climatology'></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series<a class="headerlink" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series" title="Link to this heading">#</a></h1>
+<section id="use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series">
+<h2><a id='climatology'></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series<a class="headerlink" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series" title="Link to this heading">#</a></h2>
 <p>In the next step we further investigate the dataset by comparing the data of individual months to a longer-term mean state (multi-annual mean or “climatology” if of sufficient length).</p>
 <p>We define the sub directory in which the climatology data will be stored.</p>
 <p>Note that the following code blocks are not yet prepared for the stratospheric aerosol extinction profiles.</p>
@@ -1266,7 +1247,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </div>
 <section id="open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">
-<h2>Open NetCDF4 File and plot climatology map for selected calendar month<a class="headerlink" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month" title="Link to this heading">#</a></h2>
+<h3>Open NetCDF4 File and plot climatology map for selected calendar month<a class="headerlink" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month" title="Link to this heading">#</a></h3>
 <p>We select one calendar month, read its netCDF file and prepare the monthly multi-annual mean map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1316,7 +1297,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 <p><strong>FIGURE 3:</strong> This figure shows (similar to the example monthly mean map above) those typical aerosol features which occur in the selected calendar month, but now averaged over several years and thus showing a multi-annual mean state of the atmosphere in that calendar month.</p>
 </section>
 <section id="regional-climatology-calculate-and-plot-as-time-series">
-<h2>Regional climatology: calculate and plot as time series<a class="headerlink" href="#regional-climatology-calculate-and-plot-as-time-series" title="Link to this heading">#</a></h2>
+<h3>Regional climatology: calculate and plot as time series<a class="headerlink" href="#regional-climatology-calculate-and-plot-as-time-series" title="Link to this heading">#</a></h3>
 <p>For the region and variable as selected above and the full timerange used for the multi-annual mean, we calculate now regional averages of the climatology in each calendar month and of each invidual month in the time series. We also calculate the standard deviation for each calendar month as measure of the multi-annual variability.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1347,7 +1328,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 </div>
 </section>
 <section id="plot-climatology-and-its-standard-deviation">
-<h2>Plot “climatology” and its standard deviation<a class="headerlink" href="#plot-climatology-and-its-standard-deviation" title="Link to this heading">#</a></h2>
+<h3>Plot “climatology” and its standard deviation<a class="headerlink" href="#plot-climatology-and-its-standard-deviation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdev_p</span> <span class="o">=</span> <span class="p">[</span><span class="n">climatology</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">sdev</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">climatology</span><span class="p">))]</span> 
@@ -1380,7 +1361,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 <p><strong>FIGURE 4:</strong> The figure shows now the average annual cycle in the selected region extracted from the multi-annual dataset.</p>
 </section>
 <section id="plot-timeseries-with-climatology">
-<h2>Plot timeseries with climatology<a class="headerlink" href="#plot-timeseries-with-climatology" title="Link to this heading">#</a></h2>
+<h3>Plot timeseries with climatology<a class="headerlink" href="#plot-timeseries-with-climatology" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climatology_ges</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1427,7 +1408,7 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 <p><strong>FIGURE 5:</strong> The next figure shows the time series in red compared to the multiannual mean in blue and its standard deviation in light blue shading (both repeated from year to year). Exceptional episodes stand out if the red line breaks out of the blue shade.</p>
 </section>
 <section id="anomaly-time-series">
-<h2>Anomaly time series<a class="headerlink" href="#anomaly-time-series" title="Link to this heading">#</a></h2>
+<h3>Anomaly time series<a class="headerlink" href="#anomaly-time-series" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anomaly</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">climatology_ges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">var</span><span class="p">))]</span> 
@@ -1465,16 +1446,16 @@ The dataset is then read into the Jupyter notebook and the map plot is created, 
 <p>A second Jupyter notebook will create a full Climate Data Record by combining subsequent data record pieces of similar sensors.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="get-more-information-about-aerosol-properties-and-the-climate-data-store">
-<h1>Get more information about Aerosol properties and the Climate Data Store<a class="headerlink" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store" title="Link to this heading">#</a></h1>
+<section id="get-more-information-about-aerosol-properties-and-the-climate-data-store">
+<h2>Get more information about Aerosol properties and the Climate Data Store<a class="headerlink" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-aerosol-properties?tab=overview">C3S Aerosol properties gridded data from 1995 to present derived from satellite observations</a></p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">About the Climate Data Store</a></p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/toolbox/doc/index.html">About the Toolbox documentation</a></p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1><a id='references'></a> References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<section id="references">
+<h2><a id='references'></a> References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="http://wdc.dlr.de/C3S_312b_Lot2/Documentation/AER/C3S2_312a_Lot2_PUGS_AER_latest.pdf">Product User Guide for CDS Aerosol Properties</a></p>
 <p><a class="reference external" href="https://www.mdpi.com/2072-4292/8/5/421">Thomas Popp, Gerrit de Leeuw, Christine Bingen, Christoph Brühl, Virginie Capelle, Alain Chedin,
 Lieven Clarisse, Oleg Dubovik, Roy Grainger, Jan Griesfeller, Andreas Heckel, Stefan Kinne, Lars Klüser,
@@ -1484,6 +1465,7 @@ Gareth Thomas, Lieuwe Gijsbert Tilstra, Sophie Vandenbussche, Pepijn Veefkind, M
 Yong Xue, Development, Production and Evaluation of Aerosol Climate Data Records from European
 Satellite Observations (Aerosol_cci), Remote Sensing, 8, 421; doi:10.3390/rs8050421, 2016</a></p>
 <p><a class="reference internal" href="#title"><span class="xref myst">Back to top the Page</span></a></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1550,35 +1532,33 @@ Satellite Observations (Aerosol_cci), Remote Sensing, 8, 421; doi:10.3390/rs8050
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><a id="title"></a> Exploring gridded data on Aerosol properties available on C3S</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><a id="data_description"></a> Data description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><a id="data_description"></a> Data description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cds-api-credentials">CDS API credentials</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cds-api-credentials">CDS API credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-plot-map"><a id="map_plot"></a> Use case 1: Plot map</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-regional-time-series"><a id="timeseries"></a> Use case 2: Regional time series</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series"><a id="climatology"></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">Open NetCDF4 File and plot climatology map for selected calendar month</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-climatology-calculate-and-plot-as-time-series">Regional climatology: calculate and plot as time series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-climatology-and-its-standard-deviation">Plot “climatology” and its standard deviation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-timeseries-with-climatology">Plot timeseries with climatology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anomaly-time-series">Anomaly time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-plot-map"><a id="map_plot"></a> Use case 1: Plot map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-regional-time-series"><a id="timeseries"></a> Use case 2: Regional time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-climatology-multi-annual-mean-and-anomaly-maps-and-time-series"><a id="climatology"></a> Use case 3: “Climatology” (multi-annual mean) and anomaly - maps and time series</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-netcdf4-file-and-plot-climatology-map-for-selected-calendar-month">Open NetCDF4 File and plot climatology map for selected calendar month</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-climatology-calculate-and-plot-as-time-series">Regional climatology: calculate and plot as time series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-climatology-and-its-standard-deviation">Plot “climatology” and its standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-timeseries-with-climatology">Plot timeseries with climatology</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#anomaly-time-series">Anomaly time series</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store">Get more information about Aerosol properties and the Climate Data Store</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="references"></a> References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store">Get more information about Aerosol properties and the Climate Data Store</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="references"></a> References</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
