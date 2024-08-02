@@ -476,17 +476,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-time-series-of-the-total-solar-irradiance-tsi"><a id="#timeseries-tsi"></a> Use case 1: Time series of the Total Solar Irradiance (TSI)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-time-series-of-the-total-solar-irradiance-tsi">Use case 1: Time series of the Total Solar Irradiance (TSI)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset-subselect-and-calculate-temporal-mean">Load dataset, subselect and calculate temporal mean</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-header-information-to-learn-about-the-dataset">Print header information to learn about the dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">Plot data</a></li>
@@ -502,7 +502,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="references"></a> References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -554,7 +554,7 @@ td, th {
 </section>
 </section>
 <section id="introduction">
-<h2><a id='intro'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <br>
 <div style="text-align: justify"> The Total Solar Irradiance (TSI) is one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECV), and it is a key component of the Earth’s Radiation Budget (ERB). 99,96% of the incoming energy is the radiant energy of the Sun and it's monitored from space by instruments measureing the TSI. Fortunately, the TSI is very stable in the long timescales (thus historical name of TSI as "the solar constant"), although shorter-term solar variations are clearly detectable. The well-known 11-year solar -cycle is also being directly observed by space-based intruments, with variation of ~0.1% max to min. TSI is the spectrally integrated total amount of radiant energy coming from the Sun per square meter of surface perpendicular to the sunlight reduced at a distance of one Astronomical Unit (AU). Stable long-term TSI records re needed to understand the influence of solar variability on climate.</div>
 <div style="text-align: justify">Within the Copernicus Climate Change Service (C3S), a long composite TSI Climate Data Record (CDR) is constructed from different TSI measurements obtained by an ensemble of space instruments. In order to create the composite, the measurements of the individual instruments are first put on a common absolute scale, and their quality is assessed by intercomparison. Then, the composite time series is the average of all available measurements, on a daily basis.<br>  
@@ -589,7 +589,7 @@ This dataset is produced on behalf of C3S by the Royal Meteorological Institute 
 </section>
 </section>
 <section id="download-data-using-cds-api">
-<h2><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h2>
+<h2>Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h2>
 <section id="set-up-cds-api-credentials">
 <h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h3>
 <div style="text-align: justify"> We will request data from the Climate Data Store (CDS): https://cds.climate.copernicus.eu/cdsapp#!/home. In case you don't have an account yet, please click on "Login/register" at the right top and select "Create new account". With the process finished you are able to login to the CDS and can search for your preferred data.</div>
@@ -673,7 +673,7 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </section>
 </section>
 <section id="use-case-1-time-series-of-the-total-solar-irradiance-tsi">
-<h2><a id='#timeseries-tsi'></a> Use case 1: Time series of the Total Solar Irradiance (TSI)<a class="headerlink" href="#use-case-1-time-series-of-the-total-solar-irradiance-tsi" title="Link to this heading">#</a></h2>
+<h2>Use case 1: Time series of the Total Solar Irradiance (TSI)<a class="headerlink" href="#use-case-1-time-series-of-the-total-solar-irradiance-tsi" title="Link to this heading">#</a></h2>
 <br>
 In this learning material, we visualize the time evolution of the Total Solar Irradiance (TSI) using daily values and a 12-month rolling mean. This visualization helps us understand the variations in TSI over time.<section id="load-dataset-subselect-and-calculate-temporal-mean">
 <h3>Load dataset, subselect and calculate temporal mean<a class="headerlink" href="#load-dataset-subselect-and-calculate-temporal-mean" title="Link to this heading">#</a></h3>
@@ -928,13 +928,13 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
 </ul>
 <section id="acknowledgments">
 <h3>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h3>
-<p>The results presented in this document rely on data from the Naval Research Laboratory Total Solar Irradiance 2 (NRLTSI2) model described in <a id='coddington'></a>Coddington et al. 2016 (<a class="reference external" href="https://doi.org/10.1175/BAMS-D-14-00265.1">https://doi.org/10.1175/BAMS-D-14-00265.1</a>). These data were accessed via the LASP Interactive Solar Irradiance Datacenter (LISIRD) (<a class="reference external" href="https://lasp.colorado.edu/lisird/">https://lasp.colorado.edu/lisird/</a>).</p>
+<p>The results presented in this document rely on data from the Naval Research Laboratory Total Solar Irradiance 2 (NRLTSI2) model described in Coddington et al. 2016 (<a class="reference external" href="https://doi.org/10.1175/BAMS-D-14-00265.1">https://doi.org/10.1175/BAMS-D-14-00265.1</a>). These data were accessed via the LASP Interactive Solar Irradiance Datacenter (LISIRD) (<a class="reference external" href="https://lasp.colorado.edu/lisird/">https://lasp.colorado.edu/lisird/</a>).</p>
 </section>
 </section>
 <section id="references">
-<h2><a id='references'></a> References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<p><a id='confluence'></a>Clerbaux N., (2023) Earth Radiation Budget TSI TOA. Copernicus Climate Change Service. <a class="reference external" href="https://confluence.ecmwf.int/x/AFMiEg">https://confluence.ecmwf.int/x/AFMiEg</a></p>
-<p><a id='dewitte'></a>Dewitte, S., &amp; Nevens, S. (2016). The Total Solar Irradiance Climate Data Record. The Astrophysical Journal, 830(1), 25. <a class="reference external" href="https://doi.org/10.3847/0004-637X/830/1/25">https://doi.org/10.3847/0004-637X/830/1/25</a>.</p>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>Clerbaux N., (2023) Earth Radiation Budget TSI TOA. Copernicus Climate Change Service. <a class="reference external" href="https://confluence.ecmwf.int/x/AFMiEg">https://confluence.ecmwf.int/x/AFMiEg</a></p>
+<p>Dewitte, S., &amp; Nevens, S. (2016). The Total Solar Irradiance Climate Data Record. The Astrophysical Journal, 830(1), 25. <a class="reference external" href="https://doi.org/10.3847/0004-637X/830/1/25">https://doi.org/10.3847/0004-637X/830/1/25</a>.</p>
 </section>
 </section>
 
@@ -974,7 +974,7 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><a id='page-top'></a> Analysis of the Earth’s Radiation Budget using the CERES product</p>
+        <p class="prev-next-title">Analysis of the Earth’s Radiation Budget using the CERES product</p>
       </div>
     </a>
     <a class="right-next"
@@ -982,7 +982,7 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
+        <p class="prev-next-title">Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1006,17 +1006,17 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-time-series-of-the-total-solar-irradiance-tsi"><a id="#timeseries-tsi"></a> Use case 1: Time series of the Total Solar Irradiance (TSI)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-time-series-of-the-total-solar-irradiance-tsi">Use case 1: Time series of the Total Solar Irradiance (TSI)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset-subselect-and-calculate-temporal-mean">Load dataset, subselect and calculate temporal mean</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-header-information-to-learn-about-the-dataset">Print header information to learn about the dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">Plot data</a></li>
@@ -1032,7 +1032,7 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgments">Acknowledgments</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="references"></a> References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

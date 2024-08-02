@@ -462,7 +462,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><a id='page-top'></a> Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
+    <h1>Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -473,11 +473,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition"><a id="data"></a> Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
@@ -485,17 +485,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases"><a id="usecases"></a> Use Cases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution"><a id="uc1"></a> Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-sis"><a id="calculation_1"></a> Calculation of the temporal average of SIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-sis"><a id="plot_1"></a> Plot of the temporal average of SIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-sis">Calculation of the temporal average of SIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-sis">Plot of the temporal average of SIS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe"><a id="uc2"></a> Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis"><a id="plot_2"></a> Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis">Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-surface-radiation-budget"><a id="references"></a> Get more information about Surface Radiation Budget</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-surface-radiation-budget">Get more information about Surface Radiation Budget</a></li>
 </ul>
             </nav>
         </div>
@@ -509,7 +509,7 @@ document.write(`
                   
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-climatology-and-relative-anomalies-of-surface-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset">
-<h1><a id='page-top'></a> Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-and-relative-anomalies-of-surface-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
+<h1>Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-and-relative-anomalies-of-surface-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
 <p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Surface Radiation Budget</em>, as well as <em>Cloud Properties and Earth Radiation Budget</em>, while this notebook focuses on <strong>Surface Radiation Budget</strong> as part of the ECV <em>Surface Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">Surface radiation budget from 1979 to present derived from satellite observations</a>.</p>
 <p>The notebook covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests. After a short introduction how to use a Jupyter notebook the analysis starts.<br>
 Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
@@ -530,7 +530,7 @@ Two figures below are results of Use Case 1 and 2, and the result of a successfu
 </ul>
 </section>
 <section id="introduction">
-<h2><a id='introduction'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This tutorial is about surface radiation parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
 <p>The CLARA-A3 dataset provides information of various Surface Radiation Budget (SRB) and Earth Radiation Budget (ERB) parameters as well as Cloud Properties parameters. Each ECV is covered by an own Jupyter Notebook (please also take a look at <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 ERB</a> and <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 Clouds</a>).</p>
 <div style="text-align: justify">In the following, we will concentrate on the surface radiation part. The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (latest status: 09/2023) of continuous observations of radiation and clouds from space, thereby monitoring their spatial and temporal variability on Earth.<br> 
@@ -538,7 +538,7 @@ CLARA-A3 comes not just with a temporal extension, but also with significant alg
 The CLARA-A3 radiation dataset contains all surface and Earth (top-of-the-atmosphere) fluxes, and thus, it enables studies of the full surface radiation budget.</div>
 <p>In the following, two examples are presented to illustrate some ideas on the usage, visualisation, and analysis of the CLARA-A3 surface radiation dataset.</p>
 <section id="dataset-description">
-<h3><a id='description'></a> Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
+<h3>Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
 <p>Please find further information about the datasets as well as the data in the Climate Data Store sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
 <li><p>Surface Radiation Budget: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></p></li>
@@ -549,7 +549,7 @@ The CLARA-A3 radiation dataset contains all surface and Earth (top-of-the-atmosp
 </section>
 </section>
 <section id="prerequisites-and-data-acquisition">
-<h2><a id='data'></a> Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Link to this heading">#</a></h2>
+<h2>Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Link to this heading">#</a></h2>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. It can be run on a cloud environment, or on your own computer. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <style>
 td, th {
@@ -715,7 +715,6 @@ The Surface Radiation Budget (SRB) comprises the quantification of the incoming 
 </div>
 </div>
 <p>With the zip-file unziped and files at the right place we can start reading and processing the data.</p>
-<p><a id='load'></a></p>
 </section>
 <section id="load-dataset">
 <h3>Load dataset<a class="headerlink" href="#load-dataset" title="Link to this heading">#</a></h3>
@@ -2223,13 +2222,13 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </section>
 </section>
 <section id="use-cases">
-<h2><a id='usecases'></a> Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h2>
+<h2>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h2>
 </section>
 <section id="use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">
-<h2><a id='uc1'></a> Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution" title="Link to this heading">#</a></h2>
+<h2>Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution" title="Link to this heading">#</a></h2>
 <p>Use Case #1 aims to give an overview about the SIS radiation distribution. We do that by plotting the global mean SIS from the CLARA-A3 dataset. Please note that you need to open the dataset to be able to execute this usecase, as described in the previous section <a class="reference internal" href="#load"><span class="xref myst">“Load dataset”</span></a>.</p>
 <section id="calculation-of-the-temporal-average-of-sis">
-<h3><a id='calculation_1'></a> Calculation of the temporal average of SIS<a class="headerlink" href="#calculation-of-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
+<h3>Calculation of the temporal average of SIS<a class="headerlink" href="#calculation-of-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
 <p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_sis” and the variable Surface Incoming Radiation or “SIS”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2247,7 +2246,7 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </div>
 </section>
 <section id="plot-of-the-temporal-average-of-sis">
-<h3><a id='plot_1'></a> Plot of the temporal average of SIS<a class="headerlink" href="#plot-of-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
+<h3>Plot of the temporal average of SIS<a class="headerlink" href="#plot-of-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
 <p>With the calculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
 <p>Some further notes:</p>
 <ul class="simple">
@@ -2300,7 +2299,7 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </section>
 </section>
 <section id="use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">
-<h2><a id='uc2'></a> Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe<a class="headerlink" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe" title="Link to this heading">#</a></h2>
+<h2>Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe<a class="headerlink" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe" title="Link to this heading">#</a></h2>
 <p>Please note that you need to open the dataset to be able to execute this usecase, as described in the previous section <a class="reference internal" href="#load"><span class="xref myst">“Load dataset”</span></a>.</p>
 <p>The spatial resolution of the CLARA-A3 radiation dataset is 0.25ºx0.25º that is roughly equal to 25x25 km. With this resolution, it is possible to conduct a regional analysis using the CLARA-A3 radiation datasets. Furthermore, we can use the CLARA-A3 radiation datasets to investigate recent meteorological events. This could be a research project for a student or provide complementary information on a special event, e.g., the analysis of recent heat waves. In recent years, a high number of heat waves appeared in Europe. Particularly interesting is the summer 2003.</p>
 <p>Firstly, we will select the data for year 2003 using <code class="docutils literal notranslate"><span class="pre">sel</span></code> argument.</p>
@@ -2330,7 +2329,7 @@ Seasons are defined as follows:</p>
 </div>
 </div>
 <section id="plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis">
-<h3><a id='plot_2'></a> Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS<a class="headerlink" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
+<h3>Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS<a class="headerlink" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
 <p>With the calculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
 <p>Note: A warnung can occur due to nan’s in the dataset and possible cases where a “divide by nan” happens. That can be ignored.</p>
 <div class="cell docutils container">
@@ -2400,7 +2399,7 @@ Seasons are defined as follows:</p>
 </section>
 </section>
 <section id="get-more-information-about-surface-radiation-budget">
-<h2><a id='references'></a> Get more information about Surface Radiation Budget<a class="headerlink" href="#get-more-information-about-surface-radiation-budget" title="Link to this heading">#</a></h2>
+<h2>Get more information about Surface Radiation Budget<a class="headerlink" href="#get-more-information-about-surface-radiation-budget" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">About
 Surface radiation budget from 1979 to present derived from satellite observations
@@ -2454,7 +2453,7 @@ Surface radiation budget from 1979 to present derived from satellite observation
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><a id='page-top'></a> Exploring Total Column Water Vapour information in the COMBI dataset</p>
+        <p class="prev-next-title">Exploring Total Column Water Vapour information in the COMBI dataset</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2475,11 +2474,11 @@ Surface radiation budget from 1979 to present derived from satellite observation
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition"><a id="data"></a> Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
@@ -2487,17 +2486,17 @@ Surface radiation budget from 1979 to present derived from satellite observation
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases"><a id="usecases"></a> Use Cases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution"><a id="uc1"></a> Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-sis"><a id="calculation_1"></a> Calculation of the temporal average of SIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-sis"><a id="plot_1"></a> Plot of the temporal average of SIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-sis">Calculation of the temporal average of SIS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-sis">Plot of the temporal average of SIS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe"><a id="uc2"></a> Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis"><a id="plot_2"></a> Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis">Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-surface-radiation-budget"><a id="references"></a> Get more information about Surface Radiation Budget</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-surface-radiation-budget">Get more information about Surface Radiation Budget</a></li>
 </ul>
   </nav></div>
 

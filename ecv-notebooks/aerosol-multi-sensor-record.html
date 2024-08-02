@@ -477,22 +477,22 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><a id="data_description"></a> Data description</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data description</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cds-api-credentials">CDS API credentials</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-time-series">Long Time Series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><a id="cdsapi"></a> Download data using CDS API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-extract-and-plot-long-time-series"><a id="timeseries"></a> Use case 1: extract and plot long time series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-calculate-and-plot-a-multi-annual-mean-climatology"><a id="climatology"></a> Use case 2: Calculate and plot a multi-annual mean (“climatology”)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-calculate-and-plot-the-anomaly-time-series"><a id="anomaly"></a> Use case 3: Calculate and plot the anomaly time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Download data using CDS API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-extract-and-plot-long-time-series">Use case 1: extract and plot long time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-calculate-and-plot-a-multi-annual-mean-climatology">Use case 2: Calculate and plot a multi-annual mean (“climatology”)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-calculate-and-plot-the-anomaly-time-series">Use case 3: Calculate and plot the anomaly time series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store">Get more information about aerosol properties and the Climate Data Store</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="intro"></a> References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
 </li>
 </ul>
@@ -555,12 +555,12 @@ dataset.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1><a id='intro'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p>This second notebook focuses on combining subsequent parts of a long term record from a sequence of similar sensors, so that a relevant Climate Data Record (covering at least three decades) can be provided.</p>
 <p>We combine now three AOD data records from three similar dual-view radiometers ATSR-2 (Along Track Scanning Radiometer no. 2), AATSR (Advanced ATSR) and SLSTR (Sea and Land Surface Temperature Radiometer). This can be done since all three instruments use the same measurement principle (conical scan which enables observing the Earth surface with two viewing directions: nadir and oblique) and have the same  set of seven visual and infrared channels. However, there are remaining differences between the instruments in data rates / sampling and most importantly, the pointing direction of the oblique view (forward for ATSR-2 and AATSR, rearward for SLSTR).</p>
 <p>A user should be aware that slower long-term changes of atmospheric aerosols can only be seen in records of several decades while exceptionally large episodic extreme events may be visible in short records of a few years only.</p>
 <section id="data-description">
-<h2><a id='data_description'></a> Data description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
+<h2>Data description<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
 <div style="text-align: justify"> The variable analysed by this dataset is meant to cover the global atmospheric aerosol distribution: aerosol optical depth (total abundance). AOD is here derived from observations from several dual view radiometers using different algorithms with specific strengths and weaknesses. The datasets originate from the same sensors but are processed by different algorithms to provide a way to evaluate uncertainties (e.g. areas of good or bad agreement between them). The notebook can also be applied to Fine-Mode AOD (particles with diameter smaller than 1 micron). </div>
 <p>The data are provided in netCDF format.</p>
 <p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Aerosol properties, sections “Overview”, “Download data” and “Documentation”:</p>
@@ -649,7 +649,7 @@ dataset.</p>
 </section>
 </section>
 <section id="download-data-using-cds-api">
-<h2><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h2>
+<h2>Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h2>
 <section id="cds-api-credentials">
 <h3>CDS API credentials<a class="headerlink" href="#cds-api-credentials" title="Link to this heading">#</a></h3>
 <div style="text-align: justify"> We will request data from the Climate Data Store (CDS): https://cds.climate.copernicus.eu/cdsapp#!/home. In case you don't have an account yet, please click on "Login/register" at the right top and select "Create new account". With the process finished you are able to login to the CDS and can search for your preferred data.</div>
@@ -764,7 +764,7 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </div>
 </section>
 <section id="id1">
-<h2><a id='cdsapi'></a> Download data using CDS API<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>Download data using CDS API<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Then we prepare and start the CDS download.</p>
 <p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
 Here you can search for aerosol data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-aerosol-properties?tab=overview">C3S Aerosol properties gridded data from 1995 to present derived from satellite observations</a>.</p>
@@ -873,7 +873,7 @@ Do not worry, as there may be many error messages for missing months in gaps.</p
 </div>
 </section>
 <section id="use-case-1-extract-and-plot-long-time-series">
-<h2><a id='timeseries'></a> Use case 1: extract and plot long time series<a class="headerlink" href="#use-case-1-extract-and-plot-long-time-series" title="Link to this heading">#</a></h2>
+<h2>Use case 1: extract and plot long time series<a class="headerlink" href="#use-case-1-extract-and-plot-long-time-series" title="Link to this heading">#</a></h2>
 <p>Finally, we get the regional time series as list.</p>
 <p>Since the validation showed a significant bias for SLSTR algorithms with some but limited regional variations, we have to subtract it before combining the time series. Note that we use a global average bias here, while a more sophisticated correction will use regional biases. The bias correctino was detemring by comparison to AOD data from the global sun photometer network AERONET.</p>
 <div class="cell docutils container">
@@ -932,7 +932,7 @@ Do not worry, as there may be many error messages for missing months in gaps.</p
 <p><strong>FIGURE 1:</strong> This time series shows the long term behaviour of aerosol properties in the selected region. Note that a global bias correction was applied for the last part (SLSTR) which may be a bit too large for this region.</p>
 </section>
 <section id="use-case-2-calculate-and-plot-a-multi-annual-mean-climatology">
-<h2><a id='climatology'></a> Use case 2: Calculate and plot a multi-annual mean (“climatology”)<a class="headerlink" href="#use-case-2-calculate-and-plot-a-multi-annual-mean-climatology" title="Link to this heading">#</a></h2>
+<h2>Use case 2: Calculate and plot a multi-annual mean (“climatology”)<a class="headerlink" href="#use-case-2-calculate-and-plot-a-multi-annual-mean-climatology" title="Link to this heading">#</a></h2>
 <p>We calculate a multi-annual mean for each sensor in the time series, i.e. for ATSR-2 (1995-2002), AATSR (2003-2011) and SLSTR (2017-2022) and use each of them for the respective time series. We calcualte the multi-annual means separately per sensor, sicne there is no overlap between AATSR and SLSTR which would allow a relative bias correction without extrapolation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1053,7 +1053,7 @@ Do not worry, as there may be many error messages for missing months in gaps.</p
 <p><strong>FIGURE 2:</strong> This time series plotted over repeated annual climatologies (per sensor) already indicates any episodic events outside the long-term variabiliy. Note that a global bias correction was applied for the last part (SLSTR) which may be a bit too large for this region.</p>
 </section>
 <section id="use-case-3-calculate-and-plot-the-anomaly-time-series">
-<h2><a id='anomaly'></a> Use case 3: Calculate and plot the anomaly time series<a class="headerlink" href="#use-case-3-calculate-and-plot-the-anomaly-time-series" title="Link to this heading">#</a></h2>
+<h2>Use case 3: Calculate and plot the anomaly time series<a class="headerlink" href="#use-case-3-calculate-and-plot-the-anomaly-time-series" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">anomaly</span> <span class="o">=</span> <span class="p">[</span><span class="n">aod</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">aod_climatology_ges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aod</span><span class="p">))]</span>
@@ -1087,7 +1087,7 @@ Do not worry, as there may be many error messages for missing months in gaps.</p
 </ul>
 </section>
 <section id="references">
-<h2><a id='intro'></a> References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="http://wdc.dlr.de/C3S_312b_Lot2/Documentation/AER/C3S2_312a_Lot2_PUGS_AER_latest.pdf">Product User Guide for CDS Aerosol Properties</a></p>
 <p><a class="reference external" href="https://www.mdpi.com/2072-4292/8/5/421">Thomas Popp, Gerrit de Leeuw, Christine Bingen, Christoph Brühl, Virginie Capelle, Alain Chedin,
 Lieven Clarisse, Oleg Dubovik, Roy Grainger, Jan Griesfeller, Andreas Heckel, Stefan Kinne, Lars Klüser,
@@ -1169,22 +1169,22 @@ Satellite Observations (Aerosol_cci), Remote Sensing, 8, 421; doi:10.3390/rs8050
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><a id="data_description"></a> Data description</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data description</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="cdsapi"></a> Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cds-api-credentials">CDS API credentials</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#long-time-series">Long Time Series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><a id="cdsapi"></a> Download data using CDS API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-extract-and-plot-long-time-series"><a id="timeseries"></a> Use case 1: extract and plot long time series</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-calculate-and-plot-a-multi-annual-mean-climatology"><a id="climatology"></a> Use case 2: Calculate and plot a multi-annual mean (“climatology”)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-calculate-and-plot-the-anomaly-time-series"><a id="anomaly"></a> Use case 3: Calculate and plot the anomaly time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Download data using CDS API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-extract-and-plot-long-time-series">Use case 1: extract and plot long time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-calculate-and-plot-a-multi-annual-mean-climatology">Use case 2: Calculate and plot a multi-annual mean (“climatology”)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-calculate-and-plot-the-anomaly-time-series">Use case 3: Calculate and plot the anomaly time series</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-aerosol-properties-and-the-climate-data-store">Get more information about aerosol properties and the Climate Data Store</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="intro"></a> References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
 </li>
 </ul>

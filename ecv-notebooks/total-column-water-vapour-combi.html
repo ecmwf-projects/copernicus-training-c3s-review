@@ -464,7 +464,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><a id='page-top'></a> Exploring Total Column Water Vapour information in the COMBI dataset</h1>
+    <h1>Exploring Total Column Water Vapour information in the COMBI dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -475,40 +475,40 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="dataset"></a> Dataset description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data"><a id="cdsapi"></a> Search, download and view data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import"></a> Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="download"></a> Download Data Using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">Search, download and view data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download Data Using CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data"><a id="view"></a> View data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data">View data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">Plot data</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-total-column-water-vapour"><a id="climatology"></a> Climatology of the total column water vapour</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-tcwv"><a id="global_climatology"></a> Time averaged global climatological distribution of TCWV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-tcwv"><a id="seasonal_climatology"></a> Time averaged seasonal climatological distribution of TCWV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-monthly-mean-climatology-of-tcwv"><a id="zonal_climatology"></a> Zonally averaged monthly mean climatology of TCWV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-total-column-water-vapour">Climatology of the total column water vapour</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-tcwv">Time averaged global climatological distribution of TCWV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-tcwv">Time averaged seasonal climatological distribution of TCWV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-monthly-mean-climatology-of-tcwv">Zonally averaged monthly mean climatology of TCWV</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-total-column-water-vapour"><a id="timeseries"></a> Time series and trend analysis of the total column water vapour</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-tcwv"><a id="global_timeseries"></a> Global time series of TCWV</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-total-column-water-vapour">Time series and trend analysis of the total column water vapour</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-tcwv">Global time series of TCWV</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-aggregation">Spatial aggregation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Plot data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-climatology-of-tcwv"><a id="seasonal_trend"></a> Monthly climatology of TCWV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-tcwv"><a id="global_trend"></a> Trend analysis and seasonal cycle of TCWV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-climatology-of-tcwv">Monthly climatology of TCWV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-tcwv">Trend analysis and seasonal cycle of TCWV</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><a id="conclusion"></a> Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -522,7 +522,7 @@ document.write(`
                   
   <p><img alt="" src="ecv-notebooks/Figures/Logos.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="exploring-total-column-water-vapour-information-in-the-combi-dataset">
-<h1><a id='page-top'></a> Exploring Total Column Water Vapour information in the COMBI dataset<a class="headerlink" href="#exploring-total-column-water-vapour-information-in-the-combi-dataset" title="Link to this heading">#</a></h1>
+<h1>Exploring Total Column Water Vapour information in the COMBI dataset<a class="headerlink" href="#exploring-total-column-water-vapour-information-in-the-combi-dataset" title="Link to this heading">#</a></h1>
 <p>This notebook-tutorial provides an introduction to the use of the
 combined global near-infrared (NIR) and microwave (MW) imager total column water vapour (<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=overview">TCWV</a>) data record (COMBI) for climate studies.</p>
 <div style="text-align: justify"> The Water Vapour (WV) Essential Climate Variable (ECV) and the COMBI TCWV product are described in introduction. Then, a first use case provides an analysis of the time averaged global and seasonal climatological distributions of the total column water vapour as well as the monthly mean climatology. The second use case presents the time series and trend analysis of TCWV. Step-by-step instructions are provided on data preparation; the use cases are extensively documented and each line of code is explained. </div>
@@ -575,13 +575,13 @@ td, th {
   </tr>
 </table><br></section>
 <section id="introduction">
-<h2><a id='intro'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <br>
 <div style="text-align: justify"> Anthropogenic activities and natural variations from years to decades shape the Earth's climate. Water vapour has been recognised as an Essential Climate Variable (ECV) as it provides the basis for all cloud formation, cloud physics, and furthermore influences the Earth's heat budget due to its high absorbance of long and short-wave radiation. It is a natural greenhouse gas with a global warming potential much higher than carbon dioxide. An increase in temperature will lead to an increase in water vapour and due to this coupling mechanism to the acceleration of global warming. Total column water vapour (TCWV) is a measure of the integrated water vapour content of the atmosphere. </div>
 <div style="text-align: justify"> In the Copernicus Climate Data Store (CDS), the EUMETSAT Satellite Application Facility on Climate Monitoring has brokered the COMBI product. It combines the Special Sensor Microwave - Imager/Sensor (SSMI/S) TCWV retrievals in the microwave (MW) spectrum over ocean surfaces with the Medium Resolution Imaging Spectrometer (MERIS) retrievals, the Moderate-resolution Imaging Spectro-radiometer (MODIS) retrievals and the Ocean and Land Colour Imager (OLCI) retrievals in the near-infrared (NIR) domain over land surfaces. The COMBI product also covers sea-ice and coastal regions, but with a reduced quality. The TCWV dataset covers the time period July 2002 to December 2017. </div>
 <div style="text-align: justify"> In this Jupyter notebook tutorial, we present examples, based on monthly mean TCWV products, to illustrate the philosophy on the usage, visualisation, and analysis of the TCWV dataset. First you get to sort out data access and retrieval, and get all the right libraries in place for the computations. Then we take you through a short process of inspecting the retrieved data to see if it's all ok for analysis. You then have a chance to visualise your data, before we take you through some climatology analyses that you could use in your work. </div></section>
 <section id="dataset-description">
-<h2><a id='dataset'></a> Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h2>
+<h2>Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h2>
 <p>You will find further information about the dataset in the Climate Data Store catalogue entry total column water vapour (see link to the entry below), sections “<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=overview">Overview</a>”, “<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=form">Download data</a>” and “<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=doc">Documentation</a>”:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=overview">Global monthly and daily high-spatial resolution of total column water vapour from 2002 to 2017 derived from satellite observations</a></p></li>
@@ -591,14 +591,14 @@ The “<a class="reference external" href="https://cds.climate.copernicus.eu/cds
 In the “<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=doc">Documentation</a>” you will find useful documents like the Product User Guide and Specification (PUGS) with general information on TCWV, the Validation Report, or the Algorithm Theoretical Basis Document (ATBD) that describes the retrieval algorithms.</p>
 </section>
 <section id="search-download-and-view-data">
-<h2><a id='cdsapi'></a> Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Link to this heading">#</a></h2>
+<h2>Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Link to this heading">#</a></h2>
 <p>Before we begin, we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various Python libraries that we will need.
 The <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a> is used to download the data programatically from the CDS. This package is not included by default on most cloud platforms yet. We can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:
 <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code>
 <br>
 To run this notebook in our own environment, we’d rather install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries we will need. We should also use <a class="reference external" href="https://www.python.org/downloads/release/python-394/">Python 3.9.4</a> for the purpose of reproducibility and compatibility, with respect to the latest updates of the different libraries.</p>
 <section id="import-libraries">
-<h3><a id='import'></a> Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <p>The data have been stored in files written in NetCDF format. To best handle these, we will import the library <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> which is specifically designed for manipulating multidimensional arrays in the field of geosciences. The libraries <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a> will also be imported for plotting and visualising the analysed data. We will also import the libraries <a class="reference external" href="https://docs.python.org/3/library/zipfile.html">zipfile</a> to work with zip-archives, <a class="reference external" href="https://docs.python.org/3/library/os.html">OS</a> to use OS-functions and pattern expansion, and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> for disabling warnings for data download via CDS API.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -632,7 +632,7 @@ To run this notebook in our own environment, we’d rather install <a class="ref
 </div>
 </section>
 <section id="download-data-using-cds-api">
-<h3><a id='download'></a> Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
+<h3>Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
 <section id="set-up-cds-api-credentials">
 <h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h4>
 <p>We will request data from the Climate Data Store (CDS): <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>. If you do not have an account yet, please click on <strong>“login/register”</strong> at the right top and select <strong>“Create new account”</strong>. Once the registration process is finished, you will be able to login to the CDS and have a look at your favourite data.</p>
@@ -718,7 +718,7 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </section>
 </section>
 <section id="view-data">
-<h3><a id='view'></a> View data<a class="headerlink" href="#view-data" title="Link to this heading">#</a></h3>
+<h3>View data<a class="headerlink" href="#view-data" title="Link to this heading">#</a></h3>
 <section id="inspect-data">
 <h4>Inspect data<a class="headerlink" href="#inspect-data" title="Link to this heading">#</a></h4>
 <p>The data have been downloaded. We can now unzip the archive and merge all files into one NetCDF file to inspect them. NetCDF is a commonly used format for array-oriented scientifc data. We use the <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html">Xarray</a> library to read and process these data. Xarray is an open source project and Python package that makes working with labelled multi-dimensional arrays simple and efficient. We will read the data from our NetCDF file into an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html">Xarray Dataset</a>.</p>
@@ -1790,10 +1790,10 @@ Attributes:
 </section>
 </section>
 <section id="climatology-of-the-total-column-water-vapour">
-<h2><a id='climatology'></a> Climatology of the total column water vapour<a class="headerlink" href="#climatology-of-the-total-column-water-vapour" title="Link to this heading">#</a></h2>
+<h2>Climatology of the total column water vapour<a class="headerlink" href="#climatology-of-the-total-column-water-vapour" title="Link to this heading">#</a></h2>
 <br>
 <div style="text-align: justify"> In this section we will analyse the time averaged global and seasonal climatological distributions of the total column water vapour as well as the monthly mean climatology. </div><section id="time-averaged-global-climatological-distribution-of-tcwv">
-<h3><a id='global_climatology'></a> Time averaged global climatological distribution of TCWV<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-tcwv" title="Link to this heading">#</a></h3>
+<h3>Time averaged global climatological distribution of TCWV<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-tcwv" title="Link to this heading">#</a></h3>
 <p>Let us calculate the mean climatology of total column water vapour for the time period January 2003 to December 2017. <br>
 First, to select the specific time range, we can use the Xarray method <code class="docutils literal notranslate"><span class="pre">sel</span></code> that indexes the data and dimensions by the appropriate indexers.
 Then, we apply the method <code class="docutils literal notranslate"><span class="pre">mean</span></code> to calculate the mean along the time dimension.</p>
@@ -1851,7 +1851,7 @@ Then, we apply the method <code class="docutils literal notranslate"><span class
 <p>The total column water vapour has a dominant structure along the equator and over water masses where most of the evaporation takes place, <em>i.e.</em> mainly in the tropics. Solar irradiance and its relative position on the Earth’s surface (solar zenith angle) controls evaporation, leading to the transition of water from the liquid phase to the gaseous phase, which is subsequently advected to higher altitudes. This is the main driver of the Inter-Tropical Convergence Zone (ITCZ) along the equator, visible as a band of high amount of total column water vapour from the East Pacific to the West Pacific, over Central America and Brazil, the Atlantic Ocean, Africa and the Indian Ocean.</p>
 </section>
 <section id="time-averaged-seasonal-climatological-distribution-of-tcwv">
-<h3><a id='seasonal_climatology'></a> Time averaged seasonal climatological distribution of TCWV<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-tcwv" title="Link to this heading">#</a></h3>
+<h3>Time averaged seasonal climatological distribution of TCWV<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-tcwv" title="Link to this heading">#</a></h3>
 <p>Now, let us have a look at the seasonal climatological distribution of total column water vapour. <br>
 First, we will use the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, to split the data according to the seasons; then we will average them over the years. <br>
 Seasons are defined as follows:</p>
@@ -2377,7 +2377,7 @@ Coordinates:
 <p>The general pattern is overall the same as in <strong>Figure 1</strong> with higher values in the tropics and lower values in the extra tropics. The band of high amount of TCWV (particularly noticeable between South-East Asia and North Australia) oscillates around the equator, reaching its highest values in the Summer Hemisphere. It confirms the dominant influence of the solar radiation over the course of the inter-tropical convergence zone.</p>
 </section>
 <section id="zonally-averaged-monthly-mean-climatology-of-tcwv">
-<h3><a id='zonal_climatology'></a> Zonally averaged monthly mean climatology of TCWV<a class="headerlink" href="#zonally-averaged-monthly-mean-climatology-of-tcwv" title="Link to this heading">#</a></h3>
+<h3>Zonally averaged monthly mean climatology of TCWV<a class="headerlink" href="#zonally-averaged-monthly-mean-climatology-of-tcwv" title="Link to this heading">#</a></h3>
 <p>Let us now calculate the zonally averaged monthly mean climatology of the total column water vapour over the time period January 2003 - December 2017, and visualise it in the form of a Hovmöller diagram. <br>
 A Hovmöller diagram is a common way of plotting meteorological or climatological data (such as the zonally averaged monthly mean TCWV) to depict their changes over time as a function of latitude or longitude. In our case, time will be recorded along the abscissa and latitude along the ordinate. <br>
 First, we will apply the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the <strong>“tcwv”</strong> <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> by month, and then we will compute the average for each monthly group and longitude band. <br>
@@ -3275,10 +3275,10 @@ Coordinates:
 </section>
 </section>
 <section id="time-series-and-trend-analysis-of-the-total-column-water-vapour">
-<h2><a id='timeseries'></a> Time series and trend analysis of the total column water vapour<a class="headerlink" href="#time-series-and-trend-analysis-of-the-total-column-water-vapour" title="Link to this heading">#</a></h2>
+<h2>Time series and trend analysis of the total column water vapour<a class="headerlink" href="#time-series-and-trend-analysis-of-the-total-column-water-vapour" title="Link to this heading">#</a></h2>
 <br>
 <div style='text-align: justify'> After looking at the time averaged global distribution of the total column water vapour, we further investigate the dataset. The COMBI product spans over 15 years of satellite observations, and another useful way of analysing and visualizing the temporal evolution of total column water vapour is using the time series. We will calculate the global time series, plot it, and discuss most important features. </div><section id="global-time-series-of-tcwv">
-<h3><a id='global_timeseries'></a> Global time series of TCWV<a class="headerlink" href="#global-time-series-of-tcwv" title="Link to this heading">#</a></h3>
+<h3>Global time series of TCWV<a class="headerlink" href="#global-time-series-of-tcwv" title="Link to this heading">#</a></h3>
 <p>We first create a temporal subset for the period January 2003 to December 2017.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3799,7 +3799,7 @@ Attributes:
 </section>
 </section>
 <section id="monthly-climatology-of-tcwv">
-<h3><a id='seasonal_trend'></a> Monthly climatology of TCWV<a class="headerlink" href="#monthly-climatology-of-tcwv" title="Link to this heading">#</a></h3>
+<h3>Monthly climatology of TCWV<a class="headerlink" href="#monthly-climatology-of-tcwv" title="Link to this heading">#</a></h3>
 <p>Let us now study the monthly climatology of the total column water vapour over the time period covered by the COMBI product. <br>
 It corresponds to the mean and the associated standard deviation of the global time series of TCWV and is calculated for each month over the years 2003-2017. <br>
 First, we will apply the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to the Xarray <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> <strong>“tcwv_weighted_mean”</strong> which we have defined in the previous section. Then, we will compute the mean and the associated standard deviation by using the <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">std()</span></code> methods respectively.</p>
@@ -3891,7 +3891,7 @@ First, we will apply the <code class="docutils literal notranslate"><span class=
 <p>We observe a seasonal variation of TCWV with an amplitude of 3 kg/m<span class="math notranslate nohighlight">\(^{2}\)</span>, reaching its highest values around July-August and its lowest values around December-January. The mean difference of 1.025 kg/m<span class="math notranslate nohighlight">\(^{2}\)</span> between the highest seasonal envelope corresponding to the year 2010 and the lowest seasonal envelope corresponding to the year 2011 is related to the 2010-2012 “La Niña” event, one of the strongest on record. We will now procede to the seasonal decomposition of the total column water vapour to study this trend in more details.</p>
 </section>
 <section id="trend-analysis-and-seasonal-cycle-of-tcwv">
-<h3><a id='global_trend'></a> Trend analysis and seasonal cycle of TCWV<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-tcwv" title="Link to this heading">#</a></h3>
+<h3>Trend analysis and seasonal cycle of TCWV<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-tcwv" title="Link to this heading">#</a></h3>
 <br>
 The time series can be further analysed by extracting the trend, or the running annual mean, and the seasonal cycle.<p>To this end, we will convert the Xarray <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> into a time series with the <a class="reference external" href="https://pandas.pydata.org/">pandas</a> library. Then we will decompose it into the trend, the seasonal cycle and the residuals by using the <code class="docutils literal notranslate"><span class="pre">seasonal_decompose()</span></code> method. Finally we will visualize the results.</p>
 <div class="cell docutils container">
@@ -3922,7 +3922,7 @@ The time series can be further analysed by extracting the trend, or the running 
 </section>
 </section>
 <section id="conclusion">
-<h2><a id='conclusion'></a> Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <br>
 <div style='text-align: justify'> In this notebook we have provided some use cases based on the COMBI TCWV data record to illustrate the way this dataset can be used to study, analyse and visualise this essential climate variable. The current dataset indicates a slight increase of total column water vapour between January 2003 and December 2017. Comparisons with other independent datasets can be made to further investigate the trends that can be attributed to global climate change, El-Niño events, etc. </div></section>
 </section>
@@ -3963,7 +3963,7 @@ The time series can be further analysed by extracting the trend, or the running 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
+        <p class="prev-next-title">Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
       </div>
     </a>
     <a class="right-next"
@@ -3992,40 +3992,40 @@ The time series can be further analysed by extracting the trend, or the running 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="dataset"></a> Dataset description</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data"><a id="cdsapi"></a> Search, download and view data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import"></a> Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="download"></a> Download Data Using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">Search, download and view data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download Data Using CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data"><a id="view"></a> View data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data">View data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">Plot data</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-total-column-water-vapour"><a id="climatology"></a> Climatology of the total column water vapour</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-tcwv"><a id="global_climatology"></a> Time averaged global climatological distribution of TCWV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-tcwv"><a id="seasonal_climatology"></a> Time averaged seasonal climatological distribution of TCWV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-monthly-mean-climatology-of-tcwv"><a id="zonal_climatology"></a> Zonally averaged monthly mean climatology of TCWV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-the-total-column-water-vapour">Climatology of the total column water vapour</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-tcwv">Time averaged global climatological distribution of TCWV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-tcwv">Time averaged seasonal climatological distribution of TCWV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-monthly-mean-climatology-of-tcwv">Zonally averaged monthly mean climatology of TCWV</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-total-column-water-vapour"><a id="timeseries"></a> Time series and trend analysis of the total column water vapour</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-tcwv"><a id="global_timeseries"></a> Global time series of TCWV</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-the-total-column-water-vapour">Time series and trend analysis of the total column water vapour</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-tcwv">Global time series of TCWV</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-aggregation">Spatial aggregation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Plot data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-climatology-of-tcwv"><a id="seasonal_trend"></a> Monthly climatology of TCWV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-tcwv"><a id="global_trend"></a> Trend analysis and seasonal cycle of TCWV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-climatology-of-tcwv">Monthly climatology of TCWV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-tcwv">Trend analysis and seasonal cycle of TCWV</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><a id="conclusion"></a> Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 
