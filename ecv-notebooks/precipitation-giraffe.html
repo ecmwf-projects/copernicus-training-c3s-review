@@ -216,8 +216,8 @@
 <li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">How to access, read and use satellite XCO2 and XCH4 Level 3 data products</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html"></a> Exploring gridded data on Aerosol properties available on C3S</li>
-<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html"><a id="title"></a> Visualising a full Climate Data Record of multi-sensor Aerosol data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html">Exploring gridded data on Aerosol properties available on C3S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">Visualising a full Climate Data Record of multi-sensor Aerosol data</a></li>
 
 
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
@@ -232,7 +232,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Greenland Ice Sheet velocity</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Gravimetric Mass Balance for Ice Sheet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><a id="page-top"></a> Exploring Precipitation information in the GIRAFE dataset</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploring Precipitation information in the GIRAFE dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
 <ul class="nav bd-sidenav">
@@ -462,7 +462,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><a id='page-top'></a> Exploring Precipitation information in the GIRAFE dataset</h1>
+    <h1>Exploring Precipitation information in the GIRAFE dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -476,39 +476,39 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebooks">How to access the notebooks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> 1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data"><a id="cdsapi"></a> 2. Search, download and view data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import"></a> 2.1. Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="download"></a> 2.2. Download Data Using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">2. Search, download and view data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">2.1. Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">2.2. Download Data Using CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">2.2.1. Set up CDS API credentials</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">2.2.2. Search for data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">2.2.3. Download data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data"><a id="view"></a> 2.3. View data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data">2.3. View data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">2.3.1. Inspect data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">2.3.2. Plot data</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-precipitations"><a id="climatology"></a> 3. Climatology of precipitations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-precipitations"><a id="global_climatology"></a> 3.1. Time averaged global climatological distribution of precipitations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-precipitations"><a id="seasonal_climatology"></a> 3.2. Time averaged seasonal climatological distribution of precipitations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-precipitations"><a id="zonal_climatology"></a> 3.3. Zonally averaged montly mean climatology of precipitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-precipitations">3. Climatology of precipitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-precipitations">3.1. Time averaged global climatological distribution of precipitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-precipitations">3.2. Time averaged seasonal climatological distribution of precipitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-precipitations">3.3. Zonally averaged montly mean climatology of precipitations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-precipitations"><a id="timeseries"></a> 4. Time series and trend analysis of precipitations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-precipitations"><a id="global_timeseries"></a> 4.1. Global time series of precipitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-precipitations">4. Time series and trend analysis of precipitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-precipitations">4.1. Global time series of precipitations</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-aggregation">4.1.1. Spatial aggregation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1.2. Plot data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-precipitation"><a id="global_trend"></a> 4.2. Trend analysis and seasonal cycle of precipitation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-time-series-and-trend-analysis"><a id="regional_trend"></a> 4.3. Regional time series and trend analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-precipitation">4.2. Trend analysis and seasonal cycle of precipitation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-time-series-and-trend-analysis">4.3. Regional time series and trend analysis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><a id="conclusion"></a> 5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -520,9 +520,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><img alt="" src="ecv-notebooks/Figures/Logos.png" /></p>
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="exploring-precipitation-information-in-the-girafe-dataset">
-<h1><a id='page-top'></a> Exploring Precipitation information in the GIRAFE dataset<a class="headerlink" href="#exploring-precipitation-information-in-the-girafe-dataset" title="Link to this heading">#</a></h1>
+<h1>Exploring Precipitation information in the GIRAFE dataset<a class="headerlink" href="#exploring-precipitation-information-in-the-girafe-dataset" title="Link to this heading">#</a></h1>
 <p>This notebook-tutorial provides an introduction to the use of the Global Interpolated RAinFall Estimation (<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-precipitation?tab=overview">GIRAFE</a>) data record for climate studies.</p>
 <div style="text-align: justify"> The Precipitation (PRE) Essential Climate Variable (ECV) and the GIRAFE product are described in introduction. Then, a first use case provides an analysis of the time averaged global and seasonal climatological distributions of the Precipitation field as well as the monthly mean climatology. The second use case presents the time series and trend analysis of Precipitation. Step-by-step instructions are provided on data preparation; the use cases are extensively documented and each line of code is explained. </div>
 <div style="text-align: justify"> The three figures below show some results from the use cases and illustrate the successful run of the code. </div><p><img alt="" src="ecv-notebooks/Figures/girafe_banner.png" /></p>
@@ -576,7 +576,7 @@ td, th {
 </table><br></section>
 </section>
 <section id="introduction">
-<h2><a id='intro'></a> 1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <br>
 <div style="text-align: justify"> Anthropogenic activities and natural variations from years to decades shape the Earth's climate. Water and energy cycles are central to the physics of climate change. Within the hydrological cycle, precipitation has been recognised as an Essential Climate Variable (ECV) as it is the main component of water transport from the atmosphere to the Earth’s surface. Precipitation varies strongly, depending on geographical location, season, synopsis, and other meteorological factors. The supply with freshwater through precipitation is vital for many subsystems of the climate and the environment, but there are also hazards related to extensive precipitation (floods) or to the lack of precipitation (droughts). </div>
 <div style="text-align: justify"> In the Copernicus Climate Data Store (CDS), the EUMETSAT Satellite Application Facility on Climate Monitoring has brokered the Global Interpolated RAinFall Estimation (GIRAFE) product. It merges microwave (MW) sounder- and imager-based estimations of instantaneous surface precipitation (over land and ocean) with infrared (IR) observations from geostationary platforms along the equator. GIRAFE is a global 1° x 1° latitude-longitude data record that is produced at a daily temporal resolution, as well as on a monthly mean basis. It covers the time period January 2002 to December 2022. </div>
@@ -586,13 +586,13 @@ td, th {
 </ul>
 <br></section>
 <section id="search-download-and-view-data">
-<h2><a id='cdsapi'></a> 2. Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Link to this heading">#</a></h2>
+<h2>2. Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Link to this heading">#</a></h2>
 <p>Before we begin, we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various Python libraries that we will need.
 The <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a> is used to download the data programatically from the CDS. This package is not included by default on most cloud platforms yet. We can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:
 <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code> <br>
 To run this notebook in our own environment, we would rather install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which contains most of the libraries you will need. We should also use <a class="reference external" href="https://www.python.org/downloads/release/python-394/">Python 3.9.4</a> for the purpose of reproducibility and compatibility, with respect to the latest updates of the different libraries.</p>
 <section id="import-libraries">
-<h3><a id='import'></a> 2.1. Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
+<h3>2.1. Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <p>The data have been stored in files written in NetCDF format. To best handle these, we will import the library <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> which is specifically designed for manipulating multidimensional arrays in the field of geosciences. The libraries <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a> will also be imported for plotting and visualising the analysed data. We will also import the libraries <a class="reference external" href="https://docs.python.org/3/library/zipfile.html">zipfile</a> to work with zip-archives, <a class="reference external" href="https://docs.python.org/3/library/os.html">OS</a> to use OS-functions and pattern expansion, and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> for disabling warnings for data download via CDS API.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -625,7 +625,7 @@ To run this notebook in our own environment, we would rather install <a class="r
 </div>
 </section>
 <section id="download-data-using-cds-api">
-<h3><a id='download'></a> 2.2. Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
+<h3>2.2. Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
 <section id="set-up-cds-api-credentials">
 <h4>2.2.1. Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h4>
 <p>We will request data from the Climate Data Store (CDS): <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>. If you do not have an account yet, please click on <strong>“login/register”</strong> at the right top and select <strong>“Create new account”</strong>. Once the registration process is finished, you will be able to login to the CDS and have a look at your favourite data.</p>
@@ -713,7 +713,7 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </section>
 </section>
 <section id="view-data">
-<h3><a id='view'></a> 2.3. View data<a class="headerlink" href="#view-data" title="Link to this heading">#</a></h3>
+<h3>2.3. View data<a class="headerlink" href="#view-data" title="Link to this heading">#</a></h3>
 <section id="inspect-data">
 <h4>2.3.1. Inspect data<a class="headerlink" href="#inspect-data" title="Link to this heading">#</a></h4>
 <p>The data have been downloaded. We can now unzip the archive and merge all files into one NetCDF file to inspect them. NetCDF is a commonly used format for array-oriented scientifc data. To read and process these data, we will make use of the <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html">Xarray</a> library. Xarray is an open source project and Python package that makes working with labelled multi-dimensional arrays simple and efficient. We will read the data from our NetCDF file into an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html">Xarray Dataset</a>.</p>
@@ -1657,12 +1657,12 @@ Attributes:
 </section>
 </section>
 <section id="climatology-of-precipitations">
-<h2><a id='climatology'></a> 3. Climatology of precipitations<a class="headerlink" href="#climatology-of-precipitations" title="Link to this heading">#</a></h2>
-<br>
-<div style="text-align: justify"> In this section we will analyse the time averaged global and seasonal climatological distributions of GIRAFE precipitation as well as the monthly mean climatology. </div><section id="time-averaged-global-climatological-distribution-of-precipitations">
-<h3><a id='global_climatology'></a> 3.1. Time averaged global climatological distribution of precipitations<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-precipitations" title="Link to this heading">#</a></h3>
-<p>Let us calculate the mean climatology of precipitations for the time period January 2002 to December 2022. <br>
-First we have to select the specific time range by using the Xarray method <code class="docutils literal notranslate"><span class="pre">sel</span></code> that indexes the data and dimensions by the appropriate indexers.
+<h2>3. Climatology of precipitations<a class="headerlink" href="#climatology-of-precipitations" title="Link to this heading">#</a></h2>
+<p>In this section we will analyse the time averaged global and seasonal climatological distributions of GIRAFE precipitation as well as the monthly mean climatology.</p>
+<section id="time-averaged-global-climatological-distribution-of-precipitations">
+<h3>3.1. Time averaged global climatological distribution of precipitations<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-precipitations" title="Link to this heading">#</a></h3>
+<p>Let us calculate the mean climatology of precipitations for the time period January 2002 to December 2022.</p>
+<p>First we have to select the specific time range by using the Xarray method <code class="docutils literal notranslate"><span class="pre">sel</span></code> that indexes the data and dimensions by the appropriate indexers.
 Then, we apply the method <code class="docutils literal notranslate"><span class="pre">mean</span></code> to calculate the mean along the time dimension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1721,10 +1721,11 @@ Then, we apply the method <code class="docutils literal notranslate"><span class
 </div>
 </div>
 <p><strong>Figure 1</strong> shows the global climatological distribution of precipitations for the time period of January 2002 - December 2022 over ocean and land.</p>
-<div style= "text-align: justify"> The global climatological field of precipitations has a dominant structure along the equator, over water masses and rain forests like Amazonia. Most of the evaporation or evapotranspiration takes place in the tropics. Indeed, Solar irradiance and its relative position on the Earth's surface (solar zenith angle) controls evaporation, leading to the transition of water from the liquid phase to the gaseous phase, which is subsequently advected to higher altitudes and then condensated into precipitations. This mechanism is the main driver of the Inter-Tropical Convergence Zone (ITCZ) along the equator. </div>
-<div style= "text-align: justify"> There are also moderately high values of daily accumulated precipitation amounts in the region of the Gulf Stream extension and the Kuroshio, the East of Japan, in association with the storm track regions. </div></section>
+<p>The global climatological field of precipitations has a dominant structure along the equator, over water masses and rain forests like Amazonia. Most of the evaporation or evapotranspiration takes place in the tropics. Indeed, Solar irradiance and its relative position on the Earth’s surface (solar zenith angle) controls evaporation, leading to the transition of water from the liquid phase to the gaseous phase, which is subsequently advected to higher altitudes and then condensated into precipitations. This mechanism is the main driver of the Inter-Tropical Convergence Zone (ITCZ) along the equator.</p>
+<p>There are also moderately high values of daily accumulated precipitation amounts in the region of the Gulf Stream extension and the Kuroshio, the East of Japan, in association with the storm track regions.</p>
+</section>
 <section id="time-averaged-seasonal-climatological-distribution-of-precipitations">
-<h3><a id='seasonal_climatology'></a> 3.2. Time averaged seasonal climatological distribution of precipitations<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-precipitations" title="Link to this heading">#</a></h3>
+<h3>3.2. Time averaged seasonal climatological distribution of precipitations<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-precipitations" title="Link to this heading">#</a></h3>
 <p>Now, let us have a look at the seasonal climatological distribution of GIRAFE precipitations. <br>
 For this purpose, we will use the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, to split the data according to the seasons, and then average them over the years. <br>
 Seasons are defined as follows:</p>
@@ -2310,11 +2311,11 @@ Attributes:
 <p>The general pattern is overall the same as in <strong>Figure 1</strong> with higher values in the tropics and lower values in the extra tropics. The band of high amount of precipitations (particularly noticeable between South-East Asia and North Australia) oscillates around the equator, reaching its highest values in the Summer Hemisphere, which confirms the dominant influence of the solar radiation over the course of the inter-tropical convergence zone.</p>
 </section>
 <section id="zonally-averaged-montly-mean-climatology-of-precipitations">
-<h3><a id='zonal_climatology'></a> 3.3. Zonally averaged montly mean climatology of precipitations<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-precipitations" title="Link to this heading">#</a></h3>
+<h3>3.3. Zonally averaged montly mean climatology of precipitations<a class="headerlink" href="#zonally-averaged-montly-mean-climatology-of-precipitations" title="Link to this heading">#</a></h3>
 <p>Let us now calculate the zonally averaged monthly mean climatology of precipitations over the time period January 2002 - December 2022, and visualise it in the form of a Hovmöller diagram. <br>
-A Hovmöller diagram is a common way of plotting meteorological or climatological data to depict their changes over time as a function of latitude or longitude. In our case, time will be recorded along the abscissa and latitude along the ordinate. <br>
-First, we will apply the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the <strong>“precip”</strong> <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> by month, and then we will compute the average for each monthly group and longitude band. <br>
-The resulting data array is the zonally averaged monthly mean climatology for GIRAFE precipitations based on reference January 2002 - December 2022.</p>
+A Hovmöller diagram is a common way of plotting meteorological or climatological data to depict their changes over time as a function of latitude or longitude. In our case, time will be recorded along the abscissa and latitude along the ordinate.</p>
+<p>First, we will apply the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the <strong>“precip”</strong> <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> by month, and then we will compute the average for each monthly group and longitude band.</p>
+<p>The resulting data array is the zonally averaged monthly mean climatology for GIRAFE precipitations based on reference January 2002 - December 2022.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">precip_clim_month</span> <span class="o">=</span> <span class="n">precip</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
@@ -3353,10 +3354,10 @@ Coordinates:
 </section>
 </section>
 <section id="time-series-and-trend-analysis-of-precipitations">
-<h2><a id='timeseries'></a> 4. Time series and trend analysis of precipitations<a class="headerlink" href="#time-series-and-trend-analysis-of-precipitations" title="Link to this heading">#</a></h2>
-<br>
-<div style='text-align: justify'> After looking at the time averaged global distribution of precipitations, we further investigate the dataset. The GIRAFE product spans over 20 years of satellite observations, and another useful way of analysing and visualizing the temporal evolution of rainfall accumulated precipitation amounts is using the time series. We will calculate global time series, plot it, and discuss most important features. </div><section id="global-time-series-of-precipitations">
-<h3><a id='global_timeseries'></a> 4.1. Global time series of precipitations<a class="headerlink" href="#global-time-series-of-precipitations" title="Link to this heading">#</a></h3>
+<h2>4. Time series and trend analysis of precipitations<a class="headerlink" href="#time-series-and-trend-analysis-of-precipitations" title="Link to this heading">#</a></h2>
+<p>After looking at the time averaged global distribution of precipitations, we further investigate the dataset. The GIRAFE product spans over 20 years of satellite observations, and another useful way of analysing and visualizing the temporal evolution of rainfall accumulated precipitation amounts is using the time series. We will calculate global time series, plot it, and discuss most important features.</p>
+<section id="global-time-series-of-precipitations">
+<h3>4.1. Global time series of precipitations<a class="headerlink" href="#global-time-series-of-precipitations" title="Link to this heading">#</a></h3>
 <p>We first create a temporal subset for the period January 2002 to December 2021.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3794,8 +3795,8 @@ Attributes:
 </div>
 <section id="spatial-aggregation">
 <h4>4.1.1. Spatial aggregation<a class="headerlink" href="#spatial-aggregation" title="Link to this heading">#</a></h4>
-<br>
-<div style="text-align: justify"> We would like to visualise these data, not in maps but as one dimensional time series of global average values. To do this, we will first need to aggregate the data spatially to create a single global average at each time step. In order to aggregate over the latitudinal dimension, we need to take into account the variation in area as a function of latitude. We will do this by using the cosine of the latitude as a proxy: </div><div class="cell docutils container">
+<p>We would like to visualise these data, not in maps but as one dimensional time series of global average values. To do this, we will first need to aggregate the data spatially to create a single global average at each time step. In order to aggregate over the latitudinal dimension, we need to take into account the variation in area as a function of latitude. We will do this by using the cosine of the latitude as a proxy:</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">precip_girafe</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
 <span class="n">weights</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;weights&quot;</span>
@@ -3815,7 +3816,7 @@ Attributes:
 </section>
 <section id="id1">
 <h4>4.1.2. Plot data<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
-<p>Now we can plot the time series of globally averaged GIRAFE precipitation data over time using the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.<br></p>
+<p>Now we can plot the time series of globally averaged GIRAFE precipitation data over time using the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the figure and specify size</span>
@@ -3850,9 +3851,9 @@ Attributes:
 </section>
 </section>
 <section id="trend-analysis-and-seasonal-cycle-of-precipitation">
-<h3><a id='global_trend'></a> 4.2. Trend analysis and seasonal cycle of precipitation<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-precipitation" title="Link to this heading">#</a></h3>
-<br>
-The time series can be further analysed by extracting the trend, or the running annual mean, and the seasonal cycle.<p>To this end, we will convert the Xarray <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> into a time series with the <a class="reference external" href="https://pandas.pydata.org/">pandas</a> library. Then we will decompose it into the trend, the seasonal cycle and the residuals by using the <code class="docutils literal notranslate"><span class="pre">seasonal_decompose()</span></code> method. Finally, we will visualize the results.</p>
+<h3>4.2. Trend analysis and seasonal cycle of precipitation<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-precipitation" title="Link to this heading">#</a></h3>
+<p>The time series can be further analysed by extracting the trend, or the running annual mean, and the seasonal cycle.</p>
+<p>To this end, we will convert the Xarray <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> into a time series with the <a class="reference external" href="https://pandas.pydata.org/">pandas</a> library. Then we will decompose it into the trend, the seasonal cycle and the residuals by using the <code class="docutils literal notranslate"><span class="pre">seasonal_decompose()</span></code> method. Finally, we will visualize the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the Xarray data array precip_weighted_mean into a time series</span>
@@ -3877,12 +3878,13 @@ The time series can be further analysed by extracting the trend, or the running 
 </div>
 </div>
 <p><strong>Figure 5</strong> shows the decomposition of the GIRAFE daily accumulated precipitation time series into the trend (2nd panel) and the seasonal cycle (3rd panel), from which are derived the anomalies or de-trended and de-seasonalised time series that have the characteristics of uncorrelated noise pattern (4th panel).</p>
-<p>The trend analysis presents two peaks around the years 2010 and 2016, which can be related respectively to a moderate “El Niño” event in 2009-10 and a strong one in 2015-16. The combination of strong “El Niño” events and higher overall trends might lead to extremes in the precipitation amount in the future, and the decreasing trend shall be further examined too. </div></p>
+<p>The trend analysis presents two peaks around the years 2010 and 2016, which can be related respectively to a moderate “El Niño” event in 2009-10 and a strong one in 2015-16. The combination of strong “El Niño” events and higher overall trends might lead to extremes in the precipitation amount in the future, and the decreasing trend shall be further examined too.</p>
 </section>
 <section id="regional-time-series-and-trend-analysis">
-<h3><a id='regional_trend'></a> 4.3. Regional time series and trend analysis<a class="headerlink" href="#regional-time-series-and-trend-analysis" title="Link to this heading">#</a></h3>
-<div style="text-align: justify"> We can also use the GIRAFE dataset to visualise and analyse the temporal evolution of precipitations over some regions of interest that have a specific regime, like, for example, the Rain Forest of Amazon in Brasil, the semi-arid region of Sahel in Africa, India for Monsoon, or Indonesia that is located in the Warm Pool. </div>
-<div style="text-align: justify"> For this purpose, we will re-use the code from the previous section, but we will need to add one additional step: select the corresponding regions by their repective coordinates from the original global dataset. </div><div class="cell docutils container">
+<h3>4.3. Regional time series and trend analysis<a class="headerlink" href="#regional-time-series-and-trend-analysis" title="Link to this heading">#</a></h3>
+<p>We can also use the GIRAFE dataset to visualise and analyse the temporal evolution of precipitations over some regions of interest that have a specific regime, like, for example, the Rain Forest of Amazon in Brasil, the semi-arid region of Sahel in Africa, India for Monsoon, or Indonesia that is located in the Warm Pool.</p>
+<p>For this purpose, we will re-use the code from the previous section, but we will need to add one additional step: select the corresponding regions by their repective coordinates from the original global dataset.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the specific regions</span>
 <span class="n">precip_amazon</span> <span class="o">=</span> <span class="n">precip_girafe</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">))</span>
@@ -3977,12 +3979,12 @@ The time series can be further analysed by extracting the trend, or the running 
 </div>
 </div>
 <p><strong>Figure 6</strong> shows the temporal evolution of precipitations over Brazil, Sahel, India and Indonesia for the time period 2002-2022. Over the last decades, the Rain Forest of Amazon tends to be dryer and the region of Sahel wetter. In the last decade, extreme values of precipitation that could lead to droughts or floods tend to increase over India or Indonesia.</p>
-<br></section>
+</section>
 </section>
 <section id="conclusion">
-<h2><a id='conclusion'></a> 5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<br>
-<div style='text-align: justify'> In this notebook we have provided some use cases, based on the global interpolated rainfall estimation (GIRAFE) Precipitation product to illustrate the way this dataset can be used to study, analyse and visualise this essential climate variable. The high values found along the equator can be explained by the Inter-Tropical Convergence Zone and the moderately high values observed in the region of the Gulf Stream extension and Kurushio are associated to the storm track regions. Comparisons with other independent datasets can be made to further investigate trends (like more frequent episodes of floods and droughts) that can be attributed to global climate change, El-Niño events, etc. </div></section>
+<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>In this notebook we have provided some use cases, based on the global interpolated rainfall estimation (GIRAFE) Precipitation product to illustrate the way this dataset can be used to study, analyse and visualise this essential climate variable. The high values found along the equator can be explained by the Inter-Tropical Convergence Zone and the moderately high values observed in the region of the Gulf Stream extension and Kurushio are associated to the storm track regions. Comparisons with other independent datasets can be made to further investigate trends (like more frequent episodes of floods and droughts) that can be attributed to global climate change, El-Niño events, etc.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -4053,39 +4055,39 @@ The time series can be further analysed by extracting the trend, or the running 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebooks">How to access the notebooks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="intro"></a> 1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data"><a id="cdsapi"></a> 2. Search, download and view data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import"></a> 2.1. Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api"><a id="download"></a> 2.2. Download Data Using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">2. Search, download and view data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">2.1. Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">2.2. Download Data Using CDS API</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">2.2.1. Set up CDS API credentials</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">2.2.2. Search for data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">2.2.3. Download data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data"><a id="view"></a> 2.3. View data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-data">2.3. View data</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">2.3.1. Inspect data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">2.3.2. Plot data</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-precipitations"><a id="climatology"></a> 3. Climatology of precipitations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-precipitations"><a id="global_climatology"></a> 3.1. Time averaged global climatological distribution of precipitations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-precipitations"><a id="seasonal_climatology"></a> 3.2. Time averaged seasonal climatological distribution of precipitations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-precipitations"><a id="zonal_climatology"></a> 3.3. Zonally averaged montly mean climatology of precipitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climatology-of-precipitations">3. Climatology of precipitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-global-climatological-distribution-of-precipitations">3.1. Time averaged global climatological distribution of precipitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-seasonal-climatological-distribution-of-precipitations">3.2. Time averaged seasonal climatological distribution of precipitations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonally-averaged-montly-mean-climatology-of-precipitations">3.3. Zonally averaged montly mean climatology of precipitations</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-precipitations"><a id="timeseries"></a> 4. Time series and trend analysis of precipitations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-precipitations"><a id="global_timeseries"></a> 4.1. Global time series of precipitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-and-trend-analysis-of-precipitations">4. Time series and trend analysis of precipitations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-time-series-of-precipitations">4.1. Global time series of precipitations</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-aggregation">4.1.1. Spatial aggregation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1.2. Plot data</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-precipitation"><a id="global_trend"></a> 4.2. Trend analysis and seasonal cycle of precipitation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-time-series-and-trend-analysis"><a id="regional_trend"></a> 4.3. Regional time series and trend analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-analysis-and-seasonal-cycle-of-precipitation">4.2. Trend analysis and seasonal cycle of precipitation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-time-series-and-trend-analysis">4.3. Regional time series and trend analysis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><a id="conclusion"></a> 5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
 </ul>
   </nav></div>
 
