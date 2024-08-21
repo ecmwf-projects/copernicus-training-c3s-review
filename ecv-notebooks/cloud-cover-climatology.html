@@ -478,10 +478,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> 1.1 Dataset description</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-data"><a id="data_retrieve"></a> 2. Retrieve data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api"><a id="install_cdsapi"></a> 2.1 Install CDS API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import_libraries"></a> 2.2 Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-cds-api-key"><a id="cds_api_key"></a> 2.3 Enter CDS API key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-data">2. Retrieve data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">2.1 Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data">2.4 Get the data</a></li>
 </ul>
 </li>
@@ -543,29 +541,28 @@ td, th {
 <section id="the-tutorial-comprises-the-following-steps">
 <h2>The tutorial comprises the following steps:<a class="headerlink" href="#the-tutorial-comprises-the-following-steps" title="Link to this heading">#</a></h2>
 <p>These include a brief introduction into the variables followed by a step-by-step guidance how to retrieve the data. With this done the focus is on analysing and visualising the data in various ways.</p>
-<p><font size="4"><a class="reference internal" href="#access"><span class="xref myst">How to access the notebook</span></a> </font><br>
-<br>
-<font size="4"><a class="reference internal" href="#introduction"><span class="xref myst">1. Introduction</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#description"><span class="xref myst">1.1 Dataset description</span></a> </font><br>
-<br>
-<font size="4"><a class="reference internal" href="#data_retrieve"><span class="xref myst">2. Retrieve data</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#install_cdsapi"><span class="xref myst">2.1 Install CDS API</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#import_libraries"><span class="xref myst">2.2 Import libraries</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#cds_api_key"><span class="xref myst">2.3 Enter CDS API key</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#get_data"><span class="xref myst">2.4 Get the data</span></a> </font><br>
-<br>
-<font size="4"><a class="reference internal" href="#uc1"><span class="xref myst">3. Visualisation of mean global cloud distribution</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#calculation_1"><span class="xref myst">3.1 Calculation of the temporal average of cloud fractional cover</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#plot_1"><span class="xref myst">3.2 Plot of the temporal average of cloud fractional cover</span></a> </font><br>
-<br>
-<font size="4"><a class="reference internal" href="#uc2"><span class="xref myst">4. Visualisation of seasonal variations of clouds</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#calculation_2"><span class="xref myst">4.1 Calculation and Plot of cloud coverage annual cycles on three different spots</span></a> </font><br>
-<br>
-<font size="4"><a class="reference internal" href="#uc3"><span class="xref myst">5. Visualisation of radiative effects of clouds</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#calculation_3"><span class="xref myst">5.1 Download and calculation of temporal average of surface downwelling longwave/shortwave radiation</span></a> </font><br>
-<font size="2"><a class="reference internal" href="#plot_3"><span class="xref myst">5.2 Plot of the temporal average of surface downwelling longwave/shortwave radiation</span></a> </font><br>
-<br>
-<font size="4"><a class="reference internal" href="#ref"><span class="xref myst">References</span></a> </font><br></p>
+<ol class="arabic simple">
+<li><p>Introduction</p></li>
+<li><p>Retrieve data</p></li>
+<li><p>Visualisation of mean global cloud distribution</p>
+<ul class="simple">
+<li><p>3.1 Calculation of the temporal average of cloud fractional cover</p></li>
+<li><p>3.2 Plot of the temporal average of cloud fractional cover</p></li>
+</ul>
+</li>
+<li><p>Visualisation of seasonal variations of clouds</p>
+<ul class="simple">
+<li><p>4.1 Calculation and Plot of cloud coverage annual cycles on three different spots</p></li>
+</ul>
+</li>
+<li><p>Visualisation of radiative effects of clouds</p>
+<ul class="simple">
+<li><p>5.1 Download and calculation of temporal average of surface downwelling longwave/shortwave radiation</p></li>
+<li><p>5.2 Plot of the temporal average of surface downwelling longwave/shortwave radiation</p></li>
+</ul>
+</li>
+<li><p>References</p></li>
+</ol>
 </section>
 <section id="introduction">
 <h2><a id='introduction'></a> 1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
@@ -595,33 +592,10 @@ td, th {
 </section>
 </section>
 <section id="retrieve-data">
-<h2><a id='data_retrieve'></a> 2. Retrieve data<a class="headerlink" href="#retrieve-data" title="Link to this heading">#</a></h2>
-<p>Before the start we need to prepare an environment in which we will work. Since we will retrieve the data via the Application Programming Interface (API) of the CDS we need to install the CDS API. This is followed by the import of some required python libraries which will help us to handle the data.</p>
-<section id="install-cds-api">
-<h3><a id='install_cdsapi'></a> 2.1 Install CDS API<a class="headerlink" href="#install-cds-api" title="Link to this heading">#</a></h3>
-<p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: cdsapi in /cmsaf/copernicus1/conda/mambaforge/envs/c3s_base/lib/python3.9/site-packages (0.5.1)
-Requirement already satisfied: requests&gt;=2.5.0 in /cmsaf/copernicus1/conda/mambaforge/envs/c3s_base/lib/python3.9/site-packages (from cdsapi) (2.28.1)
-Requirement already satisfied: tqdm in /cmsaf/copernicus1/conda/mambaforge/envs/c3s_base/lib/python3.9/site-packages (from cdsapi) (4.64.0)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /cmsaf/copernicus1/conda/mambaforge/envs/c3s_base/lib/python3.9/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (1.26.9)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /cmsaf/copernicus1/conda/mambaforge/envs/c3s_base/lib/python3.9/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2022.6.15)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /cmsaf/copernicus1/conda/mambaforge/envs/c3s_base/lib/python3.9/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.3)
-Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /cmsaf/copernicus1/conda/mambaforge/envs/c3s_base/lib/python3.9/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.1.0)
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+<h2>2. Retrieve data<a class="headerlink" href="#retrieve-data" title="Link to this heading">#</a></h2>
+<p>This tutorial assumes that you have installed the cdsapi and configured you .cdsapirc file with your key, as described in the “Climate Data Store Tutorial”.</p>
 <section id="import-libraries">
-<h3><a id='import_libraries'></a> 2.2 Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
+<h3>2.1 Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <p>Processing (climate) data with python requires some libraries. Libraries contain different functions for e.g. reading, processing and visualisation of large amounts of data and make it easier to work with it.</p>
 <p>The basic data format for climate data is NetCDF. This is also the case for CLARA-A3 and to handle this well we use a library to work with multidimensional arrays, named <strong>Xarray</strong>. For the calculations we use <strong>Numpy</strong>, which provides various mathmatical operations. We also need libraries for plotting and viewing the data, in this case we will use <strong>Matplotlib</strong> and <strong>Cartopy</strong>.</p>
 <p>Before we start analysing the data we need to take advantage of one of the two options to get the data:</p>
@@ -650,21 +624,6 @@ Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /cmsaf/copernic
 </div>
 </div>
 </div>
-</section>
-<section id="enter-cds-api-key">
-<h3><a id='cds_api_key'></a> 2.3 Enter CDS API key<a class="headerlink" href="#enter-cds-api-key" title="Link to this heading">#</a></h3>
-<p>The data can be found in the Climate Data Store: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>. In case you don’t have an account yet, please click on “Login/register” at the top right and select “Create new account” (Figure 2a). With the process finished you are able to login to the CDS and can search for your preferred data.</p>
-<p>We will request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: URL and KEY which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:” in the black block on the right (Figure 2b). Please replace the ######### below with this string.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><img src='./CDS.png' align='right' width='100%'></img></p>
-<p><strong>Figure 2:</strong> This helps to create an account (Figure 2a, left) and use the CDS API (Figure 2b, right). The arrow on the top right of Figure 2a indicates where to start the register process with the arrow on the left side points to the button to create a new account. With that process finished the link in the text section above leads to Figure 2b. Please copy the text of the second line of the black block (see arrow) in the line “KEY” above.</p>
 <p>Next, we specify a data directory (<strong>datadir</strong>) in which we create a <strong>Download</strong> and <strong>Data</strong> folder to save the downloaded zip-file and store the unzipped files. <strong>Data</strong> is separated for <strong>CLD</strong> and <strong>SRB</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3671,10 +3630,8 @@ New York, NY, USA</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> 1.1 Dataset description</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-data"><a id="data_retrieve"></a> 2. Retrieve data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api"><a id="install_cdsapi"></a> 2.1 Install CDS API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import_libraries"></a> 2.2 Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-cds-api-key"><a id="cds_api_key"></a> 2.3 Enter CDS API key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-data">2. Retrieve data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">2.1 Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data">2.4 Get the data</a></li>
 </ul>
 </li>
