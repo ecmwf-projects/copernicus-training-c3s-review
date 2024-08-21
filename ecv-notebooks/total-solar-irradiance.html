@@ -516,42 +516,37 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><a id='page-top'></a> <img src='./img/LogoLine_horizon_C3S.png' alt='Logo EU Copernicus ECMWF' align='right' width='100%'></img></p>
-<br><section class="tex2jax_ignore mathjax_ignore" id="the-total-solar-irradiance-tsi-from-rmib">
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="the-total-solar-irradiance-tsi-from-rmib">
 <h1>The Total Solar Irradiance (TSI) from RMIB<a class="headerlink" href="#the-total-solar-irradiance-tsi-from-rmib" title="Link to this heading">#</a></h1>
 <p>This notebook provides a practical introduction to the Total Solar Irradiance (TSI) dataset available at the Copernicus Climate Change Service (C3S) <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store (CDS)</a>).</p>
 <br>
 The notebook begins with an introduction to the TSI variable and the dataset overview. Next, it provides instructions for setting up and running the notebook. It describes the steps to set up a python environment, and access and prepare the data. Following this setup, the notebook presents two practical use cases of the dataset: plotting the TSI daily values and a 12-month rolling mean (Use Case 1), and plotting two TSI datasets side-by-sides (Use Case 2).<br>
-The figure below is the result of Use Case 1, and the result of a successful run of the code.<p><img alt="" src="ecv-notebooks/tsi_banner.png" /></p>
-<p>The notebook has three main sections with the following outline:</p>
-<section id="table-of-contents">
+The figure below is the result of Use Case 1, and the result of a successful run of the code.<section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Introduction</p></li>
+<li><p>Prerequisites and data preparations</p></li>
+<li><p>Use cases</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#intro"><span class="xref myst">1. Introduction</span></a></p></li>
-<li><p><a class="reference internal" href="#preparation"><span class="xref myst">2. Prerequisites and data preparations</span></a></p></li>
-<li><p><a class="reference internal" href="#usecases"><span class="xref myst">3. Use cases</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#timeseries-tsi"><span class="xref myst">Use case 1: Time series of the Total Solar Irradiance (TSI)</span></a></p></li>
-<li><p><a class="reference internal" href="#rmib-nrl"><span class="xref myst">Use case 2: Comparison of two TSI composites</span></a></p></li>
+<li><p>Use case 1: Time series of the Total Solar Irradiance (TSI)</p></li>
+<li><p>Use case 2: Comparison of two TSI composites</p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#references"><span class="xref myst">References</span></a></p></li>
-</ul>
-<br><p><a id='intro'></a></p>
+<li><p>References</p></li>
+</ol>
 </section>
 <section id="introduction">
 <h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<br>
-<div style="text-align: justify"> The Total Solar Irradiance (TSI) is the measure of the energy input that the Earth receives from the Sun. It is the dominant driver of the Earth's climate, a key component of the Earth’s Radiation Budget (ERB), and is thus one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECVs). Stable and accurate long-term TSI records are needed for climate studies, e.g. to understand the influence of solar variability on climate.
-<p>The TSI exhibits large day-to-day variations due to the passage of dark sunspots, and bright faculae. The well-known 11-year solar cycle is also being directly observed by space-based instruments. There exist other regular and irregular factors that contribute to the short-term variations of TSI. Fortunately, the TSI is very stable in the long timescales, century to multi-century (thus the historical name “the solar constant”, now usually referred to as Total Solar Irradiance (TSI). </div><br></p>
+<p>The Total Solar Irradiance (TSI) is the measure of the energy input that the Earth receives from the Sun. It is the dominant driver of the Earth’s climate, a key component of the Earth’s Radiation Budget (ERB), and is thus one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECVs). Stable and accurate long-term TSI records are needed for climate studies, e.g. to understand the influence of solar variability on climate.</p>
+<p>The TSI exhibits large day-to-day variations due to the passage of dark sunspots, and bright faculae. The well-known 11-year solar cycle is also being directly observed by space-based instruments. There exist other regular and irregular factors that contribute to the short-term variations of TSI. Fortunately, the TSI is very stable in the long timescales, century to multi-century (thus the historical name “the solar constant”, now usually referred to as Total Solar Irradiance (TSI).</p>
 <p>This TSI dataset provides daily TSI observations for over 44 years. It is a composite dataset, meaning that it is constructed from different TSI measurements obtained by an ensemble of space instruments, and carefully combined into one homogeneous dataset.<br>
-This dataset is produced on behalf of C3S by the Royal Meteorological Institute of Belgium (RMIB).</div></p>
+This dataset is produced on behalf of C3S by the Royal Meteorological Institute of Belgium (RMIB).</p>
 <p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
 </ul>
 <p>A <a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-earth-radiation-budget/C3S2_312a_Lot1.4.0.3_202306_Tutorial_ECV_EarthRadiationBudget_final.mp4">tutorial video</a> describes the “Earth Radiation Budget” Essential Climate Variable and the methods and satellite instruments used to produce the data provided in the CDS catalogue entry.</p>
-<p><a id='preparation'></a></p>
 </section>
 <section id="prerequisites-and-data-preparations">
 <h2>2. Prerequisites and data preparations<a class="headerlink" href="#prerequisites-and-data-preparations" title="Link to this heading">#</a></h2>
@@ -575,7 +570,6 @@ td, th {
   </tr>
 </table> <p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:</p>
 <p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code></p>
-<br>
 <p><strong>Run the tutorial in the local environment</strong></p>
 <p>If you would like to run this notebook in your own environment, download this notebook as an <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> file. We suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a> or <a class="reference external" href="https://mamba.readthedocs.io/en/latest/">mamba</a>, which contains most of the libraries you will need.
 We will be working with data in ASCII format. <code class="docutils literal notranslate"><span class="pre">pandas</span></code> is a Python library for data manipulation and analysis. It is used to read, process, and write ASCII files such as TXT or CSV. We will also need libraries for plotting and viewing data, in this case, we will use <code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code>. <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">cdsapi</a> is a Python library for programmatically accessing the data from the CDS.</p>
@@ -604,7 +598,6 @@ We will be working with data in ASCII format. <code class="docutils literal notr
 </div>
 </div>
 </div>
-<p><a id='cdsapi'></a></p>
 </section>
 <section id="download-data-using-cds-api">
 <h3>2.3 Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
@@ -619,7 +612,7 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;3639:cef1930a-e2fa-4e61-b12e-d51caa00da1e&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;########&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -698,23 +691,22 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </div>
 </div>
-<p><a id='usecases'></a></p>
 </section>
 </section>
 </section>
 <section id="use-cases">
 <h2>3. Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h2>
-<p><a id='#timeseries-tsi'></a></p>
 <section id="use-case-1-time-series-of-the-total-solar-irradiance-tsi">
 <h3>Use case 1: Time series of the Total Solar Irradiance (TSI)<a class="headerlink" href="#use-case-1-time-series-of-the-total-solar-irradiance-tsi" title="Link to this heading">#</a></h3>
-<br>
-In this learning material, we visualize the time evolution of the Total Solar Irradiance (TSI) using daily values and a 12-month rolling mean. This visualization helps us understand the variations in TSI over time.<section id="load-dataset-subselect-and-calculate-a-temporal-mean">
+<p>In this learning material, we visualize the time evolution of the Total Solar Irradiance (TSI) using daily values and a 12-month rolling mean. This visualization helps us understand the variations in TSI over time.</p>
+<section id="load-dataset-subselect-and-calculate-a-temporal-mean">
 <h4>Load dataset, subselect and calculate a temporal mean<a class="headerlink" href="#load-dataset-subselect-and-calculate-a-temporal-mean" title="Link to this heading">#</a></h4>
-<div style="text-align: justify"> First, we need to read the file and prepare the dataset for analysis and plotting.<br>  
-The TSI data is stored in an ASCII file. We use `pandas` to read the file. The TSI dataset is constantly updated, which is why we need to use glob to get the latest filename.<br>
-We read a dataset file specified by the filename variable using pandas `pd.read_csv()` into the DataFrame. The file has a header with 128 lines of metadata that is skipped during the reading process. We extract columns 1 and 2 (starting from zero) from the CSV file, naming them as "TSI" and "JD" respectively, and set the "JD" column as the DataFrame's index. The "JD" column contains special dates called Julian days, which are a way to represent time. The Julian day is the continuous integer count of days, it is used for easily calculating elapsed days between two events<br>
-As the next, we convert these Julian days to a datetime format using `pd.to_datetime()` and set units as Date.
-Finally, we use lambda-function to set the time to midnight (00:00:00) for each date, effectively discarding the time information, and leaving only the date component in the index.</div><div class="cell docutils container">
+<p>First, we need to read the file and prepare the dataset for analysis and plotting.</p>
+<p>The TSI data is stored in an ASCII file. We use <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to read the file. The TSI dataset is constantly updated, which is why we need to use glob to get the latest filename.</p>
+<p>We read a dataset file specified by the filename variable using pandas <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> into the DataFrame. The file has a header with 128 lines of metadata that is skipped during the reading process. We extract columns 1 and 2 (starting from zero) from the CSV file, naming them as “TSI” and “JD” respectively, and set the “JD” column as the DataFrame’s index. The “JD” column contains special dates called Julian days, which are a way to represent time. The Julian day is the continuous integer count of days, it is used for easily calculating elapsed days between two events.</p>
+<p>As the next, we convert these Julian days to a datetime format using <code class="docutils literal notranslate"><span class="pre">pd.to_datetime()</span></code> and set units as Date.
+Finally, we use lambda-function to set the time to midnight (00:00:00) for each date, effectively discarding the time information, and leaving only the date component in the index.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">C3S_RMIB_daily_TSI_composite_ICDR*.txt&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -733,7 +725,7 @@ Finally, we use lambda-function to set the time to midnight (00:00:00) for each 
 </section>
 <section id="print-header-information-to-learn-about-the-dataset">
 <h4>Print header information to learn about the dataset<a class="headerlink" href="#print-header-information-to-learn-about-the-dataset" title="Link to this heading">#</a></h4>
-<p>The header contains general information about the dataset, satellite instruments used to create a composite dataset, and columns are explained. A peer-reviewed article by <a class="reference internal" href="#dewitte"><span class="xref myst">Dewitte et al, 2016</span></a> describes the dataset in detail. The Product User Guide and Specification (PUGS, <a class="reference internal" href="#clerbaux"><span class="xref myst">Clerbaux et al, 2023</span></a>) provides the information a user should need for an appropriate use of the TSI data.</p>
+<p>The header contains general information about the dataset, satellite instruments used to create a composite dataset, and columns are explained. A peer-reviewed article by (Dewitte et al, 2016) describes the dataset in detail. The Product User Guide and Specification (PUGS, Clerbaux et al, 2023) provides the information a user should need for an appropriate use of the TSI data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read the dataset metadata from the header</span>
@@ -1010,8 +1002,9 @@ Finally, we use lambda-function to set the time to midnight (00:00:00) for each 
 <section id="plot-data">
 <h4>Plot data<a class="headerlink" href="#plot-data" title="Link to this heading">#</a></h4>
 <p>We want to save objects <code class="docutils literal notranslate"><span class="pre">figure</span></code> and <code class="docutils literal notranslate"><span class="pre">axes</span></code> to use later. We use <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> to create a high-quality plot. Before plotting we need to prepare daily values and a 12-month rolling mean.<br></p>
-<div style="text-align: justify">The rolling mean is a statistical technique used to smooth out data by calculating the average of a specified window of values. In our case, the window is 365 days or 12 months.  
-By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we can clearly observe the presence of three distinct solar cycles. These cycles represent periods of varying solar activity and are characterized by the rise and fall of sunspot numbers and other solar phenomena. Solar cycle 22, spanning from 1986 to 1996, is followed by solar cycle 23, which occurred from 1996 to 2008. Finally, solar cycle 24 took place from 2008 to 2019. These solar cycles demonstrate the cyclic nature of solar activity and its influence on the TSI measurements.</div><div class="cell docutils container">
+<p>The rolling mean is a statistical technique used to smooth out data by calculating the average of a specified window of values. In our case, the window is 365 days or 12 months.<br />
+By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we can clearly observe the presence of three distinct solar cycles. These cycles represent periods of varying solar activity and are characterized by the rise and fall of sunspot numbers and other solar phenomena. Solar cycle 22, spanning from 1986 to 1996, is followed by solar cycle 23, which occurred from 1996 to 2008. Finally, solar cycle 24 took place from 2008 to 2019. These solar cycles demonstrate the cyclic nature of solar activity and its influence on the TSI measurements.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save figure and axes objects to modify later</span>
 <span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
@@ -1050,7 +1043,6 @@ By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we c
 <img alt="../_images/35516e676b31f18a21728a406880879ab8e169efff85267b2ac9e98cf937f545.png" src="../_images/35516e676b31f18a21728a406880879ab8e169efff85267b2ac9e98cf937f545.png" />
 </div>
 </div>
-<p><a id='#rmib-nrl'></a></p>
 </section>
 </section>
 <section id="use-case-2-side-by-side-composite-products">
@@ -1157,17 +1149,15 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
 </ul>
 <section id="acknowledgments">
 <h3>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Link to this heading">#</a></h3>
-<p>The results presented in this document rely on data from the Naval Research Laboratory Total Solar Irradiance 2 (NRLTSI2) model described in <a id='coddington'></a>Coddington et al. 2016 (<a class="reference external" href="https://doi.org/10.1175/BAMS-D-14-00265.1">https://doi.org/10.1175/BAMS-D-14-00265.1</a>). These data were accessed via the LASP Interactive Solar Irradiance Datacenter (LISIRD) (<a class="reference external" href="https://lasp.colorado.edu/lisird/">https://lasp.colorado.edu/lisird/</a>).</p>
-<p><a id='references'></a></p>
+<p>The results presented in this document rely on data from the Naval Research Laboratory Total Solar Irradiance 2 (NRLTSI2) model described in Coddington et al. 2016 (<a class="reference external" href="https://doi.org/10.1175/BAMS-D-14-00265.1">https://doi.org/10.1175/BAMS-D-14-00265.1</a>). These data were accessed via the LASP Interactive Solar Irradiance Datacenter (LISIRD) (<a class="reference external" href="https://lasp.colorado.edu/lisird/">https://lasp.colorado.edu/lisird/</a>).</p>
 </section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<p><a id='confluence'></a>Clerbaux N., (2023) Earth Radiation Budget TSI TOA. Copernicus Climate Change Service. <a class="reference external" href="https://confluence.ecmwf.int/x/AFMiEg">https://confluence.ecmwf.int/x/AFMiEg</a></p>
-<p><a id='dewitte'></a>Dewitte, S., &amp; Nevens, S. (2016). The Total Solar Irradiance Climate Data Record. The Astrophysical Journal, 830(1), 25. <a class="reference external" href="https://doi.org/10.3847/0004-637X/830/1/25">https://doi.org/10.3847/0004-637X/830/1/25</a>.</p>
-<p><a id='clerbaux'></a>Clerbaux, N., Velazquez Blazquez, A. (RMIB), 2023, C3S Earth Radiation Budget TSI Service: Product User Guide and Specification. Copernicus Climate Change Service, Document ref. C3S2_D312a_Lot1.2.2.6-v1.0_202303_PUGS_ECVEarthRadiationBudget_v1.1
+<p>Clerbaux N., (2023) Earth Radiation Budget TSI TOA. Copernicus Climate Change Service. <a class="reference external" href="https://confluence.ecmwf.int/x/AFMiEg">https://confluence.ecmwf.int/x/AFMiEg</a></p>
+<p>Dewitte, S., &amp; Nevens, S. (2016). The Total Solar Irradiance Climate Data Record. The Astrophysical Journal, 830(1), 25. <a class="reference external" href="https://doi.org/10.3847/0004-637X/830/1/25">https://doi.org/10.3847/0004-637X/830/1/25</a>.</p>
+<p>Clerbaux, N., Velazquez Blazquez, A. (RMIB), 2023, C3S Earth Radiation Budget TSI Service: Product User Guide and Specification. Copernicus Climate Change Service, Document ref. C3S2_D312a_Lot1.2.2.6-v1.0_202303_PUGS_ECVEarthRadiationBudget_v1.1
 <a class="reference external" href="https://confluence.ecmwf.int/x/KFMiEg">https://confluence.ecmwf.int/x/KFMiEg</a></p>
-<p><a class="reference internal" href="#page-top"><span class="xref myst">Back to top the Page</span></a></p>
 </section>
 </section>
 
