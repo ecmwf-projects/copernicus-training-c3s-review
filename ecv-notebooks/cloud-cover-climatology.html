@@ -482,7 +482,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api"><a id="install_cdsapi"></a> 2.1 Install CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import_libraries"></a> 2.2 Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-cds-api-key"><a id="cds_api_key"></a> 2.3 Enter CDS API key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data"><a id="get_data"></a> 2.4 Get the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data">2.4 Get the data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-mean-global-cloud-distribution"><a id="uc1"></a> 3. Visualisation of mean global cloud distribution</a><ul class="nav section-nav flex-column">
@@ -511,13 +511,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><img src='./LogoLine_horizon_C3S.png' align='right' width='100%'></img></p>
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset">
 <h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
 <p>This notebook provides you with an introduction to one variable of the <strong>EUMETSAT’s CM SAF CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The overall dataset contains data for Essential Climate Variables (ECVs) <em>Cloud Properties</em> as well as <em>Surface</em> - and <em>Earth Radiation Budget</em>, while this notebook focuses on <strong>Cloud Fractional Cover</strong> as part of the ECV <em>Cloud Properties</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Cloud properties global gridded monthly and daily data from 1979 to present derived from satellite observations</a>.</p>
 <p>In addition, the tutorial is about the <strong>Surface downwelling longwave/shortwave flux</strong> (as part of the ECV <em>Surface Radiation Budget</em>) to demonstrate the relation between clouds and radiation. The data is also available at the CDS: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">Surface radiation budget from 1979 to present derived from satellite observations</a>.</p>
 <p>The tutorial covers the full process from scratch to end and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests! After a short introduction about how to use a Jupyter notebook the analysis starts!</p>
-<p><img src='./Overview.png' align='right' width='100%'></img></p>
+<p><img alt="Overview" src="../_images/cloud-cover-overview.png" /></p>
 <p><strong>Figure 1:</strong> Summary of following options for analysis of a cloud and radiation dataset: Climatology of cloud fractional cover (a), annual cycle of cloud fractional cover for three selected cities (b) and climatology of surface downwelling longwave radiation (c); each based on the CLARA-A3 dataset and data from 1979 - 2020.</p>
 <section id="how-to-access-the-notebook">
 <h2><a id='access'></a> How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Link to this heading">#</a></h2>
@@ -692,7 +692,7 @@ Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /cmsaf/copernic
 </div>
 </section>
 <section id="get-the-data">
-<h3><a id='get_data'></a> 2.4 Get the data<a class="headerlink" href="#get-the-data" title="Link to this heading">#</a></h3>
+<h3>2.4 Get the data<a class="headerlink" href="#get-the-data" title="Link to this heading">#</a></h3>
 <p>For this tutorial we need data for Cloud Properties first, so please either click on “Datasets” in the CDS and search for “Cloud Properties” or simply click on: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview</a>.
 The name of the Cloud Properties landing page is: <strong>Cloud properties global gridded monthly and daily data from 1979 to present derived from satellite observations</strong>.</p>
 <p>Once you reached the landing page, feel free to have a look at the documentation and information provided.</p>
@@ -709,8 +709,7 @@ The name of the Cloud Properties landing page is: <strong>Cloud properties globa
 <li><p>Format: Zip file (.zip)</p></li>
 </ul>
 <p>Please make sure all <strong>Terms of use</strong> are accepted (see at the top of Figure 3). This can be done at the bottom of the <strong>Download data</strong> tab.</p>
-<p>At the bottom left of the page, click on <strong>Show API request</strong> and copy &amp; paste the text into the Jupyter notebook (see highlighted text in Figure 3). The first line can be skipped since it is already part of the <strong>Import libraries</strong> section.</p>
-<p><img src='./CDS_api.png' align='right' width='100%'></img></p>
+<p>At the bottom left of the page, click on <strong>Show API request</strong> and copy &amp; paste the text into the Jupyter notebook.</p>
 <p><strong>Figure 3:</strong> CDS API code at the bottom of the download section. Please note the <strong>Terms of use</strong>, the <strong>Show/Hide API request</strong>-Button and the highlighted text.</p>
 <p>Note: To make sure the zip-file will be saved in the correct place and with an appropriate name you can adjust the last line like below. The Download folder in the current directory was created before and the download file is named <strong>download_cld_tcdr.zip</strong>.</p>
 <p>Note: The download may take a few minutes. Feel free to have a look at the various information on the Cloud Properties page in the CDS or already get familiar with the next steps.</p>
@@ -3676,7 +3675,7 @@ New York, NY, USA</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api"><a id="install_cdsapi"></a> 2.1 Install CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries"><a id="import_libraries"></a> 2.2 Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-cds-api-key"><a id="cds_api_key"></a> 2.3 Enter CDS API key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data"><a id="get_data"></a> 2.4 Get the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data">2.4 Get the data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-mean-global-cloud-distribution"><a id="uc1"></a> 3. Visualisation of mean global cloud distribution</a><ul class="nav section-nav flex-column">
