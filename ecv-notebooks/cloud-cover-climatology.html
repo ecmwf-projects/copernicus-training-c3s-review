@@ -462,7 +462,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
+    <h1>Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -472,10 +472,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook"><a id="access"></a> How to access the notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tutorial-comprises-the-following-steps">The tutorial comprises the following steps:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> 1. Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> 1.1 Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">1.1 Dataset description</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-data">2. Retrieve data</a><ul class="nav section-nav flex-column">
@@ -483,21 +483,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data">2.4 Get the data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-mean-global-cloud-distribution"><a id="uc1"></a> 3. Visualisation of mean global cloud distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover"><a id="calculation_1"></a> 3.1 Calculation of the temporal average of cloud fractional cover</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-cloud-fractional-cover"><a id="plot_1"></a> 3.2 Plot of the temporal average of cloud fractional cover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-mean-global-cloud-distribution">3. Visualisation of mean global cloud distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover">3.1 Calculation of the temporal average of cloud fractional cover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-cloud-fractional-cover">3.2 Plot of the temporal average of cloud fractional cover</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-seasonal-variations-of-clouds"><a id="uc2"></a> 4. Visualisation of seasonal variations of clouds</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots"><a id="calculation_2"></a> 4.1 Calculation and Plot of cloud coverage annual cycles on three different spots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-seasonal-variations-of-clouds">4. Visualisation of seasonal variations of clouds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">4.1 Calculation and Plot of cloud coverage annual cycles on three different spots</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-radiative-effects-of-clouds"><a id="uc3"></a> 5. Visualisation of radiative effects of clouds</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-calculation-of-temporal-average-of-surface-downwelling-longwave-shortwave-radiation"><a id="calculation_3"></a> 5.1 Download and calculation of temporal average of surface downwelling longwave/shortwave radiation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-surface-downwelling-longwave-shortwave-radiation"><a id="plot_3"></a> 5.2 Plot of the temporal average of surface downwelling longwave/shortwave radiation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-radiative-effects-of-clouds">5. Visualisation of radiative effects of clouds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-calculation-of-temporal-average-of-surface-downwelling-longwave-shortwave-radiation">5.1 Download and calculation of temporal average of surface downwelling longwave/shortwave radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-surface-downwelling-longwave-shortwave-radiation">5.2 Plot of the temporal average of surface downwelling longwave/shortwave radiation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="ref"></a> References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -511,14 +511,14 @@ document.write(`
                   
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset">
-<h1><a id='page-top'></a> Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
+<h1>Calculation of global climatology and annual cycles of Cloud Fractional Cover from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-and-annual-cycles-of-cloud-fractional-cover-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
 <p>This notebook provides you with an introduction to one variable of the <strong>EUMETSAT’s CM SAF CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The overall dataset contains data for Essential Climate Variables (ECVs) <em>Cloud Properties</em> as well as <em>Surface</em> - and <em>Earth Radiation Budget</em>, while this notebook focuses on <strong>Cloud Fractional Cover</strong> as part of the ECV <em>Cloud Properties</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Cloud properties global gridded monthly and daily data from 1979 to present derived from satellite observations</a>.</p>
 <p>In addition, the tutorial is about the <strong>Surface downwelling longwave/shortwave flux</strong> (as part of the ECV <em>Surface Radiation Budget</em>) to demonstrate the relation between clouds and radiation. The data is also available at the CDS: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">Surface radiation budget from 1979 to present derived from satellite observations</a>.</p>
 <p>The tutorial covers the full process from scratch to end and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests! After a short introduction about how to use a Jupyter notebook the analysis starts!</p>
 <p><img alt="Overview" src="../_images/cloud-cover-overview.png" /></p>
 <p><strong>Figure 1:</strong> Summary of following options for analysis of a cloud and radiation dataset: Climatology of cloud fractional cover (a), annual cycle of cloud fractional cover for three selected cities (b) and climatology of surface downwelling longwave radiation (c); each based on the CLARA-A3 dataset and data from 1979 - 2020.</p>
 <section id="how-to-access-the-notebook">
-<h2><a id='access'></a> How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Link to this heading">#</a></h2>
+<h2>How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Link to this heading">#</a></h2>
 <p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. It can be run on a cloud environment, or on your own computer. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <style>
 td, th {
@@ -565,7 +565,7 @@ td, th {
 </ol>
 </section>
 <section id="introduction">
-<h2><a id='introduction'></a> 1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This tutorial is about cloud and radiation parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
 <p>The CLARA-A3 dataset provides information of various Cloud Properties parameters as well as Surface Radiation Budget (SRB) and Earth Radiation Budget (ERB) parameters. Each ECV is covered by an own Jupyter Notebook (please also take a look at <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 SRB</a> and <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 ERB</a>).</p>
 <p>This notebook focuses on the Cloud Fractional Cover (CFC) as well as Surface Downwelling Longwave and Surface Incoming Shortwave Radiation (SDL and SIS, respectively) as an extra feature to demonstrate the connection between clouds and radiation. A first Use Case provides a general idea how clouds are distributed all over the globe (averaged for the time period of 1979-2020). A second Use Case provides a closer look on three selected locations and their corresponding annual cycles in terms of cloud coverage. Those locations are defined by their geographical coordinates. Feel free to change the code and investigate the cloud coverage at more locations of your interest! To sum it up and link to the connection between clouds and radiation, a third Use Case covers two radiation parameters and focuses on climatologies of Surface Downwelling Longwave and Surface Incoming Shortwave Radiation.</p>
@@ -575,7 +575,7 @@ td, th {
 <p>As clouds strongly shield sunlight from the Earth’s surface, the above mentioned points might also concern, among others, the solar energy industry as well as tourism. Some regions are more suited for allocating photovoltaic power plants or spending holidays with nice weather conditions.</p>
 <p>In the following, some simple illustrations are presented to prompt ideas on the usage, visualisation and analysis of the CLARA-A3 dataset. It comprises several variables to capture various cloud and radiation characteristics.</p>
 <section id="dataset-description">
-<h3><a id='description'></a> 1.1 Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
+<h3>1.1 Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
 <p>Please find further information about the datasets as well as the data in the Climate Data Store sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
 <li><p>Cloud Properties: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">Cloud properties global gridded monthly and daily data from 1979 to present derived from satellite observations</a></p></li>
@@ -3178,10 +3178,10 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </section>
 </section>
 <section id="visualisation-of-mean-global-cloud-distribution">
-<h2><a id='uc1'></a> 3. Visualisation of mean global cloud distribution<a class="headerlink" href="#visualisation-of-mean-global-cloud-distribution" title="Link to this heading">#</a></h2>
+<h2>3. Visualisation of mean global cloud distribution<a class="headerlink" href="#visualisation-of-mean-global-cloud-distribution" title="Link to this heading">#</a></h2>
 <p>Use Case #1 aims to give a general overview about the global distribution of clouds. We therefore use the recently downloaded dataset and plot a map with a temporal average (1979-2020) of the cloud fractional cover (cfc) variable from the CLARA-A3 dataset.</p>
 <section id="calculation-of-the-temporal-average-of-cloud-fractional-cover">
-<h3><a id='calculation_1'></a> 3.1 Calculation of the temporal average of cloud fractional cover<a class="headerlink" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover" title="Link to this heading">#</a></h3>
+<h3>3.1 Calculation of the temporal average of cloud fractional cover<a class="headerlink" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover" title="Link to this heading">#</a></h3>
 <p>We therefore calculate the temporal average with the function np.nanmean. np is short for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to dataset_cfc and the variable “cfc”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3199,7 +3199,7 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </div>
 </section>
 <section id="plot-of-the-temporal-average-of-cloud-fractional-cover">
-<h3><a id='plot_1'></a> 3.2 Plot of the temporal average of cloud fractional cover<a class="headerlink" href="#plot-of-the-temporal-average-of-cloud-fractional-cover" title="Link to this heading">#</a></h3>
+<h3>3.2 Plot of the temporal average of cloud fractional cover<a class="headerlink" href="#plot-of-the-temporal-average-of-cloud-fractional-cover" title="Link to this heading">#</a></h3>
 <p>With the caluculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
 <p>Some further notes:</p>
 <ul class="simple">
@@ -3252,10 +3252,10 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </section>
 </section>
 <section id="visualisation-of-seasonal-variations-of-clouds">
-<h2><a id='uc2'></a> 4. Visualisation of seasonal variations of clouds<a class="headerlink" href="#visualisation-of-seasonal-variations-of-clouds" title="Link to this heading">#</a></h2>
+<h2>4. Visualisation of seasonal variations of clouds<a class="headerlink" href="#visualisation-of-seasonal-variations-of-clouds" title="Link to this heading">#</a></h2>
 <p>Use Case #2 shows three annual cycles of cloud fractional cover for different locations. As insolation and flow patterns vary significantly over the year in many parts of the Earth, the mean presence of clouds also exhibits seasonal differences. As one example that neatly demonstrates steady variations throughout the year, Use Case #2 shows the mean monthly evolution of the fractional cloud cover for Frankfurt (Germany), Mumbai (India) and Darwin (Australia).</p>
 <section id="calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">
-<h3><a id='calculation_2'></a> 4.1 Calculation and Plot of cloud coverage annual cycles on three different spots<a class="headerlink" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots" title="Link to this heading">#</a></h3>
+<h3>4.1 Calculation and Plot of cloud coverage annual cycles on three different spots<a class="headerlink" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots" title="Link to this heading">#</a></h3>
 <p>We define three locations of interest in terms of latitude and longitude coordinates. Feel free to discover different locations and change the coordinates according to your interests!
 The basic setup consists of Frankfurt (Germany) with a warm and temperate climate of central Europe, Mumbai (India) with its influence of the monsoon and Darwin (Australia) in the tropical savanna climate.</p>
 <div class="cell docutils container">
@@ -3370,10 +3370,10 @@ The basic setup consists of Frankfurt (Germany) with a warm and temperate climat
 </section>
 </section>
 <section id="visualisation-of-radiative-effects-of-clouds">
-<h2><a id='uc3'></a> 5. Visualisation of radiative effects of clouds<a class="headerlink" href="#visualisation-of-radiative-effects-of-clouds" title="Link to this heading">#</a></h2>
+<h2>5. Visualisation of radiative effects of clouds<a class="headerlink" href="#visualisation-of-radiative-effects-of-clouds" title="Link to this heading">#</a></h2>
 <p>To demonstrate the basic relation between clouds and radiation, which is why clouds are ascribed a crucial role in the Earth’s climate system, Figure 6 presents time-averaged data from the CLARA-A3 dataset on radiation. This dataset was simultaneously compiled with the CLARA-A3 dataset on clouds by EUMETSAT’s CM SAF.</p>
 <section id="download-and-calculation-of-temporal-average-of-surface-downwelling-longwave-shortwave-radiation">
-<h3><a id='calculation_3'></a> 5.1 Download and calculation of temporal average of surface downwelling longwave/shortwave radiation<a class="headerlink" href="#download-and-calculation-of-temporal-average-of-surface-downwelling-longwave-shortwave-radiation" title="Link to this heading">#</a></h3>
+<h3>5.1 Download and calculation of temporal average of surface downwelling longwave/shortwave radiation<a class="headerlink" href="#download-and-calculation-of-temporal-average-of-surface-downwelling-longwave-shortwave-radiation" title="Link to this heading">#</a></h3>
 <p>The calculation of the temporal-averaged radiation is similar to the first Use Case but with different variables.</p>
 <p>Please click on “Datasets” in the bar at the top and either search for “Surface Radiation Budget” or click on <strong><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></strong>. The name of the landing page is <strong>Surface radiation budget from 1979 to present derived from satellite observations</strong>.</p>
 <p>Please select in the “Download data” tab the following:</p>
@@ -3483,7 +3483,7 @@ Watch out to accept the <strong>Terms of use</strong>.</p>
 </div>
 </section>
 <section id="plot-of-the-temporal-average-of-surface-downwelling-longwave-shortwave-radiation">
-<h3><a id='plot_3'></a> 5.2 Plot of the temporal average of surface downwelling longwave/shortwave radiation<a class="headerlink" href="#plot-of-the-temporal-average-of-surface-downwelling-longwave-shortwave-radiation" title="Link to this heading">#</a></h3>
+<h3>5.2 Plot of the temporal average of surface downwelling longwave/shortwave radiation<a class="headerlink" href="#plot-of-the-temporal-average-of-surface-downwelling-longwave-shortwave-radiation" title="Link to this heading">#</a></h3>
 <p>Similar to Use Case 2 more than one figure will be created. This gives us the chance to use a loop with two runs. A set of vectors with two entries is created below, using the first entry for SDL and the second entry for SIS.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3550,7 +3550,7 @@ Watch out to accept the <strong>Terms of use</strong>.</p>
 </section>
 </section>
 <section id="references">
-<h2><a id='ref'></a> References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p>5th IPCC assessment report, chapter 7:</p>
 <p>Boucher, O., D. Randall, P. Artaxo, C. Bretherton, G. Feingold, P. Forster, V.-M. Kerminen, Y. Kondo, H. Liao, U.
 Lohmann, P. Rasch, S.K. Satheesh, S. Sherwood, B. Stevens and X.Y. Zhang, 2013: Clouds and Aerosols. In: <em>Climate
@@ -3624,10 +3624,10 @@ New York, NY, USA</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook"><a id="access"></a> How to access the notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">How to access the notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-tutorial-comprises-the-following-steps">The tutorial comprises the following steps:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> 1. Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> 1.1 Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">1.1 Dataset description</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-data">2. Retrieve data</a><ul class="nav section-nav flex-column">
@@ -3635,21 +3635,21 @@ New York, NY, USA</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data">2.4 Get the data</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-mean-global-cloud-distribution"><a id="uc1"></a> 3. Visualisation of mean global cloud distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover"><a id="calculation_1"></a> 3.1 Calculation of the temporal average of cloud fractional cover</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-cloud-fractional-cover"><a id="plot_1"></a> 3.2 Plot of the temporal average of cloud fractional cover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-mean-global-cloud-distribution">3. Visualisation of mean global cloud distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-cloud-fractional-cover">3.1 Calculation of the temporal average of cloud fractional cover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-cloud-fractional-cover">3.2 Plot of the temporal average of cloud fractional cover</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-seasonal-variations-of-clouds"><a id="uc2"></a> 4. Visualisation of seasonal variations of clouds</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots"><a id="calculation_2"></a> 4.1 Calculation and Plot of cloud coverage annual cycles on three different spots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-seasonal-variations-of-clouds">4. Visualisation of seasonal variations of clouds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-and-plot-of-cloud-coverage-annual-cycles-on-three-different-spots">4.1 Calculation and Plot of cloud coverage annual cycles on three different spots</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-radiative-effects-of-clouds"><a id="uc3"></a> 5. Visualisation of radiative effects of clouds</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-calculation-of-temporal-average-of-surface-downwelling-longwave-shortwave-radiation"><a id="calculation_3"></a> 5.1 Download and calculation of temporal average of surface downwelling longwave/shortwave radiation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-surface-downwelling-longwave-shortwave-radiation"><a id="plot_3"></a> 5.2 Plot of the temporal average of surface downwelling longwave/shortwave radiation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisation-of-radiative-effects-of-clouds">5. Visualisation of radiative effects of clouds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-calculation-of-temporal-average-of-surface-downwelling-longwave-shortwave-radiation">5.1 Download and calculation of temporal average of surface downwelling longwave/shortwave radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-surface-downwelling-longwave-shortwave-radiation">5.2 Plot of the temporal average of surface downwelling longwave/shortwave radiation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><a id="ref"></a> References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
