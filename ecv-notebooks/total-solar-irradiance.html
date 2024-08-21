@@ -492,7 +492,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-side-by-side-composite-products">Use case 2: Side-by-side composite products</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-nrl-dataset-subselecting-the-time-range">Download the NRL dataset, subselecting the time range</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Load dataset, subselect and calculate a temporal mean</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Plot data</a></li>
 </ul>
@@ -713,265 +712,138 @@ Finally, we use lambda-function to set the time to midnight (00:00:00) for each 
     <span class="n">header_lines</span> <span class="o">=</span> <span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)]</span>
 
 <span class="c1"># print the information</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">header_lines</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">header_lines</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># Copernicus Climate Change Service (C3S) daily Total Solar Irradiance (TSI) timeseries
-
 # 
-
 # The TSI is the total amount of solar radiation, i.e. integrated over all the wavelengths, at the mean  
-
 # Earth-Sun distance (1 AU). Given its direct impact on the Earth Radiation Budget (ERB), it is one of  
-
 # the Essential Climate Variables (ECV) defined by the GCOS. 
-
 # 
-
 # This C3S timeseries provides an estimate of the daily TSI computed as a composite of different
-
 # space instruments (see list below). 
-
 # 
-
 # CDR type     : ICDR (Interim Climate Data Record)
-
 # CDR version  : v3.2
-
 # 
-
 # CDR provider : Royal Meteorological Institute of Belgium (RMIB)
-
 # Contract     : C3S2_312a_lot1                                
-
 # 
-
 # Temporal resolution   : daily mean
-
 # CDR (final) period    : 19790101 - 20201231
-
 # ICDR (interim) period : 20210101 - 20231231
-
 # 
-
 # Creation date and time (YYYYMMDD_hhmmss) : 20240320_155857
-
 # Software version                         : v3.0
-
 # 
-
 # Instruments and models :
-
 # ------------------------
-
 #                                        adjustement     RMS with SATIRE-S 
-
 #                                          factors       max  / all / min 
-
 # - &quot;ERB&quot;                                  0.992447      0.318 0.270 0.263 
-
 # - &quot;ACRIM1&quot;                               0.995568      0.270 0.184 0.128 
-
 # - &quot;ERBS (filtered and interpolated)&quot;     0.997149      0.270 0.184 0.128 
-
 # - &quot;ACRIM2&quot;                               0.997821      0.215 0.187 0.139 
-
 # - &quot;DIARAD/VIRGO on SOHO&quot;                 0.996449      0.121 0.103 0.064 
-
 # - &quot;PMO06/VIRGO on SOHO&quot;                  1.000181      0.173 0.142 0.079 
-
 # - &quot;ACRIM3&quot;                               1.000078      0.126 0.111 0.064 
-
 # - &quot;TIM on SORCE&quot;                         1.000256      0.089 0.071 0.035 
-
 # - &quot;PREMOS on Picard&quot;                     1.000256      0.086 0.086   -   
-
 # - &quot;SOVAP on Picard&quot;                      0.999345      0.145 0.145   -   
-
 # - &quot;TIM on TCTE&quot;                          0.999771      0.092 0.073 0.039 
-
 # - &quot;TIM on TSIS1&quot;                         0.999535      0.077 0.057 0.031 
-
 # - &quot;SATIRE (semi-empirical model)&quot;        1.000150      0.000 0.000 0.000 
-
 # - &quot;NRL TSI v2 (model)&quot;                   1.000000      0.152 0.123 0.074 
-
 # 
-
 # Notes (see details in the ATBD): 
-
 # --------------------------------
-
 #  - Data discarded for suspected quality issues: 
-
 #        - ERB data before 01.01.1981 and after 31.12.1990 have been discarded.
-
 #        - ACRIM1 data before 07.11.1980 have been discarded.
-
 #        - DIARAD and PMO06 data before 01.01.1997 have been discarded.
-
 #  - PMO06 data after 01.01.2016 are not used to estimate the PMO06 accuracy (but 
-
 #    are used in the composite)  
-
 #  - Until 31.12.2020 (CDR period), the V8 of the PMO06 data as available in file 
-
 #    &#39;VIRGO_TSI_Daily_V8_20230728.txt&#39; has been used. For 01.01.2021 onward (ICDR period) 
-
 #    the data is downloaded from ftp://ftp.pmodwrc.ch/pub/data/irradiance/virgo/TSI/  
-
 #  - In general SATIRE-S (model) data is not used in the composite, however SATIRE-S is used:
-
 #      - to filter and interpolate the ERBS record,
-
 #      - to interpolate data gaps in the input time series (for gaps up to 50 days long)
-
 #      - as input data at the very beginning of the composite [01.01.1979-06.11.1980].
-
 #  - NRLTSI2 is not used to create the C3S composite but is provided in this file (last  
-
 #    column) for validation purposes.
-
 #  - For SATIRE and NRLTSI2, the accuracies are estimated over the [01.01.1995-
-
 #    31.12.2020] time period. These accuracies are not used in the composite.
-
 #  - Each instrument has its own scaling factor and accuracy (see values above). 
-
 #    The scaling factors are determined to optimize the agreement over the overlaps   
-
 #    periods with the constraint that the average of the scaling factors for the 
-
 #    following list of instruments is equal to 1. See &quot;Absolute level&quot; below.
-
 #  - The accuracies are used to weigth the individual measurements in case several 
-
 #    measurements are available for a given day.
-
 #  - All the TSI values are expressed in Watt per square meter (W/m^2) unit.
-
 #  
-
 # User Documentation (available via https://cds.climate.copernicus.eu/):
-
 # ----------------------------------------------------------------------
-
 #  - ATBD : Algorithm Theoretical Basis Document.
-
 #  - PUGS : Product User Guide and Specifications.
-
 #  - PQAD : Product Quality Assurance Document.
-
 #  - PQAR : Product Quality Assessment Report.
-
 #  - SQAD : System Quality Assurance Document.
-
 #  - Clerbaux, N. and co-authors, 2024: The Copernicus Climate Change Service composite 
-
 #    of Spaceborn daily TSI measurements, Remote Sensing, to be submitted. 
-
 # 
-
 # Licence and intellectual property rights:
-
 # -----------------------------------------  
-
 #  - https://cds.climate.copernicus.eu/api/v2/terms/static/licence-to-use-copernicus-products.pdf
-
 # 
-
 # ICDR file incorporating the most recent data:
-
 # ---------------------------------------------  
-
 #  - https://gerb.oma.be/tsi/C3S_RMIB_daily_TSI_composite_ICDR_v3_latest.txt 
-
 # 
-
 # Absolute radiometric level :
-
 # ----------------------------
-
 #   - Mean of : PMO06 SORCE PREMOS TCTE TSIS1 
-
 # 
-
 # Data format (column):
-
 # ---------------------
-
 #  1 : Nominal date expressed as fractional year (e.g. 1987.0 is 1 Jan 1987 at 00:00 UTC). This
-
 #      field is useful for visualization but should not be used for data selection.
-
 #  2 : Total Solar Irradiance (TSI) value at 1 Astronomical Unit (AU).
-
 #  3 : Nominal date expressed as Julian Day number (integer)
-
 #  4 : Nominal date expressed ascharacter&#39;s string YYYYMMDD (YYYY=year, MM=month, DD=day)
-
 #  5 : Number of individual TSI values combined in the composite TSI for this day.
-
 #  6 : Weighted standard deviation of the TSI values (after adjustment)
-
 #  7 : Earth-Sun distance in Astronomical Unit (AU).
-
 #  8 : TSI value at the true Earth-Sun distance
-
 #  9 : Flags for the instruments/models used in the composite (see code below), e.g. 02030000000011 
-
 #           means that only instruments 2 and 4 are used for the daily mean for this particular day.
-
 # 10 : Original TSI values for instrument ERB
-
 # 11 : Original TSI values for instrument ACRIM1
-
 # 12 : Original TSI values for instrument ERBS
-
 # 13 : Original TSI values for instrument ACRIM2
-
 # 14 : Original TSI values for instrument DIARAD
-
 # 15 : Original TSI values for instrument PMO06
-
 # 16 : Original TSI values for instrument ACRIM3
-
 # 17 : Original TSI values for instrument SORCE
-
 # 18 : Original TSI values for instrument PREMOS
-
 # 19 : Original TSI values for instrument SOVAP
-
 # 20 : Original TSI values for instrument TCTE
-
 # 21 : Original TSI values for instrument TSIS1
-
 # 22 : Original TSI values for model SATIRE
-
 # 23 : Original TSI values for model NRLTSI2
-
 # 
-
 # Instrument flag code :
-
 # ----------------------
-
 #  0 : no data available. 
-
 #  1 : data available but not used in the composite.
-
 #  2 : data available and used in the composite.
-
 #  3 : data not available, interpolated.
-
 #  4 : data rejected, interpolated.
-
 # 
-
 #  year       TSI   jul.day   YYYYMMDD num  std.dev.   dist   act.TSI    instr.flag        ERB   ACRIM1     ERBS   ACRIM2   DIARAD    PMO06   ACRIM3    SORCE   PREMOS    SOVAP     TCTE    TSIS1   SATIRE  NRLTSI2 
-
 # 
 </pre></div>
 </div>
@@ -1027,15 +899,6 @@ By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we c
 <section id="use-case-2-side-by-side-composite-products">
 <h3>Use case 2: Side-by-side composite products<a class="headerlink" href="#use-case-2-side-by-side-composite-products" title="Link to this heading">#</a></h3>
 <p>The existing 44+ year TSI Climate Data Record (CDR) is the result of several overlapping TSI instruments onboard different satellites. Another well-known composite TSI data are produced by the Naval Research Laboratory (NRL). Each organization collects TSI measurements from various satellite instruments and combines them to create a composite dataset that represents the overall TSI variations over time. In this usecase, we will plot these two composite datasets side-by-side.</div></p>
-<section id="download-the-nrl-dataset-subselecting-the-time-range">
-<h4>Download the NRL dataset, subselecting the time range<a class="headerlink" href="#download-the-nrl-dataset-subselecting-the-time-range" title="Link to this heading">#</a></h4>
-<p>The NRL TSI dataset is made available through LaTiS, which is a data-serving system. It offers multiple methods to access the dataset, providing users with different options to retrieve the data according to their needs or preferences. We then download the selected parameters using a command-line utility <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">nrl2_tsi_P1D.csv</span></code>: TSI daily dataset name on the LaTiS server;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">?time,irradiance</span></code>: These are the variables that are requested from the dataset: time and irradiance;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&amp;formatTime(yyyyMMdd)</span></code>: This is a LaTiS function that formats the time variable as a date string in the format yyyyMMdd.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&amp;time&gt;=1979-01-01T00:00</span></code>: This is another LaTiS function that specifies that you only want data points that have a time value greater than or equal to 1979-01-01T00:00</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download the dataset using wget. -O specifies the output path and filename; -q quiet mode, to disable wget&#39;s output</span>
@@ -1044,7 +907,6 @@ By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we c
 </div>
 </div>
 </div>
-</section>
 <section id="id1">
 <h4>Load dataset, subselect and calculate a temporal mean<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>If you run the Use case 1, C3S RMIB dataset is already saved in the memory. If not, please run the Use case 1 first.<br><br />
@@ -1224,7 +1086,6 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-side-by-side-composite-products">Use case 2: Side-by-side composite products</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-nrl-dataset-subselecting-the-time-range">Download the NRL dataset, subselecting the time range</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Load dataset, subselect and calculate a temporal mean</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Plot data</a></li>
 </ul>
