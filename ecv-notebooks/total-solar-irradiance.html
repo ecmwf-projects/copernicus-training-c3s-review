@@ -492,6 +492,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-side-by-side-composite-products">Use case 2: Side-by-side composite products</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-nrl-dataset-subselecting-the-time-range">Download the NRL dataset, subselecting the time range</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Load dataset, subselect and calculate a temporal mean</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Plot data</a></li>
 </ul>
@@ -538,8 +539,8 @@ document.write(`
 <h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>The Total Solar Irradiance (TSI) is the measure of the energy input that the Earth receives from the Sun. It is the dominant driver of the Earth’s climate, a key component of the Earth’s Radiation Budget (ERB), and is thus one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECVs). Stable and accurate long-term TSI records are needed for climate studies, e.g. to understand the influence of solar variability on climate.</p>
 <p>The TSI exhibits large day-to-day variations due to the passage of dark sunspots, and bright faculae. The well-known 11-year solar cycle is also being directly observed by space-based instruments. There exist other regular and irregular factors that contribute to the short-term variations of TSI. Fortunately, the TSI is very stable in the long timescales, century to multi-century (thus the historical name “the solar constant”, now usually referred to as Total Solar Irradiance (TSI)).</p>
-<p>This TSI dataset provides daily TSI observations for over 44 years. It is a composite dataset, meaning that it is constructed from different TSI measurements obtained by an ensemble of space instruments, and carefully combined into one homogeneous dataset.<br>
-This dataset is produced on behalf of C3S by the Royal Meteorological Institute of Belgium (RMIB).</p>
+<p>This TSI dataset provides daily TSI observations for over 44 years. It is a composite dataset, meaning that it is constructed from different TSI measurements obtained by an ensemble of space instruments, and carefully combined into one homogeneous dataset.</p>
+<p>This dataset is produced on behalf of C3S by the Royal Meteorological Institute of Belgium (RMIB).</p>
 <p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
@@ -643,16 +644,13 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-08-21 14:54:54,328 INFO [2024-01-09T00:00:00] NOAA/NCEI HIRS OLR was reprocessed from 2007 till 2023. Please see the Known issues section under the Documentation tab for more details.
-2024-08-21 14:54:54,329 INFO Request ID is 32483d82-519d-40a1-a836-715434c0d075
-2024-08-21 14:54:54,385 INFO status has been updated to accepted
-2024-08-21 14:54:55,982 INFO Creating download object as zip with files:
-[&#39;C3S_RMIB_daily_TSI_composite_ICDR_v3.2.txt&#39;]
-2024-08-21 14:54:55,984 INFO status has been updated to running
-2024-08-21 14:54:58,324 INFO status has been updated to successful
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-08-21 15:11:34,060 INFO [2024-01-09T00:00:00] NOAA/NCEI HIRS OLR was reprocessed from 2007 till 2023. Please see the Known issues section under the Documentation tab for more details.
+2024-08-21 15:11:34,061 INFO Request ID is 4a0a9daa-dbd1-482c-82a3-8cfa53f85da8
+2024-08-21 15:11:34,136 INFO status has been updated to accepted
+2024-08-21 15:11:35,716 INFO status has been updated to successful
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "413b3bd4b2244cc38029e089edf14285", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;./data_dir/TSI_data.zip&#39;
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "93f4fab005654fe3ad36661e710222dd", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;./data_dir/TSI_data.zip&#39;
 </pre></div>
 </div>
 </div>
@@ -852,9 +850,9 @@ Finally, we use lambda-function to set the time to midnight (00:00:00) for each 
 </section>
 <section id="plot-data">
 <h4>Plot data<a class="headerlink" href="#plot-data" title="Link to this heading">#</a></h4>
-<p>We want to save objects <code class="docutils literal notranslate"><span class="pre">figure</span></code> and <code class="docutils literal notranslate"><span class="pre">axes</span></code> to use later. We use <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> to create a high-quality plot. Before plotting we need to prepare daily values and a 12-month rolling mean.<br></p>
-<p>The rolling mean is a statistical technique used to smooth out data by calculating the average of a specified window of values. In our case, the window is 365 days or 12 months.<br />
-By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we can clearly observe the presence of three distinct solar cycles. These cycles represent periods of varying solar activity and are characterized by the rise and fall of sunspot numbers and other solar phenomena. Solar cycle 22, spanning from 1986 to 1996, is followed by solar cycle 23, which occurred from 1996 to 2008. Finally, solar cycle 24 took place from 2008 to 2019. These solar cycles demonstrate the cyclic nature of solar activity and its influence on the TSI measurements.</p>
+<p>We want to save objects <code class="docutils literal notranslate"><span class="pre">figure</span></code> and <code class="docutils literal notranslate"><span class="pre">axes</span></code> to use later. We use <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> to create a high-quality plot. Before plotting we need to prepare daily values and a 12-month rolling mean.</p>
+<p>The rolling mean is a statistical technique used to smooth out data by calculating the average of a specified window of values. In our case, the window is 365 days or 12 months.</p>
+<p>By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we can clearly observe the presence of three distinct solar cycles. These cycles represent periods of varying solar activity and are characterized by the rise and fall of sunspot numbers and other solar phenomena. Solar cycle 22, spanning from 1986 to 1996, is followed by solar cycle 23, which occurred from 1996 to 2008. Finally, solar cycle 24 took place from 2008 to 2019. These solar cycles demonstrate the cyclic nature of solar activity and its influence on the TSI measurements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save figure and axes objects to modify later</span>
@@ -898,7 +896,16 @@ By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we c
 </section>
 <section id="use-case-2-side-by-side-composite-products">
 <h3>Use case 2: Side-by-side composite products<a class="headerlink" href="#use-case-2-side-by-side-composite-products" title="Link to this heading">#</a></h3>
-<p>The existing 44+ year TSI Climate Data Record (CDR) is the result of several overlapping TSI instruments onboard different satellites. Another well-known composite TSI data are produced by the Naval Research Laboratory (NRL). Each organization collects TSI measurements from various satellite instruments and combines them to create a composite dataset that represents the overall TSI variations over time. In this usecase, we will plot these two composite datasets side-by-side.</div></p>
+<p>The existing 44+ year TSI Climate Data Record (CDR) is the result of several overlapping TSI instruments onboard different satellites. Another well-known composite TSI data are produced by the Naval Research Laboratory (NRL). Each organization collects TSI measurements from various satellite instruments and combines them to create a composite dataset that represents the overall TSI variations over time. In this usecase, we will plot these two composite datasets side-by-side.</p>
+<section id="download-the-nrl-dataset-subselecting-the-time-range">
+<h4>Download the NRL dataset, subselecting the time range<a class="headerlink" href="#download-the-nrl-dataset-subselecting-the-time-range" title="Link to this heading">#</a></h4>
+<p>The NRL TSI dataset is made available through LaTiS, which is a data-serving system. It offers multiple methods to access the dataset, providing users with different options to retrieve the data according to their needs or preferences. We then download the selected parameters using a command-line utility <code class="docutils literal notranslate"><span class="pre">wget</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nrl2_tsi_P1D.csv</span></code>: TSI daily dataset name on the LaTiS server;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">?time,irradiance</span></code>: These are the variables that are requested from the dataset: time and irradiance;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;formatTime(yyyyMMdd)</span></code>: This is a LaTiS function that formats the time variable as a date string in the format yyyyMMdd.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&amp;time&gt;=1979-01-01T00:00</span></code>: This is another LaTiS function that specifies that you only want data points that have a time value greater than or equal to 1979-01-01T00:00</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># download the dataset using wget. -O specifies the output path and filename; -q quiet mode, to disable wget&#39;s output</span>
@@ -907,10 +914,11 @@ By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we c
 </div>
 </div>
 </div>
+</section>
 <section id="id1">
 <h4>Load dataset, subselect and calculate a temporal mean<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
-<p>If you run the Use case 1, C3S RMIB dataset is already saved in the memory. If not, please run the Use case 1 first.<br><br />
-The TSI data is stored in an ASCII file.
+<p>If you run the Use case 1, C3S RMIB dataset is already saved in the memory. If not, please run the Use case 1 first.</p>
+<p>The TSI data is stored in an ASCII file.
 We read a dataset using pandas <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> into DataFrame. We skip the first line, as it is the name of the columns. We also specify the date format for the first column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1086,6 +1094,7 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-side-by-side-composite-products">Use case 2: Side-by-side composite products</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-nrl-dataset-subselecting-the-time-range">Download the NRL dataset, subselecting the time range</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Load dataset, subselect and calculate a temporal mean</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Plot data</a></li>
 </ul>
