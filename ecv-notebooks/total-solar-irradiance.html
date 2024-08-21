@@ -478,7 +478,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">2.1 How to access the notebook</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">2.2 Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">2.3 Download data using CDS API</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
 </ul>
@@ -519,10 +518,10 @@ document.write(`
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="the-total-solar-irradiance-tsi-from-rmib">
 <h1>The Total Solar Irradiance (TSI) from RMIB<a class="headerlink" href="#the-total-solar-irradiance-tsi-from-rmib" title="Link to this heading">#</a></h1>
-<p>This notebook provides a practical introduction to the Total Solar Irradiance (TSI) dataset available at the Copernicus Climate Change Service (C3S) <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store (CDS)</a>).</p>
-<br>
-The notebook begins with an introduction to the TSI variable and the dataset overview. Next, it provides instructions for setting up and running the notebook. It describes the steps to set up a python environment, and access and prepare the data. Following this setup, the notebook presents two practical use cases of the dataset: plotting the TSI daily values and a 12-month rolling mean (Use Case 1), and plotting two TSI datasets side-by-sides (Use Case 2).<br>
-The figure below is the result of Use Case 1, and the result of a successful run of the code.<section id="table-of-contents">
+<p>This notebook provides a practical introduction to the Total Solar Irradiance (TSI) dataset available at the Copernicus Climate Change Service (C3S) <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store (CDS)</a>.</p>
+<p>The notebook begins with an introduction to the TSI variable and the dataset overview. Next, it provides instructions for setting up and running the notebook. It describes the steps to set up a python environment, and access and prepare the data. Following this setup, the notebook presents two practical use cases of the dataset: plotting the TSI daily values and a 12-month rolling mean (Use Case 1), and plotting two TSI datasets side-by-sides (Use Case 2).</p>
+<p>The figure below is the result of Use Case 1, and the result of a successful run of the code.</p>
+<section id="table-of-contents">
 <h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Introduction</p></li>
@@ -539,7 +538,7 @@ The figure below is the result of Use Case 1, and the result of a successful run
 <section id="introduction">
 <h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>The Total Solar Irradiance (TSI) is the measure of the energy input that the Earth receives from the Sun. It is the dominant driver of the Earth’s climate, a key component of the Earth’s Radiation Budget (ERB), and is thus one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECVs). Stable and accurate long-term TSI records are needed for climate studies, e.g. to understand the influence of solar variability on climate.</p>
-<p>The TSI exhibits large day-to-day variations due to the passage of dark sunspots, and bright faculae. The well-known 11-year solar cycle is also being directly observed by space-based instruments. There exist other regular and irregular factors that contribute to the short-term variations of TSI. Fortunately, the TSI is very stable in the long timescales, century to multi-century (thus the historical name “the solar constant”, now usually referred to as Total Solar Irradiance (TSI).</p>
+<p>The TSI exhibits large day-to-day variations due to the passage of dark sunspots, and bright faculae. The well-known 11-year solar cycle is also being directly observed by space-based instruments. There exist other regular and irregular factors that contribute to the short-term variations of TSI. Fortunately, the TSI is very stable in the long timescales, century to multi-century (thus the historical name “the solar constant”, now usually referred to as Total Solar Irradiance (TSI)).</p>
 <p>This TSI dataset provides daily TSI observations for over 44 years. It is a composite dataset, meaning that it is constructed from different TSI measurements obtained by an ensemble of space instruments, and carefully combined into one homogeneous dataset.<br>
 This dataset is produced on behalf of C3S by the Royal Meteorological Institute of Belgium (RMIB).</p>
 <p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
@@ -553,7 +552,7 @@ This dataset is produced on behalf of C3S by the Royal Meteorological Institute 
 <p>This chapter provides information on how to: run the notebook, lists necessary python libraries, and guides you through the process of the  preparation: how to search and download the data via CDS API and get it ready to be used.</p>
 <section id="how-to-access-the-notebook">
 <h3>2.1 How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Link to this heading">#</a></h3>
-<p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. This tutorial can also be run on a cloud environment, or on your own computer. Here are some suggestions (simply click on one of the links below to launch this notebook in the cloud environment. To run the code, press “Run - Run All Cells”. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests.</p>
+<p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. This tutorial can also be run on a cloud environment, or on your own computer. Here are some suggestions, simply click on one of the links below to launch this notebook in the cloud environment. To run the code, press “Run - Run All Cells”. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests.</p>
 <style>
 td, th {
    border: 1px solid white;
@@ -579,9 +578,7 @@ We will be working with data in ASCII format. <code class="docutils literal notr
 <p>We need to import the libraries to ensure that all necessary functions and modules are available for use throughout the script’s execution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="c1"># CDS API library</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API library</span>
 <span class="kn">import</span> <span class="nn">cdsapi</span>
 
 <span class="c1"># Library for data manipulation and analysis</span>
@@ -601,23 +598,8 @@ We will be working with data in ASCII format. <code class="docutils literal notr
 </section>
 <section id="download-data-using-cds-api">
 <h3>2.3 Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
-<p>This subsection describes the process of data search in the CDS catalogue, and data preparation for use in the use cases.</p>
-<section id="set-up-cds-api-credentials">
-<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h4>
-<p>We will request data from the Climate Data Store (CDS): <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>. In case you don’t have an account yet, please click on “Login/register” at the top right and select “Create new account”. With the process finished you can to login to the CDS and can search for your preferred data.</p>
-<p>We will request data from the CDS programmatically with the help of the CDS API.
-First, we need to manually set the CDS API credentials.
-To do so, we need to define two variables: URL and KEY.
-To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy) the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;########&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Next, we specify a data directory in which we will download our data and all output files that we will generate. Using <code class="docutils literal notranslate"><span class="pre">os</span></code> library, we create the data directory if it does not already exist.</p>
+<p>This tutorial assumes that you have installed the cdsapi and configured you .cdsapirc file with your key, as described in the “Climate Data Store Tutorial”.</p>
+<p>First, we specify a data directory in which we will download our data and all output files that we will generate. Using <code class="docutils literal notranslate"><span class="pre">os</span></code> library, we create the data directory if it does not already exist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./data_dir/&#39;</span>
@@ -626,7 +608,6 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </div>
 </div>
 </div>
-</section>
 <section id="search-for-data">
 <h4>Search for data<a class="headerlink" href="#search-for-data" title="Link to this heading">#</a></h4>
 <p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
@@ -646,7 +627,7 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 <p>At the end of the download form, select <strong><code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code></strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cell below).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
 
 <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
@@ -663,18 +644,16 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-07-27 12:41:35,984 INFO Welcome to the CDS.
- As per our announcements on the Forum, this instance of CDS will soon be decommissioned.
- Please update your cdsapi package to a version &gt;=0.7.0, create an account on CDS-Beta and update your .cdsapirc file. We strongly recommend users to check our Guidelines at https://confluence.ecmwf.int/x/uINmFw
- The current legacy system will be kept for a while, but we will reduce resources gradually until full decommissioning in September 2024.
-2024-07-27 12:41:35,985 WARNING MOVE TO CDS-Beta
-2024-07-27 12:41:35,986 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
-2024-07-27 12:41:36,618 INFO Request is completed
-2024-07-27 12:41:36,620 INFO Downloading https://download-0015-clone.copernicus-climate.eu/cache-compute-0015/cache/data2/dataset-satellite-earth-radiation-budget-5e630d15-1b89-42a3-81c3-85e95c45518d.zip to ./data_dir/TSI_data.zip (623.5K)
-2024-07-27 12:41:36,984 INFO Download rate 1.7M/s 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-08-21 14:54:54,328 INFO [2024-01-09T00:00:00] NOAA/NCEI HIRS OLR was reprocessed from 2007 till 2023. Please see the Known issues section under the Documentation tab for more details.
+2024-08-21 14:54:54,329 INFO Request ID is 32483d82-519d-40a1-a836-715434c0d075
+2024-08-21 14:54:54,385 INFO status has been updated to accepted
+2024-08-21 14:54:55,982 INFO Creating download object as zip with files:
+[&#39;C3S_RMIB_daily_TSI_composite_ICDR_v3.2.txt&#39;]
+2024-08-21 14:54:55,984 INFO status has been updated to running
+2024-08-21 14:54:58,324 INFO status has been updated to successful
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=638441,content_type=application/zip,location=https://download-0015-clone.copernicus-climate.eu/cache-compute-0015/cache/data2/dataset-satellite-earth-radiation-budget-5e630d15-1b89-42a3-81c3-85e95c45518d.zip)
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "413b3bd4b2244cc38029e089edf14285", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;./data_dir/TSI_data.zip&#39;
 </pre></div>
 </div>
 </div>
@@ -712,7 +691,8 @@ Finally, we use lambda-function to set the time to midnight (00:00:00) for each 
 
 <span class="c1"># read the file</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-    <span class="n">filename</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TSI&quot;</span><span class="p">,</span> <span class="s2">&quot;JD&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span>
+    <span class="n">filename</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span>
+    <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TSI&quot;</span><span class="p">,</span> <span class="s2">&quot;JD&quot;</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span>
 <span class="p">)</span>
 <span class="c1"># convert julian date values to a datetime format</span>
 <span class="n">data</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;julian&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
@@ -733,8 +713,7 @@ Finally, we use lambda-function to set the time to midnight (00:00:00) for each 
     <span class="n">header_lines</span> <span class="o">=</span> <span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)]</span>
 
 <span class="c1"># print the information</span>
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">header_lines</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">header_lines</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1040,7 +1019,7 @@ By applying the rolling mean to the TSI dataset spanning from 1979 to 2023, we c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/35516e676b31f18a21728a406880879ab8e169efff85267b2ac9e98cf937f545.png" src="../_images/35516e676b31f18a21728a406880879ab8e169efff85267b2ac9e98cf937f545.png" />
+<img alt="../_images/dceddc26c04ab83d93393e176e30b7f33aa2ec84a36a0d7e00603872539e0dac.png" src="../_images/dceddc26c04ab83d93393e176e30b7f33aa2ec84a36a0d7e00603872539e0dac.png" />
 </div>
 </div>
 </section>
@@ -1134,7 +1113,7 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f557ba610a890253b9597a46b4037df26b6556b3ba17f661bfc65188b86cdd66.png" src="../_images/f557ba610a890253b9597a46b4037df26b6556b3ba17f661bfc65188b86cdd66.png" />
+<img alt="../_images/21a2090829364496d545409f081a5aafa991b1d4a995b294992b06e9baf8f004.png" src="../_images/21a2090829364496d545409f081a5aafa991b1d4a995b294992b06e9baf8f004.png" />
 </div>
 </div>
 </section>
@@ -1231,7 +1210,6 @@ We read a dataset using pandas <code class="docutils literal notranslate"><span 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">2.1 How to access the notebook</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">2.2 Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">2.3 Download data using CDS API</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-the-data">Unpack the data</a></li>
 </ul>
