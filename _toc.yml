@@ -68,6 +68,8 @@ parts:
     - file: ecv-notebooks/ice-sheet-surface-elevation  # COPCO-1695
     - file: ecv-notebooks/ice-sheet-velocity  # COPCO-1728
     - file: ecv-notebooks/ice-sheet-mass-balance # COPCO-1729
+    - file: ecv-notebooks/glacier-area  # COPCO-1737
+      title: Explore glacier area
     - file: ecv-notebooks/glacier-mass-change  # COPCO-1697
       title: Glacier mass change
     # Precipitation
