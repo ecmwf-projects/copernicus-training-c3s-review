@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Access and visualisation of the Greenland Ice Sheet velocity data &#8212; C3S Training</title>
+    <title>Greenland Ice Sheet velocity &#8212; C3S Training</title>
   
   
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/ice-sheet-velocity';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Gravimetric Mass Balance for Ice Sheet" href="ice-sheet-mass-balance.html" />
+    <link rel="next" title="Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store" href="ice-sheet-mass-balance.html" />
     <link rel="prev" title="Ice sheet surface elevation change rates" href="ice-sheet-surface-elevation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -221,15 +221,20 @@
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html"><strong>C3S Soil Moisture Data Access and Anomaly Analysis Notebook</strong></a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Data Access and  Visualisation of Lake Water Level (LWL) timeseries</a></li>
 
 
 
 
 <li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-surface-elevation.html">Ice sheet surface elevation change rates</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Access and visualisation of the Greenland Ice Sheet velocity data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Gravimetric Mass Balance for Ice Sheet</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Greenland Ice Sheet velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="glacier-area.html">Explore glacier area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
 <li class="toctree-l1"><a class="reference internal" href="precipitation-giraffe.html">Exploring Precipitation information in the GIRAFE dataset</a></li>
@@ -462,7 +467,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Access and visualisation of the Greenland Ice Sheet velocity data</h1>
+    <h1>Greenland Ice Sheet velocity</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -479,7 +484,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-data">Examine the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-greenland-ice-sheet-velocity-map-and-display-flowvectors-on-top">Plot the Greenland Ice Sheet velocity map and display flowvectors on top</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zoom-into-key-outlet-glaciers-of-the-greenland-ice-sheet">Zoom into key outlet glaciers of the Greenland Ice Sheet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -492,15 +496,13 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="access-and-visualisation-of-the-greenland-ice-sheet-velocity-data">
-<h1>Access and visualisation of the Greenland Ice Sheet velocity data<a class="headerlink" href="#access-and-visualisation-of-the-greenland-ice-sheet-velocity-data" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="greenland-ice-sheet-velocity">
+<h1>Greenland Ice Sheet velocity<a class="headerlink" href="#greenland-ice-sheet-velocity" title="Link to this heading">#</a></h1>
 <p>By J. Wuite, ENVEO IT GmbH, <a class="reference external" href="mailto:jan&#46;wuite&#37;&#52;&#48;enveo&#46;at">jan<span>&#46;</span>wuite<span>&#64;</span>enveo<span>&#46;</span>at</a></p>
 <section id="about">
 <h2>About<a class="headerlink" href="#about" title="Link to this heading">#</a></h2>
-<p>This tutorial will demonstrate how to plot velocity maps and flow vectors of the Greenland Ice Sheet and its major outlet glaciers, using ice velocity data from the Copernicus Climate Change Service (C3S). It will show you how to download data from the C3S Climate Data Store (CDS), plot the maps and and display flow vectors on top.</p>
-<p>The dataset contains annual ice velocity maps of the Greenland Ice Sheet derived from Sentinel-1 SAR data. The data represent the current state-of-the-art in Europe for production of satellite-based ice velocity data records. It follows on from the ESA Greenland Ice Sheet Climate Change Initiative and is guided by the GCOS (Global Climate Observing System) targets for the Ice Sheets Essential Climate Variable.</p>
-<p>Mapping glacier flow velocity and its temporal changes provides key information for investigating the dynamic response of glaciers and ice sheets to changing boundary environmental conditions. Remote sensing techniques that utilise satellite data are the only feasible manner to derive accurate surface velocities of the remote Greenland glaciers on a regular basis.</p>
-<p>More information on the dataset can be found here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-greenland-ice-sheet-velocity?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-greenland-ice-sheet-velocity?tab=overview</a></p>
+<p>This tutorial will demonstrate how to plot velocity maps and flow vectors of the Greenland Ice Sheet and its major outlet glaciers, using ice velocity data from the Copernicus Climate Change Service (C3S).</p>
+<p>It will show you how to download data from the C3S Climate Data Store (CDS), plot the maps and and display flow vectors on top.</p>
 </section>
 <section id="prepare-your-environment">
 <h2>Prepare your environment<a class="headerlink" href="#prepare-your-environment" title="Link to this heading">#</a></h2>
@@ -546,9 +548,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set ice_sheet to the desired ice sheet, either &#39;greenland&#39; or &#39;antarctica&#39; (not active yet) and select year/version</span>
-<span class="c1"># This will be used to select data, and later to set up plot defaults. Ice velocity maps are extended on an annual basis, </span>
-<span class="c1"># in this example we use the time period 2020_2021, which extracts the annually averaged map for the 2020-2021 </span>
-<span class="c1"># glaciological year (running from Oct 1st, 2020 - Sept 30th, 2021).</span>
+<span class="c1"># This will be used to select data, and later to set up plot defaults</span>
 
 <span class="n">ice_sheet</span> <span class="o">=</span> <span class="s1">&#39;greenland&#39;</span>
 <span class="n">year</span> <span class="o">=</span> <span class="s1">&#39;2020_2021&#39;</span>
@@ -583,6 +583,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-01-15 12:22:56,163 INFO Welcome to the CDS
+2024-01-15 12:22:56,164 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-greenland-ice-sheet-velocity
+2024-01-15 12:22:56,315 INFO Request is completed
+2024-01-15 12:22:56,315 INFO Downloading https://download-0012-clone.copernicus-climate.eu/cache-compute-0012/cache/data2/dataset-satellite-greenland-ice-sheet-velocity-851a38ea-6ff0-49ea-8fca-84d5b7b38b4e.zip to download.zip (663M)
+2024-01-15 12:24:37,394 INFO Download rate 6.6M/s                                                                                                                                        
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the following you are seeing the data from: 
 C3S_GrIS_IV_250m_S1_20201001_20210930_v1_4.nc
 </pre></div>
@@ -593,7 +600,6 @@ C3S_GrIS_IV_250m_S1_20201001_20210930_v1_4.nc
 <section id="examine-the-data">
 <h2>Examine the data<a class="headerlink" href="#examine-the-data" title="Link to this heading">#</a></h2>
 <p>Open the data file and list its contents. These include descriptive comments.</p>
-<p>Data desciption: Ice velocity is provided at 250m and 500m grid spacing in North Polar Stereographic projection (depending on version). The horizontal velocity components are provided in true meters per day, towards the easting and northing directions of the grid. The vertical displacement is derived from a digital elevation model. Provided is a NetCDF file with the velocity components: vx, vy, vz, along with maps showing the magnitude of the horizontal components, the valid pixel count and uncertainty (based on the standard deviation). The product combines all ice velocity maps, based on 6- and 12-day repeats, acquired over a full year in an annually averaged product running from October 1st to September 30th, mimicking a glaciological year. The dataset is extended on an annual basis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the NetCDF file</span>
@@ -609,20 +615,20 @@ C3S_GrIS_IV_250m_S1_20201001_20210930_v1_4.nc
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The data file contains the following:
-&lt;xarray.Dataset&gt; Size: 2GB
+&lt;xarray.Dataset&gt;
 Dimensions:                              (y: 10801, x: 5984)
 Coordinates:
-  * y                                    (y) float64 86kB -6.556e+05 ... -3.3...
-  * x                                    (x) float64 48kB -6.399e+05 ... 8.55...
+  * y                                    (y) float64 -6.556e+05 ... -3.356e+06
+  * x                                    (x) float64 -6.399e+05 ... 8.559e+05
 Data variables:
-    crs                                  int32 4B ...
-    land_ice_surface_easting_velocity    (y, x) float32 259MB ...
-    land_ice_surface_northing_velocity   (y, x) float32 259MB ...
-    land_ice_surface_vertical_velocity   (y, x) float32 259MB ...
-    land_ice_surface_velocity_magnitude  (y, x) float32 259MB ...
-    land_ice_surface_measurement_count   (y, x) float64 517MB ...
-    land_ice_surface_easting_stddev      (y, x) float32 259MB ...
-    land_ice_surface_northing_stddev     (y, x) float32 259MB ...
+    crs                                  int32 ...
+    land_ice_surface_easting_velocity    (y, x) float32 ...
+    land_ice_surface_northing_velocity   (y, x) float32 ...
+    land_ice_surface_vertical_velocity   (y, x) float32 ...
+    land_ice_surface_velocity_magnitude  (y, x) float32 ...
+    land_ice_surface_measurement_count   (y, x) float64 ...
+    land_ice_surface_easting_stddev      (y, x) float32 ...
+    land_ice_surface_northing_stddev     (y, x) float32 ...
 Attributes: (12/13)
     Conventions:    CF-1.7
     title:          Ice Velocity of the Greenland Ice Sheet
@@ -639,12 +645,25 @@ Attributes: (12/13)
     license:        C3S general license
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/lib64/python3.11/site-packages/numpy/core/getlimits.py:518: UserWarning: The value of the smallest subnormal for &lt;class &#39;numpy.float64&#39;&gt; type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/lib64/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for &lt;class &#39;numpy.float64&#39;&gt; type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+/usr/lib64/python3.11/site-packages/numpy/core/getlimits.py:518: UserWarning: The value of the smallest subnormal for &lt;class &#39;numpy.float32&#39;&gt; type is zero.
+  setattr(self, word, getattr(machar, word).flat[0])
+/usr/lib64/python3.11/site-packages/numpy/core/getlimits.py:89: UserWarning: The value of the smallest subnormal for &lt;class &#39;numpy.float32&#39;&gt; type is zero.
+  return self._float_to_str(self.smallest_subnormal)
+</pre></div>
+</div>
 </div>
 </div>
 </section>
 <section id="plot-the-greenland-ice-sheet-velocity-map-and-display-flowvectors-on-top">
 <h2>Plot the Greenland Ice Sheet velocity map and display flowvectors on top<a class="headerlink" href="#plot-the-greenland-ice-sheet-velocity-map-and-display-flowvectors-on-top" title="Link to this heading">#</a></h2>
-<p>The following section plots the ice velocity map color coded in a figure in Polar Stereographic projection with a nice background. In addition it extracts the vx and vy components of the velocity from the dataset which are used to display velocity directions on top of the velocity map. In this way the figure does not only show the magnitude of the ice velocity but also the direction of ice flow.</p>
+<p>The dataset contains annual ice velocity maps of the Greenland Ice Sheet derived from Sentinel-1 data. The data represent the current state-of-the-art in Europe for production of satellite-based ice velocity data records. It follows on from the ESA Greenland Ice Sheet Climate Change Initiative and is guided by the GCOS (Global Climate Observing System) targets for the Ice Sheets Essential Climate Variable.</p>
+<p>Mapping glacier flow velocity and its temporal changes provides key information for investigating the dynamic response of glaciers and ice sheets to changing boundary environmental conditions. Remote sensing techniques that utilise satellite data are the only feasible manner to derive accurate surface velocities of the remote Greenland glaciers on a regular basis.</p>
+<p>The surface velocity is derived by applying feature tracking techniques using Sentinel-1 synthetic aperture radar (SAR) data acquired in the Interferometric Wide (IW) swath mode. Ice velocity is provided at 250m and 500m grid spacing in North Polar Stereographic projection (depending on version). The horizontal velocity components are provided in true meters per day, towards easting and northing direction of the grid. The vertical displacement is derived from a digital elevation model. Provided is a NetCDF file with the velocity components: vx, vy, vz, along with maps showing the magnitude of the horizontal components, the valid pixel count and uncertainty (based on the standard deviation). The product combines all ice velocity maps, based on 6- and 12-day repeats, acquired over a full year in an annually averaged product running from October 1st to September 30th, mimicking a glaciological year. The dataset is extended on an annual basis.</p>
+<p>This dataset is produced on behalf of the Copernicus Climate Change Service (C3S).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the ice velocity map in a figure in Polar Stereographic projection with a nice background, color map and vectors on top</span>
@@ -716,7 +735,7 @@ Attributes: (12/13)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4bec128ffafb33d5bae177d2ead1d9501e52b36932f52cd8fd93796b97ba642e.png" src="../_images/4bec128ffafb33d5bae177d2ead1d9501e52b36932f52cd8fd93796b97ba642e.png" />
+<img alt="../_images/b1d55792e6887e573df41f69fbfedcdfb72113f3be5298cf277c5a7fc9ab68fa.png" src="../_images/b1d55792e6887e573df41f69fbfedcdfb72113f3be5298cf277c5a7fc9ab68fa.png" />
 </div>
 </div>
 </section>
@@ -725,7 +744,8 @@ Attributes: (12/13)
 <p>The following zooms into some of the biggest outlet glaciers of the Greenland Ice Sheet and plots the ice velocity in subplots using a different color code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=-</span><span class="mi">45</span><span class="p">,</span> <span class="n">true_scale_latitude</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span> <span class="c1">#EPSG:3413</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">NorthPolarStereo</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=-</span><span class="mi">45</span><span class="p">,</span> <span class="n">true_scale_latitude</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span> <span class="c1">#EPSG:3413</span>
 
 <span class="n">extents</span> <span class="o">=</span> <span class="p">{</span>
     <span class="c1">#&#39;Hagen Glacier&#39;: [-33, -27, 81, 81.6],</span>
@@ -759,18 +779,6 @@ Attributes: (12/13)
 </div>
 </div>
 </div>
-</section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<p>This notebook downloads, extracts, visualises and explores the Greenland Ice Sheet annual gridded velocity data
-available from the Copernicus Climate Data Store. In particular it plots a color coded annually averaged ice
-velocity map of the ice sheet and displays flow vectors, indicating the direction of ice flow, on top. It also
-zooms into some of the biggest outlet glaciers of the Greenland Ice Sheet.</p>
-<p>Repeated ice velocity mapping can be used to detect gradual or abrupt changes in ice flow which might indicate a dynamical imbalance. Ice velocity is an important parameter for determining the mass discharge
-of ice sheet and glaciers and used to estimate the current contribution to sea-level rise and
-freshwater flux into the oceans. Ice velocity data is also used in ice sheet models, that
-inform about physical processes causing changes and help predict the contribution to
-future sea level rise in response to climate change.</p>
 </section>
 </section>
 
@@ -818,7 +826,7 @@ future sea level rise in response to climate change.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Gravimetric Mass Balance for Ice Sheet</p>
+        <p class="prev-next-title">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -845,7 +853,6 @@ future sea level rise in response to climate change.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-data">Examine the data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-greenland-ice-sheet-velocity-map-and-display-flowvectors-on-top">Plot the Greenland Ice Sheet velocity map and display flowvectors on top</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zoom-into-key-outlet-glaciers-of-the-greenland-ice-sheet">Zoom into key outlet glaciers of the Greenland Ice Sheet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>
 

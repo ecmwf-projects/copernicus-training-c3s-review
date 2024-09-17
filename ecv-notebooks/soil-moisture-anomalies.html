@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/soil-moisture-anomalies';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial: Visualising Lake Water Level (LWL) timeseries" href="lake-water-level.html" />
+    <link rel="next" title="Tutorial: Data Access and Visualisation of Lake Water Level (LWL) timeseries" href="lake-water-level.html" />
     <link rel="prev" title="Exploring an ozone product available through the Climate Data Store (CDS)" href="total-ozone-columns.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -226,15 +226,20 @@
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>C3S Soil Moisture Data Access and Anomaly Analysis Notebook</strong></a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Data Access and  Visualisation of Lake Water Level (LWL) timeseries</a></li>
 
 
 
 
 <li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-surface-elevation.html">Ice sheet surface elevation change rates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Access and visualisation of the Greenland Ice Sheet velocity data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Gravimetric Mass Balance for Ice Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Greenland Ice Sheet velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="glacier-area.html">Explore glacier area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
 <li class="toctree-l1"><a class="reference internal" href="precipitation-giraffe.html">Exploring Precipitation information in the GIRAFE dataset</a></li>
@@ -748,16 +753,7 @@ td, th {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-09-10 09:33:56,722 INFO Welcome to the CDS.
-As per our announcements on the Forum, this instance of CDS will be decommissioned on 26 September 2024 and will no longer be accessible from this date onwards.
-Please update your cdsapi package to a version &gt;=0.7.2, create an account on CDS-Beta and update your .cdsapirc file. We strongly recommend users to check our Guidelines at https://confluence.ecmwf.int/x/uINmFw
-2024-09-10 09:33:56,723 WARNING MOVE TO CDS-Beta
-2024-09-10 09:33:56,723 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-soil-moisture
-2024-09-10 09:33:57,027 INFO Request is queued
-2024-09-10 09:33:58,273 INFO Request is running
-2024-09-10 09:42:20,616 INFO Request is completed
-2024-09-10 09:42:20,617 INFO Downloading https://download-0009-clone.copernicus-climate.eu/cache-compute-0009/cache/data2/dataset-satellite-soil-moisture-b21f2856-ab20-448a-b11b-217368c1ae1e.zip to ./data_dir/sm_monthly_passive_v202012.zip (37.5M)
-2024-09-10 09:42:58,641 INFO Download rate 1010.8K/s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using previously downloaded file: ./data_dir/sm_monthly_passive_v202012.zip
 </pre></div>
 </div>
 </div>
@@ -800,7 +796,7 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preprocessing done. Netcdf stack now available at: ./data_dir/sm_monthly_passive_v202012.nc
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No preprocessing required. Netcdf stack already available at: ./data_dir/sm_monthly_passive_v202012.nc
 </pre></div>
 </div>
 </div>
@@ -857,6 +853,7 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 }
 
 html[theme=dark],
+html[data-theme=dark],
 body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
@@ -1190,13 +1187,13 @@ dl.xr-attrs {
   fill: currentColor;
 }
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 191MB
-Dimensions:     (time: 384, lat: 152, lon: 204)
+Dimensions:     (lat: 152, lon: 204, time: 384)
 Coordinates:
   * lat         (lat) float32 608B 71.88 71.62 71.38 71.12 ... 34.62 34.38 34.12
   * lon         (lon) float32 816B -10.88 -10.62 -10.38 ... 39.38 39.62 39.88
   * time        (time) datetime64[ns] 3kB 1991-01-01 1991-02-01 ... 2022-12-01
 Data variables:
-    sm          (time, lat, lon) float32 48MB dask.array&lt;chunksize=(128, 51, 68), meta=np.ndarray&gt;
+    sm          (time, lat, lon) float32 48MB dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;
     sensor      (time, lat, lon) float32 48MB dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;
     freqbandID  (time, lat, lon) float32 48MB dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;
     nobs        (time, lat, lon) float32 48MB dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;
@@ -1213,7 +1210,7 @@ Attributes: (12/40)
     date_created:               2021-03-29T13:46:57Z
     time_coverage_start:        1990-12-31T12:00:00Z
     time_coverage_end:          1991-01-31T12:00:00Z
-    time_coverage_duration:     P1M</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-21b4f57f-b3f0-404c-9543-b250db151c02' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-21b4f57f-b3f0-404c-9543-b250db151c02' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 384</li><li><span class='xr-has-index'>lat</span>: 152</li><li><span class='xr-has-index'>lon</span>: 204</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f4fbaf55-c1b0-47ab-8b15-6f1109518f24' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f4fbaf55-c1b0-47ab-8b15-6f1109518f24' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>71.88 71.62 71.38 ... 34.38 34.12</div><input id='attrs-ce6703d1-b899-42fc-868e-c5ae6d1b42e9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ce6703d1-b899-42fc-868e-c5ae6d1b42e9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5fb191c6-5f0d-4f93-848f-570a91e2336d' class='xr-var-data-in' type='checkbox'><label for='data-5fb191c6-5f0d-4f93-848f-570a91e2336d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lat</dd></dl></div><div class='xr-var-data'><pre>array([71.875, 71.625, 71.375, 71.125, 70.875, 70.625, 70.375, 70.125, 69.875,
+    time_coverage_duration:     P1M</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-927c7e62-f3e1-4497-9eef-94f8a7da57cd' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-927c7e62-f3e1-4497-9eef-94f8a7da57cd' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 152</li><li><span class='xr-has-index'>lon</span>: 204</li><li><span class='xr-has-index'>time</span>: 384</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-c110f50d-d50a-4c7e-9a97-89983e061df1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c110f50d-d50a-4c7e-9a97-89983e061df1' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>71.88 71.62 71.38 ... 34.38 34.12</div><input id='attrs-a2dcdc77-df07-48b3-a681-822a6db390f8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a2dcdc77-df07-48b3-a681-822a6db390f8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0d413a89-928c-4627-be19-e8b06c1f5daf' class='xr-var-data-in' type='checkbox'><label for='data-0d413a89-928c-4627-be19-e8b06c1f5daf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lat</dd></dl></div><div class='xr-var-data'><pre>array([71.875, 71.625, 71.375, 71.125, 70.875, 70.625, 70.375, 70.125, 69.875,
        69.625, 69.375, 69.125, 68.875, 68.625, 68.375, 68.125, 67.875, 67.625,
        67.375, 67.125, 66.875, 66.625, 66.375, 66.125, 65.875, 65.625, 65.375,
        65.125, 64.875, 64.625, 64.375, 64.125, 63.875, 63.625, 63.375, 63.125,
@@ -1230,101 +1227,11 @@ Attributes: (12/40)
        40.375, 40.125, 39.875, 39.625, 39.375, 39.125, 38.875, 38.625, 38.375,
        38.125, 37.875, 37.625, 37.375, 37.125, 36.875, 36.625, 36.375, 36.125,
        35.875, 35.625, 35.375, 35.125, 34.875, 34.625, 34.375, 34.125],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-10.88 -10.62 ... 39.62 39.88</div><input id='attrs-3ccd7846-1e0c-4e1c-a3c4-66ade959490d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3ccd7846-1e0c-4e1c-a3c4-66ade959490d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c1bb0c6b-059f-4538-95a9-61298146a1ed' class='xr-var-data-in' type='checkbox'><label for='data-c1bb0c6b-059f-4538-95a9-61298146a1ed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lon</dd></dl></div><div class='xr-var-data'><pre>array([-10.875, -10.625, -10.375, ...,  39.375,  39.625,  39.875],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1991-01-01 ... 2022-12-01</div><input id='attrs-752541e4-a792-43cd-a35d-e43cf4d156b2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-752541e4-a792-43cd-a35d-e43cf4d156b2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4379d3d7-3f59-4ce4-815c-20f307a9d67a' class='xr-var-data-in' type='checkbox'><label for='data-4379d3d7-3f59-4ce4-815c-20f307a9d67a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1991-01-01T00:00:00.000000000&#x27;, &#x27;1991-02-01T00:00:00.000000000&#x27;,
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-10.88 -10.62 ... 39.62 39.88</div><input id='attrs-f430a114-4bf4-494c-9fcc-bd444c1391fd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f430a114-4bf4-494c-9fcc-bd444c1391fd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2f82c999-b592-4d80-a358-f53305f2a98f' class='xr-var-data-in' type='checkbox'><label for='data-2f82c999-b592-4d80-a358-f53305f2a98f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lon</dd></dl></div><div class='xr-var-data'><pre>array([-10.875, -10.625, -10.375, ...,  39.375,  39.625,  39.875],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1991-01-01 ... 2022-12-01</div><input id='attrs-b277b97d-4084-4c75-86ff-5ac0d1ee4cd9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b277b97d-4084-4c75-86ff-5ac0d1ee4cd9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a435ece4-dc97-4a9f-aff2-ba01a375fa40' class='xr-var-data-in' type='checkbox'><label for='data-a435ece4-dc97-4a9f-aff2-ba01a375fa40' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1991-01-01T00:00:00.000000000&#x27;, &#x27;1991-02-01T00:00:00.000000000&#x27;,
        &#x27;1991-03-01T00:00:00.000000000&#x27;, ..., &#x27;2022-10-01T00:00:00.000000000&#x27;,
        &#x27;2022-11-01T00:00:00.000000000&#x27;, &#x27;2022-12-01T00:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-93bea1ef-7ee0-476c-9c1b-9888de9fc75a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-93bea1ef-7ee0-476c-9c1b-9888de9fc75a' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>sm</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(128, 51, 68), meta=np.ndarray&gt;</div><input id='attrs-60ebdee0-9ca2-48db-a4ef-a2aa4da9c0d0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-60ebdee0-9ca2-48db-a4ef-a2aa4da9c0d0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4f5a9ee2-492e-4ec7-ab80-c1f07858fc96' class='xr-var-data-in' type='checkbox'><label for='data-4f5a9ee2-492e-4ec7-ab80-c1f07858fc96' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>dtype :</span></dt><dd>float32</dd><dt><span>units :</span></dt><dd>m3 m-3</dd><dt><span>valid_range :</span></dt><dd>[0. 1.]</dd><dt><span>long_name :</span></dt><dd>Volumetric Soil Moisture</dd><dt><span>_CoordinateAxes :</span></dt><dd>time lat lon</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 45.42 MiB </td>
-                        <td> 1.69 MiB </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (384, 152, 204) </td>
-                        <td> (128, 51, 68) </td>
-                    </tr>
-                    <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 27 chunks in 2 graph layers </td>
-                    </tr>
-                    <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> float32 numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="194" height="168" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="10" y1="15" x2="80" y2="86" />
-  <line x1="10" y1="31" x2="80" y2="102" />
-  <line x1="10" y1="47" x2="80" y2="118" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="10" y2="47" style="stroke-width:2" />
-  <line x1="33" y1="23" x2="33" y2="71" />
-  <line x1="57" y1="47" x2="57" y2="94" />
-  <line x1="80" y1="70" x2="80" y2="118" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,118.08823529411765 10.0,47.5" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="73" y2="0" style="stroke-width:2" />
-  <line x1="33" y1="23" x2="97" y2="23" />
-  <line x1="57" y1="47" x2="120" y2="47" />
-  <line x1="80" y1="70" x2="144" y2="70" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
-  <line x1="31" y1="0" x2="101" y2="70" />
-  <line x1="52" y1="0" x2="123" y2="70" />
-  <line x1="73" y1="0" x2="144" y2="70" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 73.75,0.0 144.33823529411765,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="80" y1="70" x2="144" y2="70" style="stroke-width:2" />
-  <line x1="80" y1="86" x2="144" y2="86" />
-  <line x1="80" y1="102" x2="144" y2="102" />
-  <line x1="80" y1="118" x2="144" y2="118" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="80" y1="70" x2="80" y2="118" style="stroke-width:2" />
-  <line x1="101" y1="70" x2="101" y2="118" />
-  <line x1="123" y1="70" x2="123" y2="118" />
-  <line x1="144" y1="70" x2="144" y2="118" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="80.58823529411765,70.58823529411765 144.33823529411765,70.58823529411765 144.33823529411765,118.08823529411765 80.58823529411765,118.08823529411765" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="112.463235" y="138.088235" font-size="1.0rem" font-weight="100" text-anchor="middle" >204</text>
-  <text x="164.338235" y="94.338235" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,164.338235,94.338235)">152</text>
-  <text x="35.294118" y="102.794118" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,35.294118,102.794118)">384</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sensor</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;</div><input id='attrs-dc84c6c7-335f-42c6-910f-c88f6feba112' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dc84c6c7-335f-42c6-910f-c88f6feba112' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-86902c76-8876-490f-96ec-2dd0aea3c332' class='xr-var-data-in' type='checkbox'><label for='data-86902c76-8876-490f-96ec-2dd0aea3c332' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>dtype :</span></dt><dd>int16</dd><dt><span>long_name :</span></dt><dd>Sensor</dd><dt><span>_CoordinateAxes :</span></dt><dd>time lat lon</dd><dt><span>flag_values :</span></dt><dd>[0 2]</dd><dt><span>flag_meanings :</span></dt><dd>[&#x27;NaN&#x27;, &#x27;SSMI&#x27;]</dd><dt><span>valid_range :</span></dt><dd>[    0 16383]</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f0cdbf3a-49b2-4e20-90c6-392734e6249f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f0cdbf3a-49b2-4e20-90c6-392734e6249f' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>sm</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;</div><input id='attrs-0c1354be-60f8-47fa-b992-659e5ebb9c4d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0c1354be-60f8-47fa-b992-659e5ebb9c4d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9e14c072-81ba-4b7b-89ac-a54fb617c371' class='xr-var-data-in' type='checkbox'><label for='data-9e14c072-81ba-4b7b-89ac-a54fb617c371' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>dtype :</span></dt><dd>float32</dd><dt><span>units :</span></dt><dd>m3 m-3</dd><dt><span>valid_range :</span></dt><dd>[0. 1.]</dd><dt><span>long_name :</span></dt><dd>Volumetric Soil Moisture</dd><dt><span>_CoordinateAxes :</span></dt><dd>time lat lon</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1408,7 +1315,7 @@ Attributes: (12/40)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>freqbandID</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;</div><input id='attrs-defc8e27-a5e2-4745-87e3-f044a563e672' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-defc8e27-a5e2-4745-87e3-f044a563e672' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-282eec85-4cc6-4395-98f5-84b1dbd41085' class='xr-var-data-in' type='checkbox'><label for='data-282eec85-4cc6-4395-98f5-84b1dbd41085' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>dtype :</span></dt><dd>int16</dd><dt><span>long_name :</span></dt><dd>Frequency Band Identification</dd><dt><span>_CoordinateAxes :</span></dt><dd>time lat lon</dd><dt><span>flag_values :</span></dt><dd>[  0 128]</dd><dt><span>flag_meanings :</span></dt><dd>[&#x27;NaN&#x27;, &#x27;K194&#x27;]</dd><dt><span>valid_range :</span></dt><dd>[  0 511]</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sensor</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;</div><input id='attrs-a37b4322-6f93-4885-bcb5-34bd6aa1d15e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a37b4322-6f93-4885-bcb5-34bd6aa1d15e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b021549a-bb7a-43cb-a220-137ac0844f3e' class='xr-var-data-in' type='checkbox'><label for='data-b021549a-bb7a-43cb-a220-137ac0844f3e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>dtype :</span></dt><dd>int16</dd><dt><span>long_name :</span></dt><dd>Sensor</dd><dt><span>_CoordinateAxes :</span></dt><dd>time lat lon</dd><dt><span>flag_values :</span></dt><dd>[0 2]</dd><dt><span>flag_meanings :</span></dt><dd>[&#x27;NaN&#x27;, &#x27;SSMI&#x27;]</dd><dt><span>valid_range :</span></dt><dd>[    0 16383]</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1492,7 +1399,7 @@ Attributes: (12/40)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nobs</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;</div><input id='attrs-475c5d5a-4791-4934-aa51-f3a87d78fb57' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-475c5d5a-4791-4934-aa51-f3a87d78fb57' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9a8ec910-351e-40be-9b78-66e25ac8ce8a' class='xr-var-data-in' type='checkbox'><label for='data-9a8ec910-351e-40be-9b78-66e25ac8ce8a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of valid observation</dd><dt><span>CoordinateAxes :</span></dt><dd>time lat lon</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>freqbandID</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;</div><input id='attrs-7f16ddfb-77dc-4c5d-91f8-682efa76ea2c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7f16ddfb-77dc-4c5d-91f8-682efa76ea2c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6688e20f-b70f-4229-a356-170313273db1' class='xr-var-data-in' type='checkbox'><label for='data-6688e20f-b70f-4229-a356-170313273db1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>dtype :</span></dt><dd>int16</dd><dt><span>long_name :</span></dt><dd>Frequency Band Identification</dd><dt><span>_CoordinateAxes :</span></dt><dd>time lat lon</dd><dt><span>flag_values :</span></dt><dd>[  0 128]</dd><dt><span>flag_meanings :</span></dt><dd>[&#x27;NaN&#x27;, &#x27;K194&#x27;]</dd><dt><span>valid_range :</span></dt><dd>[  0 511]</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1576,24 +1483,108 @@ Attributes: (12/40)
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-a90c90f2-2f2f-4ac6-8959-5048d48f27a4' class='xr-section-summary-in' type='checkbox'  ><label for='section-a90c90f2-2f2f-4ac6-8959-5048d48f27a4' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b87c36c2-0322-4de4-a98f-4e1d21acd5fb' class='xr-index-data-in' type='checkbox'/><label for='index-b87c36c2-0322-4de4-a98f-4e1d21acd5fb' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([71.875, 71.625, 71.375, 71.125, 70.875, 70.625, 70.375, 70.125, 69.875,
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>nobs</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(192, 76, 102), meta=np.ndarray&gt;</div><input id='attrs-569c6148-8117-4bc7-ac71-39871e9016af' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-569c6148-8117-4bc7-ac71-39871e9016af' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5fd5ca27-1bd9-4629-82bf-8bae282f01c1' class='xr-var-data-in' type='checkbox'><label for='data-5fd5ca27-1bd9-4629-82bf-8bae282f01c1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of valid observation</dd><dt><span>CoordinateAxes :</span></dt><dd>time lat lon</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 45.42 MiB </td>
+                        <td> 5.68 MiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (384, 152, 204) </td>
+                        <td> (192, 76, 102) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 8 chunks in 2 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="194" height="168" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
+  <line x1="10" y1="23" x2="80" y2="94" />
+  <line x1="10" y1="47" x2="80" y2="118" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="47" style="stroke-width:2" />
+  <line x1="45" y1="35" x2="45" y2="82" />
+  <line x1="80" y1="70" x2="80" y2="118" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 80.58823529411765,70.58823529411765 80.58823529411765,118.08823529411765 10.0,47.5" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="73" y2="0" style="stroke-width:2" />
+  <line x1="45" y1="35" x2="109" y2="35" />
+  <line x1="80" y1="70" x2="144" y2="70" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
+  <line x1="41" y1="0" x2="112" y2="70" />
+  <line x1="73" y1="0" x2="144" y2="70" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 73.75,0.0 144.33823529411765,70.58823529411765 80.58823529411765,70.58823529411765" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="80" y1="70" x2="144" y2="70" style="stroke-width:2" />
+  <line x1="80" y1="94" x2="144" y2="94" />
+  <line x1="80" y1="118" x2="144" y2="118" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="80" y1="70" x2="80" y2="118" style="stroke-width:2" />
+  <line x1="112" y1="70" x2="112" y2="118" />
+  <line x1="144" y1="70" x2="144" y2="118" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="80.58823529411765,70.58823529411765 144.33823529411765,70.58823529411765 144.33823529411765,118.08823529411765 80.58823529411765,118.08823529411765" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="112.463235" y="138.088235" font-size="1.0rem" font-weight="100" text-anchor="middle" >204</text>
+  <text x="164.338235" y="94.338235" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,164.338235,94.338235)">152</text>
+  <text x="35.294118" y="102.794118" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,35.294118,102.794118)">384</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-00eb49b0-88a4-4250-be9f-34380e1c412e' class='xr-section-summary-in' type='checkbox'  ><label for='section-00eb49b0-88a4-4250-be9f-34380e1c412e' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-0f823023-8777-4ddc-8539-8ba7bbe51095' class='xr-index-data-in' type='checkbox'/><label for='index-0f823023-8777-4ddc-8539-8ba7bbe51095' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([71.875, 71.625, 71.375, 71.125, 70.875, 70.625, 70.375, 70.125, 69.875,
        69.625,
        ...
        36.375, 36.125, 35.875, 35.625, 35.375, 35.125, 34.875, 34.625, 34.375,
        34.125],
-      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=152))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-c5a930b3-5143-4a5f-9ee8-cca9463bd561' class='xr-index-data-in' type='checkbox'/><label for='index-c5a930b3-5143-4a5f-9ee8-cca9463bd561' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-10.875, -10.625, -10.375, -10.125,  -9.875,  -9.625,  -9.375,  -9.125,
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=152))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-290c4822-09d5-4dce-9086-dd04ccd00366' class='xr-index-data-in' type='checkbox'/><label for='index-290c4822-09d5-4dce-9086-dd04ccd00366' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-10.875, -10.625, -10.375, -10.125,  -9.875,  -9.625,  -9.375,  -9.125,
         -8.875,  -8.625,
        ...
         37.625,  37.875,  38.125,  38.375,  38.625,  38.875,  39.125,  39.375,
         39.625,  39.875],
-      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=204))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b8ca3c1f-9421-406f-a520-570b0cea347f' class='xr-index-data-in' type='checkbox'/><label for='index-b8ca3c1f-9421-406f-a520-570b0cea347f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1991-01-01&#x27;, &#x27;1991-02-01&#x27;, &#x27;1991-03-01&#x27;, &#x27;1991-04-01&#x27;,
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=204))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-422b443d-62c5-4cdc-a8d1-09525a69513f' class='xr-index-data-in' type='checkbox'/><label for='index-422b443d-62c5-4cdc-a8d1-09525a69513f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1991-01-01&#x27;, &#x27;1991-02-01&#x27;, &#x27;1991-03-01&#x27;, &#x27;1991-04-01&#x27;,
                &#x27;1991-05-01&#x27;, &#x27;1991-06-01&#x27;, &#x27;1991-07-01&#x27;, &#x27;1991-08-01&#x27;,
                &#x27;1991-09-01&#x27;, &#x27;1991-10-01&#x27;,
                ...
                &#x27;2022-03-01&#x27;, &#x27;2022-04-01&#x27;, &#x27;2022-05-01&#x27;, &#x27;2022-06-01&#x27;,
                &#x27;2022-07-01&#x27;, &#x27;2022-08-01&#x27;, &#x27;2022-09-01&#x27;, &#x27;2022-10-01&#x27;,
                &#x27;2022-11-01&#x27;, &#x27;2022-12-01&#x27;],
-              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=384, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-03c7a286-6c75-49fe-819e-4dd3969d737d' class='xr-section-summary-in' type='checkbox'  ><label for='section-03c7a286-6c75-49fe-819e-4dd3969d737d' class='xr-section-summary' >Attributes: <span>(40)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>C3S Surface Soil Moisture merged PASSIVE Product</dd><dt><span>institution :</span></dt><dd>EODC (AUT); TU Wien (AUT); VanderSat B.V. (NL)</dd><dt><span>contact :</span></dt><dd>C3S_SM_Science@eodc.eu</dd><dt><span>source :</span></dt><dd>LPRMv6/SMMR/Nimbus 7 L3 Surface Soil Moisture, Ancillary Params, and quality flags; LPRMv6/SSMI/F08, F11, F13 DMSP L3 Surface Soil Moisture, Ancillary Params, and quality flags; LPRMv6/TMI/TRMM L2 Surface Soil Moisture, Ancillary Params, and QC; LPRMv6/AMSR-E/Aqua L2B Surface Soil Moisture, Ancillary Params, and QC; LPRMv6/WINDSAT/CORIOLIS L2 Surface Soil Moisture, Ancillary Params, and QC; LPRMv6/AMSR2/GCOM-W1 L3 Surface Soil Moisture, Ancillary Params; LPRMv6/SMOS/MIRAS L3 Surface Soil Moisture, CATDS Level 3 Brightness Temperatures (L3TB) version 300 RE03 &amp; RE04; LPRMv6/SMAP_radiometer/SMAP L2 Surface Soil Moisture, Ancillary Params, and QC;</dd><dt><span>platform :</span></dt><dd>Nimbus 7, DMSP, TRMM, AQUA, Coriolis, GCOM-W1, MIRAS, SMAP</dd><dt><span>sensor :</span></dt><dd>SMMR, SSM/I, TMI, AMSR-E, WindSat, AMSR2, SMOS, SMAP_radiometer</dd><dt><span>references :</span></dt><dd>https://climate.copernicus.eu/; Dorigo, W.A., Wagner, W., Albergel, C., Albrecht, F.,  Balsamo, G., Brocca, L., Chung, D., Ertl, M., Forkel, M., Gruber, A., Haas, E., Hamer, D. P. Hirschi, M., Ikonen, J., De Jeu, R. Kidd, R. Lahoz, W., Liu, Y.Y., Miralles, D., Lecomte, P. (2017) ESA CCI Soil Moisture for improved Earth system understanding: State-of-the art and future directions. In Remote Sensing of Environment, 2017, ISSN 0034-4257, https://doi.org/10.1016/j.rse.2017.07.001; Gruber, A., Scanlon, T., van der Schalie, R., Wagner, W., Dorigo, W. (2019) Evolution of the ESA CCI Soil Moisture Climate Data Records and their underlying merging methodology. Earth System Science Data 11, 717-739, https://doi.org/10.5194/essd-11-717-2019; Gruber, A., Dorigo, W. A., Crow, W., Wagner W. (2017). Triple Collocation-Based Merging of Satellite Soil Moisture Retrievals. IEEE Transactions on Geoscience and Remote Sensing. PP. 1-13. https://doi.org/10.1109/TGRS.2017.2734070</dd><dt><span>product_version :</span></dt><dd>v202012</dd><dt><span>tracking_id :</span></dt><dd>544b60cc-22aa-4d83-bef2-32e653cdd226</dd><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>standard_name_vocabulary :</span></dt><dd>NetCDF Climate and Forecast (CF) Metadata Convention</dd><dt><span>summary :</span></dt><dd>The data set was produced with funding from the Copernicus Climate Change Service.</dd><dt><span>keywords :</span></dt><dd>Soil Moisture/Water Content</dd><dt><span>naming_authority :</span></dt><dd>EODC GmbH</dd><dt><span>keywords_vocabulary :</span></dt><dd>NASA Global Change Master Directory (GCMD) Science Keywords</dd><dt><span>cdm_data_type :</span></dt><dd>Grid</dd><dt><span>comment :</span></dt><dd>These data were produced as part of the Copernicus Climate Change Service. Service Contract No 2018/C3S_312b_LOT4_EODC/SC2</dd><dt><span>creator_name :</span></dt><dd>Earth Observation Data Center (EODC)</dd><dt><span>creator_url :</span></dt><dd>https://www.eodc.eu</dd><dt><span>creator_email :</span></dt><dd>C3S_SM_Science@eodc.eu</dd><dt><span>project :</span></dt><dd>Copernicus Climate Change Service.</dd><dt><span>license :</span></dt><dd>Copernicus Data License</dd><dt><span>time_coverage_resolution :</span></dt><dd>P1D</dd><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>geospatial_vertical_min :</span></dt><dd>0.0</dd><dt><span>geospatial_vertical_max :</span></dt><dd>0.0</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>0.25 degree</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>0.25 degree</dd><dt><span>spatial_resolution :</span></dt><dd>25km</dd><dt><span>id :</span></dt><dd>C3S-SOILMOISTURE-L3S-SSMV-PASSIVE-MONTHLY-19910101000000-TCDR-v202012.0.0.nc</dd><dt><span>history :</span></dt><dd>2021-03-29T13:46:57.630282 mean calculated</dd><dt><span>date_created :</span></dt><dd>2021-03-29T13:46:57Z</dd><dt><span>time_coverage_start :</span></dt><dd>1990-12-31T12:00:00Z</dd><dt><span>time_coverage_end :</span></dt><dd>1991-01-31T12:00:00Z</dd><dt><span>time_coverage_duration :</span></dt><dd>P1M</dd></dl></div></li></ul></div></div></div></div>
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=384, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-460f5bb5-e395-4a5d-92fe-a511a60e0136' class='xr-section-summary-in' type='checkbox'  ><label for='section-460f5bb5-e395-4a5d-92fe-a511a60e0136' class='xr-section-summary' >Attributes: <span>(40)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>C3S Surface Soil Moisture merged PASSIVE Product</dd><dt><span>institution :</span></dt><dd>EODC (AUT); TU Wien (AUT); VanderSat B.V. (NL)</dd><dt><span>contact :</span></dt><dd>C3S_SM_Science@eodc.eu</dd><dt><span>source :</span></dt><dd>LPRMv6/SMMR/Nimbus 7 L3 Surface Soil Moisture, Ancillary Params, and quality flags; LPRMv6/SSMI/F08, F11, F13 DMSP L3 Surface Soil Moisture, Ancillary Params, and quality flags; LPRMv6/TMI/TRMM L2 Surface Soil Moisture, Ancillary Params, and QC; LPRMv6/AMSR-E/Aqua L2B Surface Soil Moisture, Ancillary Params, and QC; LPRMv6/WINDSAT/CORIOLIS L2 Surface Soil Moisture, Ancillary Params, and QC; LPRMv6/AMSR2/GCOM-W1 L3 Surface Soil Moisture, Ancillary Params; LPRMv6/SMOS/MIRAS L3 Surface Soil Moisture, CATDS Level 3 Brightness Temperatures (L3TB) version 300 RE03 &amp; RE04; LPRMv6/SMAP_radiometer/SMAP L2 Surface Soil Moisture, Ancillary Params, and QC;</dd><dt><span>platform :</span></dt><dd>Nimbus 7, DMSP, TRMM, AQUA, Coriolis, GCOM-W1, MIRAS, SMAP</dd><dt><span>sensor :</span></dt><dd>SMMR, SSM/I, TMI, AMSR-E, WindSat, AMSR2, SMOS, SMAP_radiometer</dd><dt><span>references :</span></dt><dd>https://climate.copernicus.eu/; Dorigo, W.A., Wagner, W., Albergel, C., Albrecht, F.,  Balsamo, G., Brocca, L., Chung, D., Ertl, M., Forkel, M., Gruber, A., Haas, E., Hamer, D. P. Hirschi, M., Ikonen, J., De Jeu, R. Kidd, R. Lahoz, W., Liu, Y.Y., Miralles, D., Lecomte, P. (2017) ESA CCI Soil Moisture for improved Earth system understanding: State-of-the art and future directions. In Remote Sensing of Environment, 2017, ISSN 0034-4257, https://doi.org/10.1016/j.rse.2017.07.001; Gruber, A., Scanlon, T., van der Schalie, R., Wagner, W., Dorigo, W. (2019) Evolution of the ESA CCI Soil Moisture Climate Data Records and their underlying merging methodology. Earth System Science Data 11, 717-739, https://doi.org/10.5194/essd-11-717-2019; Gruber, A., Dorigo, W. A., Crow, W., Wagner W. (2017). Triple Collocation-Based Merging of Satellite Soil Moisture Retrievals. IEEE Transactions on Geoscience and Remote Sensing. PP. 1-13. https://doi.org/10.1109/TGRS.2017.2734070</dd><dt><span>product_version :</span></dt><dd>v202012</dd><dt><span>tracking_id :</span></dt><dd>544b60cc-22aa-4d83-bef2-32e653cdd226</dd><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>standard_name_vocabulary :</span></dt><dd>NetCDF Climate and Forecast (CF) Metadata Convention</dd><dt><span>summary :</span></dt><dd>The data set was produced with funding from the Copernicus Climate Change Service.</dd><dt><span>keywords :</span></dt><dd>Soil Moisture/Water Content</dd><dt><span>naming_authority :</span></dt><dd>EODC GmbH</dd><dt><span>keywords_vocabulary :</span></dt><dd>NASA Global Change Master Directory (GCMD) Science Keywords</dd><dt><span>cdm_data_type :</span></dt><dd>Grid</dd><dt><span>comment :</span></dt><dd>These data were produced as part of the Copernicus Climate Change Service. Service Contract No 2018/C3S_312b_LOT4_EODC/SC2</dd><dt><span>creator_name :</span></dt><dd>Earth Observation Data Center (EODC)</dd><dt><span>creator_url :</span></dt><dd>https://www.eodc.eu</dd><dt><span>creator_email :</span></dt><dd>C3S_SM_Science@eodc.eu</dd><dt><span>project :</span></dt><dd>Copernicus Climate Change Service.</dd><dt><span>license :</span></dt><dd>Copernicus Data License</dd><dt><span>time_coverage_resolution :</span></dt><dd>P1D</dd><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>geospatial_vertical_min :</span></dt><dd>0.0</dd><dt><span>geospatial_vertical_max :</span></dt><dd>0.0</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>0.25 degree</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>0.25 degree</dd><dt><span>spatial_resolution :</span></dt><dd>25km</dd><dt><span>id :</span></dt><dd>C3S-SOILMOISTURE-L3S-SSMV-PASSIVE-MONTHLY-19910101000000-TCDR-v202012.0.0.nc</dd><dt><span>history :</span></dt><dd>2021-03-29T13:46:57.630282 mean calculated</dd><dt><span>date_created :</span></dt><dd>2021-03-29T13:46:57Z</dd><dt><span>time_coverage_start :</span></dt><dd>1990-12-31T12:00:00Z</dd><dt><span>time_coverage_end :</span></dt><dd>1991-01-31T12:00:00Z</dd><dt><span>time_coverage_duration :</span></dt><dd>P1M</dd></dl></div></li></ul></div></div></div></div>
 </div>
 </section>
 </section>
@@ -1675,7 +1666,7 @@ We then select the correct soil moisture (and observation count) data and create
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/616fd34fa5c76ff1ef6629ff33ca98cdb46c0ea81dd44f6bd6fecd028979030d.png" src="../_images/616fd34fa5c76ff1ef6629ff33ca98cdb46c0ea81dd44f6bd6fecd028979030d.png" />
+<img alt="../_images/01b530b8820e019bae958fa68e627e102978ecdff5dfdb5e4cc917b76710b41e.png" src="../_images/01b530b8820e019bae958fa68e627e102978ecdff5dfdb5e4cc917b76710b41e.png" />
 </div>
 </div>
 <p>When looking at images of different dates, you can see data gaps (gray areas; especially in winter, mountainous regions and high latitude) and areas of high (blue) and low (brown) soil moisture content (left map). When changing the date to plot in the cell above, you can seen that the number of observations is much larger in later periods of the record than in earlier ones due to the larger number of available satellites (right map).</p>
@@ -1791,7 +1782,7 @@ We then select the correct soil moisture (and observation count) data and create
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4a587b8bec4969fa25ca355f715ac3bc27fb56fd7ddcdab855d78374d53a5c33.png" src="../_images/4a587b8bec4969fa25ca355f715ac3bc27fb56fd7ddcdab855d78374d53a5c33.png" />
+<img alt="../_images/446991f2f85f2c6a945413a4949430c7c10c4fc77d8d43d30445dc39c6d321ea.png" src="../_images/446991f2f85f2c6a945413a4949430c7c10c4fc77d8d43d30445dc39c6d321ea.png" />
 </div>
 </div>
 </section>
@@ -1859,7 +1850,7 @@ We then select the correct soil moisture (and observation count) data and create
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fbdbdf1aeca07fa6f9d197af8c389fdbaf9ac4c734c3b847e57e3c1a430a5225.png" src="../_images/fbdbdf1aeca07fa6f9d197af8c389fdbaf9ac4c734c3b847e57e3c1a430a5225.png" />
+<img alt="../_images/fda406b2181479c6518ed6812ba12eb30f0c486e69c11047d0c990162d6088b3.png" src="../_images/fda406b2181479c6518ed6812ba12eb30f0c486e69c11047d0c990162d6088b3.png" />
 </div>
 </div>
 <p>We use the time series data to compute the climatological mean and standard deviation for the chosen time series using the selected reference period (baseline):</p>
@@ -1913,7 +1904,7 @@ We then select the correct soil moisture (and observation count) data and create
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c794872ec47b54a708ec1666746c9def8b7c33d05d9fe9f6c475d73cc1d41c80.png" src="../_images/c794872ec47b54a708ec1666746c9def8b7c33d05d9fe9f6c475d73cc1d41c80.png" />
+<img alt="../_images/50c37b40c0fa9232943e5f69348c3751bef32c705a5c804fc6f7bf34e03f2d57.png" src="../_images/50c37b40c0fa9232943e5f69348c3751bef32c705a5c804fc6f7bf34e03f2d57.png" />
 </div>
 </div>
 <p>Using the above formulas (section 5.2.1 Expressing anomalies), we compute the three anomaly metrics for the extracted time series and store them in a <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">pandas DataFrame</a> (columns ‘abs_anomaly’, ‘rel_anomaly’ and ‘z-score’):</p>
@@ -1952,7 +1943,7 @@ We then select the correct soil moisture (and observation count) data and create
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/14c2d2c91bf433ca6cd9a6576b5edeb29f4fdb9a453a64f4792e7a53c76d63d6.png" src="../_images/14c2d2c91bf433ca6cd9a6576b5edeb29f4fdb9a453a64f4792e7a53c76d63d6.png" />
+<img alt="../_images/9dcccf8eabe486179ddcab224cd98b3cbffa5ac1e6e4766ef608bf43db880342.png" src="../_images/9dcccf8eabe486179ddcab224cd98b3cbffa5ac1e6e4766ef608bf43db880342.png" />
 </div>
 </div>
 <p>Choosing a different study area will change the input data and plot anomalies for a different ‘focus point’. You can also change the baseline period and see how it affects the climatology (and anomaly) computation. While the 3 time series look the same at first glance, there are some differences depending on the magnitude of the climatology and the intra-annual soil moisture variance in a point.</p>
@@ -2007,6 +1998,7 @@ We then select the correct soil moisture (and observation count) data and create
 }
 
 html[theme=dark],
+html[data-theme=dark],
 body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
@@ -2340,7 +2332,7 @@ dl.xr-attrs {
   fill: currentColor;
 }
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;sm&#x27; (month: 12, lat: 152, lon: 204)&gt; Size: 1MB
-dask.array&lt;stack, shape=(12, 152, 204), dtype=float32, chunksize=(1, 51, 68), chunktype=numpy.ndarray&gt;
+dask.array&lt;stack, shape=(12, 152, 204), dtype=float32, chunksize=(1, 76, 102), chunktype=numpy.ndarray&gt;
 Coordinates:
   * lat      (lat) float32 608B 71.88 71.62 71.38 71.12 ... 34.62 34.38 34.12
   * lon      (lon) float32 816B -10.88 -10.62 -10.38 ... 39.38 39.62 39.88
@@ -2350,7 +2342,7 @@ Attributes:
     units:            m3 m-3
     valid_range:      [0. 1.]
     long_name:        Volumetric Soil Moisture
-    _CoordinateAxes:  time lat lon</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'sm'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>month</span>: 12</li><li><span class='xr-has-index'>lat</span>: 152</li><li><span class='xr-has-index'>lon</span>: 204</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-b2e88f1b-f5a8-40db-905e-7f5713499a8c' class='xr-array-in' type='checkbox' checked><label for='section-b2e88f1b-f5a8-40db-905e-7f5713499a8c' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 51, 68), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
+    _CoordinateAxes:  time lat lon</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'sm'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>month</span>: 12</li><li><span class='xr-has-index'>lat</span>: 152</li><li><span class='xr-has-index'>lon</span>: 204</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-db36b343-e0d9-4604-871c-3434c3380afe' class='xr-array-in' type='checkbox' checked><label for='section-db36b343-e0d9-4604-871c-3434c3380afe' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>dask.array&lt;chunksize=(1, 76, 102), meta=np.ndarray&gt;</span></div><div class='xr-array-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -2366,17 +2358,17 @@ Attributes:
                     <tr>
                         <th> Bytes </th>
                         <td> 1.42 MiB </td>
-                        <td> 13.55 kiB </td>
+                        <td> 30.28 kiB </td>
                     </tr>
                     
                     <tr>
                         <th> Shape </th>
                         <td> (12, 152, 204) </td>
-                        <td> (1, 51, 68) </td>
+                        <td> (1, 76, 102) </td>
                     </tr>
                     <tr>
                         <th> Dask graph </th>
-                        <td colspan="2"> 108 chunks in 40 graph layers </td>
+                        <td colspan="2"> 48 chunks in 40 graph layers </td>
                     </tr>
                     <tr>
                         <th> Data type </th>
@@ -2390,8 +2382,7 @@ Attributes:
 
   <!-- Horizontal lines -->
   <line x1="10" y1="0" x2="30" y2="20" style="stroke-width:2" />
-  <line x1="10" y1="30" x2="30" y2="50" />
-  <line x1="10" y1="60" x2="30" y2="80" />
+  <line x1="10" y1="44" x2="30" y2="65" />
   <line x1="10" y1="89" x2="30" y2="110" style="stroke-width:2" />
 
   <!-- Vertical lines -->
@@ -2429,8 +2420,7 @@ Attributes:
 
   <!-- Vertical lines -->
   <line x1="10" y1="0" x2="30" y2="20" style="stroke-width:2" />
-  <line x1="50" y1="0" x2="70" y2="20" />
-  <line x1="90" y1="0" x2="110" y2="20" />
+  <line x1="70" y1="0" x2="90" y2="20" />
   <line x1="130" y1="0" x2="150" y2="20" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
@@ -2438,14 +2428,12 @@ Attributes:
 
   <!-- Horizontal lines -->
   <line x1="30" y1="20" x2="150" y2="20" style="stroke-width:2" />
-  <line x1="30" y1="50" x2="150" y2="50" />
-  <line x1="30" y1="80" x2="150" y2="80" />
+  <line x1="30" y1="65" x2="150" y2="65" />
   <line x1="30" y1="110" x2="150" y2="110" style="stroke-width:2" />
 
   <!-- Vertical lines -->
   <line x1="30" y1="20" x2="30" y2="110" style="stroke-width:2" />
-  <line x1="70" y1="20" x2="70" y2="110" />
-  <line x1="110" y1="20" x2="110" y2="110" />
+  <line x1="90" y1="20" x2="90" y2="110" />
   <line x1="150" y1="20" x2="150" y2="110" style="stroke-width:2" />
 
   <!-- Colored Rectangle -->
@@ -2458,7 +2446,7 @@ Attributes:
 </svg>
         </td>
     </tr>
-</table></div></div></li><li class='xr-section-item'><input id='section-17889575-fe88-46f1-8fe6-69567b66ae59' class='xr-section-summary-in' type='checkbox'  checked><label for='section-17889575-fe88-46f1-8fe6-69567b66ae59' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>71.88 71.62 71.38 ... 34.38 34.12</div><input id='attrs-1a99ece9-28c0-4e6d-ba6b-2836d0658794' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1a99ece9-28c0-4e6d-ba6b-2836d0658794' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b0361c81-4fbd-47bd-81fd-a592ace0440f' class='xr-var-data-in' type='checkbox'><label for='data-b0361c81-4fbd-47bd-81fd-a592ace0440f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lat</dd></dl></div><div class='xr-var-data'><pre>array([71.875, 71.625, 71.375, 71.125, 70.875, 70.625, 70.375, 70.125, 69.875,
+</table></div></div></li><li class='xr-section-item'><input id='section-18df660b-c62b-4849-b2e7-4e2aaa597b3a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-18df660b-c62b-4849-b2e7-4e2aaa597b3a' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>71.88 71.62 71.38 ... 34.38 34.12</div><input id='attrs-d374aebd-0b46-4ec2-b60e-2faee2d6caba' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d374aebd-0b46-4ec2-b60e-2faee2d6caba' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6be3b352-2862-483f-be26-b338172e305d' class='xr-var-data-in' type='checkbox'><label for='data-6be3b352-2862-483f-be26-b338172e305d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lat</dd></dl></div><div class='xr-var-data'><pre>array([71.875, 71.625, 71.375, 71.125, 70.875, 70.625, 70.375, 70.125, 69.875,
        69.625, 69.375, 69.125, 68.875, 68.625, 68.375, 68.125, 67.875, 67.625,
        67.375, 67.125, 66.875, 66.625, 66.375, 66.125, 65.875, 65.625, 65.375,
        65.125, 64.875, 64.625, 64.375, 64.125, 63.875, 63.625, 63.375, 63.125,
@@ -2475,18 +2463,18 @@ Attributes:
        40.375, 40.125, 39.875, 39.625, 39.375, 39.125, 38.875, 38.625, 38.375,
        38.125, 37.875, 37.625, 37.375, 37.125, 36.875, 36.625, 36.375, 36.125,
        35.875, 35.625, 35.375, 35.125, 34.875, 34.625, 34.375, 34.125],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-10.88 -10.62 ... 39.62 39.88</div><input id='attrs-93ef9be1-b649-417e-8002-2ff9979d17d2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-93ef9be1-b649-417e-8002-2ff9979d17d2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-81b13f70-2978-4eb7-bff6-134dc3c946ab' class='xr-var-data-in' type='checkbox'><label for='data-81b13f70-2978-4eb7-bff6-134dc3c946ab' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lon</dd></dl></div><div class='xr-var-data'><pre>array([-10.875, -10.625, -10.375, ...,  39.375,  39.625,  39.875],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>month</span></div><div class='xr-var-dims'>(month)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-ebf96781-2529-4196-b6f8-4078a2ff73d1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ebf96781-2529-4196-b6f8-4078a2ff73d1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f4be351f-470b-406d-88dd-36ebdf814b8b' class='xr-var-data-in' type='checkbox'><label for='data-f4be351f-470b-406d-88dd-36ebdf814b8b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Time</dd></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-46ab2e3a-2325-40d5-bbd5-ef443ea428c3' class='xr-section-summary-in' type='checkbox'  ><label for='section-46ab2e3a-2325-40d5-bbd5-ef443ea428c3' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8b57ca64-adf1-4d9d-8872-e4b8bec823cf' class='xr-index-data-in' type='checkbox'/><label for='index-8b57ca64-adf1-4d9d-8872-e4b8bec823cf' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([71.875, 71.625, 71.375, 71.125, 70.875, 70.625, 70.375, 70.125, 69.875,
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-10.88 -10.62 ... 39.62 39.88</div><input id='attrs-1ef3a019-6124-4979-b786-d807a572f15f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1ef3a019-6124-4979-b786-d807a572f15f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7ea9fe2a-9de8-414b-aa1a-9d2c0c19c1aa' class='xr-var-data-in' type='checkbox'><label for='data-7ea9fe2a-9de8-414b-aa1a-9d2c0c19c1aa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Lon</dd></dl></div><div class='xr-var-data'><pre>array([-10.875, -10.625, -10.375, ...,  39.375,  39.625,  39.875],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>month</span></div><div class='xr-var-dims'>(month)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-2dc3692b-afe3-4cff-8f0a-f3d049178af7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2dc3692b-afe3-4cff-8f0a-f3d049178af7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-011e7fd7-7642-41a4-a481-66c7ebc6347a' class='xr-var-data-in' type='checkbox'><label for='data-011e7fd7-7642-41a4-a481-66c7ebc6347a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>_CoordinateAxisType :</span></dt><dd>Time</dd></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5e311d70-0568-4730-ab17-81a602ab83f7' class='xr-section-summary-in' type='checkbox'  ><label for='section-5e311d70-0568-4730-ab17-81a602ab83f7' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8d7e9a52-3205-42b7-b3d1-9f9ec132a507' class='xr-index-data-in' type='checkbox'/><label for='index-8d7e9a52-3205-42b7-b3d1-9f9ec132a507' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([71.875, 71.625, 71.375, 71.125, 70.875, 70.625, 70.375, 70.125, 69.875,
        69.625,
        ...
        36.375, 36.125, 35.875, 35.625, 35.375, 35.125, 34.875, 34.625, 34.375,
        34.125],
-      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=152))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-e0055b18-e258-4d78-857d-fd0d37a846de' class='xr-index-data-in' type='checkbox'/><label for='index-e0055b18-e258-4d78-857d-fd0d37a846de' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-10.875, -10.625, -10.375, -10.125,  -9.875,  -9.625,  -9.375,  -9.125,
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=152))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-d000ca39-482e-4c15-8f2e-f29ba9e7ba57' class='xr-index-data-in' type='checkbox'/><label for='index-d000ca39-482e-4c15-8f2e-f29ba9e7ba57' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-10.875, -10.625, -10.375, -10.125,  -9.875,  -9.625,  -9.375,  -9.125,
         -8.875,  -8.625,
        ...
         37.625,  37.875,  38.125,  38.375,  38.625,  38.875,  39.125,  39.375,
         39.625,  39.875],
-      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=204))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>month</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-bb2f639c-40da-4dd9-a120-28c306d6890e' class='xr-index-data-in' type='checkbox'/><label for='index-bb2f639c-40da-4dd9-a120-28c306d6890e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], dtype=&#x27;int64&#x27;, name=&#x27;month&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a5edb8b1-7cec-4851-9b06-fe311b1c656c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a5edb8b1-7cec-4851-9b06-fe311b1c656c' class='xr-section-summary' >Attributes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>dtype :</span></dt><dd>float32</dd><dt><span>units :</span></dt><dd>m3 m-3</dd><dt><span>valid_range :</span></dt><dd>[0. 1.]</dd><dt><span>long_name :</span></dt><dd>Volumetric Soil Moisture</dd><dt><span>_CoordinateAxes :</span></dt><dd>time lat lon</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=204))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>month</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-d34f7749-26ef-4ec5-946b-1fc07c939b72' class='xr-index-data-in' type='checkbox'/><label for='index-d34f7749-26ef-4ec5-946b-1fc07c939b72' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], dtype=&#x27;int64&#x27;, name=&#x27;month&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c036818a-c0f2-457a-a83b-dbbc4ad75407' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c036818a-c0f2-457a-a83b-dbbc4ad75407' class='xr-section-summary' >Attributes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>dtype :</span></dt><dd>float32</dd><dt><span>units :</span></dt><dd>m3 m-3</dd><dt><span>valid_range :</span></dt><dd>[0. 1.]</dd><dt><span>long_name :</span></dt><dd>Volumetric Soil Moisture</dd><dt><span>_CoordinateAxes :</span></dt><dd>time lat lon</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>We can now use the climatology stack and compute the difference between each image of absolute soil moisture and the climatological mean of the same month. This way we compute the anomalies for the whole data cube, without a time-consuming loop over all individual locations. We assign the result to a new variable in the <code class="docutils literal notranslate"><span class="pre">DS</span></code> stack called <code class="docutils literal notranslate"><span class="pre">sm_anomaly</span></code>:</p>
 <div class="cell docutils container">
@@ -2527,7 +2515,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e90b95383704652ea3829cde5e0b9b1cad018e3778e3a4f7a9871dc8d669b072.png" src="../_images/e90b95383704652ea3829cde5e0b9b1cad018e3778e3a4f7a9871dc8d669b072.png" />
+<img alt="../_images/1b05a9e765d2a74cde3ca65f20c6c3490077c1a745b103fe91961a77bacd044f.png" src="../_images/1b05a9e765d2a74cde3ca65f20c6c3490077c1a745b103fe91961a77bacd044f.png" />
 </div>
 </div>
 <p>Now we can visualize the monthly anomalies from the processed anomaly stack as a bar plot. We will also create a map of annual mean values using the created time series for the whole study area bounding box. This is done for the year assigned to the variable <code class="docutils literal notranslate"><span class="pre">YEAR</span></code> in the next cell.</p>
@@ -2604,7 +2592,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6333191c392d369208617cfdf2a0e802d80bf218deb6d652b9a0620a432e037b.png" src="../_images/6333191c392d369208617cfdf2a0e802d80bf218deb6d652b9a0620a432e037b.png" />
+<img alt="../_images/eb66a36a3095525c0161001d43df9afe57eeb9e33b3a96e4b2e9619a6b43bb23.png" src="../_images/eb66a36a3095525c0161001d43df9afe57eeb9e33b3a96e4b2e9619a6b43bb23.png" />
 </div>
 </div>
 <p>We see an overall trend towards drier conditions in most regions. You can look at a different study area by selecting it in the first application. Don’t forget to re-run all relevant cells in this chapter to use the new study area and accordingly update the plots!</p>
@@ -2620,16 +2608,16 @@ Attributes:
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-env-tutorials-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-env-tutorials-py",
             path: "./ecv-notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-env-tutorials-py'</script>
 
                 </article>
               
@@ -2655,7 +2643,7 @@ Attributes:
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial: Visualising Lake Water Level (LWL) timeseries</p>
+        <p class="prev-next-title">Tutorial: Data Access and  Visualisation of Lake Water Level (LWL) timeseries</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

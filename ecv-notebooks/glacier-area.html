@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/glacier-area';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Explore data on glacier mass change available on the Climate Data Store" href="glacier-mass-change.html" />
-    <link rel="prev" title="Gravimetric Mass Balance for Ice Sheet" href="ice-sheet-mass-balance.html" />
+    <link rel="next" title="Explore glacier_mass_change" href="glacier-mass-change.html" />
+    <link rel="prev" title="Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store" href="ice-sheet-mass-balance.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -223,15 +223,20 @@
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html"><strong>C3S Soil Moisture Data Access and Anomaly Analysis Notebook</strong></a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Visualising Lake Water Level (LWL) timeseries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Data Access and  Visualisation of Lake Water Level (LWL) timeseries</a></li>
 
 
 
 
 <li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-surface-elevation.html">Ice sheet surface elevation change rates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Access and visualisation of the Greenland Ice Sheet velocity data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Gravimetric Mass Balance for Ice Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Greenland Ice Sheet velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a></li>
+
+
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Explore glacier area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
 <li class="toctree-l1"><a class="reference internal" href="precipitation-giraffe.html">Exploring Precipitation information in the GIRAFE dataset</a></li>
@@ -538,18 +543,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-09-10 10:01:36,589 INFO Welcome to the CDS.
-As per our announcements on the Forum, this instance of CDS will be decommissioned on 26 September 2024 and will no longer be accessible from this date onwards.
-Please update your cdsapi package to a version &gt;=0.7.2, create an account on CDS-Beta and update your .cdsapirc file. We strongly recommend users to check our Guidelines at https://confluence.ecmwf.int/x/uINmFw
-2024-09-10 10:01:36,590 WARNING MOVE TO CDS-Beta
-2024-09-10 10:01:36,591 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/insitu-glaciers-extent
-2024-09-10 10:01:36,860 INFO Request is queued
-2024-09-10 10:01:38,107 INFO Request is completed
-2024-09-10 10:01:38,134 INFO Downloading https://download-0014-clone.copernicus-climate.eu/cache-compute-0014/cache/data0/dataset-insitu-glaciers-extent-7b8327b8-f627-46a2-a6fd-5eca2b975eed.zip to glacier_area-gridded.zip (15.5K)
-2024-09-10 10:01:39,633 INFO Download rate 10.3K/s  
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-02-19 14:08:46,910 INFO Welcome to the CDS
+2024-02-19 14:08:46,910 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/insitu-glaciers-extent
+2024-02-19 14:08:47,094 INFO Request is completed
+2024-02-19 14:08:47,098 INFO Downloading https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data3/dataset-insitu-glaciers-extent-23301c0f-713d-44b1-8f27-81b395bcc5f5.zip to glacier_area-gridded.zip (15.5K)
+2024-02-19 14:08:47,399 INFO Download rate 52.5K/s
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=15828,content_type=application/zip,location=https://download-0014-clone.copernicus-climate.eu/cache-compute-0014/cache/data0/dataset-insitu-glaciers-extent-7b8327b8-f627-46a2-a6fd-5eca2b975eed.zip)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=15828,content_type=application/zip,location=https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data3/dataset-insitu-glaciers-extent-23301c0f-713d-44b1-8f27-81b395bcc5f5.zip)
 </pre></div>
 </div>
 </div>
@@ -938,13 +939,13 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 249kB
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:       (lon: 360, lat: 170)
 Coordinates:
-  * lon           (lon) float64 3kB -179.5 -178.5 -177.5 ... 177.5 178.5 179.5
-  * lat           (lat) float64 1kB 84.5 83.5 82.5 81.5 ... -82.5 -83.5 -84.5
+  * lon           (lon) float64 -179.5 -178.5 -177.5 ... 177.5 178.5 179.5
+  * lat           (lat) float64 84.5 83.5 82.5 81.5 ... -81.5 -82.5 -83.5 -84.5
 Data variables:
-    Glacier_area  (lat, lon) float32 245kB ...
+    Glacier_area  (lat, lon) float32 ...
 Attributes: (12/15)
     Source_Software:            Esri ArcGIS
     NCO:                        netCDF Operators version 4.9.1 (Homepage = ht...
@@ -958,7 +959,7 @@ Attributes: (12/15)
     references:                 Pfeffer et al. (2014) doi.org/10.3189/2014JoG...
     citation:                   RGI Consortium (2017): Randolph Glacier Inven...
     Conventions:                CF Version CF-1.0
-    comment:                    Brief data description: Temporal resolution: ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-af2a88f4-06ab-49c6-97c6-1ee4c0725469' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-af2a88f4-06ab-49c6-97c6-1ee4c0725469' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lon</span>: 360</li><li><span class='xr-has-index'>lat</span>: 170</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-acebeeb0-3526-4461-9ba5-0faedc7eede7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-acebeeb0-3526-4461-9ba5-0faedc7eede7' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-179.5 -178.5 ... 178.5 179.5</div><input id='attrs-0b2acd41-67b0-4647-883f-dc83c1b8570d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0b2acd41-67b0-4647-883f-dc83c1b8570d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0036fb3f-e912-4ca1-9e80-112ff5d3cccd' class='xr-var-data-in' type='checkbox'><label for='data-0036fb3f-e912-4ca1-9e80-112ff5d3cccd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>valid_min :</span></dt><dd>-179.5</dd><dt><span>valid_max :</span></dt><dd>179.5</dd></dl></div><div class='xr-var-data'><pre>array([-179.5, -178.5, -177.5, ...,  177.5,  178.5,  179.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>84.5 83.5 82.5 ... -83.5 -84.5</div><input id='attrs-5d444937-ffab-4333-a974-a442f0673354' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5d444937-ffab-4333-a974-a442f0673354' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d1821f09-72dc-4145-8254-5228345024c3' class='xr-var-data-in' type='checkbox'><label for='data-d1821f09-72dc-4145-8254-5228345024c3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>valid_min :</span></dt><dd>-84.5</dd><dt><span>valid_max :</span></dt><dd>84.5</dd></dl></div><div class='xr-var-data'><pre>array([ 84.5,  83.5,  82.5,  81.5,  80.5,  79.5,  78.5,  77.5,  76.5,  75.5,
+    comment:                    Brief data description: Temporal resolution: ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-ea2b836b-74b3-47b8-a3da-d922d750dd93' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-ea2b836b-74b3-47b8-a3da-d922d750dd93' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lon</span>: 360</li><li><span class='xr-has-index'>lat</span>: 170</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-6c827529-6ab2-4486-b38f-fc184a7bb75d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6c827529-6ab2-4486-b38f-fc184a7bb75d' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-179.5 -178.5 ... 178.5 179.5</div><input id='attrs-a4a5247a-edc6-4b2a-8b94-cb6a2ad2d994' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a4a5247a-edc6-4b2a-8b94-cb6a2ad2d994' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-31c214b4-0dc2-44a8-8298-80a73aeb27c9' class='xr-var-data-in' type='checkbox'><label for='data-31c214b4-0dc2-44a8-8298-80a73aeb27c9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>valid_min :</span></dt><dd>-179.5</dd><dt><span>valid_max :</span></dt><dd>179.5</dd></dl></div><div class='xr-var-data'><pre>array([-179.5, -178.5, -177.5, ...,  177.5,  178.5,  179.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>84.5 83.5 82.5 ... -83.5 -84.5</div><input id='attrs-48352513-3a19-4af0-bed8-daacff8fe8c2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-48352513-3a19-4af0-bed8-daacff8fe8c2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1ee9a463-81af-4802-bf98-b3464fcb49e5' class='xr-var-data-in' type='checkbox'><label for='data-1ee9a463-81af-4802-bf98-b3464fcb49e5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>valid_min :</span></dt><dd>-84.5</dd><dt><span>valid_max :</span></dt><dd>84.5</dd></dl></div><div class='xr-var-data'><pre>array([ 84.5,  83.5,  82.5,  81.5,  80.5,  79.5,  78.5,  77.5,  76.5,  75.5,
         74.5,  73.5,  72.5,  71.5,  70.5,  69.5,  68.5,  67.5,  66.5,  65.5,
         64.5,  63.5,  62.5,  61.5,  60.5,  59.5,  58.5,  57.5,  56.5,  55.5,
         54.5,  53.5,  52.5,  51.5,  50.5,  49.5,  48.5,  47.5,  46.5,  45.5,
@@ -974,15 +975,15 @@ Attributes: (12/15)
        -45.5, -46.5, -47.5, -48.5, -49.5, -50.5, -51.5, -52.5, -53.5, -54.5,
        -55.5, -56.5, -57.5, -58.5, -59.5, -60.5, -61.5, -62.5, -63.5, -64.5,
        -65.5, -66.5, -67.5, -68.5, -69.5, -70.5, -71.5, -72.5, -73.5, -74.5,
-       -75.5, -76.5, -77.5, -78.5, -79.5, -80.5, -81.5, -82.5, -83.5, -84.5])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b8f94cea-e68c-4964-8882-df262e6742b7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b8f94cea-e68c-4964-8882-df262e6742b7' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>Glacier_area</span></div><div class='xr-var-dims'>(lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-71fc12b2-3968-4ea0-81b6-8a64537f74ae' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-71fc12b2-3968-4ea0-81b6-8a64537f74ae' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ca78772d-1d22-47f4-8b7f-fa041155234e' class='xr-var-data-in' type='checkbox'><label for='data-ca78772d-1d22-47f4-8b7f-fa041155234e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Glacier_area</dd><dt><span>esri_pe_string :</span></dt><dd>GEOGCS[&quot;GCS_WGS_1984&quot;,DATUM[&quot;D_WGS_1984&quot;,SPHEROID[&quot;WGS_1984&quot;,6378137.0,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0.0],UNIT[&quot;Degree&quot;,0.0174532925199433]]</dd><dt><span>units :</span></dt><dd>%</dd><dt><span>standard_name :</span></dt><dd>Glacier_area</dd></dl></div><div class='xr-var-data'><pre>[61200 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-56d078b1-d760-40cd-8e3a-e40f1a8c68bf' class='xr-section-summary-in' type='checkbox'  ><label for='section-56d078b1-d760-40cd-8e3a-e40f1a8c68bf' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-24396616-d35c-4f7f-b79f-166c1b6a6063' class='xr-index-data-in' type='checkbox'/><label for='index-24396616-d35c-4f7f-b79f-166c1b6a6063' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.5, -178.5, -177.5, -176.5, -175.5, -174.5, -173.5, -172.5, -171.5,
+       -75.5, -76.5, -77.5, -78.5, -79.5, -80.5, -81.5, -82.5, -83.5, -84.5])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cf5e4af9-4806-4d56-848e-52193d01da2b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-cf5e4af9-4806-4d56-848e-52193d01da2b' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>Glacier_area</span></div><div class='xr-var-dims'>(lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-14eef4c9-837f-41cf-8f6a-56f11cc373f9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-14eef4c9-837f-41cf-8f6a-56f11cc373f9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ffa875ca-81a8-4e7d-b48f-6ae189822744' class='xr-var-data-in' type='checkbox'><label for='data-ffa875ca-81a8-4e7d-b48f-6ae189822744' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Glacier_area</dd><dt><span>esri_pe_string :</span></dt><dd>GEOGCS[&quot;GCS_WGS_1984&quot;,DATUM[&quot;D_WGS_1984&quot;,SPHEROID[&quot;WGS_1984&quot;,6378137.0,298.257223563]],PRIMEM[&quot;Greenwich&quot;,0.0],UNIT[&quot;Degree&quot;,0.0174532925199433]]</dd><dt><span>units :</span></dt><dd>%</dd><dt><span>standard_name :</span></dt><dd>Glacier_area</dd></dl></div><div class='xr-var-data'><pre>[61200 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ebdad8f1-2ad0-4076-8611-edec3a25e967' class='xr-section-summary-in' type='checkbox'  ><label for='section-ebdad8f1-2ad0-4076-8611-edec3a25e967' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a65be24e-7ecc-4cce-9c45-ac0607454b54' class='xr-index-data-in' type='checkbox'/><label for='index-a65be24e-7ecc-4cce-9c45-ac0607454b54' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.5, -178.5, -177.5, -176.5, -175.5, -174.5, -173.5, -172.5, -171.5,
        -170.5,
        ...
         170.5,  171.5,  172.5,  173.5,  174.5,  175.5,  176.5,  177.5,  178.5,
         179.5],
-      dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=360))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-18ceaa00-60a3-4158-b104-e418bad635d1' class='xr-index-data-in' type='checkbox'/><label for='index-18ceaa00-60a3-4158-b104-e418bad635d1' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 84.5,  83.5,  82.5,  81.5,  80.5,  79.5,  78.5,  77.5,  76.5,  75.5,
+      dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=360))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-7ae6d8e2-edc4-49c9-914b-edd87e7d129f' class='xr-index-data-in' type='checkbox'/><label for='index-7ae6d8e2-edc4-49c9-914b-edd87e7d129f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([ 84.5,  83.5,  82.5,  81.5,  80.5,  79.5,  78.5,  77.5,  76.5,  75.5,
        ...
        -75.5, -76.5, -77.5, -78.5, -79.5, -80.5, -81.5, -82.5, -83.5, -84.5],
-      dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=170))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-851a72f9-e6c1-445f-a2da-4d451632d4b7' class='xr-section-summary-in' type='checkbox'  ><label for='section-851a72f9-e6c1-445f-a2da-4d451632d4b7' class='xr-section-summary' >Attributes: <span>(15)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Source_Software :</span></dt><dd>Esri ArcGIS</dd><dt><span>NCO :</span></dt><dd>netCDF Operators version 4.9.1 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)</dd><dt><span>title :</span></dt><dd>Randolph Glacier Inventory v6 (RGI6) gridded 1 deg per cent</dd><dt><span>project :</span></dt><dd>Copernicus Climate Change Service (C3S) Essential Climate Variable products derived from observations 
+      dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=170))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0abfe6c8-a9b2-48a8-b4ad-84a935d7439c' class='xr-section-summary-in' type='checkbox'  ><label for='section-0abfe6c8-a9b2-48a8-b4ad-84a935d7439c' class='xr-section-summary' >Attributes: <span>(15)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Source_Software :</span></dt><dd>Esri ArcGIS</dd><dt><span>NCO :</span></dt><dd>netCDF Operators version 4.9.1 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)</dd><dt><span>title :</span></dt><dd>Randolph Glacier Inventory v6 (RGI6) gridded 1 deg per cent</dd><dt><span>project :</span></dt><dd>Copernicus Climate Change Service (C3S) Essential Climate Variable products derived from observations 
  C3S2_312a Lot No 4: Land Hydrology and Cryosphere</dd><dt><span>data_version :</span></dt><dd>version 6.0</dd><dt><span>institution :</span></dt><dd>Department of Geography - University of Zurich - Zurich - Switzerland</dd><dt><span>created_by :</span></dt><dd>Dr. Frank Paul   frank.paul@geo.uzh.ch</dd><dt><span>source :</span></dt><dd>Brokered from https://nsidc.org/data/nsidc-0770/versions/6</dd><dt><span>license :</span></dt><dd>CC BY 4.0</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>1.0</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>1.0</dd><dt><span>references :</span></dt><dd>Pfeffer et al. (2014) doi.org/10.3189/2014JoG13J176</dd><dt><span>citation :</span></dt><dd>RGI Consortium (2017): Randolph Glacier Inventory (RGI) - A Dataset of Global Glacier Outlines: Version 6.0. Technical Report,Global Land Ice Measurements from Space, Boulder, CO, USA. Digital Media. https://doi.org/10.7265/N5-RGI-60.</dd><dt><span>Conventions :</span></dt><dd>CF Version CF-1.0</dd><dt><span>comment :</span></dt><dd>Brief data description: Temporal resolution:  	Day Temporal coverage:	  1948-2013 	Observational sample: &gt;90% of the world&#x27;s glaciers</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Glacier area is expressed as the percent area (0–100) of each 1° x 1° grid cell, so we will need the total area of each grid cell. We can estimate this using the following spherical formula:</p>
@@ -1018,7 +1019,7 @@ Attributes: (12/15)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ce9537c336b6838462651f64c56ed223b34c09115cf02d1c4d0d37d2a46d3a67.png" src="../_images/ce9537c336b6838462651f64c56ed223b34c09115cf02d1c4d0d37d2a46d3a67.png" />
+<img alt="../_images/7cdebaef6e4c22d1fc9de483f1d7d6d9b21ffb005dbbf039ceb9e208c28972a2.png" src="../_images/7cdebaef6e4c22d1fc9de483f1d7d6d9b21ffb005dbbf039ceb9e208c28972a2.png" />
 </div>
 </div>
 <p>Finally, we can calculate the glacier area in each grid cell (<code class="docutils literal notranslate"><span class="pre">glacier_area</span></code>) by multiplying the provided percent area (<code class="docutils literal notranslate"><span class="pre">Glacier_area</span></code>) by the total area of the grid cell calculated above (<code class="docutils literal notranslate"><span class="pre">cell_area</span></code>).</p>
@@ -1096,7 +1097,7 @@ Attributes: (12/15)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c4a0c44efa5c22392688edd05c220fae46a81e848314399833f0c5f12ad8a3ab.png" src="../_images/c4a0c44efa5c22392688edd05c220fae46a81e848314399833f0c5f12ad8a3ab.png" />
+<img alt="../_images/1c4722148040e515907c781c5acfd0035e23575f2575ed9ecba343e9349b67f4.png" src="../_images/1c4722148040e515907c781c5acfd0035e23575f2575ed9ecba343e9349b67f4.png" />
 </div>
 </div>
 </section>
@@ -1114,13 +1115,13 @@ Attributes: (12/15)
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            name: "python",
             path: "./ecv-notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'python'</script>
 
                 </article>
               
@@ -1138,7 +1139,7 @@ Attributes: (12/15)
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Gravimetric Mass Balance for Ice Sheet</p>
+        <p class="prev-next-title">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</p>
       </div>
     </a>
     <a class="right-next"
@@ -1146,7 +1147,7 @@ Attributes: (12/15)
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Explore data on glacier mass change available on the Climate Data Store</p>
+        <p class="prev-next-title">Explore <code class="docutils literal notranslate"><span class="pre">glacier_mass_change</span></code></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
