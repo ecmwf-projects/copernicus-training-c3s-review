@@ -72,6 +72,8 @@ parts:
       title: Explore glacier area
     - file: ecv-notebooks/glacier-mass-change  # COPCO-1697
       title: Glacier mass change
+    # Land and Biosphere
+    - file: ecv-notebooks/mean-with-inverse-variance-weights # COPCO-1782
     # Precipitation
     - file: ecv-notebooks/precipitation-giraffe
   - caption: Turorials using Copernicus Emergency Management Service data
