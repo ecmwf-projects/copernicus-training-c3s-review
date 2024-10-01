@@ -228,7 +228,7 @@
 
 <li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-surface-elevation.html">Ice sheet surface elevation change rates</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Greenland Ice Sheet velocity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Access and visualisation of the Greenland Ice Sheet velocity data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a></li>
 
 
@@ -237,6 +237,8 @@
 
 <li class="toctree-l1"><a class="reference internal" href="glacier-area.html">Explore glacier area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mean-with-inverse-variance-weights.html">Computing the time average of LAI and fAPAR using inverse variance weights</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="precipitation-giraffe.html">Exploring Precipitation information in the GIRAFE dataset</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
@@ -478,7 +480,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial: Data Access and  Visualisation of Lake Water Level (LWL) timeseries</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-librairies">Import librairies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lake-selection">Lake selection</a><ul class="visible nav section-nav flex-column">
@@ -502,10 +504,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-data-access-and-visualisation-of-lake-water-level-lwl-timeseries">
 <h1>Tutorial: Data Access and  Visualisation of Lake Water Level (LWL) timeseries<a class="headerlink" href="#tutorial-data-access-and-visualisation-of-lake-water-level-lwl-timeseries" title="Link to this heading">#</a></h1>
-<p>The Copernicus Climate Change Service (C3S) is a European program with the objective of providing information on the current and past state of the climate. All this information is free available after registration through the Climate Data Store CDS (<a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>).</p>
-<p>One of the datasets available from CDS provides lake water level information derived from satellite radar altimetry for selected lakes all around the world. This technique, originally conceived to study open ocean processes, have nevertheless acquired numerous useful measurements over lakes. The Lake Water Level is defined as the height, in meters above the geoid (the shape that the surface would take under the influence of the gravity and rotation of Earth) of the reflecting surface. For each of the key lakes monitored in the C3S Lakes production system, the Level-3 Water Level is provided in separate file along with the corresponding uncertainty.</p>
-<p>One of the characteristics of the lake water level product is its irregular time step. A measurement is estimated each time the lake is observed by a mission/track and, depending on the size and location of the lake, it may be monitored by multiple missions/tracks, with different repetitivities. An overview of the product characteristics is provided in the Product User Specification Guide (PUGS).</p>
-<p>This tutorial, written in python, aims to explain how to access the water level data for a specified lake and how to visualise its timeseries. It depends on the follow python libraries:</p>
+<p>The Copernicus Climate Change Service (C3S) is a European program with the objective of providing information on the current and past state of the climate. All this information is freely available after registration through the Climate Data Store (CDS) (<a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>).</p>
+<p>One of the datasets available from CDS provides lake water level information derived from satellite radar altimetry for selected lakes all around the world. This technique, originally conceived to study open ocean processes, have acquired numerous useful measurements over lakes. The Lake Water Level is defined as the height, in meters above the geoid (the shape that the surface would take under the influence of the gravity and rotation of Earth) of the reflecting surface. For each of the key lakes monitored within the C3S Lakes production system, the Level-3 Water Level is provided in separate file along with the corresponding uncertainty.</p>
+<p>One of the characteristics of the lake water level product is its irregular time step. A water level is estimated each time the lake is observed by a mission/track and, depending on the size and location of the lake, it may be monitored by multiple missions/tracks, with different repetitivities. An overview of the product characteristics is provided in the Product User Specification Guide (PUGS).</p>
+<p><b>Objective:</b></p>
+<p>The objective of this tutorial is to explain how to access the water level data for a specified lake and how to visualise its timeseries.</p>
+<p>It is written in python and depends on the follow python libraries:</p>
 <ul class="simple">
 <li><p>cartopy</p></li>
 <li><p>cdsapi</p></li>
@@ -516,27 +520,30 @@ document.write(`
 <li><p>numpy</p></li>
 <li><p>xarray</p></li>
 </ul>
-<p>To run this tutorial through Binder (<a class="reference external" href="https://mybinder.org/">https://mybinder.org/</a>),  the “requierement.txt” file with this list must be uploaded.</p>
+<p><u>How to run this code in trough Binder:</u></p>
+<p>To run this tutorial via Binder (<a class="reference external" href="https://mybinder.org/">https://mybinder.org/</a>), the jupyter notebook file must be included in a GitHub repository. The list of the packages that should be installed to run the code (list of python libraries indicated above) must be included in a configuration file : ‘requirements.txt’. This file must also be available in the GitHub repository. Further information on Binder’s configuration files is available at the following address: <a class="reference external" href="https://mybinder.readthedocs.io/en/latest/using/config_files.html">https://mybinder.readthedocs.io/en/latest/using/config_files.html</a></p>
 <p><font color='red'>Before continuing with this tutorial, please verify that the C3S API is installed. All the information about this api is available at: </font></p>
 <p><a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to#install-the-cds-api-key">https://cds.climate.copernicus.eu/api-how-to#install-the-cds-api-key</a></p>
-<p>If the access to the api is not configured, you need to run the following code. It generates the ‘.cdsapi’ file conatining two variables : <b>URL</b> and <b>KEY</b>. Please find <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">here</a> your personal CDS key.</p>
+<p>If the access to the api is not configured, you need to run the following code. It generates the ‘.cdsapi’ file containing two variables : <b>URL</b> and <b>KEY</b>. Please find <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">here</a> your personal CDS key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span><span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span><span class="o">=</span> <span class="s1">&#39;#########&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">bash</span>
+
+echo &quot;url: https://cds.climate.copernicus.eu/api/v2
+key: ########################################&quot; &gt;&gt; .cdsapi
 </pre></div>
 </div>
 </div>
 </div>
-<p>The tutorial comprises four main steps:</p>
+<p>The tutorial consists of four main steps:</p>
 <ol class="arabic simple">
 <li><p>Download and decompress data</p></li>
 <li><p>Visualise the location of the lake in a map</p></li>
 <li><p>Visualise and save water level timeseries</p></li>
 <li><p>Visualise and save the yearly water level anomalies</p></li>
 </ol>
-<section id="import-librairies">
-<h2>Import librairies<a class="headerlink" href="#import-librairies" title="Link to this heading">#</a></h2>
+<section id="import-libraries">
+<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <p>The lake water level data is downloaded in a zip file containing a NetCDF file. Some libraries are needed to download data from the CDS, but also to manage zip files (zipfile library) and NetCDF files (xarray library). Other libraries are used to plot and visualise the data (matplotlib and cartopy libraries).</p>
 <p>Additional libraries: os and glob are used for file management</p>
 <div class="cell docutils container">
@@ -645,7 +652,7 @@ document.write(`
 <h1>Lake selection<a class="headerlink" href="#lake-selection" title="Link to this heading">#</a></h1>
 <p>To download and visualise the timeseries, two inputs are required:</p>
 <ul class="simple">
-<li><p>The name of the lake (lake_name). The name of the lake must exist in the list of available lakes</p></li>
+<li><p>The name of the lake (lake_name). The name of the lake must exist in the list of available lakes.</p></li>
 <li><p>The name of the output directory (output_dir) where the different files will be saved.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -659,7 +666,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>A test is performed to verify that the water level of the selected lake is available</p>
+<p>A test is performed to verify that the water level of the selected lake is available.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">lake_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available_lakes</span> <span class="p">:</span>
@@ -668,11 +675,11 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The output directory must exist. If this is not the case, it must be created.</p>
+<p>The output directory must exist. If this is not the case, it will be created.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdirs</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -682,7 +689,7 @@ document.write(`
 <p>Using the CDS api, this function retrieves the data for the specified lake into the defined output directory. The downloaded file is compressed (zip format) containing the data file in NetCDF format. To read the lake water level data, the file is extracted in the output directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
 
 <span class="n">list_regions</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;northern_africa&#39;</span><span class="p">,</span> <span class="s1">&#39;northern_north_america&#39;</span><span class="p">,</span> <span class="s1">&#39;southeastern_asia&#39;</span><span class="p">,</span>
                  <span class="s1">&#39;southern_africa&#39;</span><span class="p">,</span> <span class="s1">&#39;southern_america&#39;</span><span class="p">,</span> <span class="s1">&#39;southern_north_america&#39;</span><span class="p">,</span>
@@ -711,14 +718,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-09-17 15:35:06,075 INFO Welcome to the CDS.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-09-09 16:20:09,153 INFO Welcome to the CDS.
 As per our announcements on the Forum, this instance of CDS will be decommissioned on 26 September 2024 and will no longer be accessible from this date onwards.
 Please update your cdsapi package to a version &gt;=0.7.2, create an account on CDS-Beta and update your .cdsapirc file. We strongly recommend users to check our Guidelines at https://confluence.ecmwf.int/x/uINmFw
-2024-09-17 15:35:06,077 WARNING MOVE TO CDS-Beta
-2024-09-17 15:35:06,080 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-lake-water-level
-2024-09-17 15:35:06,190 INFO Request is completed
-2024-09-17 15:35:06,191 INFO Downloading https://download-0014-clone.copernicus-climate.eu/cache-compute-0014/cache/data8/dataset-satellite-lake-water-level-4d92554b-7173-4bd0-b4a8-a29d0a3efe25.zip to output/Zhari-Namco.zip (10K)
-2024-09-17 15:35:06,721 INFO Download rate 18.9K/s                              
+2024-09-09 16:20:09,155 WARNING MOVE TO CDS-Beta
+2024-09-09 16:20:09,156 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-lake-water-level
+2024-09-09 16:20:09,305 INFO Request is completed
+2024-09-09 16:20:09,306 INFO Downloading https://download-0016.copernicus-climate.eu/cache-compute-0016/cache/data8/dataset-satellite-lake-water-level-e61df0a1-fce1-4816-8357-cb687bc9b202.zip to output/Zhari-Namco.zip (10K)
+2024-09-09 16:20:09,527 INFO Download rate 45.5K/s
 </pre></div>
 </div>
 </div>
@@ -727,7 +734,7 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="visualise-lake-location">
 <h1>2. Visualise lake location<a class="headerlink" href="#visualise-lake-location" title="Link to this heading">#</a></h1>
-<p>It is always useful to check the location of the lake on a map. Many of the world’s lakes have the same name but may be located in different countries, as in the case of Lake Victoria: the best known is in Uganda, but there is also a Lake Victoria in Canada (48.35N, 57.11W) and another in Australia (34.04S, 141.28E). Or the name of the lake may be different, depending on the language: Caribou Lake or Rendeer Lake refer to the same lake (Canada). In some cases, even with the same language, the name of the lake may differ from one country to another: Lake Buenos Aires in Argentina and Lake General Carrera in Chile.</p>
+<p>It is always useful to check the location of the lake on a map. Many of the world’s lakes have the same name but may be located in different countries, as in the case of Lake Victoria: the best known is in Uganda, but there is also a Lake Victoria in Canada (48.35N, 57.11W) and another in Australia (34.04S, 141.28E). Or the name of the lake may be different, depending on the language: Caribou Lake or Reindeer Lake refer to the same lake (Canada). In some cases, even with the same language, the name of the lake may differ from one country to another: Lake Buenos Aires in Argentina and Lake General Carrera in Chile.</p>
 <p>A world map showing the location of the lake is displayed. To generate this figure, we use the cartopy library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -755,16 +762,10 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lake location (lat, lon): 30.9°, 85.6°
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7cf33e71d060&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7266e2239a30&gt;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/randbee/.local/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_physical/ne_110m_coastline.zip
-  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-/home/randbee/.local/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_cultural/ne_110m_admin_0_boundary_lines_land.zip
-  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-</pre></div>
-</div>
-<img alt="../_images/aa1498127619004353e7af30737dd476543bd213dcf72dcfca90552e03a336bd.png" src="../_images/aa1498127619004353e7af30737dd476543bd213dcf72dcfca90552e03a336bd.png" />
+<img alt="../_images/a986809c5ae855a70273e443caef8e9ecdc9bca8d26d3305bfa3cbac424c075b.png" src="../_images/a986809c5ae855a70273e443caef8e9ecdc9bca8d26d3305bfa3cbac424c075b.png" />
 </div>
 </div>
 </section>
@@ -772,8 +773,8 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 <h1>3. Visualise lake water level time series<a class="headerlink" href="#visualise-lake-water-level-time-series" title="Link to this heading">#</a></h1>
 <p>Once the data has been extracted, it can be read and visualised. Data in NetCDF format is read using the Xarray library, and Matplotlib is used to display time series.</p>
 <p>The figure with the timeseries will be saved in the output directory in png format:
-[lake_name]_timeseries.png file</p>
-<p>The change in time step due to coverage by multiple missions can be seen in the figure: in recent years, Lake Baikal has been monitored by multiple missions and trajectories. As a result, the temporal resolution increases (the time between observations is reduced) and the time series is noisier due to the effect of the inter-mission and inter-tracks bias.</p>
+[lake_name]_timeseries.png file.</p>
+<p>The change in observation time step caused by changes in coverage by multiple missions can be seen in the figure. In recent years, Lake Baikal has been monitored by multiple missions and trajectories. As a result, the temporal resolution increases (the time between observations is reduced) and the time series is noisier due to the effect of the inter-mission and inter-tracks bias.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot and visualise the timeseries</span>
@@ -788,15 +789,15 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/928b0d1cb528aec448934f17266fe6d886314be66992e05474f5293f3751316e.png" src="../_images/928b0d1cb528aec448934f17266fe6d886314be66992e05474f5293f3751316e.png" />
+<img alt="../_images/d3aec4dc0e7f8d17cb3a6876cf18c4f480ce57585afa5d0a4846ed6d1d9e1967.png" src="../_images/d3aec4dc0e7f8d17cb3a6876cf18c4f480ce57585afa5d0a4846ed6d1d9e1967.png" />
 </div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="visualise-lake-water-level-yearly-anomalies">
 <h1>4. Visualise lake water level yearly anomalies<a class="headerlink" href="#visualise-lake-water-level-yearly-anomalies" title="Link to this heading">#</a></h1>
-<p>Another way of analysing variations in water levels is to visualise anomalies in relation to average values over a reference period in the form of a bar chart, using red and blue colours to easily identify the year when levels are higher or lower than the climatic normal.</p>
-<p>The same code can be used for the visualiation of yearly anomalies compared to a particular year.</p>
-<p>The reference period can be adapted to each lake. Indeed, the temporal coverage is not the same for all the lakes in the CDS, with the first available date ranging from 1992, as is the case for Lake Baikal, to 2019 for lakes monitored exclusively by the Sentinel-3B mission. In this example for Lake Baikal, we have chosen a reference period consisting of the first 10 years of data.</p>
+<p>Another way of analysing variations in water levels is to visualise anomalies in respect to average values over a reference period in form of a bar chart, using red and blue colours to easily identify the year when levels are higher or lower than the climatic normal.</p>
+<p>The same code can be used for the visualisation of yearly anomalies compared to a particular year.</p>
+<p>The reference period can be adapted for each lake. The temporal coverage is not the same for all the lakes in the CDS, with the first available date ranging from 1992, as is the case for Lake Baikal, to 2019 for lakes monitored exclusively by the Sentinel-3B mission. In this example for Lake Baikal, we have chosen a reference period consisting of the first 10 years of data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_reference_year</span> <span class="o">=</span> <span class="mi">1992</span>
@@ -805,7 +806,7 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 </div>
 </div>
 </div>
-<p>The yearly anomaly is calculated by first applying xarray’s groupby() function to group the data by year and then calculating the mean value for each annual group. The average value of the water in the reference lake is estimated as the average water level over the reference period.</p>
+<p>The yearly anomaly is calculated using the following steps: i. applying xarray’s groupby() function to group the data by year, and ii. calculating the mean value for each annual group. The average value of the water level in the selected lake is estimated as the average water level over the reference period.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">yearly_mean</span> <span class="o">=</span> <span class="n">xr_lake</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">keep_attrs</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
@@ -823,9 +824,9 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 </div>
 </div>
 </div>
-<p>The yearly anomaly is shown in red for values above the average water level during the reference period and in blue for values below.</p>
+<p>The yearly anomaly is shown in red for the annual values above the average water level during the reference period and in blue for the annual values below.</p>
 <p>The figure with the anomalies is saved in the output directory in png format :
-[lake_name]_yearly-anomalies.png file</p>
+[lake_name]_yearly-anomalies.png file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year_mean</span> <span class="o">=</span> <span class="n">yearly_mean</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
@@ -848,7 +849,7 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a7e5ea866dc9357b957ed2887f8f682419d27c45cc13221c8bae40e407c027b0.png" src="../_images/a7e5ea866dc9357b957ed2887f8f682419d27c45cc13221c8bae40e407c027b0.png" />
+<img alt="../_images/47ddcbc4c68c2eeda68ad6d27730bd21062d52691eafb0bf5bee345c2ef7acac.png" src="../_images/47ddcbc4c68c2eeda68ad6d27730bd21062d52691eafb0bf5bee345c2ef7acac.png" />
 </div>
 </div>
 </section>
@@ -918,7 +919,7 @@ Please update your cdsapi package to a version &gt;=0.7.2, create an account on 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Tutorial: Data Access and  Visualisation of Lake Water Level (LWL) timeseries</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-librairies">Import librairies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lake-selection">Lake selection</a><ul class="visible nav section-nav flex-column">

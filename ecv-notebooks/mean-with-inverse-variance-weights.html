@@ -1,0 +1,1147 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Computing the time average of LAI and fAPAR using inverse variance weights &#8212; C3S Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/mean-with-inverse-variance-weights';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exploring Precipitation information in the GIRAFE dataset" href="precipitation-giraffe.html" />
+    <link rel="prev" title="Explore data on glacier mass change available on the Climate Data Store" href="glacier-mass-change.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="C3S Training - Home"/>
+    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="C3S Training - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cds-tutorial.html">CDS tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reanalysis Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections-cordex.html">Climate Projections (CORDEX)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sf-verification.html">Seasonal Forecast Verification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using Satellite Observations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-solar-irradiance.html">Total Solar Irradiance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tropospheric-humidity-from-radio-occultation.html">Tropospheric humidity estimates from satellite-based radio occultation measurements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level3-products.html">How to access, read and use satellite XCO2 and XCH4 Level 3 data products</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="aerosol-single-sensor-demonstrator.html">Exploring gridded data on Aerosol properties available on C3S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aerosol-multi-sensor-record.html">Visualising a full Climate Data Record of multi-sensor Aerosol data</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Exploring an ozone product available through the Climate Data Store (CDS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soil-moisture-anomalies.html"><strong>C3S Soil Moisture Data Access and Anomaly Analysis Notebook</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lake-water-level.html">Tutorial: Data Access and  Visualisation of Lake Water Level (LWL) timeseries</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="lake-surface-water-temperature.html">Lake Surface Water Temperature Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-surface-elevation.html">Ice sheet surface elevation change rates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Access and visualisation of the Greenland Ice Sheet velocity data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ice-sheet-mass-balance.html">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="glacier-area.html">Explore glacier area</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Computing the time average of LAI and fAPAR using inverse variance weights</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="precipitation-giraffe.html">Exploring Precipitation information in the GIRAFE dataset</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials using Copernicus Emergency Management Service data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cems-notebooks/visualising-fwi-for-esotc.html">Visualising fire weather index (FWI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cems-notebooks/glofas-bangladesh-floods.html">Observing major flood events</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s-review/review?urlpath=tree/ecv-notebooks/mean-with-inverse-variance-weights.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s-review/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/mean-with-inverse-variance-weights.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ecv-notebooks/mean-with-inverse-variance-weights.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Computing the time average of LAI and fAPAR using inverse variance weights</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computing the time average of LAI and fAPAR using inverse variance weights</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-variance-weights">Inverse Variance Weights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-challenges">Computational challenges</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#required-packages">Required packages</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">Request data from the CDS programmatically with the CDS API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking">Unpacking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">Reading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-quality-flags">Applying quality flags</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-average">Computing the average</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-metadata">Setting metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up">Cleaning up</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="computing-the-time-average-of-lai-and-fapar-using-inverse-variance-weights">
+<h1>Computing the time average of LAI and fAPAR using inverse variance weights<a class="headerlink" href="#computing-the-time-average-of-lai-and-fapar-using-inverse-variance-weights" title="Link to this heading">#</a></h1>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<p>Time series of unsmoothed satellite derived LAI and fAPAR can show noise and natural fluctuations. By computing a monthly average these can be reduced. Each grid cell comes with a retrieval uncertainty which can be used to give appropriate weight to retrievals with different uncertainty in the average computation. Here, we use inverse variance weights, which is the optimal estimator of the average of <span class="math notranslate nohighlight">\(N\)</span> uncorrelated measurements in the sense that the estimated average has the least variance among all the weighted averages.</p>
+<p><a id='formulae'></a></p>
+</section>
+<section id="inverse-variance-weights">
+<h2>Inverse Variance Weights<a class="headerlink" href="#inverse-variance-weights" title="Link to this heading">#</a></h2>
+<p>Given a sequence of independent observations <span class="math notranslate nohighlight">\(y_i\)</span> with variances <span class="math notranslate nohighlight">\(\sigma_{i}^2\)</span>, the inverse-variance weighted average is given by
+\begin{equation}
+\hat{y} = \frac{\sum_i y_i/\sigma_{i}^2}{\sum_i 1/\sigma_{i}^2}.
+\end{equation}
+The variance of <span class="math notranslate nohighlight">\(\hat{y}\)</span> is
+\begin{equation}
+Var(\hat{y}) = \frac{1}{\sum_i 1/\sigma_{i}^2}.
+\end{equation}
+Computing <span class="math notranslate nohighlight">\(Var(\hat{y})\)</span> first, we can use it to save some operations:
+\begin{equation}
+\hat{y} = Var(\hat{y}) \sum_i y_i/\sigma_{i}^2
+\end{equation}</p>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<p>The data used in this example are the satellite based LAI and fAPAR product processed with the TIP algorithm (currently v2 – v4). Specifically we are using Proba-V-based data with 1 km resolution for May 2019. Data is available on days 10, 20, and 31 of that month.</p>
+</section>
+<section id="steps">
+<h2>Steps:<a class="headerlink" href="#steps" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>get data from the CDS</p></li>
+<li><p>unpack data</p></li>
+<li><p>apply quality flags</p></li>
+<li><p>compute the inverse variance weighted average over the time period defined by the downloaded files</p></li>
+<li><p>fix metadata in the result file</p></li>
+<li><p>write the result to file</p></li>
+<li><p>create a plot</p></li>
+</ul>
+</section>
+<section id="computational-challenges">
+<h2>Computational challenges<a class="headerlink" href="#computational-challenges" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Depending on the load on the CDS, receiving and downloading the data may take a long time. If the notebook recognises that the data has been downloaded already (e.g. in a previous run) it skips that step.</p></li>
+<li><p>Global maps of LAI and fAPAR in 1 km resolution take a lot of memory during the computations. Therefore this example uses <code class="docutils literal notranslate"><span class="pre">xarray</span></code> with <code class="docutils literal notranslate"><span class="pre">dask</span></code>, which will atomatically parallelise the computation and keep only fractions of the whole layer in memory at a time.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="required-packages">
+<h1>Required packages<a class="headerlink" href="#required-packages" title="Link to this heading">#</a></h1>
+<p>The notebook use <code class="docutils literal notranslate"><span class="pre">xarray</span></code> and <code class="docutils literal notranslate"><span class="pre">datetime</span></code> globally. Other packages are included locally. These are <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to access the CDS, <code class="docutils literal notranslate"><span class="pre">tarfile</span></code> to unpack the data, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> for the computations, and <code class="docutils literal notranslate"><span class="pre">os</span></code> and <code class="docutils literal notranslate"><span class="pre">sys</span></code>. The visualisation uses <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="o">%</span><span class="k">pip</span> install &#39;cdsapi&gt;=0.7.0&#39;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cdsapi&gt;=0.7.0 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (0.7.0)
+Requirement already satisfied: cads-api-client&gt;=0.9.2 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from cdsapi&gt;=0.7.0) (1.0.0)
+Requirement already satisfied: requests&gt;=2.5.0 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from cdsapi&gt;=0.7.0) (2.31.0)
+Requirement already satisfied: tqdm in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from cdsapi&gt;=0.7.0) (4.66.1)
+Requirement already satisfied: attrs in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi&gt;=0.7.0) (23.2.0)
+Requirement already satisfied: multiurl in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi&gt;=0.7.0) (0.3.1)
+Requirement already satisfied: typing-extensions in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi&gt;=0.7.0) (4.9.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from requests&gt;=2.5.0-&gt;cdsapi&gt;=0.7.0) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from requests&gt;=2.5.0-&gt;cdsapi&gt;=0.7.0) (3.6)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from requests&gt;=2.5.0-&gt;cdsapi&gt;=0.7.0) (2.1.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from requests&gt;=2.5.0-&gt;cdsapi&gt;=0.7.0) (2024.6.2)
+Requirement already satisfied: pytz in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi&gt;=0.7.0) (2023.3.post1)
+Requirement already satisfied: python-dateutil in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi&gt;=0.7.0) (2.8.2)
+Requirement already satisfied: six&gt;=1.5 in /Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages (from python-dateutil-&gt;multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi&gt;=0.7.0) (1.16.0)
+
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">24.1.1</span> -&gt; <span class=" -Color -Color-Green">24.2</span>
+<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">pip install --upgrade pip</span>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="request-data-from-the-cds-programmatically-with-the-cds-api">
+<h2>Request data from the CDS programmatically with the CDS API<a class="headerlink" href="#request-data-from-the-cds-programmatically-with-the-cds-api" title="Link to this heading">#</a></h2>
+<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: URL and KEY which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the ######### below with this string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##############&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_data</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">cdsapi</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span><span class="n">file</span><span class="p">,</span><span class="s2">&quot;already exists.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+            <span class="s1">&#39;satellite-lai-fapar&#39;</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s1">&#39;fapar&#39;</span><span class="p">,</span> <span class="s1">&#39;lai&#39;</span><span class="p">,</span>
+                <span class="p">],</span>
+                <span class="s1">&#39;satellite&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;proba&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;sensor&#39;</span><span class="p">:</span> <span class="s1">&#39;vgt&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;horizontal_resolution&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1km&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;product_version&#39;</span><span class="p">:</span> <span class="s1">&#39;v3&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2019&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;05&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;nominal_day&#39;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;31&#39;</span><span class="p">,</span>
+                <span class="p">],</span>
+                <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;tgz&#39;</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="n">file</span><span class="p">)</span>
+
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s1">&#39;data.tgz&#39;</span>
+<span class="n">get_data</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;got data,       elapsed:&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-09-27 09:50:44,728 WARNING [2024-09-27T07:50:44.723388] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
+2024-09-27 09:50:44,810 INFO status has been updated to accepted
+2024-09-27 09:50:46,388 INFO status has been updated to running
+2024-09-27 09:50:48,703 INFO status has been updated to successful
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>got data,       elapsed: 0:12:26.439937
+</pre></div>
+</div>
+</div>
+</div>
+<p>The CDS tutorial also describes how the CDS database search can be used to generate CDS API requests which can be emplaced in <code class="docutils literal notranslate"><span class="pre">get_data</span></code> to modify it to the user’s needs.</p>
+</section>
+<section id="unpacking">
+<h2>Unpacking<a class="headerlink" href="#unpacking" title="Link to this heading">#</a></h2>
+<p>We need the individual files from the archive to open them with <code class="docutils literal notranslate"><span class="pre">xarrax</span></code>’s <code class="docutils literal notranslate"><span class="pre">open_mfdataset</span></code> in the next step. This will effectively duplicate the data on disk. Package <code class="docutils literal notranslate"><span class="pre">tarfile</span></code> is used to unpack the data retrieved from the CDS. It returns an object which can be iterated over to get the list of files which is iterated over to check whether the file is already present or needs to be extracted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">unpack_data</span><span class="p">(</span><span class="n">file</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">tarfile</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="n">tf</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">file</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;opened tar file,  elapsed:&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+    <span class="n">tf</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;listing,     elapsed:&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+    <span class="c1"># just extract what is not present:</span>
+    <span class="k">for</span> <span class="n">xfile</span> <span class="ow">in</span> <span class="n">tf</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">xfile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;extracting &#39;</span><span class="p">,</span><span class="n">xfile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">tf</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">member</span><span class="o">=</span><span class="n">xfile</span><span class="o">.</span><span class="n">name</span><span class="p">,</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="c1"># uses current working directory        </span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;present    &#39;</span><span class="p">,</span><span class="n">xfile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tf</span>
+
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">tarfileinfo</span> <span class="o">=</span> <span class="n">unpack_data</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;unpacked data,    elapsed:&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opened tar file,  elapsed: 0:00:00.002834
+?rw-r--r-- root/root  648901232 2024-09-26 12:33:42 c3s_FAPAR_20190510000000_GLOBE_PROBAV_V3.0.1.nc 
+?rw-r--r-- root/root  666362545 2024-09-26 12:38:26 c3s_FAPAR_20190520000000_GLOBE_PROBAV_V3.0.1.nc 
+?rw-r--r-- root/root  682841250 2024-09-26 12:48:04 c3s_FAPAR_20190531000000_GLOBE_PROBAV_V3.0.1.nc 
+?rw-r--r-- root/root  542358017 2024-09-26 12:51:57 c3s_LAI_20190510000000_GLOBE_PROBAV_V3.0.1.nc 
+?rw-r--r-- root/root  558949918 2024-09-26 12:56:37 c3s_LAI_20190520000000_GLOBE_PROBAV_V3.0.1.nc 
+?rw-r--r-- root/root  579263205 2024-09-26 13:00:12 c3s_LAI_20190531000000_GLOBE_PROBAV_V3.0.1.nc 
+listing,     elapsed: 0:00:05.076151
+extracting  c3s_FAPAR_20190510000000_GLOBE_PROBAV_V3.0.1.nc
+extracting  c3s_FAPAR_20190520000000_GLOBE_PROBAV_V3.0.1.nc
+extracting  c3s_FAPAR_20190531000000_GLOBE_PROBAV_V3.0.1.nc
+extracting  c3s_LAI_20190510000000_GLOBE_PROBAV_V3.0.1.nc
+extracting  c3s_LAI_20190520000000_GLOBE_PROBAV_V3.0.1.nc
+extracting  c3s_LAI_20190531000000_GLOBE_PROBAV_V3.0.1.nc
+unpacked data,    elapsed: 0:00:09.245286
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note the size of the files. They are more than 0.5 GB each <em>in compressed storage</em> (netCDF internal compression). How effective this compression is, you can see from the fact that the sum of the size almost equals the size of the <code class="docutils literal notranslate"><span class="pre">tgz</span></code>-archive. This means that <code class="docutils literal notranslate"><span class="pre">gzip</span></code> compression run on the archive has not found much to compress any more. On these particular files, the compression ratio almost reaches 10. Internally these file use another compression mechanism on top of this by storing most of the data in limited precision to 16-bit unsigned integers. In python they get expanded to 32-bit floats or even 64-bit doubles, which gives another factor of 2 or 4. Thus three dates of LAI with auxiliary variables would take up about 19 GB in memory <em>if they were processed simultaneously</em>. And this estimate is neglegting storage for intermediated results and output. This notebook works around this bottlenck.</p>
+</section>
+<section id="reading-the-data">
+<h2>Reading the data<a class="headerlink" href="#reading-the-data" title="Link to this heading">#</a></h2>
+<p>The data are prepared for reading by passing their names to an <code class="docutils literal notranslate"><span class="pre">xarray</span></code> multi-file object called <code class="docutils literal notranslate"><span class="pre">filedata</span></code> here. This will enable <code class="docutils literal notranslate"><span class="pre">dask</span></code> to work in parallel on multiple files and to hold only subsets in memory. I you uncomment the line <code class="docutils literal notranslate"><span class="pre">#varname</span> <span class="pre">=</span> <span class="pre">'fAPAR'</span> <span class="pre">#</span> <span class="pre">use</span> <span class="pre">this</span> <span class="pre">for</span> <span class="pre">fAPAR</span></code>, the subsequent computations will be done for fAPAR instead of LAI.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">starttime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">varname</span> <span class="o">=</span> <span class="s1">&#39;LAI&#39;</span> <span class="c1"># use this for LAI</span>
+<span class="c1">#varname = &#39;fAPAR&#39; # use this for fAPAR</span>
+<span class="n">uncname</span> <span class="o">=</span> <span class="n">varname</span> <span class="o">+</span> <span class="s1">&#39;_ERR&#39;</span> <span class="c1"># name of uncertainty layer</span>
+<span class="c1"># extract the file names containting `varname` from `tarfileinfo`</span>
+<span class="n">inputfiles</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># start with empty list</span>
+<span class="k">for</span> <span class="n">xfile</span> <span class="ow">in</span> <span class="n">tarfileinfo</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">varname</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span> <span class="ow">in</span> <span class="n">xfile</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">casefold</span><span class="p">():</span>
+        <span class="n">inputfiles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xfile</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="c1"># give the list to an `xarray` multi-file object</span>
+<span class="c1">#</span>
+<span class="n">filedata</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">inputfiles</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;got file names, elapsed:&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>got file names, elapsed: 0:00:01.573129
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="applying-quality-flags">
+<h2>Applying quality flags<a class="headerlink" href="#applying-quality-flags" title="Link to this heading">#</a></h2>
+<p>TIP LAI and fAPAR come with a set of infomrational and quality flag, stored in the layer <code class="docutils literal notranslate"><span class="pre">retrival_flag</span></code>. We are using the hexadecimal representation <code class="docutils literal notranslate"><span class="pre">0x1C1</span></code> of the bit array <code class="docutils literal notranslate"><span class="pre">111000001</span></code>, here, to avoid cells with the conditions <code class="docutils literal notranslate"><span class="pre">obs_is_fillvalue</span></code>, <code class="docutils literal notranslate"><span class="pre">tip_untrusted</span></code>,<code class="docutils literal notranslate"><span class="pre">obs_unusable</span></code>, and <code class="docutils literal notranslate"><span class="pre">obs_inconsistent</span></code>. In the end, we must not forget to define the units of the result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_flags</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">fielddict</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="n">func</span>     <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">,</span> <span class="n">flags</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">flags</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint32&#39;</span><span class="p">),</span><span class="mh">0x1C1</span><span class="p">)</span> <span class="o">==</span> <span class="mh">0x0</span> <span class="p">),</span> <span class="n">val</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="p">)</span>
+    <span class="n">units</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
+    <span class="n">clean_data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">apply_ufunc</span><span class="p">(</span><span class="n">func</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]],</span><span class="n">data</span><span class="p">[</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;flags&#39;</span><span class="p">]],</span><span class="n">dask</span><span class="o">=</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span><span class="n">dask_gufunc_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;allow_rechunk&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">})</span>
+    <span class="c1"># set units of result:</span>
+    <span class="n">clean_data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">units</span>
+    <span class="k">return</span> <span class="n">clean_data</span>
+
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">filedata</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span> <span class="o">=</span> <span class="n">apply_flags</span><span class="p">(</span><span class="n">filedata</span><span class="p">,{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span><span class="n">varname</span><span class="p">,</span><span class="s1">&#39;flags&#39;</span><span class="p">:</span><span class="s1">&#39;retrieval_flag&#39;</span><span class="p">})</span>
+<span class="n">filedata</span><span class="p">[</span><span class="n">uncname</span><span class="p">]</span> <span class="o">=</span> <span class="n">apply_flags</span><span class="p">(</span><span class="n">filedata</span><span class="p">,{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span><span class="n">uncname</span><span class="p">,</span><span class="s1">&#39;flags&#39;</span><span class="p">:</span><span class="s1">&#39;retrieval_flag&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;applied flags,  elapsed:&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>applied flags,  elapsed: 0:00:00.032871
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="computing-the-average">
+<h2>Computing the average<a class="headerlink" href="#computing-the-average" title="Link to this heading">#</a></h2>
+<p>The subroutine starts by defining the two lambda-functions for the variance and the average itself as given in section <a class="reference internal" href="#formulae"><span class="xref myst">above</span></a>.
+<code class="docutils literal notranslate"><span class="pre">xarray</span></code>’s <code class="docutils literal notranslate"><span class="pre">apply_ufunc</span></code> is used to enqueue them to <code class="docutils literal notranslate"><span class="pre">dask</span></code>. Since the average is a reduction along the time dimension, this is identified in the <code class="docutils literal notranslate"><span class="pre">input_core_dims</span></code> argument. Where there is missing data, the <code class="docutils literal notranslate"><span class="pre">varfunc</span></code> result will be <code class="docutils literal notranslate"><span class="pre">inf</span></code> or <code class="docutils literal notranslate"><span class="pre">-inf</span></code>, which needs to be set to <code class="docutils literal notranslate"><span class="pre">nan</span></code> (the value used for missing data internally by <code class="docutils literal notranslate"><span class="pre">xarray</span></code>). Also, names and units are set, and the variance is converted to ‘standard error’ or uncertainy by taking the square root before the subroutine returns the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average_ivw</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">fielddict</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="c1"># formula for the variance of the result:</span>
+    <span class="n">varfunc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">unc</span> <span class="p">:</span> <span class="mf">1.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span> <span class="p">(</span>  <span class="mf">1.</span> <span class="o">/</span> <span class="n">unc</span><span class="o">**</span><span class="mi">2</span> <span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+    <span class="c1"># formula for the inverse variance weighted mean:</span>
+    <span class="n">avgfunc</span>  <span class="o">=</span> <span class="k">lambda</span> <span class="n">val</span><span class="p">,</span> <span class="n">unc</span><span class="p">,</span> <span class="n">rvarsum</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span> <span class="p">(</span> <span class="n">val</span> <span class="o">/</span> <span class="n">unc</span><span class="o">**</span><span class="mi">2</span> <span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span> <span class="o">*</span> <span class="n">rvarsum</span>
+    <span class="n">units</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span>
+    <span class="c1"># enforce parallelism with xarray and dask:</span>
+    <span class="n">variance_ivw</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">apply_ufunc</span><span class="p">(</span><span class="n">varfunc</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;uncertainty&#39;</span><span class="p">]],</span><span class="n">dask</span><span class="o">=</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span><span class="n">input_core_dims</span><span class="o">=</span><span class="p">([[</span><span class="s1">&#39;time&#39;</span><span class="p">]]))</span>
+    <span class="n">ave_ivw</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">apply_ufunc</span><span class="p">(</span><span class="n">avgfunc</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]],</span><span class="n">data</span><span class="p">[</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;uncertainty&#39;</span><span class="p">]],</span><span class="n">variance_ivw</span><span class="p">,</span><span class="n">dask</span><span class="o">=</span><span class="s2">&quot;allowed&quot;</span><span class="p">,</span><span class="n">input_core_dims</span><span class="o">=</span><span class="p">([[</span><span class="s1">&#39;time&#39;</span><span class="p">],[</span><span class="s1">&#39;time&#39;</span><span class="p">],[]]),</span><span class="n">exclude_dims</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;time&#39;</span><span class="p">})</span>
+    <span class="c1"># replace any non-finite results with np.nan:</span>
+    <span class="n">ave_ivw</span> <span class="o">=</span> <span class="n">ave_ivw</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">ave_ivw</span><span class="p">))</span>
+    <span class="c1"># replace any non-finite results with np.nan and convert variance to uncertainty:</span>
+    <span class="n">uncertainty_ivw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance_ivw</span><span class="p">)</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">variance_ivw</span><span class="p">))</span>
+    <span class="c1"># correct name of layer after computation</span>
+    <span class="n">ave_ivw</span> <span class="o">=</span> <span class="n">ave_ivw</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">])</span>
+    <span class="n">uncertainty_ivw</span> <span class="o">=</span> <span class="n">uncertainty_ivw</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">fielddict</span><span class="p">[</span><span class="s1">&#39;uncertainty&#39;</span><span class="p">])</span>
+    <span class="c1"># set units of results:</span>
+    <span class="n">ave_ivw</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">units</span>
+    <span class="c1">#    uncertainty_ivw[fielddict[&#39;uncertainty&#39;]].attrs[&#39;units&#39;] = units</span>
+    <span class="n">uncertainty_ivw</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">units</span>
+    <span class="k">return</span> <span class="n">ave_ivw</span><span class="p">,</span> <span class="n">uncertainty_ivw</span>
+
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">average</span><span class="p">,</span><span class="n">ave_uncertainty</span> <span class="o">=</span> <span class="n">average_ivw</span><span class="p">(</span><span class="n">filedata</span><span class="p">,{</span><span class="s1">&#39;variable&#39;</span><span class="p">:</span><span class="n">varname</span><span class="p">,</span><span class="s1">&#39;uncertainty&#39;</span><span class="p">:</span><span class="n">uncname</span><span class="p">,</span><span class="s1">&#39;flags&#39;</span><span class="p">:</span><span class="s1">&#39;retrieval_flag&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;setting up average, elapsed  :&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>setting up average, elapsed  : 0:00:00.018484
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="setting-metadata">
+<h2>Setting metadata<a class="headerlink" href="#setting-metadata" title="Link to this heading">#</a></h2>
+<p>Before writing the results to file, further metadata are set, in order to make the file self-documenting. This is good practice, not only if such files are exchanged between colleagues, but also to allow for oneself to trace back and understand the results of one’s own work, especially if some time has elapsed since the data was processed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># copy, set, and update file and variable attributes</span>
+<span class="c1">#</span>
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">average</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;monthly averaged &#39;</span> <span class="o">+</span> <span class="n">varname</span> <span class="o">+</span> <span class="s1">&#39; using inverse variance weights&#39;</span>
+<span class="n">ave_uncertainty</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">varname</span> <span class="o">+</span> <span class="s1">&#39; standard error after averaging with inverse variance weights&#39;</span>
+<span class="c1"># create a merged object which contains the average and its standard error</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">((</span><span class="n">average</span><span class="p">,</span><span class="n">ave_uncertainty</span><span class="p">))</span>
+<span class="c1"># inherit the global attributes of the input data:</span>
+<span class="n">output</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="n">filedata</span><span class="o">.</span><span class="n">attrs</span>
+<span class="c1"># document the processing by prepending to the `history` attribute:</span>
+<span class="k">def</span> <span class="nf">cmdline_as_string</span><span class="p">():</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="n">command_line</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">command_line</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="n">command_line</span>
+<span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span> <span class="o">+</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="n">cmdline_as_string</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;history&#39;</span><span class="p">]</span>
+<span class="c1">#</span>
+<span class="c1"># adapt attributes:</span>
+<span class="c1">#</span>
+<span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;long_name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; after application of inverse variance weighted monthly mean&#39;</span>
+<span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; after application of inverse variance weighted monthly mean&#39;</span>
+<span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;inverse variance weighted average of &#39;</span> <span class="o">+</span> <span class="n">varname</span>
+<span class="c1">#</span>
+<span class="c1"># compute and set a time for the result</span>
+<span class="c1">#</span>
+<span class="n">intimes</span> <span class="o">=</span> <span class="n">filedata</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+<span class="n">outtime</span> <span class="o">=</span> <span class="n">intimes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span> <span class="n">intimes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">intimes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">output</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">outtime</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;start_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">intimes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">output</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;end_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">intimes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;after setting file atts:&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after setting file atts: 0:00:00.013813
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/xarray/core/dataset.py:4743: UserWarning: No index created for dimension time because variable time is not a coordinate. To create an index for time, please first call `.set_coords(&#39;time&#39;)` on this object.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<p>Until now, <code class="docutils literal notranslate"><span class="pre">dask</span></code> has only collected information on how to do the actual calculations. But it is already able to predict the size of the resulting object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">filedata</span><span class="o">.</span><span class="n">nbytes</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">),</span><span class="s2">&quot; GB input&quot;</span><span class="p">)</span>
+<span class="c1">#</span>
+<span class="c1"># even if the computation is delayed by dask, the output data volume is already known:</span>
+<span class="c1">#</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="o">.</span><span class="n">nbytes</span><span class="o">*</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">),</span><span class="s2">&quot; GB output (anticipated)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28.262746359221637  GB input
+4.710805423557758  GB output (anticipated)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The computation is finally triggered when the data is written to a file. <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code> internal compression is set to <code class="docutils literal notranslate"><span class="pre">zlib</span></code> level 4 for both output layers. Runs on the test system showed about 2 GB of memory usage for this example. Be prepared to see (and ignore) run-time errors about <code class="docutils literal notranslate"><span class="pre">divide</span> <span class="pre">by</span> <span class="pre">zero</span></code> and <code class="docutils literal notranslate"><span class="pre">invalid</span> <span class="pre">value</span></code>, which are triggered by cells with missing data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># output to file triggers the delayed computation:</span>
+<span class="c1">#</span>
+<span class="k">def</span> <span class="nf">write_result</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="n">outfile</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">os.path</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">outfile</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;file&quot;</span><span class="p">,</span><span class="n">outfile</span><span class="p">,</span><span class="s2">&quot;already exists. Processing skipped.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span><span class="n">encoding</span><span class="o">=</span><span class="p">{</span><span class="n">varname</span><span class="p">:{</span><span class="s2">&quot;zlib&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;complevel&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,},</span><span class="n">uncname</span><span class="p">:{</span><span class="s2">&quot;zlib&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;complevel&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}})</span>
+    <span class="k">return</span>
+
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="n">outfile</span> <span class="o">=</span> <span class="n">varname</span> <span class="o">+</span> <span class="s1">&#39;-mean.nc&#39;</span>
+<span class="n">write_result</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="n">outfile</span><span class="p">)</span>
+<span class="n">filedata</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">output</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After delayed computations :&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/dask/array/chunk.py:278: RuntimeWarning: invalid value encountered in cast
+  return x.astype(astype_dtype, **kwargs)
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/dask/core.py:127: RuntimeWarning: divide by zero encountered in divide
+  return func(*(_execute_task(a, cache) for a in args))
+/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/dask/core.py:127: RuntimeWarning: invalid value encountered in multiply
+  return func(*(_execute_task(a, cache) for a in args))
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After delayed computations : 0:02:12.407966
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting">
+<h2>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h2>
+<p>To interacively visualise the result, we recommend <a class="reference external" href="https://earth.esa.int/eogateway/tools/snap">snap</a>, but of course, we can give python a try as well. The following script plots two different regions, Europe and the full dataset. Be prepared to wait a couple of minutes and to see heavy memory usage for the global one. With minor modifications, the following cell can also be run stand-alone (<code class="docutils literal notranslate"><span class="pre">varname</span></code> and <code class="docutils literal notranslate"><span class="pre">outfile</span></code> need to be set). It creates two plots, one centred over Europe, and one using the full extent of the data. Note that both plots do not show the data at their full resolution, using some internal resampling of the <code class="docutils literal notranslate"><span class="pre">imshow</span></code>-method from <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_region</span><span class="p">(</span><span class="n">dataslice</span><span class="p">,</span><span class="n">region</span><span class="p">,</span><span class="n">size</span><span class="p">):</span>
+    <span class="c1"># Libraries for plotting and geospatial data visualisation</span>
+    <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+    <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="c1"># show data attributes</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">dataslice</span><span class="p">)</span>
+    <span class="c1"># define a colour map; green colour should start where LAI reaches 1</span>
+    <span class="n">mycmap</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;lai_cmap&#39;</span><span class="p">,[(</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">),(</span><span class="mf">0.6</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">)])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;legend&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()))</span> <span class="c1"># Mollweide() is too slow.</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">set_dpi</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">dataslice</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span>
+        <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span>  <span class="c1"># this is important!</span>
+        <span class="n">cbar_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;orientation&quot;</span><span class="p">:</span> <span class="s2">&quot;horizontal&quot;</span><span class="p">,</span> <span class="s2">&quot;shrink&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+        <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+        <span class="c1">#robust=True,</span>
+        <span class="n">cmap</span> <span class="o">=</span> <span class="n">mycmap</span>
+    <span class="p">)</span>
+    <span class="c1">#axis.coastlines(resolution=&#39;50m&#39;)  # cartopy function, optional</span>
+    <span class="c1"># save to file</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">varname</span> <span class="o">+</span> <span class="s1">&#39;_&#39;</span> <span class="o">+</span> <span class="n">region</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span><span class="p">,</span><span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="c1"># display a screen version</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span>
+
+<span class="n">starttime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="c1"># read results from file to avoid a second evaluation</span>
+<span class="n">filedata</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">outfile</span><span class="p">)</span>
+<span class="n">plot_region</span><span class="p">(</span><span class="n">filedata</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">lon</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)))</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="n">region</span><span class="o">=</span><span class="s1">&#39;Europe&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;After first plot, elapsed :&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+<span class="n">plot_region</span><span class="p">(</span><span class="n">filedata</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="n">region</span><span class="o">=</span><span class="s1">&#39;Global&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">filedata</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done plotting, elapsed :&#39;</span><span class="p">,</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">-</span><span class="n">starttime</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray &#39;LAI&#39; (lat: 4480, lon: 6720)&gt; Size: 120MB
+[30105600 values with dtype=float32]
+Coordinates:
+  * lon      (lon) float64 54kB -20.0 -19.99 -19.98 -19.97 ... 39.97 39.98 39.99
+  * lat      (lat) float64 36kB 70.0 69.99 69.98 69.97 ... 30.03 30.02 30.01
+    time     datetime64[ns] 8B 2019-05-20T12:00:00
+Attributes:
+    units:      m2.m-2
+    long_name:  monthly averaged LAI using inverse variance weights
+</pre></div>
+</div>
+<img alt="../_images/ea35207d7a119ba5a35a27c550a2e38d93af04baaf7043413746ca66262e5dca.png" src="../_images/ea35207d7a119ba5a35a27c550a2e38d93af04baaf7043413746ca66262e5dca.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>After first plot, elapsed : 0:00:02.744682
+&lt;xarray.DataArray &#39;LAI&#39; (lat: 15680, lon: 40320)&gt; Size: 3GB
+[632217600 values with dtype=float32]
+Coordinates:
+  * lon      (lon) float64 323kB -180.0 -180.0 -180.0 ... 180.0 180.0 180.0
+  * lat      (lat) float64 125kB 80.0 79.99 79.98 79.97 ... -59.97 -59.98 -59.99
+    time     datetime64[ns] 8B 2019-05-20T12:00:00
+Attributes:
+    units:      m2.m-2
+    long_name:  monthly averaged LAI using inverse variance weights
+</pre></div>
+</div>
+<img alt="../_images/6b33387beaad6caa140df52df674d3d4e4c82bc1b302829ee13982aa9471b69f.png" src="../_images/6b33387beaad6caa140df52df674d3d4e4c82bc1b302829ee13982aa9471b69f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Done plotting, elapsed : 0:00:19.595847
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cleaning-up">
+<h2>Cleaning up<a class="headerlink" href="#cleaning-up" title="Link to this heading">#</a></h2>
+<p>After running this notebook, some files will remain in the working directory (the directory from which you selected this notebook). These are:</p>
+<ul class="simple">
+<li><p>data.tgz – the compressed archive of the downloaded files from the CDS</p></li>
+<li><p>c3s_FAPAR_20190510000000_GLOBE_PROBAV_V3.0.1.nc, c3s_FAPAR_20190531000000_GLOBE_PROBAV_V3.0.1.nc, c3s_LAI_20190520000000_GLOBE_PROBAV_V3.0.1.nc, c3s_FAPAR_20190520000000_GLOBE_PROBAV_V3.0.1.nc, c3s_LAI_20190510000000_GLOBE_PROBAV_V3.0.1.nc, c3s_LAI_20190531000000_GLOBE_PROBAV_V3.0.1.nc – the data extracted from the archive</p></li>
+<li><p><a class="reference external" href="http://LAI-mean.nc">LAI-mean.nc</a> – the computed average as netCDF file</p></li>
+<li><p>LAI_Europe.png, LAI_Global.png – the LAI images file generated by the plot script</p></li>
+<li><p><a class="reference external" href="http://fAPAR-mean.nc">fAPAR-mean.nc</a>, fAPAR_Europe.png, fAPAR_Global.png – the corresponding files for fAPAR if you have re-run the notebook from step 4, setting <code class="docutils literal notranslate"><span class="pre">varname</span> <span class="pre">=</span> <span class="pre">'fAPAR'</span></code>)</p></li>
+</ul>
+<p>All these files will be re-generated if the notebook is run again. However, if you want to experiment with some cells like the plotting just leave them there which will allow the notebook to skip some time-consuming steps.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ecv-notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="glacier-mass-change.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Explore data on glacier mass change available on the Climate Data Store</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="precipitation-giraffe.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exploring Precipitation information in the GIRAFE dataset</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Computing the time average of LAI and fAPAR using inverse variance weights</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-variance-weights">Inverse Variance Weights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps">Steps:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computational-challenges">Computational challenges</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#required-packages">Required packages</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">Request data from the CDS programmatically with the CDS API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unpacking">Unpacking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">Reading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-quality-flags">Applying quality flags</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-average">Computing the average</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-metadata">Setting metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up">Cleaning up</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
