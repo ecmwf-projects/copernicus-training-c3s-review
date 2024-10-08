@@ -64,7 +64,7 @@ parts:
       title: Lake Water Level Timeseries
     - file: ecv-notebooks/lake-surface-water-temperature
       title: Lake Surface Water Temperature Analysis
-    - file: ecv-notebooks/viewer-for-sealevel-products #COPCO-1802
+    - file: ecv-notebooks/viewer-for-sealevel-product #COPCO-1802
     # Ice sheets
     - file: ecv-notebooks/ice-sheet-surface-elevation  # COPCO-1695
     - file: ecv-notebooks/ice-sheet-velocity  # COPCO-1728
