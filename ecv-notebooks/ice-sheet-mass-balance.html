@@ -239,7 +239,6 @@
 
 
 
-
 <li class="toctree-l1"><a class="reference internal" href="glacier-area.html">Explore glacier area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mean-with-inverse-variance-weights.html">Computing the time average of LAI and fAPAR using inverse variance weights</a></li>
@@ -489,14 +488,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-your-environment">Prepare your environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insert-your-cds-uid-and-key">Insert your CDS uid and key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-user-first-chooses-which-ice-sheet-they-want-to-plot">The user first chooses which ice sheet they want to plot:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-data">Examine the data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-drainage-basin-to-plot">Choosing the drainage basin to plot</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-drainage-basin-to-view-timeseries-for">Pick a drainage basin to view timeseries for:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-drainage-basin-to-plot">Choosing the drainage basin to plot</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-drainage-basin-to-view-timeseries-for">Pick a drainage basin to view timeseries for:</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-timeseries">Plotting the timeseries</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
 </ul>
@@ -541,7 +541,7 @@ Comments can be posted to S. Simonsen at <a class="reference external" href="mai
 <p>To download data from the CDS, you must complete three steps;</p>
 <ol class="arabic simple">
 <li><p>Register for free with the CDS at <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">https://cds.climate.copernicus.eu/#!/home</a></p></li>
-<li><p>Set up the CDS Application Program Interface (API), as described at <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a></p></li>
+<li><p>Set up the CDS Application Program Interface (API), as described at <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">https://cds.climate.copernicus.eu/how-to-api</a></p></li>
 <li><p>Agree to the dataset terms of use - if you have not already done so you will be directed to the correct webpage the first time you try to download data. Accept the terms and conditions, and re-run the downloading code.</p></li>
 </ol>
 </section>
@@ -576,18 +576,7 @@ Comments can be posted to S. Simonsen at <a class="reference external" href="mai
 
 <span class="c1"># Plotting</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="insert-your-cds-uid-and-key">
-<h2>Insert your CDS uid and key<a class="headerlink" href="#insert-your-cds-uid-and-key" title="Link to this heading">#</a></h2>
-<p>First, login to the CDS and get your UID and API key (they are separated by a colon :)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span><span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
-<span class="n">KEY</span><span class="o">=</span> <span class="s1">&#39;######&#39;</span> <span class="c1"># substitute for your uid:key</span>
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
 </pre></div>
 </div>
 </div>
@@ -595,7 +584,7 @@ Comments can be posted to S. Simonsen at <a class="reference external" href="mai
 </section>
 <section id="download-data">
 <h2>Download data<a class="headerlink" href="#download-data" title="Link to this heading">#</a></h2>
-<p>Select the ice sheet of interest and retrieve the dataset. An example of how to retrieve the data is given on the CDS, under ‘Show API request’ on the dataset’s webpage at <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-ice-sheet-elevation-change?tab=form">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-ice-sheet-elevation-change?tab=form</a></p>
+<p>Select the ice sheet of interest and retrieve the dataset. An example of how to retrieve the data is given on the CDS, under ‘Show API request’ on the dataset’s webpage at <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-ice-sheet-mass-balance?tab=download">https://cds.climate.copernicus.eu/datasets/satellite-ice-sheet-mass-balance?tab=download</a></p>
 <p>The dataset comes in a zip file, and may include several files. Only the most recent is necessary - this contains all of the data in previous files, plus the latest update.</p>
 </section>
 <section id="the-user-first-chooses-which-ice-sheet-they-want-to-plot">
@@ -609,44 +598,47 @@ Comments can be posted to S. Simonsen at <a class="reference external" href="mai
 
 <span class="n">ice_sheet</span> <span class="o">=</span> <span class="s1">&#39;GrIS&#39;</span> <span class="c1"># </span>
 
-<span class="c1"># Download data from the CDS</span>
+
+<span class="k">try</span><span class="p">:</span>
     
-<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
+    <span class="c1"># Download data from the CDS</span>
 
-<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-    <span class="s1">&#39;satellite-ice-sheet-mass-balance&#39;</span><span class="p">,</span>
-    <span class="p">{</span>
-        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">cdsapi</span>
 
-<span class="c1"># Unpack the zip file and remove the zipped data</span>
-<span class="n">shutil</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;gmb_unzipped&#39;</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
 
+    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+        <span class="s1">&#39;satellite-ice-sheet-mass-balance&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Unpack the zip file and remove the zipped data</span>
+
+    <span class="n">shutil</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+     <span class="k">pass</span>
 
 <span class="c1"># # List the files contained and select the latest netCDF (.nc) file. Print its filename</span>
 
-<span class="n">list_of_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;gmb_unzipped/*.nc&#39;</span><span class="p">)</span> <span class="c1"># * means all if need specific format then *.nc</span>
+<span class="n">list_of_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.nc&#39;</span><span class="p">)</span> <span class="c1"># * means all if need specific format then *.nc</span>
 <span class="n">latest_file</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">list_of_files</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">getctime</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In the following you are seeing the data from: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span><span class="n">latest_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-09-17 15:14:59,952 INFO Welcome to the CDS.
-As per our announcements on the Forum, this instance of CDS will be decommissioned on 26 September 2024 and will no longer be accessible from this date onwards.
-Please update your cdsapi package to a version &gt;=0.7.2, create an account on CDS-Beta and update your .cdsapirc file. We strongly recommend users to check our Guidelines at https://confluence.ecmwf.int/x/uINmFw
-2024-09-17 15:14:59,952 WARNING MOVE TO CDS-Beta
-2024-09-17 15:14:59,953 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-ice-sheet-mass-balance
-2024-09-17 15:15:00,118 INFO Request is completed
-2024-09-17 15:15:00,120 INFO Downloading https://download-0001-clone.copernicus-climate.eu/cache-compute-0001/cache/data5/dataset-satellite-ice-sheet-mass-balance-3348899c-6cee-44b8-98bd-8de537f70ec3.zip to download.zip (13.7M)
-2024-09-17 15:15:03,739 INFO Download rate 3.8M/s                               
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-11 12:34:14,764 WARNING [2024-10-11T10:34:14.730486] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
+2024-10-11 12:34:14,928 INFO status has been updated to accepted
+2024-10-11 12:34:16,525 INFO status has been updated to running
+2024-10-11 12:34:18,894 INFO status has been updated to successful
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the following you are seeing the data from: 
-gmb_unzipped/C3S_GMB_GRACE_vers4.nc
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3d56d669e65246be8c80eb15c51973f9", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the following you are seeing the data from: 
+C3S_GMB_GRACE_vers4.nc
 </pre></div>
 </div>
 </div>
@@ -710,13 +702,7 @@ Attributes:
 <p>Here the user can get an overview of the drainage basins available for the chosen Ice Sheet</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
-
-<span class="c1"># Load data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
 <span class="n">time_in_hours</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
 <span class="n">time_in_hours_array</span> <span class="o">=</span> <span class="n">time_in_hours</span><span class="o">.</span><span class="n">values</span>
 
@@ -787,20 +773,15 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/randbee/.local/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_land.zip
-  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-/home/randbee/.local/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_ocean.zip
-  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-/home/randbee/.local/lib/python3.10/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/10m_physical/ne_10m_coastline.zip
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_ocean.zip
   warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
 </pre></div>
 </div>
-<img alt="../_images/2267b2204629276e7bf206932a9fe60172d7bd83cd523e3f5688b5d7ab113ce1.png" src="../_images/2267b2204629276e7bf206932a9fe60172d7bd83cd523e3f5688b5d7ab113ce1.png" />
+<img alt="../_images/868693c6ed3aebac72abebdfdc4806f206e66dab3ca4edc8a3a7557dca2f09da.png" src="../_images/868693c6ed3aebac72abebdfdc4806f206e66dab3ca4edc8a3a7557dca2f09da.png" />
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="pick-a-drainage-basin-to-view-timeseries-for">
-<h1>Pick a drainage basin to view timeseries for:<a class="headerlink" href="#pick-a-drainage-basin-to-view-timeseries-for" title="Link to this heading">#</a></h1>
+<section id="pick-a-drainage-basin-to-view-timeseries-for">
+<h2>Pick a drainage basin to view timeseries for:<a class="headerlink" href="#pick-a-drainage-basin-to-view-timeseries-for" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basin_num</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># if set 0, then mass loss for all is shown. For GrIS 0-8, for AntIS 0-27 basins</span>
@@ -808,6 +789,7 @@ Attributes:
 </div>
 </div>
 </div>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="plotting-the-timeseries">
 <h1>Plotting the timeseries<a class="headerlink" href="#plotting-the-timeseries" title="Link to this heading">#</a></h1>
@@ -860,17 +842,12 @@ The variables needed for the plotting below are also extracted here .</p>
 <p>In this plot, we focus on displaying the specific basin area within the selected ice sheet. Each basin represents a predefined region, and its boundary is essential for understanding localized processes such as ice mass changes or environmental conditions. The boundary of the basin is highlighted on the geographical map. This serves as a spatial reference for understanding which part of the ice sheet is being analyzed in the accompanying time series graph.</p>
 <section id="key-components">
 <h2>Key Components:<a class="headerlink" href="#key-components" title="Link to this heading">#</a></h2>
-<p>Basin Area Map:
-The geographical map shows the specific rbasin number selected for analysis. It helps orient the user by providing a visual representation of the area under consideration within the larger ice sheet. This is useful for understanding the spatial context of the following analysis.</p>
+<p>Basin Area Map: The geographical map shows the specific basin number selected for analysis. It helps orient the user by providing a visual representation of the area under consideration within the larger ice sheet. This is useful for understanding the spatial context of the following analysis.</p>
 <p>Time Series Graph:
 Next to the basin map, a graph is displayed that tracks the mass change over time within the selected basin. This graph is where the data is visualized, providing insights into whether the basin has been gaining or losing ice mass over time. The combination of the basin map and time series graph allows us to interpret the temporal changes in mass for a specific region of the ice sheet.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1"># Create a figure and axis with a specific projection</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a figure and axis with a specific projection</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Create the first subplot with a projection</span>
@@ -1027,14 +1004,15 @@ Working with netCDF4 files requires specific libraries for data retrieval, unpac
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-your-environment">Prepare your environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insert-your-cds-uid-and-key">Insert your CDS uid and key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-user-first-chooses-which-ice-sheet-they-want-to-plot">The user first chooses which ice sheet they want to plot:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-data">Examine the data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-drainage-basin-to-plot">Choosing the drainage basin to plot</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-drainage-basin-to-view-timeseries-for">Pick a drainage basin to view timeseries for:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-drainage-basin-to-plot">Choosing the drainage basin to plot</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-drainage-basin-to-view-timeseries-for">Pick a drainage basin to view timeseries for:</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-timeseries">Plotting the timeseries</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
 </ul>
