@@ -1,0 +1,19 @@
+total-column-water-vapour-combi.ipynb
+erb-ceres-climatology.ipynb
+total-ozone-columns.ipynb
+
+# Double check xarray prevent kernel crash
+erb-clara-climatology.ipynb
+
+# Check ilnk to video
+srb-climatology-and-anomaly.ipynb
+
+
+# Address editor points
+tropospheric-humidity-from-radio-occultation.ipynb
+
+# Update with latest deliverable
+cloud-cover-climatology.ipynb
+
+# Bia to make lines skinny
+greenhouse-gases-level2-products.ipynb
