@@ -1,19 +1,22 @@
+# ECP to create PR to core JupyterBook
 total-column-water-vapour-combi.ipynb
 erb-ceres-climatology.ipynb
 total-ozone-columns.ipynb
 
-# Double check xarray prevent kernel crash
+# ECP Double check xarray prevent kernel crash
 erb-clara-climatology.ipynb
 
-# Check ilnk to video
+# ECP Check link to video
 srb-climatology-and-anomaly.ipynb
 
 
-# Address editor points
+# Bia to ask contractors to address editor points
 tropospheric-humidity-from-radio-occultation.ipynb
-
-# Update with latest deliverable
-cloud-cover-climatology.ipynb
 
 # Bia to make lines skinny
 greenhouse-gases-level2-products.ipynb
+
+
+
+# Update with latest deliverable, do in new sub-module repo
+cloud-cover-climatology.ipynb
