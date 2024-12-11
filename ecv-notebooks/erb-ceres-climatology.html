@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The Total Solar Irradiance (TSI) from RMIB" href="total-solar-irradiance.html" />
-    <link rel="prev" title="Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset" href="erb-clara-climatology.html" />
+    <link rel="prev" title="Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset" href="erb-clara-climatology.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -211,7 +211,8 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Analysis of the CERES Earth radiation budget product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-solar-irradiance.html">Total Solar Irradiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Exploring Total Column Water Vapour information in the COMBI dataset</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="tropospheric-humidity-from-radio-occultation.html">Tropospheric humidity estimates from satellite-based radio occultation measurements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
@@ -487,7 +488,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-content">Table of content</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">2. Search, download and view data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebooks">How to access the notebooks</a></li>
@@ -570,43 +570,17 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="analysis-of-the-earth-s-radiation-budget-using-the-ceres-product">
 <h1>Analysis of the Earth’s Radiation Budget using the CERES product<a class="headerlink" href="#analysis-of-the-earth-s-radiation-budget-using-the-ceres-product" title="Link to this heading">#</a></h1>
 <p>This notebook-tutorial provides an introduction to the use of the
-Cloud and Earth’s Radiant Energy System (CERES) Energy Balanced and Filled (EBAF) Earth’s Radiation Budget (<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">ERB</a>) data record
+Cloud and Earth’s Radiant Energy System (CERES) Energy Balanced and Filled (EBAF) Earth’s Radiation Budget (<a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">ERB</a>) data record
 for climate studies.</p>
 <div style="text-align: justify"> The Earth's Radiation Budget (ERB) Essential Climate Variable (ECV) and the CERES EBAF product are described in the introduction. Then, a first use case provides an analysis of the time averaged global and seasonal climatological distributions of the Earth's radiation budget as well as the monthly mean climatology. The second use case presents the time series and trend analysis of ERB. Step-by-step instructions are provided on data preparation, the use cases are extensively documented and each line of code is explained. </div>
-<div style="text-align: justify"> The three figures below show some results from the use cases and illustrate the successful run of the code. </div><p><img alt="" src="ecv-notebooks/Figures/erb-ceres_banner.png" /></p>
-<p>The notebook comprises the following sections:</p>
-<section id="table-of-content">
-<h2>Table of content<a class="headerlink" href="#table-of-content" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="#intro"><span class="xref myst">1. Introduction</span></a></p></li>
-<li><p><a class="reference internal" href="#cdsapi"><span class="xref myst">2. Search, download and view data</span></a></p></li>
-<li><p><a class="reference internal" href="#climatology"><span class="xref myst">3. Climatology of the Earth’s Radiation Budget</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#tsi_climatology"><span class="xref myst">3.1. Climatology of the top-of-atmosphere incoming solar radiation</span></a></p></li>
-<li><p><a class="reference internal" href="#rsf_climatology"><span class="xref myst">3.2. Climatology of the top-of-atmosphere reflected solar flux</span></a></p></li>
-<li><p><a class="reference internal" href="#olr_climatology"><span class="xref myst">3.3. Climatology of the top-of-atmosphere outgoing longwave radiation</span></a></p></li>
-<li><p><a class="reference internal" href="#erb_climatology"><span class="xref myst">3.4. Climatology of the top-of-atmosphere net Earth’s radiation budget</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#timeseries"><span class="xref myst">4. Time series and trend analysis of the Earth’s Radiaton Budget</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#tsi_timeseries"><span class="xref myst">4.1. Time series and trend analysis of the top-of-atmosphere incoming solar radiation</span></a></p></li>
-<li><p><a class="reference internal" href="#rsf_timeseries"><span class="xref myst">4.2. Time series and trend analysis of the top-of-atmosphere reflected solar flux</span></a></p></li>
-<li><p><a class="reference internal" href="#olr_timeseries"><span class="xref myst">4.3. Time series and trend analysis of the top-of-atmosphere outgoing longwave radiation</span></a></p></li>
-<li><p><a class="reference internal" href="#erb_timeseries"><span class="xref myst">4.4. Time series and trend analysis of the top-of-atmosphere net Earth’s radiation budget</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#conclusion"><span class="xref myst">5. Conclusion</span></a></p></li>
-</ul>
-</section>
-<section id="introduction">
+<div style="text-align: justify"> The three figures below show some results from the use cases and illustrate the successful run of the code. </div><section id="introduction">
 <h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <br>
 <div style="text-align: justify"> The Earth’s Radiation Budget (ERB) represents the overall balance between incoming and outgoing radiant energy at the Earth’s top-of-the-atmosphere (TOA). This Essential Climate Variable (ECV) is the primary forcing of the climate system and is therefore a fundamental quantity to be monitored to understand the Earth’s climate and its variability. The ERB comprises the quantification of the incoming radiation from the sun and the outgoing reflected shortwave and emitted longwave radiations. The Earth is in a state of dynamic radiative balance; energy arriving from the sun is balanced by outgoing radiation from the top-of-the-atmosphere. Changes in the Earth’s surface and atmosphere (including cloud amount and properties, and concentrations of greenhouse gases) will alter the radiative forcing of the Earth system and change the balance and distribution of outgoing thermal radiation and reflected solar radiation. </div>
 <div style="text-align: justify"> In the Copernicus Climate Data Store (CDS), a dataset of ERB has been “brokered” from the Clouds and Earth’s Radiant Energy System (CERES) Energy Balanced And Filled (EBAF) edition 4.2. CERES EBAF provides a state-of-the-art Climate Data Record (CDR) of monthly mean top of atmosphere (TOA) radiative fluxes. This widely used CDR is produced by the CERES team at the NASA/Langley center from the CERES instruments onboard the Terra and Aqua satellites. The CERES EBAF data is suitable for analysis of variability at the intra-seasonal, inter-annual, and longer time scales. </div>
 <div style="text-align: justify"> In this Jupyter notebook tutorial, we present examples, based on monthly mean ERB products, to illustrate the philosophy on the usage, visualisation, and analysis of the ERB dataset. Produced images and processed data can be saved to personal devices for later use. </div><p>You will find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
 </ul>
 </section>
 <section id="search-download-and-view-data">
@@ -671,15 +645,12 @@ td, th {
 <h3>Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
 <section id="set-up-cds-api-credentials">
 <h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h4>
-<p>We will request data from the Climate Data Store (CDS): <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>. If you do not have an account yet, please click on <strong>“login/register”</strong> at the right top and select <strong>“Create new account”</strong>. Once the registration process is finished, you will be able to login to the CDS and have a look at your favourite data.</p>
-<p>We will request data from the CDS programmatically with the help of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a>.
-First, we need to manually set the CDS API credentials.
-To do so, we need to define two variables: <strong>URL</strong> and <strong>KEY</strong>.
-To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after <strong>“key:”</strong>. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<p>To set up your CDS API credentials, please login/register on the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/">CDS</a>, then follow the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">instructions here</a> to obtain your API key.</p>
+<p>You can add this API key to your current session by uncommenting the code below and replacing <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;######################################&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;#####################&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -701,7 +672,7 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </section>
 <section id="search-for-data">
 <h3>Search for data<a class="headerlink" href="#search-for-data" title="Link to this heading">#</a></h3>
-<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>.
+<p>To search for data, visit the <a class="reference external" href="https://cds-beta.climate.copernicus.eu">CDS website</a>.
 Here you can search for CERES EBAF data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a>.
 This catalogue entry provides data from various sources: NASA CERES EBAF, NOAA/NCEI HIRS OLR, ESA Cloud-CCI, EUMETSAT’s CM SAF CLARA-A3, C3S CCI and C3S RMIB TSI.</p>
 <p>After selecting the correct catalogue entry, we will specify the product family, the origin, the sensor on satellite (for CCI product family only), the type of variable, the type of climate data record, the time aggregation, the temporal and geographical coverage we are interested in.
@@ -735,29 +706,11 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
     <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
     <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly_mean&#39;</span><span class="p">,</span>
     <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
-    <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">month</span><span class="p">)</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+    <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">month</span><span class="p">)</span> <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
 <span class="p">}</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
 <span class="n">client</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">download_zip_file</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-08-08 09:45:14,795 INFO Welcome to the CDS.
- As per our announcements on the Forum, this instance of CDS will soon be decommissioned.
- Please update your cdsapi package to a version &gt;=0.7.0, create an account on CDS-Beta and update your .cdsapirc file. We strongly recommend users to check our Guidelines at https://confluence.ecmwf.int/x/uINmFw
- The current legacy system will be kept for a while, but we will reduce resources gradually until full decommissioning in September 2024.
-2024-08-08 09:45:14,796 WARNING MOVE TO CDS-Beta
-2024-08-08 09:45:14,797 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
-2024-08-08 09:45:15,042 INFO Request is queued
-2024-08-08 09:45:16,093 INFO Request is running
-2024-08-08 09:55:33,887 INFO Request is completed
-2024-08-08 09:55:33,889 INFO Downloading https://download-0002-clone.copernicus-climate.eu/cache-compute-0002/cache/data0/dataset-satellite-earth-radiation-budget-e73c0e93-efbe-4ee8-bfb9-409ac4faad80.zip to ./ceres-erb-monthly.zip (53.3M)
-2024-08-08 09:55:43,844 INFO Download rate 5.4M/s                               
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=55937978,content_type=application/zip,location=https://download-0002-clone.copernicus-climate.eu/cache-compute-0002/cache/data0/dataset-satellite-earth-radiation-budget-e73c0e93-efbe-4ee8-bfb9-409ac4faad80.zip)
 </pre></div>
 </div>
 </div>
@@ -785,6 +738,20 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 
 <span class="c1"># Read data</span>
 <span class="n">ds_ceres</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1"># Recursively delete unpacked data</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>     <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># Read data</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">ds_ceres</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;./01&#39;
 </pre></div>
 </div>
 </div>
@@ -1160,16 +1127,14 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 213MB
-Dimensions:         (time: 274, lat: 180, lon: 360)
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 3MB
+Dimensions:         (time: 12, lat: 180, lon: 360)
 Coordinates:
-  * time            (time) datetime64[ns] 2kB 2000-03-15 ... 2022-12-15
+  * time            (time) datetime64[ns] 96B 2022-01-15 ... 2022-12-15
   * lat             (lat) float32 720B -89.5 -88.5 -87.5 ... 87.5 88.5 89.5
   * lon             (lon) float32 1kB 0.5 1.5 2.5 3.5 ... 357.5 358.5 359.5
 Data variables:
-    solar_mon       (time, lat, lon) float32 71MB ...
-    toa_lw_all_mon  (time, lat, lon) float32 71MB ...
-    toa_sw_all_mon  (time, lat, lon) float32 71MB ...
+    toa_sw_all_mon  (time, lat, lon) float32 3MB ...
 Attributes:
     title:                           CERES EBAF (Energy Balanced and Filled) ...
     institution:                     NASA/LaRC (Langley Research Center) Hamp...
@@ -1179,10 +1144,13 @@ Attributes:
     DOI:                             10.5067/TERRA-AQUA-NOAA20/CERES/EBAF-TOA...
     Fill_Value:                      Fill Value is -999.0
     DODS_EXTRA.Unlimited_Dimension:  time
-    history:                         2023-03-05 19:21:10 GMT Hyrax-1.16.2 htt...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-2aaabd1c-3c95-4e3a-81e5-3b1477934b6b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-2aaabd1c-3c95-4e3a-81e5-3b1477934b6b' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 274</li><li><span class='xr-has-index'>lat</span>: 180</li><li><span class='xr-has-index'>lon</span>: 360</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-cbc7aa66-ba2a-461e-a12d-39e6d15e56e3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-cbc7aa66-ba2a-461e-a12d-39e6d15e56e3' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2000-03-15 ... 2022-12-15</div><input id='attrs-6bff4e1a-dc37-446f-8c8d-e946dd6db4dc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6bff4e1a-dc37-446f-8c8d-e946dd6db4dc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c099613b-bbbd-42b5-bd24-a1cb93a4bf76' class='xr-var-data-in' type='checkbox'><label for='data-c099613b-bbbd-42b5-bd24-a1cb93a4bf76' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time</dd><dt><span>delta_t :</span></dt><dd>0000-00-01 00:00:00</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2000-03-15T00:00:00.000000000&#x27;, &#x27;2000-04-15T00:00:00.000000000&#x27;,
-       &#x27;2000-05-15T00:00:00.000000000&#x27;, ..., &#x27;2022-10-15T00:00:00.000000000&#x27;,
+    history:                         2023-02-27 15:16:30 GMT Hyrax-1.16.2 htt...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-2f1815d8-486e-483a-a64b-7de00284739c' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-2f1815d8-486e-483a-a64b-7de00284739c' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 12</li><li><span class='xr-has-index'>lat</span>: 180</li><li><span class='xr-has-index'>lon</span>: 360</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-6ede9542-b004-4787-85a6-39f18173b18c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6ede9542-b004-4787-85a6-39f18173b18c' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2022-01-15 ... 2022-12-15</div><input id='attrs-70efb5d6-63bb-42d9-8a15-30e45d8a236c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-70efb5d6-63bb-42d9-8a15-30e45d8a236c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3e34d6da-16dd-49b1-b80b-602f7949df16' class='xr-var-data-in' type='checkbox'><label for='data-3e34d6da-16dd-49b1-b80b-602f7949df16' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time</dd><dt><span>delta_t :</span></dt><dd>0000-00-01 00:00:00</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2022-01-15T00:00:00.000000000&#x27;, &#x27;2022-02-15T00:00:00.000000000&#x27;,
+       &#x27;2022-03-15T00:00:00.000000000&#x27;, &#x27;2022-04-15T00:00:00.000000000&#x27;,
+       &#x27;2022-05-15T00:00:00.000000000&#x27;, &#x27;2022-06-15T00:00:00.000000000&#x27;,
+       &#x27;2022-07-15T00:00:00.000000000&#x27;, &#x27;2022-08-15T00:00:00.000000000&#x27;,
+       &#x27;2022-09-15T00:00:00.000000000&#x27;, &#x27;2022-10-15T00:00:00.000000000&#x27;,
        &#x27;2022-11-15T00:00:00.000000000&#x27;, &#x27;2022-12-15T00:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-89.5 -88.5 -87.5 ... 88.5 89.5</div><input id='attrs-76ce6673-f6a1-4915-9fc5-4720a58c8ff4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-76ce6673-f6a1-4915-9fc5-4720a58c8ff4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d2c0ed3e-feda-4492-8ce5-80fb3bfe38b6' class='xr-var-data-in' type='checkbox'><label for='data-d2c0ed3e-feda-4492-8ce5-80fb3bfe38b6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd></dl></div><div class='xr-var-data'><pre>array([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-89.5 -88.5 -87.5 ... 88.5 89.5</div><input id='attrs-5b3bcc31-0373-4073-94b0-a3b5df9f6cb0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5b3bcc31-0373-4073-94b0-a3b5df9f6cb0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2df4bf40-94f3-470a-8f2f-b61926228d3b' class='xr-var-data-in' type='checkbox'><label for='data-2df4bf40-94f3-470a-8f2f-b61926228d3b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd></dl></div><div class='xr-var-data'><pre>array([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
        -79.5, -78.5, -77.5, -76.5, -75.5, -74.5, -73.5, -72.5, -71.5, -70.5,
        -69.5, -68.5, -67.5, -66.5, -65.5, -64.5, -63.5, -62.5, -61.5, -60.5,
        -59.5, -58.5, -57.5, -56.5, -55.5, -54.5, -53.5, -52.5, -51.5, -50.5,
@@ -1200,20 +1168,16 @@ Attributes:
         60.5,  61.5,  62.5,  63.5,  64.5,  65.5,  66.5,  67.5,  68.5,  69.5,
         70.5,  71.5,  72.5,  73.5,  74.5,  75.5,  76.5,  77.5,  78.5,  79.5,
         80.5,  81.5,  82.5,  83.5,  84.5,  85.5,  86.5,  87.5,  88.5,  89.5],
-      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.5 1.5 2.5 ... 357.5 358.5 359.5</div><input id='attrs-c0733ba6-ea24-4f54-9efb-505dbf121827' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c0733ba6-ea24-4f54-9efb-505dbf121827' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3f4abd21-d720-40ad-bee5-c30e1500ab22' class='xr-var-data-in' type='checkbox'><label for='data-3f4abd21-d720-40ad-bee5-c30e1500ab22' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>[  0. 360.]</dd></dl></div><div class='xr-var-data'><pre>array([  0.5,   1.5,   2.5, ..., 357.5, 358.5, 359.5], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b912eea3-3ed3-4662-ba02-74586ce78320' class='xr-section-summary-in' type='checkbox'  checked><label for='section-b912eea3-3ed3-4662-ba02-74586ce78320' class='xr-section-summary' >Data variables: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>solar_mon</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3397d788-f11c-464a-9b3b-b6ecac079433' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3397d788-f11c-464a-9b3b-b6ecac079433' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ac87c6fe-c18b-40d4-a516-9ab1704401c6' class='xr-var-data-in' type='checkbox'><label for='data-ac87c6fe-c18b-40d4-a516-9ab1704401c6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Incoming Solar Flux, Monthly Means</dd><dt><span>standard_name :</span></dt><dd>Incoming Solar Flux</dd><dt><span>CF_name :</span></dt><dd>toa_incoming_shortwave_flux</dd><dt><span>comment :</span></dt><dd>none</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>valid_min :</span></dt><dd>0.0</dd><dt><span>valid_max :</span></dt><dd>800.0</dd></dl></div><div class='xr-var-data'><pre>[17755200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>toa_lw_all_mon</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9e9c5811-8957-4207-87c1-c13cd2270859' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9e9c5811-8957-4207-87c1-c13cd2270859' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2184c254-2147-40bf-bc10-6cdf46cd6c09' class='xr-var-data-in' type='checkbox'><label for='data-2184c254-2147-40bf-bc10-6cdf46cd6c09' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Top of The Atmosphere Longwave Flux, All-Sky conditions, Monthly Means</dd><dt><span>standard_name :</span></dt><dd>TOA Longwave Flux - All-Sky</dd><dt><span>CF_name :</span></dt><dd>toa_outgoing_longwave_flux</dd><dt><span>comment :</span></dt><dd>none</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>valid_min :</span></dt><dd>0.0</dd><dt><span>valid_max :</span></dt><dd>400.0</dd></dl></div><div class='xr-var-data'><pre>[17755200 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>toa_sw_all_mon</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7a754e1b-d9be-497d-ba8c-4ae33d27c472' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7a754e1b-d9be-497d-ba8c-4ae33d27c472' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c8a550df-db63-45e4-805f-8dd858775bf3' class='xr-var-data-in' type='checkbox'><label for='data-c8a550df-db63-45e4-805f-8dd858775bf3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Top of The Atmosphere Shortwave Flux, All-Sky conditions, Monthly Means</dd><dt><span>standard_name :</span></dt><dd>TOA Shortwave Flux - All-Sky</dd><dt><span>CF_name :</span></dt><dd>toa_outgoing_shortwave_flux</dd><dt><span>comment :</span></dt><dd>none</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>valid_min :</span></dt><dd>0.0</dd><dt><span>valid_max :</span></dt><dd>600.0</dd></dl></div><div class='xr-var-data'><pre>[17755200 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4f96306a-2d22-4363-b8c7-d5848f4268a3' class='xr-section-summary-in' type='checkbox'  ><label for='section-4f96306a-2d22-4363-b8c7-d5848f4268a3' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-cc6cb613-b6f3-42af-bddf-413adef63ab7' class='xr-index-data-in' type='checkbox'/><label for='index-cc6cb613-b6f3-42af-bddf-413adef63ab7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2000-03-15&#x27;, &#x27;2000-04-15&#x27;, &#x27;2000-05-15&#x27;, &#x27;2000-06-15&#x27;,
-               &#x27;2000-07-15&#x27;, &#x27;2000-08-15&#x27;, &#x27;2000-09-15&#x27;, &#x27;2000-10-15&#x27;,
-               &#x27;2000-11-15&#x27;, &#x27;2000-12-15&#x27;,
-               ...
-               &#x27;2022-03-15&#x27;, &#x27;2022-04-15&#x27;, &#x27;2022-05-15&#x27;, &#x27;2022-06-15&#x27;,
-               &#x27;2022-07-15&#x27;, &#x27;2022-08-15&#x27;, &#x27;2022-09-15&#x27;, &#x27;2022-10-15&#x27;,
-               &#x27;2022-11-15&#x27;, &#x27;2022-12-15&#x27;],
-              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=274, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-6718a16b-cbe5-4200-b2a0-613f954282df' class='xr-index-data-in' type='checkbox'/><label for='index-6718a16b-cbe5-4200-b2a0-613f954282df' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.5 1.5 2.5 ... 357.5 358.5 359.5</div><input id='attrs-5989c0e3-50db-41f7-bcd8-1e30282cae47' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5989c0e3-50db-41f7-bcd8-1e30282cae47' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-60200c19-9d8f-4fcd-8660-2c3a4c209410' class='xr-var-data-in' type='checkbox'><label for='data-60200c19-9d8f-4fcd-8660-2c3a4c209410' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>[  0. 360.]</dd></dl></div><div class='xr-var-data'><pre>array([  0.5,   1.5,   2.5, ..., 357.5, 358.5, 359.5], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-98e90508-e765-4b2d-8a60-44f7387ddd35' class='xr-section-summary-in' type='checkbox'  checked><label for='section-98e90508-e765-4b2d-8a60-44f7387ddd35' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>toa_sw_all_mon</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-17e651c5-d400-4a74-8254-13da34e494d9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-17e651c5-d400-4a74-8254-13da34e494d9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-386cad9b-6a6b-4076-9093-f05267b83f45' class='xr-var-data-in' type='checkbox'><label for='data-386cad9b-6a6b-4076-9093-f05267b83f45' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Top of The Atmosphere Shortwave Flux, All-Sky conditions, Monthly Means</dd><dt><span>standard_name :</span></dt><dd>TOA Shortwave Flux - All-Sky</dd><dt><span>CF_name :</span></dt><dd>toa_outgoing_shortwave_flux</dd><dt><span>comment :</span></dt><dd>none</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>valid_min :</span></dt><dd>0.0</dd><dt><span>valid_max :</span></dt><dd>600.0</dd></dl></div><div class='xr-var-data'><pre>[777600 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ff2b6156-97e7-4829-83bd-4012d79f14d9' class='xr-section-summary-in' type='checkbox'  ><label for='section-ff2b6156-97e7-4829-83bd-4012d79f14d9' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8ee3c0b5-1092-4720-8428-f62720351e9c' class='xr-index-data-in' type='checkbox'/><label for='index-8ee3c0b5-1092-4720-8428-f62720351e9c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2022-01-15&#x27;, &#x27;2022-02-15&#x27;, &#x27;2022-03-15&#x27;, &#x27;2022-04-15&#x27;,
+               &#x27;2022-05-15&#x27;, &#x27;2022-06-15&#x27;, &#x27;2022-07-15&#x27;, &#x27;2022-08-15&#x27;,
+               &#x27;2022-09-15&#x27;, &#x27;2022-10-15&#x27;, &#x27;2022-11-15&#x27;, &#x27;2022-12-15&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-35f5b0e8-eb1a-4b16-ac25-0709d066bb1b' class='xr-index-data-in' type='checkbox'/><label for='index-35f5b0e8-eb1a-4b16-ac25-0709d066bb1b' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
        ...
         80.5,  81.5,  82.5,  83.5,  84.5,  85.5,  86.5,  87.5,  88.5,  89.5],
-      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=180))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-3a96be17-5fbb-40d4-bb2c-cffbe1502a8b' class='xr-index-data-in' type='checkbox'/><label for='index-3a96be17-5fbb-40d4-bb2c-cffbe1502a8b' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0.5,   1.5,   2.5,   3.5,   4.5,   5.5,   6.5,   7.5,   8.5,   9.5,
+      dtype=&#x27;float32&#x27;, name=&#x27;lat&#x27;, length=180))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-1c3ec35b-6790-47ca-81d7-1b5d08412870' class='xr-index-data-in' type='checkbox'/><label for='index-1c3ec35b-6790-47ca-81d7-1b5d08412870' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  0.5,   1.5,   2.5,   3.5,   4.5,   5.5,   6.5,   7.5,   8.5,   9.5,
        ...
        350.5, 351.5, 352.5, 353.5, 354.5, 355.5, 356.5, 357.5, 358.5, 359.5],
-      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=360))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-bf82ad06-a2c4-42f2-a6dd-637fbd8f8bfe' class='xr-section-summary-in' type='checkbox'  checked><label for='section-bf82ad06-a2c4-42f2-a6dd-637fbd8f8bfe' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>CERES EBAF (Energy Balanced and Filled) TOA Fluxes. Monthly Averages and 07/2005 to 06/2015 Climatology.</dd><dt><span>institution :</span></dt><dd>NASA/LaRC (Langley Research Center) Hampton, Va</dd><dt><span>Conventions :</span></dt><dd>CF-1.4</dd><dt><span>comment :</span></dt><dd>Climatology from 07/2005 to 06/2015</dd><dt><span>version :</span></dt><dd>Edition 4.2; Release Date December 9, 2022</dd><dt><span>DOI :</span></dt><dd>10.5067/TERRA-AQUA-NOAA20/CERES/EBAF-TOA_L3B004.2</dd><dt><span>Fill_Value :</span></dt><dd>Fill Value is -999.0</dd><dt><span>DODS_EXTRA.Unlimited_Dimension :</span></dt><dd>time</dd><dt><span>history :</span></dt><dd>2023-03-05 19:21:10 GMT Hyrax-1.16.2 https://opendap.larc.nasa.gov/opendap/CERES/EBAF/TOA_Edition4.2/CERES_EBAF-TOA_Edition4.2_200003-202211.nc.nc?solar_mon%5B0%5D%5B0:179%5D%5B0:359%5D</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=360))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-47def852-275f-4e76-b077-823060f504a8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-47def852-275f-4e76-b077-823060f504a8' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>CERES EBAF (Energy Balanced and Filled) TOA Fluxes. Monthly Averages and 07/2005 to 06/2015 Climatology.</dd><dt><span>institution :</span></dt><dd>NASA/LaRC (Langley Research Center) Hampton, Va</dd><dt><span>Conventions :</span></dt><dd>CF-1.4</dd><dt><span>comment :</span></dt><dd>Climatology from 07/2005 to 06/2015</dd><dt><span>version :</span></dt><dd>Edition 4.2; Release Date December 9, 2022</dd><dt><span>DOI :</span></dt><dd>10.5067/TERRA-AQUA-NOAA20/CERES/EBAF-TOA_L3B004.2</dd><dt><span>Fill_Value :</span></dt><dd>Fill Value is -999.0</dd><dt><span>DODS_EXTRA.Unlimited_Dimension :</span></dt><dd>time</dd><dt><span>history :</span></dt><dd>2023-02-27 15:16:30 GMT Hyrax-1.16.2 https://opendap.larc.nasa.gov/opendap/CERES/EBAF/TOA_Edition4.2/CERES_EBAF-TOA_Edition4.2_200003-202211.nc.nc?toa_sw_all_mon%5B262%5D%5B0:179%5D%5B0:359%5D</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>We see that the dataset has three variables <strong>solar_mon</strong>, <strong>toa_lw_all_mon</strong> and <strong>toa_sw_all_mon</strong> which stand for the incoming solar flux, the top of atmosphere (TOA) longwave (LW) and shortwave (SW) fluxes respectively, as well as three dimension coordinates of <strong>lon</strong>, <strong>lat</strong> and <strong>time</strong>.</p>
 <p>While an Xarray <strong>dataset</strong> may contain multiple variables, an Xarray <strong>data array</strong> holds a single multi-dimensional variable and its coordinates. To make the processing of the <strong>solar_mon</strong>, <strong>toa_lw_all_mon</strong> and <strong>toa_sw_all_mon</strong> data easier, we convert them into three distinct Xarray data arrays. We can also define a new data array <strong>da_toa_erb</strong> that corresponds to the TOA net Earth’s radative budget and is defined as the difference between the incoming solar flux and the sum of the outgoing (LW, SW) fluxes at the top the atmosphere.</p>
@@ -1239,6 +1203,64 @@ Attributes:
     <span class="s1">&#39;comment&#39;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
     <span class="s1">&#39;units&#39;</span><span class="p">:</span> <span class="s2">&quot;W.m$^{-2}$&quot;</span><span class="p">,</span>
                    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~/.local/lib/python3.10/site-packages/xarray/core/dataset.py</span> in <span class="ni">?</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1474</span>             <span class="n">variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1475</span>         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1476</span>             <span class="n">_</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">variable</span> <span class="o">=</span> <span class="n">_get_virtual_variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1477</span> 
+
+<span class="ne">KeyError</span>: &#39;toa_lw_all_mon&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">~/.local/lib/python3.10/site-packages/xarray/core/dataset.py</span> in <span class="ni">?</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1573</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_dataarray</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1574</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1575</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1576</span>                     <span class="sa">f</span><span class="s2">&quot;No variable named </span><span class="si">{</span><span class="n">key</span><span class="si">!r}</span><span class="s2">. Variables on the dataset include </span><span class="si">{</span><span class="n">shorten_list_repr</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span><span class="w"> </span><span class="n">max_items</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="nn">~/.local/lib/python3.10/site-packages/xarray/core/dataset.py</span> in <span class="ni">?</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1474</span>             <span class="n">variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1475</span>         <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1476</span>             <span class="n">_</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">variable</span> <span class="o">=</span> <span class="n">_get_virtual_variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sizes</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1477</span> 
+
+<span class="nn">~/.local/lib/python3.10/site-packages/xarray/core/dataset.py</span> in <span class="ni">?</span><span class="nt">(variables, key, dim_sizes)</span>
+<span class="g g-Whitespace">    </span><span class="mi">207</span>     <span class="n">split_key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">208</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">split_key</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">209</span>         <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span> 
+
+<span class="ne">KeyError</span>: &#39;toa_lw_all_mon&#39;
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipykernel_11596/1107301915.py</span> in <span class="ni">?</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Outgoing longwave radiation data array</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">da_toa_lw</span> <span class="o">=</span> <span class="n">ds_ceres</span><span class="p">[</span><span class="s1">&#39;toa_lw_all_mon&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Incoming shortwave radiation data array</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">da_solar</span> <span class="o">=</span> <span class="n">ds_ceres</span><span class="p">[</span><span class="s1">&#39;solar_mon&#39;</span><span class="p">]</span>
+
+<span class="nn">~/.local/lib/python3.10/site-packages/xarray/core/dataset.py</span> in <span class="ni">?</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1571</span>         <span class="k">if</span> <span class="n">utils</span><span class="o">.</span><span class="n">hashable</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1572</span>             <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1573</span>                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_construct_dataarray</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1574</span>             <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1575</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1576</span>                     <span class="sa">f</span><span class="s2">&quot;No variable named </span><span class="si">{</span><span class="n">key</span><span class="si">!r}</span><span class="s2">. Variables on the dataset include </span><span class="si">{</span><span class="n">shorten_list_repr</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span><span class="w"> </span><span class="n">max_items</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1577</span>                 <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>
+<span class="g g-Whitespace">   </span><span class="mi">1578</span> 
+
+<span class="ne">KeyError</span>: &quot;No variable named &#39;toa_lw_all_mon&#39;. Variables on the dataset include [&#39;toa_sw_all_mon&#39;, &#39;time&#39;, &#39;lat&#39;, &#39;lon&#39;]&quot;
 </pre></div>
 </div>
 </div>
@@ -3971,7 +3993,7 @@ The time series can be further analysed by extracting the trend, or the running 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Calculation of global climatology of Earth Radiation from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
+        <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
       </div>
     </a>
     <a class="right-next"
@@ -3999,7 +4021,6 @@ The time series can be further analysed by extracting the trend, or the running 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-content">Table of content</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">2. Search, download and view data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebooks">How to access the notebooks</a></li>

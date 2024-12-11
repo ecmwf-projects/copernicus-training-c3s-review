@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -209,7 +209,8 @@
 <li class="toctree-l1"><a class="reference internal" href="erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-solar-irradiance.html">Total Solar Irradiance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total column water vapour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Exploring Total Column Water Vapour information in the COMBI dataset</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="tropospheric-humidity-from-radio-occultation.html">Tropospheric humidity estimates from satellite-based radio occultation measurements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
@@ -489,6 +490,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-diagram-of-ozone">Time series diagram of ozone</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-python-modules">Import the python modules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-gto-ecv-product">Downloading the GTO-ECV product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-and-visualisation-of-the-data">Analysis and visualisation of the data</a></li>
 </ul>
 </li>
@@ -509,7 +511,7 @@ document.write(`
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="exploring-an-ozone-product-available-through-the-climate-data-store-cds">
 <h1>Exploring an ozone product available through the Climate Data Store (CDS)<a class="headerlink" href="#exploring-an-ozone-product-available-through-the-climate-data-store-cds" title="Link to this heading">#</a></h1>
-<p>In this notebook we show a practical example on how to investigate ozone products from the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-ozone-v1?tab=form">CDS</a>. We will explore here the spatial and temporal ozone distribution of the total ozone columns. Total colum means here, the sum over all ozone from ground till top of the atmosphere. These are generally measured from space using earthshine backscattered radiance
+<p>In this notebook we show a practical example on how to investigate ozone products from the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-ozone-v1?tab=overview">CDS</a>. We will explore here the spatial and temporal ozone distribution of the total ozone columns. Total colum means here, the sum over all ozone from ground till top of the atmosphere. These are generally measured from space using earthshine backscattered radiance
 observations from nadir-viewing instruments. For altitude dependent information we refer to the ozone vertical profiles.
 In a first step we will show how to retrieve one of the total ozone column dataset from the CDS. This dataset consists out of gridded monthly ozone files, which contain global distributions of ozone vertical columns on a global latitude, longitude grid.
 In a second step we perform a spatial and temporal analysis of the ozone distribution by visualizing the data. Here we present four typical use cases:</p>
@@ -523,7 +525,7 @@ In a second step we perform a spatial and temporal analysis of the ozone distrib
 From the examples in this notebook, one should have an idea on how data from the CDS can be visualized to study total ozone spatial and temporal variability. We encourage the reader to create variations on the examples here provided.  In the end, one should also be able to investigate the other ozone products in similar ways.</p>
 <section id="the-merged-total-column-product">
 <h2>The merged total column product<a class="headerlink" href="#the-merged-total-column-product" title="Link to this heading">#</a></h2>
-<p>In this notebook we choose to demonstrate the GTO-ECV product. GTO-ECV is a merged data product, meaning that it was build from an ensemble of bias-corrected single sensor products. The spatial resolution is 1°x1°. An interesting feature of this product is that it provides a consistent and accurate long-term total ozone dataset covering the period from July 1995 until April 2023. Note that this dataset can be extended in time on the CDS, as new data become available. Detailed information on GTO-ECV and on all other ozone products can be found in the documentation section of the CDS. An algorithm description on how those datasets were produced is given in the  Algorithm Theoretical Baseline Document (<a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-ozone/C3S2_312a_Lot2_ATBD_O3_latest.pdf">ATBD</a>), a guide on the content and on how to use the data is given in the  Product User Guide and Specification document (<a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-ozone/C3S2_312a_Lot2_PUGS_O3_latest.pdf">PUGS</a>).</p>
+<p>In this notebook we choose to demonstrate the GTO-ECV product. GTO-ECV is a merged data product, meaning that it was build from an ensemble of bias-corrected single sensor products. The spatial resolution is 1°x1°. An interesting feature of this product is that it provides a consistent and accurate long-term total ozone dataset covering the period from July 1995 until April 2023. Note that this dataset can be extended in time on the CDS, as new data become available. Detailed information on GTO-ECV and on all other ozone products can be found in the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-ozone-v1?tab=documentation">documentation section of the CDS catalogue entry</a>.</p>
 </section>
 <section id="time-series-diagram-of-ozone">
 <h2>Time series diagram of ozone<a class="headerlink" href="#time-series-diagram-of-ozone" title="Link to this heading">#</a></h2>
@@ -550,7 +552,7 @@ From the examples in this notebook, one should have an idea on how data from the
 </section>
 <section id="downloading-the-gto-ecv-product">
 <h3>Downloading the GTO-ECV product<a class="headerlink" href="#downloading-the-gto-ecv-product" title="Link to this heading">#</a></h3>
-<p>The library that takes care of downloading the data from the CDS is the <em>cadspi</em> library. Which can be installed in a common way with the <em>pip</em> command. We only need to set manually the CDS API credentials, see the information on the <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to"><em>How to use the CDS API</em></a> webpage.</p>
+<p>The library that takes care of downloading the data from the CDS is the <em>cadspi</em> library. Which can be installed in a common way with the <em>pip</em> command. We only need to set manually the CDS API credentials, see the information on the <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api"><em>How to use the CDS API</em></a> webpage.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;satellite-ozone-v1&#39;</span><span class="p">,</span>
@@ -566,10 +568,24 @@ From the examples in this notebook, one should have an idea on how data from the
 </div>
 </div>
 </div>
-<p>The above pythonic structure can also be found on <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-ozone-v1?tab=form">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-ozone-v1?tab=form</a> by choosing the desired fields and clicking on <em>show toolbox request</em>. Downloading the data from the CDS locally goes as follows:</p>
+<p>The above pythonic structure can also be found on the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-ozone-v1?tab=download">dowload tab</a> of this dataset
+by choosing the desired fields and clicking on <em>show API request code</em>.</p>
+</section>
+<section id="set-up-cds-api-credentials">
+<h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h3>
+<p>To set up your CDS API credentials, please login/register on the <a class="reference external" href="https://cds.climate.copernicus.eu/">CDS</a>, then follow the <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">instructions here</a> to obtain your API key.</p>
+<p>You can add this API key to your current session by uncommenting the code below and replacing <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##############&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
 <span class="n">remote</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="o">*</span><span class="n">request</span><span class="p">)</span>
 <span class="n">datazipfile</span><span class="o">=</span><span class="n">remote</span><span class="o">.</span><span class="n">download</span><span class="p">()</span> <span class="c1">#will download the datafiles from the CDS in a zipfile (the name of the zipfile is given by the variable datazipfile) in the current directory. </span>
 <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">datazipfile</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span> <span class="c1">#unzip into datadir directory</span>
@@ -579,16 +595,14 @@ From the examples in this notebook, one should have an idea on how data from the
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-07-02 13:44:35,888 INFO Welcome to the CDS
-2024-07-02 13:44:35,889 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-ozone-v1
-2024-07-02 13:44:36,140 INFO Request is queued
-2024-07-02 13:44:37,186 INFO Request is running
-2024-07-02 13:50:54,394 INFO Request is completed
-2024-07-02 13:50:54,397 INFO Downloading https://download-0015-clone.copernicus-climate.eu/cache-compute-0015/cache/data4/dataset-satellite-ozone-v1-da57dfc9-884e-4d94-ac22-2d38014f58aa.zip to dataset-satellite-ozone-v1-da57dfc9-884e-4d94-ac22-2d38014f58aa.zip (392.9M)
-2024-07-02 13:53:44,434 INFO Download rate 2.3M/s  
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-11-12 12:51:55,843 WARNING [2024-11-12T11:51:55.704442] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
+2024-11-12 12:51:55,843 INFO Request ID is 2e1a3b4d-dfcb-4869-bf01-91ca0c5faf02
+2024-11-12 12:51:55,909 INFO status has been updated to accepted
+2024-11-12 12:51:59,796 INFO status has been updated to running
+2024-11-12 12:58:15,502 INFO status has been updated to successful
 </pre></div>
 </div>
-</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4e74964628a3448f87d2908cb804dece", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 </section>
 <section id="analysis-and-visualisation-of-the-data">
@@ -647,7 +661,7 @@ Next code block visualizes the dataset with a very limited number of code lines.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5ceba653748de5eb294e6ea71d9b2c4494f5e530e5fb9390cd5954e4a8abb94f.png" src="../_images/5ceba653748de5eb294e6ea71d9b2c4494f5e530e5fb9390cd5954e4a8abb94f.png" />
+<img alt="../_images/5202189ee6c5c925bdc932b7aae1ba827182ffaeaec4c140c9ce2f1e1d1e64a8.png" src="../_images/5202189ee6c5c925bdc932b7aae1ba827182ffaeaec4c140c9ce2f1e1d1e64a8.png" />
 </div>
 </div>
 <p>In this plot we see how the ozone distribution varies with  latitude and time (per month). The lowest columns are found in the equatorial and tropical regions, while larger and more variable columns are observed at mid-latitude and in polar regions. This behavior results from large scale transport of air masses in the atmosphere. The signature of the ozone hole can be clearly identified each year during the austral spring season. These data can be further analysed to study the details of the variability and trends in total ozone.
@@ -695,11 +709,7 @@ The blank areas in the plot correspond to missing data (e.g. yearly polar night 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniforge/base/envs/CDS/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/110m_physical/ne_110m_coastline.zip
-  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-</pre></div>
-</div>
-<img alt="../_images/6b8d8c73bbd1db84f4fdcc3aa38fd806a0a3b6c7c77d28ba6f58bbdebbd0a0cd.png" src="../_images/6b8d8c73bbd1db84f4fdcc3aa38fd806a0a3b6c7c77d28ba6f58bbdebbd0a0cd.png" />
+<img alt="../_images/70f7e7917058e87536ec1cec17546b3fd4c88bfe1353233586689c2d23d5afa3.png" src="../_images/70f7e7917058e87536ec1cec17546b3fd4c88bfe1353233586689c2d23d5afa3.png" />
 </div>
 </div>
 <p>These plots illustrate the seasonal evolution of the global ozone distribution. The variability of stratospheric ozone in the Arctic and at mid-latitudes is particularly important in spring when returning sunlight (after the polar night) alters stratospheric temperatures via shortwave heating, thus modifying atmospheric dynamics. During the mid-latitude summer season and in the tropics, ozone columns are smaller and show less variability. The Southern hemisphere is characterised by the ozone hole, which develops each year in early spring (from September to November). The signature of this ozone hole is captured in the data noting that at high southern latitudes data remain unavailable (the blank regions corresponds to the polar night when no measurements can be performed).</p>
@@ -735,11 +745,7 @@ the ozone hole over Antartica during austral spring.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/homebrew/Caskroom/miniforge/base/envs/CDS/lib/python3.11/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_coastline.zip
-  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-</pre></div>
-</div>
-<img alt="../_images/f0a36840448772ad742db54b4131ec095abce4de28ec0b8a99dbdeda31447113.png" src="../_images/f0a36840448772ad742db54b4131ec095abce4de28ec0b8a99dbdeda31447113.png" />
+<img alt="../_images/fecdd0a0995c8e7119716152c120ac7ff97ca22ba3b5c0d6d532fc80cfdfda66.png" src="../_images/fecdd0a0995c8e7119716152c120ac7ff97ca22ba3b5c0d6d532fc80cfdfda66.png" />
 </div>
 </div>
 <p>This plot shows the ozone hole in the Southern hemisphere seen from a polar projection. The ozone hole (dark region) develops each year in early spring (from September to November). As mentioned already, the blank regions are due to the polar night.</p>
@@ -782,7 +788,7 @@ the ozone hole over Antartica during austral spring.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/94ac3ec3e01515f897ab95b703aa1f01b05455c198c5f6300944eb33317d8473.png" src="../_images/94ac3ec3e01515f897ab95b703aa1f01b05455c198c5f6300944eb33317d8473.png" />
+<img alt="../_images/1cfd693548f4322b80139771ba789d963ab92e3339c2b6162a22f7b068e6b226.png" src="../_images/1cfd693548f4322b80139771ba789d963ab92e3339c2b6162a22f7b068e6b226.png" />
 </div>
 </div>
 <p>This plot shows the ozone hole in the southern hemisphere seen from a polar projection, from 1995 to 2022 in October. Up to 2002 the GTO-ECV data record consists out of GOME/ERS-2 data only. This sensor had a relatively sparse spatial sampling compared to
@@ -858,6 +864,7 @@ the sensors included in GTO-ECV in the later period. Moreover, the size of the G
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series-diagram-of-ozone">Time series diagram of ozone</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-python-modules">Import the python modules</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-the-gto-ecv-product">Downloading the GTO-ECV product</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-and-visualisation-of-the-data">Analysis and visualisation of the data</a></li>
 </ul>
 </li>
