@@ -239,9 +239,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Access and visualisation of the Greenland Ice Sheet velocity data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a></li>
 
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="glacier-area.html">Explore glacier area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mean-with-inverse-variance-weights.html">Computing the time average of LAI and fAPAR using inverse variance weights</a></li>
@@ -487,25 +484,28 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-your-environment">Prepare your environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-user-first-chooses-which-ice-sheet-they-want-to-plot">The user first chooses which ice sheet they want to plot:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-data">Examine the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description:</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-drainage-basin-to-plot">Choosing the drainage basin to plot</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-drainage-basin-to-view-timeseries-for">Pick a drainage basin to view timeseries for:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-timeseries">Plotting the timeseries</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-data">Explore the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-drainage-basins">Plot the drainage basins</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-plot">Setting up the plot</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-time-series-for-a-selcted-drainage-basin">Plot a time-series for a selcted drainage basin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-plot">Set up the plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-take-home-points">Key Take-Home Points</a></li>
@@ -521,44 +521,54 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exploring-ice-sheet-gravimetric-mass-balance-data-available-through-the-c3s-climate-data-store">
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="exploring-ice-sheet-gravimetric-mass-balance-data-available-through-the-c3s-climate-data-store">
 <h1>Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store<a class="headerlink" href="#exploring-ice-sheet-gravimetric-mass-balance-data-available-through-the-c3s-climate-data-store" title="Link to this heading">#</a></h1>
-<p>By Sebastian B. Simonsen and Natalia Havelund, DTU Space,
-Comments can be posted to S. Simonsen at <a class="reference external" href="mailto:ssim&#37;&#52;&#48;dtu&#46;dk">ssim<span>&#64;</span>dtu<span>&#46;</span>dk</a></p>
 <section id="about">
 <h2>About<a class="headerlink" href="#about" title="Link to this heading">#</a></h2>
 <p>This tutorial will demonstrate how to plot the Gravimetric Mass Balance (GMB) data for selected regions across the Greenland or Antarctic ice sheets, using data from the Copernicus Climate Change Service (C3S). Gravimetric Mass Balance refers to the changes in the mass of ice sheets determined from satellite gravimetry, which measures variations in the Earth’s gravity field due to ice mass changes. These data are crucial for understanding how ice sheets contribute to sea level rise.</p>
 <p>The GMB data provides estimates of ice mass loss or gain over time, derived from satellite-based gravimetric measurements from the GRACE and GRACE-FO satellites. These measurements track changes in the gravitational field caused by shifts in mass, such as the movement or melting of ice. The GMB data allows researchers to monitor long-term trends in ice sheet dynamics and their contribution to global sea level changes.</p>
 <p>It will show you how to download data from the C3S Climate Data Store (CDS), calculate average change rates over a selectable period, and display the results.</p>
-</section>
 <section id="data-description">
-<h2>Data Description:<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
-<p>Source   :    Copernicus Climate Change Service (C3S) Climate Data Store (CDS)</p>
-<p>Data Type:    Satellite-based gravimetric measurements</p>
-<p>Coverage :    Greenland and Antarctic ice sheets</p>
-<p>Variables:    Time series of mass balance changes over specific regions with basin numbers</p>
-<p>Format   :    NetCDF4 files</p>
+<h3>Data Description:<a class="headerlink" href="#data-description" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Source</strong>: Copernicus Climate Change Service (C3S) Climate Data Store (CDS)</p></li>
+<li><p><strong>Data Type</strong>: Satellite-based gravimetric measurements</p></li>
+<li><p><strong>Coverage</strong>: Greenland and Antarctic ice sheets</p></li>
+<li><p><strong>Variables</strong>: Time series of mass balance changes over specific regions with basin numbers</p></li>
+<li><p><strong>Format</strong>: NetCDF4 files</p></li>
+</ul>
 </section>
-<section id="prepare-your-environment">
-<h2>Prepare your environment<a class="headerlink" href="#prepare-your-environment" title="Link to this heading">#</a></h2>
-<p>To download data from the CDS, you must complete three steps;</p>
-<ol class="arabic simple">
-<li><p>Register for free with the CDS at <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">https://cds.climate.copernicus.eu/#!/home</a></p></li>
-<li><p>Set up the CDS Application Program Interface (API), as described at <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">https://cds.climate.copernicus.eu/how-to-api</a></p></li>
-<li><p>Agree to the dataset terms of use - if you have not already done so you will be directed to the correct webpage the first time you try to download data. Accept the terms and conditions, and re-run the downloading code.</p></li>
-</ol>
 </section>
-<section id="import-libraries">
-<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
-<p>The data is stored in netCDF4 files. To work with them, several libraries are needed. These are used to retrieve the data, unpack it, run calculations and plot the results.</p>
+<section id="prerequisites-and-data-acquisition">
+<h2>Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Link to this heading">#</a></h2>
+<p>This tutorial is in the form of a Jupyter notebook. It can be run on a cloud environment, or on your own computer. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
+<style>
+td, th {
+   border: 1px solid white;
+   border-collapse: collapse;
+}
+</style>
+<table align="left">
+  <tr>
+    <th>Run the tutorial via free cloud platforms: </th>
+    <th><a href="https://notebooks.gesis.org/binder/jupyter/user/ecmwf-projects--us-training-c3s-0vneba36/doc/tree/srb-claraA3.ipynb">
+        <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/gh-pages/&#95;sources/srb-claraA3.ipynb">
+        <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
+  </tr>
+</table>
+<br><br><p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>cdsapi
 </pre></div>
 </div>
 </div>
 </div>
+<section id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
+<p>The data is stored in netCDF4 files. To work with them, several libraries are needed. These are used to retrieve the data, unpack it, run calculations and plot the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API</span>
@@ -579,51 +589,60 @@ Comments can be posted to S. Simonsen at <a class="reference external" href="mai
 
 <span class="c1"># Plotting</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="download-data">
-<h2>Download data<a class="headerlink" href="#download-data" title="Link to this heading">#</a></h2>
+<section id="download-data-using-cds-api">
+<h3>Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
+<p>This section is provides all necessary settings and input data to successfully run the use cases, and produce the figures.</p>
+</section>
+<section id="set-up-cds-api-credentials">
+<h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h3>
+<p>We will request data from the <a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store (CDS)</a>. In case you don’t have an account yet, please click on “Login/register” at the right top and select “Create new account”. With the process finished you are able to login to the CDS and can search for your preferred data.</p>
+<p>We will request data from the CDS programmatically with the help of the CDS API.
+First, we need to manually set the CDS API credentials.
+To do so, we need to define two variables: URL and KEY.
+To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;############&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="search-for-data">
+<h3>Search for data<a class="headerlink" href="#search-for-data" title="Link to this heading">#</a></h3>
 <p>Select the ice sheet of interest and retrieve the dataset. An example of how to retrieve the data is given on the CDS, under ‘Show API request’ on the dataset’s webpage at <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-ice-sheet-mass-balance?tab=download">https://cds.climate.copernicus.eu/datasets/satellite-ice-sheet-mass-balance?tab=download</a></p>
 <p>The dataset comes in a zip file, and may include several files. Only the most recent is necessary - this contains all of the data in previous files, plus the latest update.</p>
-</section>
-<section id="the-user-first-chooses-which-ice-sheet-they-want-to-plot">
-<h2>The user first chooses which ice sheet they want to plot:<a class="headerlink" href="#the-user-first-chooses-which-ice-sheet-they-want-to-plot" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set ice_sheet to the desired ice sheet, either &#39;AntIS&#39; or &#39;GrIS&#39;</span>
 <span class="c1"># This will be used to select data, and later to set up plot defaults</span>
 
 <span class="c1">#ice_sheet = &#39;AntIS&#39; # </span>
-
 <span class="n">ice_sheet</span> <span class="o">=</span> <span class="s1">&#39;GrIS&#39;</span> <span class="c1"># </span>
 
+<span class="c1"># Download data from the CDS</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span>
+    <span class="c1"># url=URL, key=KEY,</span>
+<span class="p">)</span>
 
-<span class="k">try</span><span class="p">:</span>
-    
-    <span class="c1"># Download data from the CDS</span>
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+    <span class="s1">&#39;satellite-ice-sheet-mass-balance&#39;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
 
-    <span class="kn">import</span> <span class="nn">cdsapi</span>
+<span class="c1"># Unpack the zip file and remove the zipped data</span>
 
-    <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
-
-    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s1">&#39;satellite-ice-sheet-mass-balance&#39;</span><span class="p">,</span>
-        <span class="p">{</span>
-            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;all&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-        <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
-
-    <span class="c1"># Unpack the zip file and remove the zipped data</span>
-
-    <span class="n">shutil</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
-<span class="k">except</span><span class="p">:</span>
-     <span class="k">pass</span>
+<span class="n">shutil</span><span class="o">.</span><span class="n">unpack_archive</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
 
 <span class="c1"># # List the files contained and select the latest netCDF (.nc) file. Print its filename</span>
 
@@ -634,37 +653,401 @@ Comments can be posted to S. Simonsen at <a class="reference external" href="mai
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-11 12:34:14,764 WARNING [2024-10-11T10:34:14.730486] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
-2024-10-11 12:34:14,928 INFO status has been updated to accepted
-2024-10-11 12:34:16,525 INFO status has been updated to running
-2024-10-11 12:34:18,894 INFO status has been updated to successful
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-17 13:56:40,302 INFO [2024-09-28T00:00:00] **Welcome to the New Climate Data Store (CDS)!** This new system is in its early days of full operations and still undergoing enhancements and fine tuning. Some disruptions are to be expected. Your 
+[feedback](https://jira.ecmwf.int/plugins/servlet/desk/portal/1/create/202) is key to improve the user experience on the new CDS for the benefit of everyone. Thank you.
+2024-12-17 13:56:40,303 INFO [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2024-12-17 13:56:40,304 INFO [2024-09-16T00:00:00] Remember that you need to have an ECMWF account to use the new CDS. **Your old CDS credentials will not work in new CDS!**
+2024-12-17 13:56:40,304 WARNING [2024-06-16T00:00:00] CDS API syntax is changed and some keys or parameter names may have also changed. To avoid requests failing, please use the &quot;Show API request code&quot; tool on the dataset Download Form to check you are using the correct syntax for your API request.
+2024-12-17 13:56:41,245 INFO Request ID is 532a4d76-7b24-443c-9284-64924f9926d2
+2024-12-17 13:56:41,315 INFO status has been updated to accepted
+2024-12-17 13:56:46,371 INFO status has been updated to running
+2024-12-17 13:56:55,101 INFO status has been updated to successful
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3d56d669e65246be8c80eb15c51973f9", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the following you are seeing the data from: 
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "aabd4e98e87048d6864a240eaa59baa5", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the following you are seeing the data from: 
 C3S_GMB_GRACE_vers4.nc
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="examine-the-data">
-<h2>Examine the data<a class="headerlink" href="#examine-the-data" title="Link to this heading">#</a></h2>
+</section>
+<section id="explore-the-data">
+<h2>Explore the data<a class="headerlink" href="#explore-the-data" title="Link to this heading">#</a></h2>
 <p>Open the data file and list its contents. These include descriptive comments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the NetCDF file</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the NetCDF file wih xarray and print the dataset</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">latest_file</span><span class="p">)</span>
-
-<span class="c1"># Print contents list</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The data file contains the following:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">ds</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The data file contains the following:
-&lt;xarray.Dataset&gt; Size: 14MB
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 14MB
 Dimensions:                (t: 216, AntB: 901322, N: 3, GrisB: 272965)
 Dimensions without coordinates: t, AntB, N, GrisB
 Data variables: (12/81)
@@ -693,15 +1076,10 @@ Attributes:
     Tracking_id:          ab2360a4-82d5-42f3-babb-90ce976a8a8e
     netCDF_version:       NETCDF4
     product_version:      4.0
-    Summary:              This data set is prepared for the C3S project, and ...
-</pre></div>
+    Summary:              This data set is prepared for the C3S project, and ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-51a570e7-83fc-428a-8c63-035e76f04e27' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-51a570e7-83fc-428a-8c63-035e76f04e27' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>t</span>: 216</li><li><span>AntB</span>: 901322</li><li><span>N</span>: 3</li><li><span>GrisB</span>: 272965</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-bb474f43-7a54-4fc6-b655-d22dd2b89c90' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bb474f43-7a54-4fc6-b655-d22dd2b89c90' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-63df9e99-d199-47a6-9086-0fb3fd1ef8cc' class='xr-section-summary-in' type='checkbox'  ><label for='section-63df9e99-d199-47a6-9086-0fb3fd1ef8cc' class='xr-section-summary' >Data variables: <span>(81)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>time</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c54e4315-e140-4e83-9046-66ceefbd67d7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c54e4315-e140-4e83-9046-66ceefbd67d7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-072f8d7f-e108-4c19-a4fc-459e629f14a0' class='xr-var-data-in' type='checkbox'><label for='data-072f8d7f-e108-4c19-a4fc-459e629f14a0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=datetime64[ns]]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntBasin</span></div><div class='xr-var-dims'>(AntB, N)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e8dae5d0-e42b-4e1c-a9df-2daa5bd695c5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e8dae5d0-e42b-4e1c-a9df-2daa5bd695c5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e62763e2-335a-432d-ab50-e538716c1f0b' class='xr-var-data-in' type='checkbox'><label for='data-e62763e2-335a-432d-ab50-e538716c1f0b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_Basin_definition</dd><dt><span>column_meanings :</span></dt><dd>Latitude, Longitude, basin_number</dd><dt><span>units :</span></dt><dd>degrees_north degrees_east number</dd><dt><span>reference :</span></dt><dd>Zwally antarctic basins http://imbie.org/imbie-3/drainage-basins/</dd></dl></div><div class='xr-var-data'><pre>[2703966 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrISBasin</span></div><div class='xr-var-dims'>(GrisB, N)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2abd8b9e-d156-4548-887c-7c03bdd0b7d0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2abd8b9e-d156-4548-887c-7c03bdd0b7d0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea474487-62db-4d95-821f-4224b5f603e5' class='xr-var-data-in' type='checkbox'><label for='data-ea474487-62db-4d95-821f-4224b5f603e5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_Basin_definition</dd><dt><span>column_meanings :</span></dt><dd>Latitude, Longitude, basin_number</dd><dt><span>units :</span></dt><dd>degrees_north degrees_east number</dd><dt><span>reference :</span></dt><dd>Zwally Greenland basins http://imbie.org/imbie-3/drainage-basins/</dd></dl></div><div class='xr-var-data'><pre>[818895 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_total</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0d3585b7-33b3-4295-95bc-1784fc33866e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0d3585b7-33b3-4295-95bc-1784fc33866e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-342369c2-27c9-45c5-8ace-c61b4fd1ddc6' class='xr-var-data-in' type='checkbox'><label for='data-342369c2-27c9-45c5-8ace-c61b4fd1ddc6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_total_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_total_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-50b84e35-c519-4eb1-9481-385835025c6a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-50b84e35-c519-4eb1-9481-385835025c6a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-860c2b6c-3760-4ec0-855f-40c5079c6b87' class='xr-var-data-in' type='checkbox'><label for='data-860c2b6c-3760-4ec0-855f-40c5079c6b87' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_total_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_1</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-002c5e0c-7a62-4eec-a837-6bf62188642c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-002c5e0c-7a62-4eec-a837-6bf62188642c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a44320ad-0a27-4789-b7c2-049ba29269b5' class='xr-var-data-in' type='checkbox'><label for='data-a44320ad-0a27-4789-b7c2-049ba29269b5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_1_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_1_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-98f745cd-7b86-4f20-9ab5-060ee5b7d593' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-98f745cd-7b86-4f20-9ab5-060ee5b7d593' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7b2a0693-20e6-4876-a208-82cfc9ed0eff' class='xr-var-data-in' type='checkbox'><label for='data-7b2a0693-20e6-4876-a208-82cfc9ed0eff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_1_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_2</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f8d901b8-abe5-4200-9cd5-69957222199a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f8d901b8-abe5-4200-9cd5-69957222199a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-49cf172d-4db1-432c-9572-c0a3698001aa' class='xr-var-data-in' type='checkbox'><label for='data-49cf172d-4db1-432c-9572-c0a3698001aa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_2_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_2_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-8ae0555f-a905-4917-bec8-4bed81dbcf38' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8ae0555f-a905-4917-bec8-4bed81dbcf38' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-baa13c3d-05b0-42ed-8a56-6774848ec772' class='xr-var-data-in' type='checkbox'><label for='data-baa13c3d-05b0-42ed-8a56-6774848ec772' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_2_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_3</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-deba761d-83c3-46fa-a9e6-34f6bcf86cee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-deba761d-83c3-46fa-a9e6-34f6bcf86cee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cb12d3b8-4e84-4208-ad8e-a542571d1d2a' class='xr-var-data-in' type='checkbox'><label for='data-cb12d3b8-4e84-4208-ad8e-a542571d1d2a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_3_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_3_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3a51bc1e-248c-4353-b406-8e7c78c5aa33' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3a51bc1e-248c-4353-b406-8e7c78c5aa33' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7dbbcc7b-a31d-421b-82e9-af28bb81bfe1' class='xr-var-data-in' type='checkbox'><label for='data-7dbbcc7b-a31d-421b-82e9-af28bb81bfe1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_3_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_4</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-241659ad-844a-41f6-8742-eb8a7edcdcde' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-241659ad-844a-41f6-8742-eb8a7edcdcde' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-31a53f3c-8bc8-460a-8da9-ed94f5c84bff' class='xr-var-data-in' type='checkbox'><label for='data-31a53f3c-8bc8-460a-8da9-ed94f5c84bff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_4_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_4_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-73577d90-ae8d-4cf9-be4b-d7d529b6e1e9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-73577d90-ae8d-4cf9-be4b-d7d529b6e1e9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bec84d59-8b8b-49de-b006-498e44eff3e5' class='xr-var-data-in' type='checkbox'><label for='data-bec84d59-8b8b-49de-b006-498e44eff3e5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_4_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_5</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ea99120b-4261-4426-8f5a-38756eacd1ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ea99120b-4261-4426-8f5a-38756eacd1ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-625482b2-965a-4ce8-a1ff-ed8e086103e1' class='xr-var-data-in' type='checkbox'><label for='data-625482b2-965a-4ce8-a1ff-ed8e086103e1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_5_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_5_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-559c66a8-2d55-4f5f-8451-3e772609dd3f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-559c66a8-2d55-4f5f-8451-3e772609dd3f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ddb233a0-8ef1-4259-b3fe-c85136b056dc' class='xr-var-data-in' type='checkbox'><label for='data-ddb233a0-8ef1-4259-b3fe-c85136b056dc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_5_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_6</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1bed335b-1167-4c17-9fd8-e7877b72406a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1bed335b-1167-4c17-9fd8-e7877b72406a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ff7349f-1466-4003-9ee4-632cb3991520' class='xr-var-data-in' type='checkbox'><label for='data-0ff7349f-1466-4003-9ee4-632cb3991520' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_6_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_6_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-981eee89-ce29-4305-86dc-fd4986727010' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-981eee89-ce29-4305-86dc-fd4986727010' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c8a50b53-e1c1-473d-9c88-7bcf08ae9954' class='xr-var-data-in' type='checkbox'><label for='data-c8a50b53-e1c1-473d-9c88-7bcf08ae9954' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_6_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_7</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e0f197aa-718b-4bd5-8f9e-bb87e792cd3d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e0f197aa-718b-4bd5-8f9e-bb87e792cd3d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-90b78c2c-0cce-4e64-8205-9df22e4c04d0' class='xr-var-data-in' type='checkbox'><label for='data-90b78c2c-0cce-4e64-8205-9df22e4c04d0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_7_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_7_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6314b5aa-4a8d-4099-b9f0-1dac00f8fa05' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6314b5aa-4a8d-4099-b9f0-1dac00f8fa05' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-290550db-21e7-48bd-80e5-d8358c965ebc' class='xr-var-data-in' type='checkbox'><label for='data-290550db-21e7-48bd-80e5-d8358c965ebc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_7_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_8</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9eb67b78-b026-49d8-8c08-e6a58fc2e5f3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9eb67b78-b026-49d8-8c08-e6a58fc2e5f3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c74b28ab-f1d4-4f4a-ab8a-794e040b68b0' class='xr-var-data-in' type='checkbox'><label for='data-c74b28ab-f1d4-4f4a-ab8a-794e040b68b0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_8_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>GrIS_8_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-aa3a4c77-533d-428a-95b8-4d13c96d6c4f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aa3a4c77-533d-428a-95b8-4d13c96d6c4f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d567ca66-d2da-4181-af7b-35d61fdcc5f2' class='xr-var-data-in' type='checkbox'><label for='data-d567ca66-d2da-4181-af7b-35d61fdcc5f2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Greenland_ice_sheet_basin_8_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_1</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ed7bd48d-8ee5-43a8-8932-41eca2f6ebe4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ed7bd48d-8ee5-43a8-8932-41eca2f6ebe4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1cbe56e3-b530-4ed2-84e2-06c24f60599c' class='xr-var-data-in' type='checkbox'><label for='data-1cbe56e3-b530-4ed2-84e2-06c24f60599c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_1_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_1_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a8395358-02af-4e2e-802a-b3a3feb0bb89' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a8395358-02af-4e2e-802a-b3a3feb0bb89' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-39b0579e-0b0f-4a30-925d-49eb4f5082f8' class='xr-var-data-in' type='checkbox'><label for='data-39b0579e-0b0f-4a30-925d-49eb4f5082f8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_1_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_2</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-8464f240-8e80-4f13-a77a-a3d7bab7a223' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8464f240-8e80-4f13-a77a-a3d7bab7a223' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9730bf6c-26ff-44af-af12-ba880f52aebd' class='xr-var-data-in' type='checkbox'><label for='data-9730bf6c-26ff-44af-af12-ba880f52aebd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_2_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_2_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-aa536d19-3596-4b93-82f4-c45330da1240' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aa536d19-3596-4b93-82f4-c45330da1240' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-64a06bae-7e8c-4fb7-9d83-690180c63178' class='xr-var-data-in' type='checkbox'><label for='data-64a06bae-7e8c-4fb7-9d83-690180c63178' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_2_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_3</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-187ff6e5-387a-4536-ad5b-2956239997d9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-187ff6e5-387a-4536-ad5b-2956239997d9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3316c433-4081-4420-aef2-10942ebb93e4' class='xr-var-data-in' type='checkbox'><label for='data-3316c433-4081-4420-aef2-10942ebb93e4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_3_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_3_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-01515191-b2bd-4168-bce6-9468e9b91f70' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-01515191-b2bd-4168-bce6-9468e9b91f70' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2faabb25-cfcf-4b5b-9156-da1368948271' class='xr-var-data-in' type='checkbox'><label for='data-2faabb25-cfcf-4b5b-9156-da1368948271' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_3_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_4</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2299823b-b5aa-405b-aa0e-6f963d0e07d5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2299823b-b5aa-405b-aa0e-6f963d0e07d5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-341358da-89c0-48ff-8d14-dd8b91758d99' class='xr-var-data-in' type='checkbox'><label for='data-341358da-89c0-48ff-8d14-dd8b91758d99' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_4_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_4_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a04b7387-5c2c-4b50-b86c-6c22ef06d4e9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a04b7387-5c2c-4b50-b86c-6c22ef06d4e9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-14319563-2ea4-4c3e-91e1-83ab12cb607e' class='xr-var-data-in' type='checkbox'><label for='data-14319563-2ea4-4c3e-91e1-83ab12cb607e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_4_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_5</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a72af136-3493-408b-a06d-f39d052f7ac5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a72af136-3493-408b-a06d-f39d052f7ac5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5f016d93-1cf7-42cf-89a4-4e5954339256' class='xr-var-data-in' type='checkbox'><label for='data-5f016d93-1cf7-42cf-89a4-4e5954339256' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_5_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_5_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d38cf517-88b9-434d-8281-ff0ef128917b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d38cf517-88b9-434d-8281-ff0ef128917b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-db380a2a-43da-4523-a25f-a7616f49533d' class='xr-var-data-in' type='checkbox'><label for='data-db380a2a-43da-4523-a25f-a7616f49533d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_5_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_6</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ef129892-57f5-4c62-ac8a-6668168225be' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ef129892-57f5-4c62-ac8a-6668168225be' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9e179c47-6645-416c-804c-2ad36c35324d' class='xr-var-data-in' type='checkbox'><label for='data-9e179c47-6645-416c-804c-2ad36c35324d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_6_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_6_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9db59609-4946-494a-a34a-4c5d96c9d05b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9db59609-4946-494a-a34a-4c5d96c9d05b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d57600a3-a44e-41c4-870e-24f61ac0efdd' class='xr-var-data-in' type='checkbox'><label for='data-d57600a3-a44e-41c4-870e-24f61ac0efdd' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_6_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_7</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e1ebd058-bcef-4aa8-8bee-80559e1aacd5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e1ebd058-bcef-4aa8-8bee-80559e1aacd5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ce5d7b7a-df62-4a73-817f-85bcd88c53be' class='xr-var-data-in' type='checkbox'><label for='data-ce5d7b7a-df62-4a73-817f-85bcd88c53be' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_7_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_7_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-82956d7e-bc62-4176-9f6b-3b99f1caf431' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-82956d7e-bc62-4176-9f6b-3b99f1caf431' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-77bc1b5f-caaa-4e60-9aaa-38c8e739f90d' class='xr-var-data-in' type='checkbox'><label for='data-77bc1b5f-caaa-4e60-9aaa-38c8e739f90d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_7_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_8</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3179a6d2-bfb7-475e-94c0-8c3818e00da9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3179a6d2-bfb7-475e-94c0-8c3818e00da9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-674f367e-b2fb-4fe9-bd25-065582cc7cee' class='xr-var-data-in' type='checkbox'><label for='data-674f367e-b2fb-4fe9-bd25-065582cc7cee' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_8_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_8_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-441d104b-9430-48ef-80ce-7ce99fd64b44' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-441d104b-9430-48ef-80ce-7ce99fd64b44' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-580f186c-aac1-4118-8391-d08392e88919' class='xr-var-data-in' type='checkbox'><label for='data-580f186c-aac1-4118-8391-d08392e88919' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_8_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_9</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9cc4d7dd-3f82-487b-994a-58edf559a676' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9cc4d7dd-3f82-487b-994a-58edf559a676' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3fc0bd6c-06cf-45df-822b-9ef43fc428ca' class='xr-var-data-in' type='checkbox'><label for='data-3fc0bd6c-06cf-45df-822b-9ef43fc428ca' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_9_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_9_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0bf02301-0f5b-4279-9440-af68c7cd1e5f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0bf02301-0f5b-4279-9440-af68c7cd1e5f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c3d6e530-ff1d-4ff4-b7b6-b05ea122054a' class='xr-var-data-in' type='checkbox'><label for='data-c3d6e530-ff1d-4ff4-b7b6-b05ea122054a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_9_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_10</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-59c56f69-33bf-46e1-9986-3c818958069b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-59c56f69-33bf-46e1-9986-3c818958069b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c6a7bac9-7ac2-4860-99ac-6d3f0a932f44' class='xr-var-data-in' type='checkbox'><label for='data-c6a7bac9-7ac2-4860-99ac-6d3f0a932f44' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_10_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_10_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9fa62de4-2425-4417-a77b-7027f56b2c68' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9fa62de4-2425-4417-a77b-7027f56b2c68' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ed59e94b-ee28-4730-81bb-b50974da4dff' class='xr-var-data-in' type='checkbox'><label for='data-ed59e94b-ee28-4730-81bb-b50974da4dff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_10_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_11</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6ae09e87-2ee9-4531-b7d8-e8ed60e60481' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6ae09e87-2ee9-4531-b7d8-e8ed60e60481' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8b150458-fbc3-45d1-b474-a1b458ae43ff' class='xr-var-data-in' type='checkbox'><label for='data-8b150458-fbc3-45d1-b474-a1b458ae43ff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_11_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_11_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7ec834ef-ddb3-4f09-b1b1-a29c587fe40a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7ec834ef-ddb3-4f09-b1b1-a29c587fe40a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-70e62d10-31e2-4421-a49a-7ce575bbc931' class='xr-var-data-in' type='checkbox'><label for='data-70e62d10-31e2-4421-a49a-7ce575bbc931' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_11_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_12</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d7d483be-f42e-4d40-8274-7df5bee6e521' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d7d483be-f42e-4d40-8274-7df5bee6e521' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e0621f30-2fe6-4715-a629-dcfaaf625224' class='xr-var-data-in' type='checkbox'><label for='data-e0621f30-2fe6-4715-a629-dcfaaf625224' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_12_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_12_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7d581126-7d2a-428a-8628-6f67863d0dff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7d581126-7d2a-428a-8628-6f67863d0dff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7672797-9a1d-49b8-bf1c-5a31549434cc' class='xr-var-data-in' type='checkbox'><label for='data-f7672797-9a1d-49b8-bf1c-5a31549434cc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_12_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_13</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-af5c3238-102c-4dc7-a531-8823d2f145f7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-af5c3238-102c-4dc7-a531-8823d2f145f7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8e95aebf-3e5c-46f0-87e6-d801a9d07189' class='xr-var-data-in' type='checkbox'><label for='data-8e95aebf-3e5c-46f0-87e6-d801a9d07189' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_13_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_13_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fc598754-16d5-4a9e-811a-5fe9e7439ecd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fc598754-16d5-4a9e-811a-5fe9e7439ecd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-95e4ebe1-7afd-49b4-b3cc-501898241631' class='xr-var-data-in' type='checkbox'><label for='data-95e4ebe1-7afd-49b4-b3cc-501898241631' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_13_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_14</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-93bf7db2-cd0e-423a-bd9b-07aa3dda20cb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-93bf7db2-cd0e-423a-bd9b-07aa3dda20cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-896338a0-c883-43ba-a519-c46fd2b15049' class='xr-var-data-in' type='checkbox'><label for='data-896338a0-c883-43ba-a519-c46fd2b15049' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_14_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_14_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ea829b26-01a3-4efc-acd9-7e7635f31893' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ea829b26-01a3-4efc-acd9-7e7635f31893' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d56c5943-61d6-463e-b7ad-f18261cee5b1' class='xr-var-data-in' type='checkbox'><label for='data-d56c5943-61d6-463e-b7ad-f18261cee5b1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_14_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_15</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1f73bbc5-d081-4c21-9da1-fdeb26ec0d67' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1f73bbc5-d081-4c21-9da1-fdeb26ec0d67' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3bb3bb45-4014-4c74-a904-831dacbecb99' class='xr-var-data-in' type='checkbox'><label for='data-3bb3bb45-4014-4c74-a904-831dacbecb99' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_15_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_15_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2080c3c5-ee87-4dae-9e6f-96a59716e1ed' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2080c3c5-ee87-4dae-9e6f-96a59716e1ed' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ae3e5789-98aa-42e4-8fe7-a07b945c3e3a' class='xr-var-data-in' type='checkbox'><label for='data-ae3e5789-98aa-42e4-8fe7-a07b945c3e3a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_15_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_16</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-8744e477-bbb0-4d3b-a4b5-73ff384210e6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8744e477-bbb0-4d3b-a4b5-73ff384210e6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d0af6125-8e58-4903-babd-6ee7b611f4aa' class='xr-var-data-in' type='checkbox'><label for='data-d0af6125-8e58-4903-babd-6ee7b611f4aa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_16_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_16_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-19257da0-db4a-4e06-aaed-7d988f8f2fe6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-19257da0-db4a-4e06-aaed-7d988f8f2fe6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-35e0d505-da45-4c8b-8947-7334d82f81b2' class='xr-var-data-in' type='checkbox'><label for='data-35e0d505-da45-4c8b-8947-7334d82f81b2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_16_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_17</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2b66e4b9-feb8-4e05-b093-5387efb2be5b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2b66e4b9-feb8-4e05-b093-5387efb2be5b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6404de84-f0e7-493c-aa85-1ac04332ba63' class='xr-var-data-in' type='checkbox'><label for='data-6404de84-f0e7-493c-aa85-1ac04332ba63' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_17_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_17_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9167b8c0-a6ed-4e8d-8722-57219f0f61d7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9167b8c0-a6ed-4e8d-8722-57219f0f61d7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-483c85d9-f127-4178-b58c-04b9c0ee2ed4' class='xr-var-data-in' type='checkbox'><label for='data-483c85d9-f127-4178-b58c-04b9c0ee2ed4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_17_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_18</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-26e318cc-7ab8-41a1-92e2-eee0b1dfb001' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-26e318cc-7ab8-41a1-92e2-eee0b1dfb001' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fbc41422-e65b-4b24-aea4-07a7988e1b7d' class='xr-var-data-in' type='checkbox'><label for='data-fbc41422-e65b-4b24-aea4-07a7988e1b7d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_18_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_18_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f4dfa4f3-1a1a-41e0-b385-3a8b68ad3e43' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f4dfa4f3-1a1a-41e0-b385-3a8b68ad3e43' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7a45c8ff-93eb-4c7b-a37e-f55fe8d18477' class='xr-var-data-in' type='checkbox'><label for='data-7a45c8ff-93eb-4c7b-a37e-f55fe8d18477' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_18_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_19</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6c6b1ef7-95b6-4ec7-99ab-d05f696457d9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6c6b1ef7-95b6-4ec7-99ab-d05f696457d9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-027c352b-7a41-40bc-802b-5c3c91a121d9' class='xr-var-data-in' type='checkbox'><label for='data-027c352b-7a41-40bc-802b-5c3c91a121d9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_19_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_19_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3364b321-cb65-42e9-92d7-b74d31ccaa7f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3364b321-cb65-42e9-92d7-b74d31ccaa7f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bff96118-a840-48dc-aeb5-3761eca5ac34' class='xr-var-data-in' type='checkbox'><label for='data-bff96118-a840-48dc-aeb5-3761eca5ac34' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_19_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_20</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b2b1d5bc-6f49-440e-bce7-486f08e009e8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b2b1d5bc-6f49-440e-bce7-486f08e009e8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b30e2335-8835-4de3-97c7-c77474cfbc3a' class='xr-var-data-in' type='checkbox'><label for='data-b30e2335-8835-4de3-97c7-c77474cfbc3a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_20_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_20_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-671fb75a-92c7-47b6-849a-88feed3fd7a9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-671fb75a-92c7-47b6-849a-88feed3fd7a9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3061d28e-2e93-418c-b9a4-9a457ba65863' class='xr-var-data-in' type='checkbox'><label for='data-3061d28e-2e93-418c-b9a4-9a457ba65863' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_20_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_21</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-cde31c60-3f5a-494e-a7b8-f04918ef5c13' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cde31c60-3f5a-494e-a7b8-f04918ef5c13' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-77a11939-b79b-4fe8-ad0f-85cb744a8674' class='xr-var-data-in' type='checkbox'><label for='data-77a11939-b79b-4fe8-ad0f-85cb744a8674' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_21_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_21_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-194fb054-fc49-4d3d-8033-8b14a5a66376' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-194fb054-fc49-4d3d-8033-8b14a5a66376' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-424ccde0-321c-46f5-85a9-c5a9641695ed' class='xr-var-data-in' type='checkbox'><label for='data-424ccde0-321c-46f5-85a9-c5a9641695ed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_21_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_22</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9d0f4f7a-7c82-45b6-8616-ef57156848e5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9d0f4f7a-7c82-45b6-8616-ef57156848e5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bd6388da-dd9a-4038-b5b0-e3d94ab05ec2' class='xr-var-data-in' type='checkbox'><label for='data-bd6388da-dd9a-4038-b5b0-e3d94ab05ec2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_22_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_22_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2523e398-0f6a-48df-8385-f8968c708565' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2523e398-0f6a-48df-8385-f8968c708565' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c0382f1a-9d5e-4266-b83e-76689401f1db' class='xr-var-data-in' type='checkbox'><label for='data-c0382f1a-9d5e-4266-b83e-76689401f1db' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_22_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_23</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-37d01ddd-1fae-4ce4-9e43-b64f7131d5a4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-37d01ddd-1fae-4ce4-9e43-b64f7131d5a4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9e78b20a-00f9-4c6c-86a6-3cc57061789f' class='xr-var-data-in' type='checkbox'><label for='data-9e78b20a-00f9-4c6c-86a6-3cc57061789f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_23_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_23_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-58fba946-f8b7-4760-aa5d-ddf58877ba25' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-58fba946-f8b7-4760-aa5d-ddf58877ba25' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-02c162ec-2fef-4347-a70c-8909a659db82' class='xr-var-data-in' type='checkbox'><label for='data-02c162ec-2fef-4347-a70c-8909a659db82' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_23_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_24</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ee5b08c5-3aa1-4a3d-8622-6804219a3dc9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ee5b08c5-3aa1-4a3d-8622-6804219a3dc9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b90a98ee-b530-48c5-a89d-ce746f524bb0' class='xr-var-data-in' type='checkbox'><label for='data-b90a98ee-b530-48c5-a89d-ce746f524bb0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_24_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_24_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fbf6dde6-dc9e-460b-9de5-5c66f87e88ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fbf6dde6-dc9e-460b-9de5-5c66f87e88ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-edcec1ae-7428-4ee9-ba1a-46bc05db2559' class='xr-var-data-in' type='checkbox'><label for='data-edcec1ae-7428-4ee9-ba1a-46bc05db2559' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_24_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_27</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e8c136d3-b105-4e9d-a113-b7280ce0602e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e8c136d3-b105-4e9d-a113-b7280ce0602e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2dc95616-2008-4abf-af3d-f31866aa40f8' class='xr-var-data-in' type='checkbox'><label for='data-2dc95616-2008-4abf-af3d-f31866aa40f8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_27_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_27_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-664b80e7-f82f-4a55-90ab-81ac535afff8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-664b80e7-f82f-4a55-90ab-81ac535afff8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bf697c6c-0310-4e63-9801-8b5e144112f9' class='xr-var-data-in' type='checkbox'><label for='data-bf697c6c-0310-4e63-9801-8b5e144112f9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_27_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_25_26</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a2321621-2234-4465-8750-41a63abf962a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a2321621-2234-4465-8750-41a63abf962a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ea05a1b-5df4-4a59-94cb-c47a2fbcf6ac' class='xr-var-data-in' type='checkbox'><label for='data-0ea05a1b-5df4-4a59-94cb-c47a2fbcf6ac' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_25_and_26_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_25_26_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-89f2e856-5182-40f7-8c19-7fdce7530f18' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-89f2e856-5182-40f7-8c19-7fdce7530f18' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cfb338a7-e737-4c7a-ac0a-e32634052a9f' class='xr-var-data-in' type='checkbox'><label for='data-cfb338a7-e737-4c7a-ac0a-e32634052a9f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_basin_25_and_26_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntPeninsula_total</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3ad64277-fcea-4a53-8408-8d3ecc1284cd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3ad64277-fcea-4a53-8408-8d3ecc1284cd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d49a626a-5804-47c5-adf9-5da19554d46a' class='xr-var-data-in' type='checkbox'><label for='data-d49a626a-5804-47c5-adf9-5da19554d46a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_Peninsula_total_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntPeninsula_total_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1662318e-80d7-404e-8446-031c9e4202b5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1662318e-80d7-404e-8446-031c9e4202b5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d5968c40-177e-49b6-83bb-6cffaff4a3f6' class='xr-var-data-in' type='checkbox'><label for='data-d5968c40-177e-49b6-83bb-6cffaff4a3f6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_Peninsula_total_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>East_AntIS_total</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ce43d00f-0879-4484-b4b4-a53feb025f78' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ce43d00f-0879-4484-b4b4-a53feb025f78' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b3733c82-82ea-42fe-8eb9-6e35d794e2cc' class='xr-var-data-in' type='checkbox'><label for='data-b3733c82-82ea-42fe-8eb9-6e35d794e2cc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>East_Antarctic_ice_sheet_total_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>East_AntIS_total_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-620e1b40-0af5-4336-bfb1-1e74f5776079' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-620e1b40-0af5-4336-bfb1-1e74f5776079' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d33ba3d6-f401-4125-b9c9-f56502e15ce0' class='xr-var-data-in' type='checkbox'><label for='data-d33ba3d6-f401-4125-b9c9-f56502e15ce0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>East_Antarctic_ice_sheet_total_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>West_AntIS_total</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-bf61574b-7ec3-4acd-ba36-f588fa54c229' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf61574b-7ec3-4acd-ba36-f588fa54c229' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6c5461c3-dde6-4f40-af79-0ff0a5b14509' class='xr-var-data-in' type='checkbox'><label for='data-6c5461c3-dde6-4f40-af79-0ff0a5b14509' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>West_Antarctic_ice_sheet_total_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>West_AntIS_total_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-8d6db339-baa7-434e-8085-1938701e32ec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8d6db339-baa7-434e-8085-1938701e32ec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0f0b3cd5-4d74-4cf6-a73c-0b9277f3d566' class='xr-var-data-in' type='checkbox'><label for='data-0f0b3cd5-4d74-4cf6-a73c-0b9277f3d566' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>West_Antarctic_ice_sheet_total_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_total</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-bc4bb970-6f14-47a2-869b-aba6690d0aac' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bc4bb970-6f14-47a2-869b-aba6690d0aac' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9cde7b7e-e71e-4b75-9118-f5df5bffb6c8' class='xr-var-data-in' type='checkbox'><label for='data-9cde7b7e-e71e-4b75-9118-f5df5bffb6c8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_total_GMB</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>AntIS_total_er</span></div><div class='xr-var-dims'>(t)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-c5d55d3a-ca56-4af9-bf81-3b8b7b66d53d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c5d55d3a-ca56-4af9-bf81-3b8b7b66d53d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-843d0e9f-0a03-44d0-a4f3-69cf73398857' class='xr-var-data-in' type='checkbox'><label for='data-843d0e9f-0a03-44d0-a4f3-69cf73398857' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Antarctic_ice_sheet_total_GMB_error</dd><dt><span>units :</span></dt><dd>Gt</dd></dl></div><div class='xr-var-data'><pre>[216 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1387b394-0589-4490-a840-d9a293d3fbfd' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-1387b394-0589-4490-a840-d9a293d3fbfd' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-e5bcb9dc-c27a-43b3-a505-2b4c7c0afb89' class='xr-section-summary-in' type='checkbox'  ><label for='section-e5bcb9dc-c27a-43b3-a505-2b4c7c0afb89' class='xr-section-summary' >Attributes: <span>(12)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Title :</span></dt><dd>GMB for Greenland and Antarctica ice sheets from the GRACE missions</dd><dt><span>institution :</span></dt><dd>DTU Space - Geodesy and Earth Observations</dd><dt><span>reference :</span></dt><dd>Baratta et al. (2016), Groh and Horwart (2016)</dd><dt><span>file_creation_date :</span></dt><dd>Tue May 16 09:49:32 2023</dd><dt><span>region :</span></dt><dd>Greenland and Antarctica</dd><dt><span>missions_used :</span></dt><dd>GRACE and and GRACE-FO</dd><dt><span>time_coverage_start :</span></dt><dd>Apr-2002</dd><dt><span>time_coverage_end :</span></dt><dd>Dec-2022</dd><dt><span>Tracking_id :</span></dt><dd>ab2360a4-82d5-42f3-babb-90ce976a8a8e</dd><dt><span>netCDF_version :</span></dt><dd>NETCDF4</dd><dt><span>product_version :</span></dt><dd>4.0</dd><dt><span>Summary :</span></dt><dd>This data set is prepared for the C3S project, and is brokered from the CCI+ projects of Antarctica and Greenland ice sheets</dd></dl></div></li></ul></div></div></div></div>
 </div>
-</div>
-</div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="choosing-the-drainage-basin-to-plot">
-<h1>Choosing the drainage basin to plot<a class="headerlink" href="#choosing-the-drainage-basin-to-plot" title="Link to this heading">#</a></h1>
+<section id="plot-the-drainage-basins">
+<h3>Plot the drainage basins<a class="headerlink" href="#plot-the-drainage-basins" title="Link to this heading">#</a></h3>
 <p>Here the user can get an overview of the drainage basins available for the chosen Ice Sheet</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -776,34 +1154,21 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/cartopy/io/__init__.py:241: DownloadWarning: Downloading: https://naturalearth.s3.amazonaws.com/50m_physical/ne_50m_ocean.zip
-  warnings.warn(f&#39;Downloading: {url}&#39;, DownloadWarning)
-</pre></div>
-</div>
-<img alt="../_images/868693c6ed3aebac72abebdfdc4806f206e66dab3ca4edc8a3a7557dca2f09da.png" src="../_images/868693c6ed3aebac72abebdfdc4806f206e66dab3ca4edc8a3a7557dca2f09da.png" />
-</div>
-</div>
-<section id="pick-a-drainage-basin-to-view-timeseries-for">
-<h2>Pick a drainage basin to view timeseries for:<a class="headerlink" href="#pick-a-drainage-basin-to-view-timeseries-for" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basin_num</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># if set 0, then mass loss for all is shown. For GrIS 0-8, for AntIS 0-27 basins</span>
-</pre></div>
-</div>
+<img alt="../_images/bc451edda2fc2daeb426ea642a7d68d1d66481c6e4768b27c2ee50677a4c774f.png" src="../_images/bc451edda2fc2daeb426ea642a7d68d1d66481c6e4768b27c2ee50677a4c774f.png" />
 </div>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="plotting-the-timeseries">
-<h1>Plotting the timeseries<a class="headerlink" href="#plotting-the-timeseries" title="Link to this heading">#</a></h1>
-<section id="loading-the-data">
-<h2>Loading the data<a class="headerlink" href="#loading-the-data" title="Link to this heading">#</a></h2>
+<section id="plot-a-time-series-for-a-selcted-drainage-basin">
+<h2>Plot a time-series for a selcted drainage basin<a class="headerlink" href="#plot-a-time-series-for-a-selcted-drainage-basin" title="Link to this heading">#</a></h2>
 <p>Here the data from the selected ice sheet is loaded based on the choosen basin number from above.
 The variables needed for the plotting below are also extracted here .</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the basin number:</span>
+<span class="n">basin_num</span> <span class="o">=</span> <span class="mi">7</span> <span class="c1"># if set 0, then mass loss for all is shown. For GrIS 0-8, for AntIS 0-27 basins</span>
 
+<span class="c1"># Load data</span>
 <span class="n">time_in_hours</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
 
 <span class="c1"># Convert xarray DataArray to NumPy array</span>
@@ -838,13 +1203,11 @@ The variables needed for the plotting below are also extracted here .</p>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="setting-up-the-plot">
-<h1>Setting up the plot<a class="headerlink" href="#setting-up-the-plot" title="Link to this heading">#</a></h1>
+<section id="set-up-the-plot">
+<h3>Set up the plot<a class="headerlink" href="#set-up-the-plot" title="Link to this heading">#</a></h3>
 <p>In this plot, we focus on displaying the specific basin area within the selected ice sheet. Each basin represents a predefined region, and its boundary is essential for understanding localized processes such as ice mass changes or environmental conditions. The boundary of the basin is highlighted on the geographical map. This serves as a spatial reference for understanding which part of the ice sheet is being analyzed in the accompanying time series graph.</p>
 <section id="key-components">
-<h2>Key Components:<a class="headerlink" href="#key-components" title="Link to this heading">#</a></h2>
+<h4>Key Components:<a class="headerlink" href="#key-components" title="Link to this heading">#</a></h4>
 <p>Basin Area Map: The geographical map shows the specific basin number selected for analysis. It helps orient the user by providing a visual representation of the area under consideration within the larger ice sheet. This is useful for understanding the spatial context of the following analysis.</p>
 <p>Time Series Graph:
 Next to the basin map, a graph is displayed that tracks the mass change over time within the selected basin. This graph is where the data is visualized, providing insights into whether the basin has been gaining or losing ice mass over time. The combination of the basin map and time series graph allows us to interpret the temporal changes in mass for a specific region of the ice sheet.</p>
@@ -901,8 +1264,8 @@ Next to the basin map, a graph is displayed that tracks the mass change over tim
 
 <span class="c1"># Create the second subplot for time series</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_in_hours_array</span><span class="p">,</span> <span class="n">gmb</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mass change&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">time_in_hours_array</span><span class="p">,</span> <span class="n">gmb</span> <span class="o">-</span> <span class="n">gmb_er</span><span class="p">,</span> <span class="n">gmb</span> <span class="o">+</span> <span class="n">gmb_er</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_in_hours</span><span class="p">,</span> <span class="n">gmb</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mass change&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">time_in_hours</span><span class="p">,</span> <span class="n">gmb</span> <span class="o">-</span> <span class="n">gmb_er</span><span class="p">,</span> <span class="n">gmb</span> <span class="o">+</span> <span class="n">gmb_er</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mass change [GT]&#39;</span><span class="p">)</span>
 
@@ -915,10 +1278,12 @@ Next to the basin map, a graph is displayed that tracks the mass change over tim
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a8a8b68b82b029e82af29f88c3759600b0789ef37a69da8f97158beb31874d76.png" src="../_images/a8a8b68b82b029e82af29f88c3759600b0789ef37a69da8f97158beb31874d76.png" />
+<img alt="../_images/c762f99e84db98222b58d2c4328aa3f157083e730a62f4712f0ce3753fe2870b.png" src="../_images/c762f99e84db98222b58d2c4328aa3f157083e730a62f4712f0ce3753fe2870b.png" />
 </div>
 </div>
 <p><strong>Figure 1:</strong> Overview of mass change for the selected ice sheet basin. The left subplot shows a geographical map of the selected basin (or the entire ice sheet if <code class="docutils literal notranslate"><span class="pre">basin_num</span></code> is 0), highlighting the basin’s boundary in red. The right subplot presents the time series of mass change for the basin, with the mass change values shown as a line plot and the associated uncertainties represented by shaded error bands. The map provides spatial context for the temporal changes observed in the time series plot.</p>
+</section>
+</section>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="key-take-home-points">
@@ -1003,25 +1368,28 @@ Working with netCDF4 files requires specific libraries for data retrieval, unpac
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-your-environment">Prepare your environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-user-first-chooses-which-ice-sheet-they-want-to-plot">The user first chooses which ice sheet they want to plot:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examine-the-data">Examine the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description:</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-drainage-basin-to-plot">Choosing the drainage basin to plot</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-a-drainage-basin-to-view-timeseries-for">Pick a drainage basin to view timeseries for:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-timeseries">Plotting the timeseries</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-data">Loading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-the-data">Explore the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-drainage-basins">Plot the drainage basins</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-plot">Setting up the plot</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-a-time-series-for-a-selcted-drainage-basin">Plot a time-series for a selcted drainage basin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-plot">Set up the plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components">Key Components:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-take-home-points">Key Take-Home Points</a></li>
