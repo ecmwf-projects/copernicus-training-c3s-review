@@ -238,7 +238,6 @@
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-surface-elevation.html">Ice sheet surface elevation change rates</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ice-sheet-velocity.html">Access and visualisation of the Greenland Ice Sheet velocity data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="glacier-area.html">Explore glacier area</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glacier-mass-change.html">Glacier mass change</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mean-with-inverse-variance-weights.html">Computing the time average of LAI and fAPAR using inverse variance weights</a></li>
@@ -483,7 +482,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description:</a></li>
 </ul>
@@ -506,11 +504,8 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-take-home-points">Key Take-Home Points</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-take-home-points">Key Take-Home Points</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -1171,9 +1166,6 @@ The variables needed for the plotting below are also extracted here .</p>
 <span class="c1"># Load data</span>
 <span class="n">time_in_hours</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
 
-<span class="c1"># Convert xarray DataArray to NumPy array</span>
-<span class="n">time_in_hours_array</span> <span class="o">=</span> <span class="n">time_in_hours</span><span class="o">.</span><span class="n">values</span>
-
 <span class="k">if</span> <span class="s1">&#39;GrIS&#39;</span> <span class="ow">in</span> <span class="n">ice_sheet</span><span class="p">:</span>
     <span class="n">drainage_basin</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;GrISBasin&#39;</span><span class="p">]</span>
 
@@ -1285,9 +1277,8 @@ Next to the basin map, a graph is displayed that tracks the mass change over tim
 </section>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="key-take-home-points">
-<h1>Key Take-Home Points<a class="headerlink" href="#key-take-home-points" title="Link to this heading">#</a></h1>
+<section id="key-take-home-points">
+<h2>Key Take-Home Points<a class="headerlink" href="#key-take-home-points" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Understanding Ice Sheet Dynamics:</strong><br />
 The Gravimetric Mass Balance (GMB) data from the Copernicus Climate Change Service (C3S) provides valuable insights into the changes in ice mass across the Greenland and Antarctic ice sheets. By analyzing these data, researchers can monitor how ice sheets contribute to sea level rise and assess long-term trends in ice mass loss or gain.</p></li>
@@ -1301,6 +1292,7 @@ Accessing and preparing GMB data from the C3S Climate Data Store requires regist
 Working with netCDF4 files requires specific libraries for data retrieval, unpacking, calculation, and plotting. Ensuring that these libraries are properly set up is crucial for efficient and accurate analysis.</p></li>
 </ul>
 <p>By integrating these elements, you can effectively analyze and interpret the gravimetric mass balance data, gaining insights into ice sheet changes and their broader implications.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1367,7 +1359,6 @@ Working with netCDF4 files requires specific libraries for data retrieval, unpac
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploring Ice sheet Gravimetric Mass Balance data, available through the C3S Climate Data Store</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description">Data Description:</a></li>
 </ul>
@@ -1390,11 +1381,8 @@ Working with netCDF4 files requires specific libraries for data retrieval, unpac
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-take-home-points">Key Take-Home Points</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#key-take-home-points">Key Take-Home Points</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
